@@ -20,8 +20,20 @@
     border-radius: 15px;
 
 }
+.img-wrapper span{
+    text-transform: uppercase;
+    
+    }
 .img-wrapper h2{
-font-size: 3em;
+font-size: 3.2em;
+
+}
+.img-wrapper p{
+    font-size: 1.25em;   
+    padding : 1em 0;
+}
+.img-wrapper span{
+    font-size: 1.5em;   
 }
 .img-wrapper:hover {
     transform: scale(1.05);
@@ -58,9 +70,9 @@ font-size: 3em;
     padding: 1em 2em;
     margin-left: 2em;
     margin-bottom: 2em;
-    border-radius: 0 0 15px 15px;
+    border-radius:15px;
   
- max-width: 60%;
+    max-width: 80%;
 
 }
 
