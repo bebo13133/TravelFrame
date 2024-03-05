@@ -1,0 +1,129 @@
+@import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css';
+.container {
+    max-width: 1640px;
+    display: flex;
+    /* align-items: center; */
+    flex-wrap: nowrap;
+    margin: 0 auto;
+    margin-top: 20em;
+    justify-content: space-between;
+    padding: 3em 4em;
+    gap: 5em;
+    
+}
+
+/* left-side */
+.left-side {
+    flex: 0 0 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    padding-left: 20px; 
+    max-width: 67character;
+    /* gap: 2em; */
+    
+}
+
+.left-side h2 {
+    color: black;
+    position: relative; 
+    padding-left: 1.5em; 
+    font-size: 3.2em;
+    line-height: 1em;
+    margin-bottom: 1em;
+    font-family: "Muller Next Regular", "Muller Next Regular Placeholder", sans-serif;
+}
+
+.left-side h2::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 5px;
+    background-color: red; 
+    
+}
+.left-side h3 {
+    color: #4b4949;
+    position: relative; 
+    /* padding-left: 15px;  */
+    font-size: 2em;
+    line-height: 1em;
+    padding-bottom: 1em;
+    font-weight: normal;
+    font-family: "Muller Next Regular", "Muller Next Regular Placeholder", sans-serif;
+}
+.left-side p {
+    color:#4b4949;
+    position: relative; 
+    /* padding-left: 15px;  */
+    font-family: "Muller Next Regular", "Muller Next Regular Placeholder", sans-serif;
+    font-size: 1.5em;
+    line-height: 1em;
+    padding-bottom: 1em;
+}
+
+.left-side a {
+    background-color: rgb(207, 124, 14);
+    color: white; 
+    text-decoration: none; 
+    border: 2px solid rgb(224, 105, 7);;
+    padding: 12px 20px; 
+    border-radius: 2em;
+    margin-top: 10px; 
+    font-size: 1.2em;
+}
+
+/* right-side */
+.right-side {
+    /* display: flex;
+    flex-direction: column;
+    gap: 2em;  */
+    flex: 0 0 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    justify-content: flex-start;
+    padding-left: 20px; 
+    max-width: 67character;
+    gap: 3em;
+}
+
+.item {
+    display: flex;
+    align-items: center; 
+    gap: 2em; 
+}
+.icon {
+    flex-shrink: 0; 
+    font-size: 5em; 
+}
+.item > div {
+    display: flex;
+    flex-direction: column;
+}
+
+.item h3 {
+    margin: 0; 
+    color: #4b4949;
+    position: relative; 
+    /* padding-left: 15px;  */
+    font-size: 2em;
+    line-height: 1em;
+    /* padding-bottom: 1em; */
+    font-weight: normal;
+    font-family: "Muller Next Regular", "Muller Next Regular Placeholder", sans-serif;
+    font-weight: bold;
+}
+
+.item p {
+    margin-top: 5px; 
+    color:#4b4949;
+    position: relative; 
+    /* padding-left: 15px;  */
+    font-family: "Muller Next Regular", "Muller Next Regular Placeholder", sans-serif;
+    font-size: 1.2em;
+    line-height: 1em;
+    padding-bottom: 1em;
+}

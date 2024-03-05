@@ -1,0 +1,15 @@
+/* author: https://codepen.io/ecemgo/pen/XWoJzYK
+Ecem Gokdogan */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(rgba(12, 3, 51, 0.3), rgba(12, 3, 51, 0.3));
+  min-height: 100vh;
+}

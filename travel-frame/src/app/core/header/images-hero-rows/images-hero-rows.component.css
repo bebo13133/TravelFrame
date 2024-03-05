@@ -1,0 +1,44 @@
+/* row image  */
+.image-row-header {
+    display: flex;
+    /* justify-content: space-around; */
+    justify-content: center;
+    gap: 5em;
+    flex-wrap: wrap;
+    position: absolute;
+    bottom: -15%;
+    flex-wrap: wrap;
+    left: 0;
+    right: 0;
+  }
+  
+  .image-container-hero {
+    position: relative; /* Позволява абсолютно позиционирани деца да се отнасят към него */
+    width: 420px;
+    margin-bottom: 20px;
+
+  }
+  
+  .image-container-hero img {
+    width: 100%; /* Прави снимката да запълва ширината на контейнера */
+    height: 450px; /* Запазва съотношението на изображението */
+    border-radius: 15px;
+    object-fit: cover; 
+  }
+  
+  .overlay-hero {
+    position: absolute;
+    bottom: 5px; /* Позиционира текста в долната част на снимката */
+    left: 0;
+    right: 0;
+    /* background: rgba(0, 0, 0, 0.5);  */
+    color: white; /* Бял текст */
+    padding: 10px; 
+    border-radius: 0 0 15px 15px; 
+  }
+  
+  .overlay-hero h3, .overlay-hero p {
+    margin: 0; 
+    text-align: center;
+  }
+  

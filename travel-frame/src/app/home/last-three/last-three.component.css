@@ -1,0 +1,83 @@
+.last-three-imgs {
+    max-width: 1840px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3em;
+    margin-top: 10em;
+    
+}
+
+.img-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    flex: 1 1 45%; 
+    height: auto; 
+    transition: transform 1.5s ease, box-shadow 0.5s ease;
+    overflow: hidden;
+    border-radius: 15px;
+
+}
+.img-wrapper h2{
+font-size: 3em;
+}
+.img-wrapper:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
+    overflow: hidden;
+}
+.img-wrapper.full-width {
+    flex-basis: 100%; 
+    overflow: hidden;
+    border-radius: 15px;
+
+}
+
+.img-wrapper img {
+    width: 100%;
+    height: 750px; 
+    object-fit: cover;
+    display: block;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+
+
+.image-overlay {
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.1); 
+    backdrop-filter: blur(5px); 
+    color: white; 
+    padding: 1em 2em;
+    margin-left: 2em;
+    margin-bottom: 2em;
+    border-radius: 0 0 15px 15px;
+  
+ max-width: 60%;
+
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.info span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    overflow: hidden;
+}
+
+.icon {
+    font-size: 24px;
+    overflow: hidden;
+}
