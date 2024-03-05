@@ -1,0 +1,93 @@
+.home-info{
+    max-width: 1840px;
+    margin: 0 auto;
+    display: flex;
+    margin-top: 10em;
+    gap: 17em;
+    align-items: flex-start;
+    justify-content: center;
+}
+.home-contact{
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    background-color: rgb(245 245 245);
+    border-radius: 15px;
+    padding: 2em 4em;
+    flex: 0 0 40%;
+    box-sizing: border-box;
+    
+}
+.home-contact form{
+    display: flex;
+    flex-direction: column;
+
+}
+.home-contact form input,
+.home-contact form button {
+    margin: 0;
+    width: 100% ;
+    box-sizing: border-box; 
+}
+.home-contact form input{
+    font-size: 1.5em;
+    padding: 1em 0.5em;
+    border-radius: 15px;
+}
+.home-contact form button{
+    background-color: rgb(255 85 13);
+    border-radius: 15px;
+    padding: 0.6em 1em;
+    font-size: 1.5em;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.home-contact form button:hover{
+    background-color: red;
+
+}
+.home-contact form input {
+    margin-bottom: 1em; 
+}
+.home-contact p{
+    text-align: center;
+}
+.home-contact h3{
+    text-align: center;
+    font-size: 2em;
+    padding-bottom: 1em;
+}
+/* home-more */
+.home-more{
+    flex: 0 0 40%;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    gap: 1em;
+}
+.home-more h3{
+  
+    font-size: 2em;
+    padding-bottom: 0.2em;
+}
+.home-more p {
+    
+    font-size: 1.5em;
+}
+.home-more a {
+    
+    background-color: rgb(255 85 13);
+    border-radius: 15px;
+    padding: 0.6em 0.5em;
+    width: 50%;
+    font-size: 1.5em;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+}
+.home-more a:hover{
+    background-color: red;
+    box-shadow: 0px 0px 10px 0px rgb(255 85 13);
+    /* opacity: 1; */
+}
