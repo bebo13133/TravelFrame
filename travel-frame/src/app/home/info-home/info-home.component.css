@@ -6,6 +6,7 @@
     gap: 17em;
     align-items: flex-start;
     justify-content: center;
+    margin-bottom: 10em;
 }
 .home-contact{
     display: flex;

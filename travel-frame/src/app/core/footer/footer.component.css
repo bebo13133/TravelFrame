@@ -5,13 +5,13 @@
     /* position: absolute; */
     bottom: 0;
     width: 100%;
-    padding: 10em;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
     padding: 3em 12em;
     position: relative;
     justify-content: space-between;
+
   
 }
 .footer-up{
@@ -30,7 +30,7 @@
   background-color: rgb(78, 77, 77);
   border-radius: 15px;
   padding: 2em 4em;
-  flex: 0 0 40%;
+  flex: 0 0 30%;
   box-sizing: border-box;
   color: white;
 }
