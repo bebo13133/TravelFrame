@@ -38,10 +38,12 @@
 h1 {
     font-weight: bold;
     margin: 0;
+    font-size: 3em;
   }
   
   h2 {
     text-align: center;
+    font-size: 2.5em;
   }
   
   p {
@@ -50,15 +52,16 @@ h1 {
     line-height: 20px;
     letter-spacing: 0.5px;
     margin: 20px 0 30px;
+    font-size: 1.5em;
   }
   
   span {
-    font-size: 12px;
+   font-size: 1.25em;
   }
   
   a {
     color: #333;
-    font-size: 14px;
+    font-size: 1.5em;
     text-decoration: none;
     margin: 15px 0;
   }
@@ -68,7 +71,7 @@ h1 {
     border: 1px solid #ff4b2b;
     background-color: #ff4b2b;
     color: #ffffff;
-    font-size: 12px;
+    font-size: 1.5em;
     font-weight: bold;
     padding: 12px 45px;
     letter-spacing: 1px;
@@ -106,6 +109,7 @@ h1 {
     padding: 12px 15px;
     margin: 8px 0;
     width: 100%;
+    font-size: 1.5em;
   }
   
   .container {
@@ -114,9 +118,9 @@ h1 {
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
     position: relative;
     overflow: hidden;
-    width: 868px;
+    width: 1068px;
     max-width: 100%;
-    min-height: 580px;
+    min-height: 780px;
   }
   
   .form-container {
@@ -245,7 +249,7 @@ h1 {
     justify-content: center;
     align-items: center;
     margin: 0 5px;
-    height: 40px;
-    width: 40px;
+    height: 60px;
+    width: 60px;
   }
   
