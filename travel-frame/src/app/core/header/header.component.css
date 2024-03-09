@@ -47,7 +47,9 @@ header {
   .nav-item:hover::after {
     width: 100%;
   }
-  
+  .navbar a{
+    font-size: 1.5em;
+  }
   .icons {
     position: absolute;
     right: 5%;
