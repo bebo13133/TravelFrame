@@ -1,6 +1,9 @@
+@import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css';
+
 .catalog{
-    padding: 5em 0;
+    padding: 5em 3em;
     position: relative;
+    
 }
 
 
@@ -105,7 +108,24 @@
     height: 100%;
     object-fit: obtain;
   }
+  .image-container {
+    position: relative;
+  }
   
+  .right .favorite-icon {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    font-size: 2em;
+    color: white; /* Стартов цвят */
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  /* Стилове за когато елементът е добавен към любими */
+  .image-container .fa-heart {
+    color: red; /* Цвят при 'любим' */
+  }
   /* .slider .wrapper .right div:nth-child(1) {
     margin-top: -400vh;
   } */

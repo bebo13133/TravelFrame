@@ -11,6 +11,7 @@ import { Component } from '@angular/core';
 })
 export class DestinationCatalogComponent {
   currentSlide = 0;
+  isFavorite = false;
   slides = [
     {
       title: "London",
@@ -40,5 +41,11 @@ export class DestinationCatalogComponent {
   getSlideStyle(index: number): string {
     const offset = this.currentSlide * -70;
     return `translateY(${offset}vh)`;
+  }
+
+
+  toggleFavorite() {
+    this.isFavorite = !this.isFavorite;
+    // Тук добавете логиката за изпращане на заявката към сървъра ако е необходимо
   }
 }

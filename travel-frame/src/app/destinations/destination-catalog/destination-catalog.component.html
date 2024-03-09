@@ -111,9 +111,10 @@
             </div>
           </div>
           <div class="right">
-            <div *ngFor="let slide of slides; let i = index" [style.transform]="getSlideStyle(slides.length - 1 - i)">
+            <div class= "image-container" *ngFor="let slide of slides; let i = index" [style.transform]="getSlideStyle(slides.length - 1 - i)">
             
               <img [src]="slide.imageUrl" [alt]="slide.title" />
+              <i [ngClass]="isFavorite ? 'fas fa-heart' : 'far fa-heart'" class="favorite-icon" (click)="toggleFavorite()"></i>
             </div>
           </div>
         </div>
