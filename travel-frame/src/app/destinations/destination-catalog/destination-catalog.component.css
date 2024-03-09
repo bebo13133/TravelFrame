@@ -68,6 +68,7 @@
   .slider .wrapper .right {
     width: 50%;
     overflow: hidden;
+    background-color: white;
   }
   
   .slider .wrapper .left > div,
