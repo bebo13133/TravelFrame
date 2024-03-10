@@ -6,7 +6,7 @@ Kristen */
 section {
   position: relative;
   max-width: 100%;
-  min-height: 70vh;
+  min-height: 50vh;
   display: flex;
   flex-direction: row;
   justify-content: center;

@@ -1,0 +1,13 @@
+<section class="create-page">
+<div class="create-form">
+    <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
+      <div class="create-hero">
+        <input type="file" class="imageFile" (change)="onImageChange($event)">
+        <img *ngIf="imagePreview" [src]="imagePreview" >
+        <input type="text" class="hero-title" formControlName="title" placeholder="Заглавие">
+        <textarea formControlName="paragraph" class="hero-paragraph" placeholder="Параграф"></textarea>
+      </div>
+      <button type="submit">Запази</button>
+    </form>
+  </div>
+</section>
