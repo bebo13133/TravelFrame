@@ -18,12 +18,13 @@
 }
 
 .create-form{
-  width: 780px;
+  max-width: 920px;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
     /* align-items: center; */
     background-color: transparent;
+    /* backdrop-filter: brightness(90%); */
 
     border: 2px solid black;
     padding: 1em;
@@ -33,7 +34,7 @@
 }
 .create-hero{
     font-size: 1.5em;
-    width: 100%;
+    max-width: 100%;
     gap: 1em;
     display: flex;
     flex-direction: column;
@@ -69,6 +70,7 @@
     height: 50px;
     border-radius: 5px;
     background: transparent;
+    
     position: relative;
     /* display: flex;
     flex-wrap: nowrap;

@@ -68,9 +68,9 @@
       
       <div class="create-btn">
         <a routerLink="#" class="btn lights-back" *ngIf="currentFormSection !== 1"
-          (click)="goToPreviousSection()">back</a>
+          (click)="goToPreviousSection()"></a>
         <a routerLink="#" class="btn lights" (click)="goToNextSection()"
-          *ngIf="!createForm.valid && currentFormSection < totalFormSections">next</a>
+          *ngIf="!createForm.valid && currentFormSection < totalFormSections"></a>
       </div>
       <div class="submit-btn">
         <button type="submit" class="btn lights-submit" *ngIf="currentFormSection === totalFormSections">Save</button> 
