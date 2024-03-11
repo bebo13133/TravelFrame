@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
 
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-destination-catalog',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,RouterLink],
   templateUrl: './destination-catalog.component.html',
   styleUrl: './destination-catalog.component.css'
 })

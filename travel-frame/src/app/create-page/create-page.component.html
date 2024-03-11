@@ -1,13 +1,35 @@
 <section class="create-page">
-<div class="create-form">
+  <video [autoplay]="true" [loop]="true" [muted]="true" [playsInline]="true" class="background-video">
+    <source src="/assets/media/create.mp4" type="video/mp4" />
+  </video>
+  <div class="create-form">
+
     <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
-      <div class="create-hero">
-        <input type="file" class="imageFile" (change)="onImageChange($event)">
-        <img *ngIf="imagePreview" [src]="imagePreview" >
-        <input type="text" class="hero-title" formControlName="title" placeholder="Заглавие">
-        <textarea formControlName="paragraph" class="hero-paragraph" placeholder="Параграф"></textarea>
+
+      <div class="create-hero" *ngIf="currentFormSection === 1">
+        <h2>Създай своето приключение </h2>
+
+        <!-- Label за качване на снимка -->
+        <label for="imageFile" class="upload-label">Качи снимка</label>
+        <input type="file" id="imageFile" class="imageFile" (change)="onImageChange($event)">
+        <img *ngIf="imagePreview" [src]="imagePreview">
+
+        <!-- Label за заглавие -->
+        <label for="heroTitle" class="title-label">Дестинация</label>
+        <input type="text" id="heroTitle" class="hero-title" formControlName="title"
+          placeholder="добави своята дестинация">
+
+        <!-- Label за параграф -->
+        <label for="heroParagraph" class="paragraph-label">Описание</label>
+        <textarea id="heroParagraph" formControlName="paragraph" class="hero-paragraph"
+          placeholder="Параграф"></textarea>
       </div>
-      <button type="submit">Запази</button>
+      <div class="create-btn">
+        <a routerLink="#" class="btn lights-back" (click)="goToPreviousSection()">back</a>
+        <a routerLink="#" class="btn lights" (click)="goToNextSection()">next</a>
+      </div>
+      <button type="submit" *ngIf="createForm.valid">Save</button>
     </form>
   </div>
+
 </section>

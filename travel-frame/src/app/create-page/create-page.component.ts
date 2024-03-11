@@ -12,7 +12,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 export class CreatePageComponent implements OnInit {
   createForm!: FormGroup;
   imagePreview: string | ArrayBuffer = '';
-
+  currentFormSection = 1; // Стартова секция
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
@@ -38,5 +38,14 @@ export class CreatePageComponent implements OnInit {
   onSubmit() {
     // Обработка на данните от формата тук
     console.log(this.createForm.value);
+  }
+  goToNextSection() {
+    this.currentFormSection++;
+  
+  }
+
+  goToPreviousSection() {
+    this.currentFormSection--;
+  
   }
 }

@@ -108,6 +108,8 @@
             <div *ngFor="let slide of slides; let i = index" [style.transform]="getSlideStyle(i)">
               <h2>{{slide.title}}</h2>
               <p>{{slide.content}}</p>
+            <a class="read-more" routerLink="#">Read more</a>
+
             </div>
           </div>
           <div class="right">

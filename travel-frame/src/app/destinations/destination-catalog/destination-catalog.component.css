@@ -122,7 +122,18 @@
     cursor: pointer;
     transition: color 0.3s ease;
   }
-  
+  .read-more{
+    width: 20%;
+    text-align: center;
+    padding: 0.7em 1.5em;
+    color: black;
+    margin-top: 2em;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-decoration: none;
+    background-color: rgb(255 85 13);
+    border-radius: 15px;
+  }
   /* Стилове за когато елементът е добавен към любими */
   .image-container .fa-heart {
     color: red; /* Цвят при 'любим' */
