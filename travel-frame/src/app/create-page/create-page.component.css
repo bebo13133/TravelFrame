@@ -12,7 +12,7 @@
     right: 0;
     bottom: 0;
     z-index: -1;
-    filter: brightness(40%);
+    filter: brightness(50%);
     /* Намалява яркостта на видеото до 50%. Можете да регулирате стойността според нуждите си. */
     /* filter: blur(4px); */
 }
@@ -41,6 +41,10 @@
     /* align-items: center; */
     padding: 4em;
 
+}
+.submit-btn {
+    display: flex;
+    justify-content: center;
 }
 .create-hero textarea{
     height: 90px;
@@ -134,7 +138,33 @@
     font-size: 1.2rem;
     border-radius: 5px;
   }
-
+  .lights-submit::before {
+    content: "";
+    position: absolute;
+    background-image: conic-gradient(
+      rgb(216, 178, 10) 20deg,
+      transparent 150deg
+    );
+    width: 400%;
+    height: 400%;
+    border-radius: 5px;
+    animation: rotate 3s linear infinite;
+  }
+.lights-submit::after {
+    content: "SUBMIT";
+    position: absolute;
+    width: 170px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(35px);
+    -webkit-backdrop-filter: blur(35px);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    border-radius: 5px;
+  }
 
 
 .create-hero img{

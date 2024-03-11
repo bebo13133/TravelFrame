@@ -12,14 +12,17 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 export class CreatePageComponent implements OnInit {
   createForm!: FormGroup;
   imagePreview: string | ArrayBuffer = '';
-  currentFormSection = 1; // Стартова секция
+  currentFormSection = 1; 
+  totalFormSections = 3;
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
     this.createForm = this.fb.group({
       image: [null],
       title: ['', Validators.required],
-      paragraph: ['', Validators.required]
+      paragraph: ['', Validators.required],
+      "title-desc": ['', Validators.required],
+      'info-desc': ['', Validators.required],
     });
   }
 
@@ -40,12 +43,16 @@ export class CreatePageComponent implements OnInit {
     console.log(this.createForm.value);
   }
   goToNextSection() {
-    this.currentFormSection++;
+    if(this.currentFormSection < this.totalFormSections) {
+      this.currentFormSection++;
+    }
   
   }
 
   goToPreviousSection() {
-    this.currentFormSection--;
+    if(this.currentFormSection > 1) {
+      this.currentFormSection--;
+    }
   
   }
 }
