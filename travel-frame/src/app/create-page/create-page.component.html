@@ -27,19 +27,18 @@
       <div class="create-hero" *ngIf="currentFormSection === 2">
         <h2>Опиши своята екскурзия</h2>
 
-        <!-- Label за качване на снимка -->
+    
         <label for="imageFiles" class="upload-label">Качи снимка</label>
         <input type="file" id="imageFiles" class="imageFiles" (change)="onImagesChange($event)" multiple>
         <div class="images-preview" *ngIf="imagesPreview.length > 0">
           <img *ngFor="let img of imagesPreview" [src]="img" class="image-preview">
         </div>
 
-        <!-- Label за заглавие -->
+       
         <label for="heroTitle" class="title-label">За града</label>
         <input type="text" id="heroTitle" class="hero-title" formControlName="title-desc"
           placeholder="добави своята дестинация">
 
-        <!-- Label за параграф -->
         <label for="heroParagraph" class="paragraph-label">Опиши го</label>
         <textarea id="heroParagraph" formControlName="info-desc" class="hero-paragraph"
           placeholder="Параграф"></textarea>
@@ -52,15 +51,15 @@
           <button type="button" (click)="nextDay()" *ngIf="currentDayIndex < days.controls.length - 1">Следващ Ден</button>
         </div>
         
-        <!-- Показване само на текущо избрания ден -->
+      
         <div *ngIf="days.controls[currentDayIndex]" [formGroupName]="currentDayIndex">
           <h2>Ден {{currentDayIndex + 1}}</h2>
-          <input type="file" (change)="onDayImageChange($event, currentDayIndex)" multiple>
+          <input type="file" (change)="onDayImageChange($event, currentDayIndex)" class="imageFiles" multiple>
           <div *ngIf="dayImages[currentDayIndex].previews.length > 0">
             <img *ngFor="let img of dayImages[currentDayIndex].previews" [src]="img" class="day-image-preview">
           </div>
-          <input type="text" formControlName="dayTitle" placeholder="Заглавие за деня">
-          <textarea formControlName="dayInfo" placeholder="Информация за деня"></textarea>
+          <input type="text" formControlName="dayTitle" class="hero-title"  placeholder="Заглавие за деня">
+          <textarea formControlName="dayInfo" placeholder="Информация за деня" class="hero-paragraph"></textarea>
           <button type="button" (click)="removeDay(currentDayIndex)">Изтрий Ден {{currentDayIndex + 1}}</button>
         </div>
       
@@ -74,7 +73,8 @@
           *ngIf="!createForm.valid && currentFormSection < totalFormSections">next</a>
       </div>
       <div class="submit-btn">
-        <button type="submit" class="btn lights-submit" *ngIf="createForm.valid">Save</button>
+        <button type="submit" class="btn lights-submit" *ngIf="currentFormSection === totalFormSections">Save</button> 
+        <!-- //createForm.valid &&  изтрито  -->
       </div>
     </form>
 
