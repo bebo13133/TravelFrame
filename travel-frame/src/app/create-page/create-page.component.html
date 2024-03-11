@@ -28,9 +28,11 @@
         <h2>Опиши своята екскурзия</h2>
 
         <!-- Label за качване на снимка -->
-        <label for="imageFile" class="upload-label">Качи снимка</label>
-        <input type="file" id="imageFile" class="imageFile" (change)="onImageChange($event)">
-        <img *ngIf="imagePreview" [src]="imagePreview">
+        <label for="imageFiles" class="upload-label">Качи снимка</label>
+        <input type="file" id="imageFiles" class="imageFiles" (change)="onImagesChange($event)" multiple>
+        <div class="images-preview" *ngIf="imagesPreview.length > 0">
+          <img *ngFor="let img of imagesPreview" [src]="img" class="image-preview">
+        </div>
 
         <!-- Label за заглавие -->
         <label for="heroTitle" class="title-label">За града</label>
@@ -43,12 +45,14 @@
           placeholder="Параграф"></textarea>
       </div>
       <div class="create-btn">
-        <a routerLink="#" class="btn lights-back"*ngIf="currentFormSection !== 1" (click)="goToPreviousSection()">back</a>
-        <a routerLink="#" class="btn lights" (click)="goToNextSection()" *ngIf="!createForm.valid && currentFormSection < totalFormSections">next</a>
+        <a routerLink="#" class="btn lights-back" *ngIf="currentFormSection !== 1"
+          (click)="goToPreviousSection()">back</a>
+        <a routerLink="#" class="btn lights" (click)="goToNextSection()"
+          *ngIf="!createForm.valid && currentFormSection < totalFormSections">next</a>
       </div>
       <div class="submit-btn">
-      <button type="submit" class="btn lights-submit" *ngIf="createForm.valid">Save</button>
-    </div>
+        <button type="submit" class="btn lights-submit" *ngIf="createForm.valid">Save</button>
+      </div>
     </form>
 
   </div>

@@ -14,6 +14,7 @@ export class CreatePageComponent implements OnInit {
   imagePreview: string | ArrayBuffer = '';
   currentFormSection = 1; 
   totalFormSections = 3;
+  imagesPreview: string[] = []; 
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
@@ -36,10 +37,25 @@ export class CreatePageComponent implements OnInit {
       reader.readAsDataURL(file);
     }
   }
+  onImagesChange(event: Event) {
+    const files = (event.target as HTMLInputElement).files;
+    this.imagesPreview = []; 
+    if (files && files.length <= 4) {
+      Array.from(files).forEach(file => {
+        const reader = new FileReader();
+        reader.onload = () => {
+          this.imagesPreview.push(reader.result as string);
+        };
+        reader.readAsDataURL(file);
+      });
+    } else {
 
-  // Метод за изпращане на формата
+      console.error("Можете да качите максимум 4 снимки.");
+    }
+  }
+
   onSubmit() {
-    // Обработка на данните от формата тук
+   
     console.log(this.createForm.value);
   }
   goToNextSection() {
