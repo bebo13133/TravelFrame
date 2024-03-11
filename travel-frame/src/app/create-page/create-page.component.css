@@ -172,7 +172,11 @@
     height: auto;
     aspect-ratio: 1/1;
 }
-
+.images-preview {
+    display: flex;
+    justify-content: space-around; /* Разпределя снимките равномерно */
+    margin-bottom: 20
+}
 .create-form h2{
     text-align: center;
     font-size: 2.5em;
