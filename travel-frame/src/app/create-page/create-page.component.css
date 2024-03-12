@@ -32,6 +32,7 @@ input[type='file'] {
     border: 2px solid black;
     padding: 1em;
     border-radius: 15px;
+    margin-bottom: 4em;
     color: white;
 
 }

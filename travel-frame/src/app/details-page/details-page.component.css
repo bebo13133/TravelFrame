@@ -93,7 +93,7 @@ font-size: 2em;
 .desc-prog{
     display: flex;
     flex-direction: column;
-    gap: 1em;
+    gap: 3em;
     margin: 0 auto;
     padding: 2em 6em;
     justify-content: center;

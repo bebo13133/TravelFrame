@@ -3,12 +3,21 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    padding: 1rem 5%;
+    padding: 0 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transition: all 0.3s ease;
     z-index: 5;
   }
+
+  
+  header.scrolled {
+    /* Дефинирайте стиловете, които искате да приложите когато navbar е променен при скрол надолу */
+    background-color: rgba(0, 0, 0, 0.8); /* Пример за промяна на фона при скрол надолу */
+  }
+
+
   /* .site-header{
     position: relative;;
   } */

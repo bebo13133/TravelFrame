@@ -1,0 +1,111 @@
+/* PRICE */
+.details-price {
+    max-width: 100%;
+    min-height: 800px;
+    padding: 5em 0;
+    margin-top: 5em;
+
+    /* padding: 4em 8em; */
+    background-image: url('/assets/media/desert-camp.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+
+}
+
+.resize-side {
+    max-width: 1680px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 4em;
+    font-weight: normal;
+
+}
+
+.price-side {
+
+    flex: 0 0 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-color: black;
+    border-radius: 50px;
+    padding: 4em 4em;
+    margin-top: 3em;
+}
+
+.price-side p {
+    font-size: 1.25em;
+    text-align: center;
+}
+
+.price-side p {
+    font-size: 1.25em;
+
+    text-align: center;
+}
+
+.price-side h5 {
+    font-size: 1em;
+    text-align: center;
+
+}
+.price-side h3{
+    padding-top: 2em;
+    text-align: center;
+}
+.price-side h2{
+    font-size: 4em;
+    text-align: center;
+    padding: 0.3em 0;
+}
+.price-side span {
+   color: rgb(172, 168, 168);
+    font-size: 1.25em;
+    text-align: center;
+  
+
+}
+
+.price-side h4 {
+    font-size: 1.5em;
+    text-align: center;
+    padding-bottom: 0.6em;
+
+}
+
+.price-side a {
+    background-color: rgb(255 85 13);
+    color: white;
+    text-decoration: none;
+    width: 100%;
+    font-weight: bold;
+    margin: 2em 0;
+    text-align: center;
+    padding: 0.5em 0;
+    border-radius: 15px;
+    font-size: 1.5em;
+}
+.notification{
+    margin-top: 3em;
+flex: 0 0 50%;
+display: flex;
+flex-direction: column;
+font-size: 1.5em;
+color: white;
+gap: 0.5em;
+}
+.notification h2{
+    font-size: 1.5em;
+    text-align: center;
+}
+.notification i {
+    /* background-color: green; */
+    color: green;
+font-size: 1.2em;
+}
