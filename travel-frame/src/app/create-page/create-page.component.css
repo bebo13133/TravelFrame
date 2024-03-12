@@ -20,6 +20,7 @@ input[type='file'] {
     color: transparent;
   }
 .create-form{
+    margin-top: 12em;
   max-width: 920px;
     display: flex;
     flex-direction: column;
@@ -42,7 +43,7 @@ input[type='file'] {
     flex-direction: column;
     flex-wrap: nowrap;
     /* align-items: center; */
-    padding: 4em;
+    padding: 1.5em;
 
 }
 .submit-btn {
@@ -107,6 +108,7 @@ input[type='file'] {
 .day-btn{
     display: flex;
     gap:1.3em;
+    z-index: 100;
     /* justify-content: ; */
 }
 .conditions{
@@ -244,6 +246,7 @@ input[type='file'] {
     font-weight: 600;
     -webkit-text-stroke: 0.8px rgb(168, 239, 255, 1);
     /* color: white; */
+    line-height: 1em;
     transition: all 0.5s ease;
 }
 

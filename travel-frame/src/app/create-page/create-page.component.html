@@ -54,7 +54,7 @@
 
 
         <div class="day-info" *ngIf="days.controls[currentDayIndex]" [formGroupName]="currentDayIndex">
-          <h2>Програма</h2>
+          <h2>Програма </h2>
           <h2>Ден {{currentDayIndex + 1}}</h2>
           <input type="file" (change)="onDayImageChange($event, currentDayIndex)" class="imageFiles" multiple>
           <div *ngIf="dayImages[currentDayIndex].previews.length > 0">
