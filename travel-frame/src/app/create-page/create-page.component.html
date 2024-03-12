@@ -11,7 +11,7 @@
 
         <!-- Label за качване на снимка -->
         <label for="imageFile" class="upload-label">Качи снимка</label>
-        <input type="file" title=" " id="imageFile" class="imageFile"  (change)="onImageChange($event)">
+        <input type="file" title=" " id="imageFile" class="imageFile" (change)="onImageChange($event)">
         <img *ngIf="imagePreview" [src]="imagePreview">
 
         <!-- Label за заглавие -->
@@ -27,14 +27,14 @@
       <div class="create-hero" *ngIf="currentFormSection === 2">
         <h2>Опиши своята екскурзия</h2>
 
-    
+
         <label for="imageFiles" class="upload-label">Качи снимка</label>
         <input type="file" id="imageFiles" class="imageFiles" (change)="onImagesChange($event)" multiple>
         <div class="images-preview" *ngIf="imagesPreview.length > 0">
           <img *ngFor="let img of imagesPreview" [src]="img" class="image-preview">
         </div>
 
-       
+
         <label for="heroTitle" class="title-label">За града</label>
         <input type="text" id="heroTitle" class="hero-title" formControlName="title-desc"
           placeholder="добави своята дестинация">
@@ -46,34 +46,69 @@
 
 
       <div class="create-hero" *ngIf="currentFormSection === 3">
-        <div>
+        <div class="day-btn">
           <button type="button" (click)="previousDay()" *ngIf="currentDayIndex > 0">Предишен Ден</button>
-          <button type="button" (click)="nextDay()" *ngIf="currentDayIndex < days.controls.length - 1">Следващ Ден</button>
+          <button type="button" (click)="nextDay()" *ngIf="currentDayIndex < days.controls.length - 1">Следващ
+            Ден</button>
         </div>
-        
-      
-        <div *ngIf="days.controls[currentDayIndex]" [formGroupName]="currentDayIndex">
+
+
+        <div class="day-info" *ngIf="days.controls[currentDayIndex]" [formGroupName]="currentDayIndex">
+          <h2>Програма</h2>
           <h2>Ден {{currentDayIndex + 1}}</h2>
           <input type="file" (change)="onDayImageChange($event, currentDayIndex)" class="imageFiles" multiple>
           <div *ngIf="dayImages[currentDayIndex].previews.length > 0">
             <img *ngFor="let img of dayImages[currentDayIndex].previews" [src]="img" class="day-image-preview">
           </div>
-          <input type="text" formControlName="dayTitle" class="hero-title"  placeholder="Заглавие за деня">
+          <input type="text" formControlName="dayTitle" class="hero-title" placeholder="Заглавие за деня">
           <textarea formControlName="dayInfo" placeholder="Информация за деня" class="hero-paragraph"></textarea>
-          <button type="button" (click)="removeDay(currentDayIndex)">Изтрий Ден {{currentDayIndex + 1}}</button>
+          <button class="remove-day" type="button" (click)="removeDay(currentDayIndex)">Изтрий Ден {{currentDayIndex +
+            1}}</button>
         </div>
-      
-        <button type="button" (click)="addDay()">Добави Ден</button>
+
+        <button class="add-day" type="button" (click)="addDay()">Добави Ден</button>
       </div>
-      
+      <div class="create-hero" *ngIf="currentFormSection === 4">
+        <h2>Допълнителни Услуги и Условия</h2>
+
+        <div formGroupName="dateRange">
+          <label for="start">Дата От:</label>
+          <input type="date" id="start" formControlName="start">
+
+          <label for="end">Дата До:</label>
+          <input type="date" id="end" formControlName="end">
+        </div>
+
+        <label for="price">Цена:</label>
+        <input type="text" id="price" formControlName="price">
+
+        <div formGroupName="conditions">
+          <div><label><input type="checkbox" formControlName="ticketsIncluded"> Самолетни билети</label></div>
+          <div><label><input type="checkbox" formControlName="allTransportCosts"> Всички транспортни разходи</label> </div>
+          <div><label><input type="checkbox" formControlName="accommodations"> нощувки</label> </div>
+          <div><label><input type="checkbox" formControlName="allMeals"> Всички закуски и вечери</label> </div>
+          <div><label><input type="checkbox" formControlName="practices"> Практики</label> </div>
+          <div><label><input type="checkbox" formControlName="atvTour"> Наем и тур с ATV </label> </div>
+          <div><label><input type="checkbox" formControlName="spaAccess"> Спа център</label> </div>
+          <div><label><input type="checkbox" formControlName="guidesIncluded"> 2-ма водачи по време на пътуването</label> </div>
+          <div><label><input type="checkbox" formControlName="medicalInsurance"> Медицинска застраховка с покритие 10000 евро</label> </div>
+          <div><label><input type="checkbox" formControlName="personalExpenses"> Разходи от личен характер</label> </div>
+          <div><label><input type="checkbox" formControlName="alcoholicBeverages"> Алкохолни напитки</label></div> 
+          <div><label><input type="checkbox" formControlName="unspecifiedServices"> Услуги неупоменати в програмата</label></div> 
+          <div><label><input type="checkbox" formControlName="additionalActivitiesFee"> Такси за допълнителните активности</label> </div>
+          <div><label><input type="checkbox" formControlName="cancellationInsurance"> Допълнителна медицинска застраховка "Отмяна на пътуване"</label> </div>
+        </div>
+      </div>
+
+
+
       <div class="create-btn">
-        <a routerLink="#" class="btn lights-back" *ngIf="currentFormSection !== 1"
-          (click)="goToPreviousSection()"></a>
+        <a routerLink="#" class="btn lights-back" *ngIf="currentFormSection !== 1" (click)="goToPreviousSection()"></a>
         <a routerLink="#" class="btn lights" (click)="goToNextSection()"
           *ngIf="!createForm.valid && currentFormSection < totalFormSections"></a>
       </div>
       <div class="submit-btn">
-        <button type="submit" class="btn lights-submit" *ngIf="currentFormSection === totalFormSections">Save</button> 
+        <button type="submit" class="btn lights-submit" *ngIf="currentFormSection === totalFormSections">Save</button>
         <!-- //createForm.valid &&  изтрито  -->
       </div>
     </form>

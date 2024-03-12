@@ -13,7 +13,7 @@ export class CreatePageComponent implements OnInit {
   createForm!: FormGroup;
   imagePreview: string | ArrayBuffer = '';
   currentFormSection = 1; 
-  totalFormSections = 3;
+  totalFormSections = 4;
   imagesPreview: string[] = []; 
   dayImages: { previews: string[] }[] = [];
   currentDayIndex: number = 0; // Стартирайте от първия ден
@@ -29,7 +29,29 @@ export class CreatePageComponent implements OnInit {
       "title-desc": ['', Validators.required],
       'info-desc': ['', Validators.required],
       'images': [null] ,
+      dateRange: this.fb.group({
+        start: ['', Validators.required],
+        end: ['', Validators.required]
+      }),
+      price: ['', [Validators.required, Validators.pattern(/^\d+$/)]],
+      conditions: this.fb.group({
+        ticketsIncluded: [false],
+        allTransportCosts: [false],
+        accommodations: [false],
+        allMeals: [false],
+        practices: [false],
+        atvTour: [false],
+        spaAccess: [false],
+        guidesIncluded: [false],
+        medicalInsurance: [false],
+        personalExpenses: [false],
+        alcoholicBeverages: [false],
+        unspecifiedServices: [false],
+        additionalActivitiesFee: [false],
+        cancellationInsurance: [false]
+      }),
       days: this.fb.array([this.initDayForm()]),
+      
       });
       this.dayImages.push({ previews: [] });
   }

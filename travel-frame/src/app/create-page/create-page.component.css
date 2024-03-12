@@ -49,6 +49,11 @@ input[type='file'] {
     display: flex;
     justify-content: center;
 }
+.day-info{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
 .create-hero textarea{
     height: 90px;
     font-size: 1.1em;
@@ -66,6 +71,58 @@ input[type='file'] {
     padding: 0 2em;
     padding-bottom: 2em;
 
+}
+.add-day{
+    display: flex;
+    width: 40%;
+    justify-self: center;
+    justify-content: center;
+    margin: 0 auto;
+    font-size: 0.7em;
+    border-radius: 15px;
+    padding: 0.5em 1em;
+    background-color: rgb(9, 168, 241);
+    margin-top: 1em;
+    color: white;
+}
+.add-day:hover{
+    box-shadow: 0px 0px 10px 0px rgb(64, 219, 3);
+}
+.remove-day{
+    color: white;
+
+    display: flex;
+    width: 40%;
+    justify-self: center;
+    justify-content: center;
+    margin: 0 auto;
+    font-size: 0.7em;
+    border-radius: 15px;
+    padding: 0.5em 1em;
+    background-color: rgb(9, 168, 241);
+}
+.remove-day:hover{
+    box-shadow: 0px 0px 10px 0px rgb(247, 10, 1);
+}
+.day-btn{
+    display: flex;
+    gap:1.3em;
+    /* justify-content: ; */
+}
+.conditions{
+    display: flex;
+    flex-direction: column;
+}
+.day-btn button{
+    background-color: rgb(255 85 13);
+    padding: 0.5em 0.8em;
+    color: white;
+    border-radius: 15px;
+    font-size: 0.6em;
+}
+.day-btn button:hover{
+    background-color: red;
+    box-shadow: 0px 0px 10px 0px rgb(255 85 13);
 }
 .create-btn a{
     width: 180px;
