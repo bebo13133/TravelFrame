@@ -37,7 +37,49 @@ font-family: "Muller Black", "Muller Black Placeholder", sans-serif;
 
 /* details-page */
 .details-page{
+    padding-top: 8em;
     max-width: 1680px;
     margin: 0 auto;
     background-color: rgb(255 255 255);
+}
+
+.details-info{
+    display: flex;
+    flex-wrap: nowrap;
+    /* justify-content: center; */
+    gap: 2em;
+    padding: 2em;
+}
+.details-info img{
+    flex: 0 0 30%;
+    height: 650px;
+    object-fit: cover;
+}
+.desc-info{
+    display: flex;
+    flex-direction: column;
+       /* gap: 2em; */
+       flex: 0 0 60%;
+}
+.desc-info h3{
+    position: relative; 
+    font-size: 2.5em;
+    font-weight: bold;
+    /* text-align: center; */
+    margin-bottom: 2em;
+    padding-left: 2em;
+}
+.desc-info h3::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 5px;
+    background-color: red; 
+    
+}
+.desc-info p {
+    font-size: 1.25em;
+    font-weight: 500;
 }
