@@ -1,9 +1,10 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-details-page',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './details-page.component.html',
   styleUrl: './details-page.component.css'
 })
@@ -17,6 +18,6 @@ constructor(){}
 
   loadBackgroundImage() {
     // Предполагаме, че получавате URL-а на изображението от някаква заявка
-    this.backgroundImageUrl = '/assets/media/desert.webp'; // кат опочна със заявките пътя ще го заместя динамично да я получава
+    this.backgroundImageUrl = '/assets/media/desert.webp'; // като почна със заявките пътя ще го заместя динамично да я получава
   }
 }

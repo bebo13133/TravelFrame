@@ -16,6 +16,7 @@
     flex-direction: column;
     align-items: center;
     color: white;
+    
 }
 
 
@@ -29,7 +30,7 @@
 }
 .details-hero p{
 font-size: 2em;
-font-family: "Muller Black", "Muller Black Placeholder", sans-serif;
+
     width: 75ch;
     text-align: center;
     font-weight: bold;
@@ -41,14 +42,18 @@ font-family: "Muller Black", "Muller Black Placeholder", sans-serif;
     max-width: 1680px;
     margin: 0 auto;
     background-color: rgb(255 255 255);
+
 }
 
 .details-info{
     display: flex;
     flex-wrap: nowrap;
     /* justify-content: center; */
-    gap: 2em;
+    gap: 5em;
+
     padding: 2em;
+    padding-bottom: 14em;
+
 }
 .details-info img{
     flex: 0 0 30%;
@@ -82,4 +87,45 @@ font-family: "Muller Black", "Muller Black Placeholder", sans-serif;
 .desc-info p {
     font-size: 1.25em;
     font-weight: 500;
+}
+
+/* programa */
+.desc-prog{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    margin: 0 auto;
+    padding: 2em 6em;
+    justify-content: center;
+
+}
+.desc-prog h2{
+    text-align: center;
+    font-size: 3.5em;
+  
+}
+
+.single-day{
+    display: flex;
+    gap: 2em;
+    justify-content: center;
+}
+.single-desc{
+    flex: 0 0 60%;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 2px solid black;
+
+}
+.single-day img{
+    width: 25%;
+    height: 460px;
+    object-fit: cover;
+}
+.single-day h3{
+    font-size: 2.5em;
+    padding: 0.7em 0  ;
+}
+.single-day p{
+    font-size: 1.25em;
 }
