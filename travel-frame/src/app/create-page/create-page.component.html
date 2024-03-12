@@ -11,12 +11,12 @@
 
         <!-- Label за качване на снимка -->
         <label for="imageFile" class="upload-label">Качи снимка</label>
-        <input type="file" id="imageFile" class="imageFile" (change)="onImageChange($event)">
+        <input type="file" title=" " id="imageFile" class="imageFile"  (change)="onImageChange($event)">
         <img *ngIf="imagePreview" [src]="imagePreview">
 
         <!-- Label за заглавие -->
         <label for="heroTitle" class="title-label">Дестинация</label>
-        <input type="text" id="heroTitle" class="hero-title" formControlName="title"
+        <input type="text" title=" " id="heroTitle" class="hero-title" formControlName="title"
           placeholder="добави своята дестинация">
 
         <!-- Label за параграф -->

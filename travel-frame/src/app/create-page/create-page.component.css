@@ -16,7 +16,9 @@
     /* Намалява яркостта на видеото до 50%. Можете да регулирате стойността според нуждите си. */
     /* filter: blur(4px); */
 }
-
+input[type='file'] {
+    color: transparent;
+  }
 .create-form{
   max-width: 920px;
     display: flex;
@@ -54,7 +56,7 @@
 }
 .create-hero input{
     border-radius: 5px;
-  
+    padding: 0.5em;
     font-size: 1.1em;
 }
 .create-btn{
