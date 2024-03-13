@@ -1,3 +1,7 @@
+<app-form-errors [form]="registerForm"></app-form-errors>
+
+
+
 <div class="login-user">
     <div class="container" [ngClass]="{'right-panel-active': isRightPanelActive}" id="container">
       <div class="form-container sign-up-container">
@@ -30,7 +34,9 @@
           <a href="#">Forgot your password?</a>
           <button type="submit">Sign In</button>
         </form>
+     
       </div>
+   
       <div class="overlay-container">
         <div class="overlay">
           <div class="overlay-panel overlay-right">
@@ -45,6 +51,9 @@
           </div>
         </div>
       </div>
+    
     </div>
+    <!-- <div *ngIf="registerForm.errors?.['notSame'] && registerForm.get('repeatPassword')?.touched" class="error">
+        Паролите не съвпадат.
+      </div> -->
   </div>
-  
