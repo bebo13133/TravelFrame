@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { DestinationsComponent } from './destinations/destinations.component';
 import { CreatePageComponent } from './create-page/create-page.component';
 import { DetailsPageComponent } from './details-page/details-page.component';
+import { AuthComponentComponent } from './User/auth-component/auth-component.component';
 
 export const routes: Routes = [
     {
@@ -16,8 +17,8 @@ export const routes: Routes = [
     // pathMatch:"full",
     component: HomeComponent,
 },{
-    path: 'login',
-    component:LoginComponent,
+    path: 'auth',
+    component:AuthComponentComponent,
 
 },
 {

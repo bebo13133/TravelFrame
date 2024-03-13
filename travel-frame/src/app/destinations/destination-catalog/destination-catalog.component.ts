@@ -1,7 +1,9 @@
 import { CommonModule } from '@angular/common';
 
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { ApiService } from '../../services/api.service';
+import { Destination } from '../../types/destination';
 
 @Component({
   selector: 'app-destination-catalog',
@@ -10,9 +12,12 @@ import { RouterLink } from '@angular/router';
   templateUrl: './destination-catalog.component.html',
   styleUrl: './destination-catalog.component.css'
 })
-export class DestinationCatalogComponent {
+export class DestinationCatalogComponent implements OnInit {
   currentSlide = 0;
   isFavorite = false;
+
+  constructor(private apiService: ApiService) {}
+
   slides = [
     {
       title: "London",
@@ -22,14 +27,23 @@ export class DestinationCatalogComponent {
     {
       title: "London",
       content: "London is the capital of the United Kingdom, with a population of just under 9 million. It is among the oldest of the world’s great cities and one of the most cosmopolitan. London is also great for travelers because there is no language barrier so it’s a nice way to ease into visiting a foreign country.",
-      imageUrl:  "/assets/media/london.jpg"  // Replace with your local path or URL
+      imageUrl:  "/assets/media/london.jpg"  
     },
     {
       title: "London",
       content: "London is the capital...",
-      imageUrl: "/assets/media/beach2.webp"  // This should be the path relative to the src folder
+      imageUrl: "/assets/media/beach2.webp"  
     },
   ];
+destinations: Destination[] = []
+
+  ngOnInit(): void {
+    this.apiService.getDestinations().subscribe(destinations => {
+      console.log(destinations)
+      this.destinations = destinations;
+    })
+  }
+
 
   moveSlide(direction: 'up' | 'down'): void {
     if (direction === 'up' && this.currentSlide > 0) {
@@ -47,6 +61,6 @@ export class DestinationCatalogComponent {
 
   toggleFavorite() {
     this.isFavorite = !this.isFavorite;
-    // Тук добавете логиката за изпращане на заявката към сървъра ако е необходимо
+    //логиката за изпращане на заявката към сървъра ако е необходимо
   }
 }

@@ -12,7 +12,7 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 export class LoginComponent {
   // signUpForm: FormGroup;
   // signInForm: FormGroup;
-  isRightPanelActive: boolean = false;
+  // isRightPanelActive: boolean = false;
 
   constructor(private fb: FormBuilder) {
     // this.signUpForm = this.fb.group({
@@ -28,9 +28,9 @@ export class LoginComponent {
   }
 
 
-  toggleRightPanel(): void {
-    this.isRightPanelActive = !this.isRightPanelActive;
-  }
+  // toggleRightPanel(): void {
+  //   this.isRightPanelActive = !this.isRightPanelActive;
+  // }
   // onSignUp(): void {
   //   // Тук добавете вашата логика за обработка на регистрацията
   //   console.log('Signing up', this.signUpForm.value);

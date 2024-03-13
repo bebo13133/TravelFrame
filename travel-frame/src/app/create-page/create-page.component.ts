@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-create-page',
@@ -19,7 +20,7 @@ export class CreatePageComponent implements OnInit {
   currentDayIndex: number = 0; // Стартирайте от първия ден
 
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private apiService:ApiService) { }
 
   ngOnInit() {
     this.createForm = this.fb.group({
@@ -136,8 +137,17 @@ export class CreatePageComponent implements OnInit {
     }
   }
   onSubmit() {
-   
-    console.log(this.createForm.value);
+   if(this.createForm.valid) {
+    this.apiService.createDestination(this.createForm.value).subscribe({
+      next:(response)=>{
+        console.log('Destination created', response);
+      },
+      error: (error) => {
+        console.error('Error creating destination', error);
+      }
+    })
+   }
+ 
   }
   goToNextSection() {
     if(this.currentFormSection < this.totalFormSections) {
