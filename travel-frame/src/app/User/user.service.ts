@@ -30,6 +30,7 @@ export class UserService implements OnDestroy {
     if (accessToken && email && username && _id) {
   
       this.user$$.next({ email, name:username, _id, accessToken });
+    
     }
   }
   
@@ -48,7 +49,7 @@ export class UserService implements OnDestroy {
             _id: res._id,
             accessToken: res.accessToken
           });
-
+        
 
         })
       );

@@ -15,9 +15,15 @@ export class NoAuthenticatedComponent {
 
   constructor(private userService: UserService, private router:Router){}
   ngOnInit(): void {
+    this.userService.user$.subscribe(user => {
+      this.isLoggedIn = !!user;
+      console.log("dsadsasd",this.isLoggedIn);
+      // Допълнителна логика въз основа на статуса
+    });
+
     this.isLoggedIn = this.userService.isLoggedIn;
     if(this.isLoggedIn) {
-      this.router.navigate(['/home'])
+      this.router.navigate(['/'])
     }
   }
 }
