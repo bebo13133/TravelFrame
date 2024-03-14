@@ -47,11 +47,11 @@ a {
     -webkit-border-radius: 0 30px 30px 0;
     -moz-border-radius: 0 30px 30px 0;
     border-radius: 0 30px 30px 0;
-    -webkit-transition: all 1s;
-    -moz-transition: all 1s;
-    -ms-transition: all 1s;
-    -o-transition: all 1s;
-    transition: all 1s;
+    -webkit-transition: all0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
 }
 .social ul li:hover {
     -webkit-transform: translate(110px, 0);
@@ -59,7 +59,7 @@ a {
     -ms-transform: translate(110px, 0);
     -o-transform: translate(110px, 0);
     transform: translate(110px, 0);
-    background: rgba(35, 1, 114, 0.4);
+    background: rgba(35, 1, 114, 0.5);
 }
 .social ul li:hover a {
     color: #000;
@@ -72,11 +72,11 @@ a {
     -ms-transform: rotate(360deg);
     -o-transform: rotate(360deg);
     transform: rotate(360deg);
-    -webkit-transition: all 1s;
-    -moz-transition: all 1s;
-    -ms-transition: all 1s;
-    -o-transition: all 1s;
-    transition: all 1s;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
 }
 .social ul li i {
     margin-left: 10px;
@@ -98,7 +98,7 @@ a {
 }
 
 body {
-    background: #25343f;
-    color: #fff;
+    /* background: #25343f;
+    color: #fff; */
     font-family: "Raleway", sans-serif;
 }
