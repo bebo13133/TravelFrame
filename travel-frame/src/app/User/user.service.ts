@@ -30,7 +30,17 @@ export class UserService {
   register(name: string, email: string, password: string){
     const {apiUrl}= environment
 
-    return this.http.post<User>(`${apiUrl}/users/register`,{name,email,password}) 
+    return this.http.post<{email: string, username: string, _id: string, accessToken: string}>(`${apiUrl}/users/register`,{name,email,password})
+    .pipe(
+      tap(res => {
+        localStorage.setItem('accessToken', res.accessToken); 
+  
+        localStorage.setItem('email', res.email);
+        localStorage.setItem('username', res.username);
+        localStorage.setItem('userId', res._id);
+  
+      })
+    );
   }
 
 }
