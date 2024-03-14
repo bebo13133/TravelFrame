@@ -22,8 +22,8 @@ export class AuthComponentComponent {
   constructor(private fb: FormBuilder, private userService:UserService,private router:Router) {}
   ngOnInit() {
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email, Validators.minLength(8)]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
     });
 
     this.registerForm = this.fb.group({
@@ -32,10 +32,13 @@ export class AuthComponentComponent {
       password: ['', [Validators.required, Validators.minLength(6)]],
       repeatPassword: ['', Validators.required],
     },{ validators: PasswordValidator.checkPasswords });
+
   }
   toggleRightPanel(): void {
     this.isRightPanelActive = !this.isRightPanelActive;
+    
   }
+
 
   login() {
  

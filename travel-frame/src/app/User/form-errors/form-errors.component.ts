@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-form-errors',
@@ -11,7 +12,7 @@ import { FormGroup } from '@angular/forms';
 })
 export class FormErrorsComponent implements OnInit{
   @Input() form!: FormGroup;
-
+  formChangesSubscription!: Subscription;
   constructor() { }
 
   get errors(): string[] {
@@ -44,6 +45,16 @@ export class FormErrorsComponent implements OnInit{
   }
 
 
+  ngOnInit(): void {
+    // Абониране за промени във формата
+    this.formChangesSubscription = this.form.valueChanges.subscribe(() => {
+      // Промените тук не са необходими, тъй като Angular автоматично ще
+      // преизчисли и рефлектира промените чрез getter-a за грешките.
+    });
+  }
 
-  ngOnInit(): void { }
+  ngOnDestroy(): void {
+    // Отписване от абонамента, за да се предотврати изтичане на памет
+    this.formChangesSubscription.unsubscribe();
+  }
 }

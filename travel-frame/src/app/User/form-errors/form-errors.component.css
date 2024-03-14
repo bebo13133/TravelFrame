@@ -6,7 +6,7 @@
     width: auto;
     padding: 10px;
     /* background-color: rgba(255, 0, 0, 0.7); */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
     /* border-radius: 8px; */
     z-index: 1050; /* Уверете се, че е над другите елементи */
     animation: slideIn 0.5s ease-out;

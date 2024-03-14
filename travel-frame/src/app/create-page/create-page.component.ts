@@ -55,6 +55,7 @@ export class CreatePageComponent implements OnInit {
       
       });
       this.dayImages.push({ previews: [] });
+      console.log('fs',this.createForm.value)
   }
   initDayForm(): FormGroup {
     return this.fb.group({
@@ -66,11 +67,13 @@ export class CreatePageComponent implements OnInit {
   goToDay(index: number) {
     this.currentDayIndex = index;
   }
-  // Функция за добавяне на нов ден
+
   addDay() {
     const days = this.createForm.get('days') as FormArray;
-    days.push(this.initDayForm());
-    this.dayImages.push({ previews: [] });
+    const newDayFormGroup = this.initDayForm();
+    days.push(newDayFormGroup);
+   
+    this.currentDayIndex = days.length - 1;
   };
 
   // Функция за премахване на ден
@@ -137,8 +140,22 @@ export class CreatePageComponent implements OnInit {
     }
   }
   onSubmit() {
-   if(this.createForm.valid) {
-    this.apiService.createDestination(this.createForm.value).subscribe({
+
+    const formData = {
+      ...this.createForm.value,
+      image: this.imagePreview,
+      images: this.imagesPreview,
+      days: this.days.value.map((day:any, index:number) => ({
+        ...day,
+        dayImage: this.dayImages[index]?.previews || []
+      }))
+    };
+
+console.log("days",this.days.value);
+
+
+
+    this.apiService.createDestination(formData).subscribe({
       next:(response)=>{
         console.log('Destination created', response);
       },
@@ -146,7 +163,7 @@ export class CreatePageComponent implements OnInit {
         console.error('Error creating destination', error);
       }
     })
-   }
+  //  }
  
   }
   goToNextSection() {

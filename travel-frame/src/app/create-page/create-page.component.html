@@ -45,7 +45,7 @@
       </div>
 
 
-      <div class="create-hero" *ngIf="currentFormSection === 3">
+      <div formArrayName="days" class="create-hero" *ngIf="currentFormSection === 3">
         <div class="day-btn">
           <button type="button" (click)="previousDay()" *ngIf="currentDayIndex > 0">Предишен Ден</button>
           <button type="button" (click)="nextDay()" *ngIf="currentDayIndex < days.controls.length - 1">Следващ
@@ -53,7 +53,8 @@
         </div>
 
 
-        <div class="day-info" *ngIf="days.controls[currentDayIndex]" [formGroupName]="currentDayIndex">
+        <div  class="day-info" *ngIf="days.controls[currentDayIndex]"
+          [formGroupName]="currentDayIndex">
           <h2>Програма </h2>
           <h2>Ден {{currentDayIndex + 1}}</h2>
           <input type="file" (change)="onDayImageChange($event, currentDayIndex)" class="imageFiles" multiple>
@@ -84,19 +85,26 @@
 
         <div formGroupName="conditions">
           <div><label><input type="checkbox" formControlName="ticketsIncluded"> Самолетни билети</label></div>
-          <div><label><input type="checkbox" formControlName="allTransportCosts"> Всички транспортни разходи</label> </div>
+          <div><label><input type="checkbox" formControlName="allTransportCosts"> Всички транспортни разходи</label>
+          </div>
           <div><label><input type="checkbox" formControlName="accommodations"> нощувки</label> </div>
           <div><label><input type="checkbox" formControlName="allMeals"> Всички закуски и вечери</label> </div>
           <div><label><input type="checkbox" formControlName="practices"> Практики</label> </div>
           <div><label><input type="checkbox" formControlName="atvTour"> Наем и тур с ATV </label> </div>
           <div><label><input type="checkbox" formControlName="spaAccess"> Спа център</label> </div>
-          <div><label><input type="checkbox" formControlName="guidesIncluded"> 2-ма водачи по време на пътуването</label> </div>
-          <div><label><input type="checkbox" formControlName="medicalInsurance"> Медицинска застраховка с покритие 10000 евро</label> </div>
-          <div><label><input type="checkbox" formControlName="personalExpenses"> Разходи от личен характер</label> </div>
-          <div><label><input type="checkbox" formControlName="alcoholicBeverages"> Алкохолни напитки</label></div> 
-          <div><label><input type="checkbox" formControlName="unspecifiedServices"> Услуги неупоменати в програмата</label></div> 
-          <div><label><input type="checkbox" formControlName="additionalActivitiesFee"> Такси за допълнителните активности</label> </div>
-          <div><label><input type="checkbox" formControlName="cancellationInsurance"> Допълнителна медицинска застраховка "Отмяна на пътуване"</label> </div>
+          <div><label><input type="checkbox" formControlName="guidesIncluded"> 2-ма водачи по време на
+              пътуването</label> </div>
+          <div><label><input type="checkbox" formControlName="medicalInsurance"> Медицинска застраховка с покритие 10000
+              евро</label> </div>
+          <div><label><input type="checkbox" formControlName="personalExpenses"> Разходи от личен характер</label>
+          </div>
+          <div><label><input type="checkbox" formControlName="alcoholicBeverages"> Алкохолни напитки</label></div>
+          <div><label><input type="checkbox" formControlName="unspecifiedServices"> Услуги неупоменати в
+              програмата</label></div>
+          <div><label><input type="checkbox" formControlName="additionalActivitiesFee"> Такси за допълнителните
+              активности</label> </div>
+          <div><label><input type="checkbox" formControlName="cancellationInsurance"> Допълнителна медицинска
+              застраховка "Отмяна на пътуване"</label> </div>
         </div>
       </div>
 

@@ -1,5 +1,6 @@
 <app-form-errors [form]="registerForm"></app-form-errors>
 
+<app-form-errors [form]="loginForm"></app-form-errors>
 
 
 <div class="login-user">
@@ -13,8 +14,8 @@
             <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
           </div>
           <span>or use your email for registration</span>
-          <input formControlName="name" type="text" placeholder="Name" />
-          <input formControlName="email" type="email" placeholder="Email" />
+          <input formControlName="name" type="text" placeholder="Name"  />
+          <input formControlName="email" type="email" placeholder="Email"  />
           <input formControlName="password" type="password" placeholder="Password" />
           <input formControlName="repeatPassword" type="password" placeholder="Repeat Password" />
           <button type="submit">Sign Up</button>
@@ -29,8 +30,8 @@
             <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
           </div>
           <span>or use your account</span>
-          <input formControlName="email" type="email" placeholder="Email" />
-          <input formControlName="password" type="password" placeholder="Password" />
+          <input formControlName="email" type="email" placeholder="Email"  />
+          <input formControlName="password" type="password" placeholder="Password"  />
           <a href="#">Forgot your password?</a>
           <button type="submit">Sign In</button>
         </form>
