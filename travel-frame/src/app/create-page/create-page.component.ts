@@ -140,32 +140,39 @@ export class CreatePageComponent implements OnInit {
     }
   }
   onSubmit() {
+  
+    if (this.createForm.valid) {
+      const formData = {
+        ...this.createForm.value,
+        image: this.imagePreview,
+        images: this.imagesPreview,
+        days: this.days.value.map((day: any, index: number) => {
+          // Проверяваме дали съответният обект в dayImages съществува
+          const dayImageObj = this.dayImages[index];
+          return {
+            ...day,
+            dayImage: dayImageObj ? dayImageObj.previews : []
+          };
+        })
+      };
+  
+  
+      this.apiService.createDestination(formData).subscribe({
+        next: (response) => {
+          console.log('Destination created successfully', response);
+   
+        },
+        error: (error) => {
+          console.error('Error creating destination', error);
+   
+        }
+      });
+    } else {
+      console.log('Form is not valid');
 
-    const formData = {
-      ...this.createForm.value,
-      image: this.imagePreview,
-      images: this.imagesPreview,
-      days: this.days.value.map((day:any, index:number) => ({
-        ...day,
-        dayImage: this.dayImages[index]?.previews || []
-      }))
-    };
-
-console.log("days",this.days.value);
-
-
-
-    this.apiService.createDestination(formData).subscribe({
-      next:(response)=>{
-        console.log('Destination created', response);
-      },
-      error: (error) => {
-        console.error('Error creating destination', error);
-      }
-    })
-  //  }
- 
+    }
   }
+  
   goToNextSection() {
     if(this.currentFormSection < this.totalFormSections) {
       this.currentFormSection++;
