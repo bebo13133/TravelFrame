@@ -13,8 +13,12 @@ import { UserService } from '../../User/user.service';
 })
 export class HeaderComponent implements OnInit {
   scrolledDown = false;
+  get isLoggedIn(): boolean {
+    return this.userService.isLoggedIn
+  }
+  constructor(private userService:UserService, private router:Router) { 
 
-  constructor(private userService:UserService, private router:Router) { }
+  }
 
   ngOnInit(): void {
   }

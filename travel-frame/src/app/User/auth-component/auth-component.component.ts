@@ -7,11 +7,12 @@ import { UserService } from '../user.service';
 import { Router } from '@angular/router';
 import { PasswordValidator } from '../../validators/password-validator';
 import { FormErrorsComponent } from '../form-errors/form-errors.component';
+import { NoAuthenticatedComponent } from '../../authenticated/no-authenticated/no-authenticated.component';
 
 @Component({
   selector: 'app-auth-component',
   standalone: true,
-  imports: [LoginComponent,RegisterComponent,CommonModule,FormsModule,ReactiveFormsModule,FormErrorsComponent],
+  imports: [LoginComponent,RegisterComponent,CommonModule,FormsModule,ReactiveFormsModule,FormErrorsComponent,NoAuthenticatedComponent],
   templateUrl: './auth-component.component.html',
   styleUrls: ['./auth-component.component.css','../login/login.component.css', '../register/register.component.css']
 })

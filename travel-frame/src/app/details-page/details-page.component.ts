@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { PriceSideComponent } from './price-side/price-side.component';
+import { AuthenticatedComponent } from '../authenticated/authenticated.component';
 
 @Component({
   selector: 'app-details-page',
   standalone: true,
-  imports: [CommonModule,PriceSideComponent],
+  imports: [CommonModule,PriceSideComponent,AuthenticatedComponent],
   templateUrl: './details-page.component.html',
   styleUrl: './details-page.component.css'
 })

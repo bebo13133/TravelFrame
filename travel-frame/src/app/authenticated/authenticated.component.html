@@ -1,0 +1,5 @@
+<div *ngIf="isLoggedIn; else redirectToLogin" >
+
+    <!-- <p>Това съдържание е достъпно само за аутентикирани потребители.</p> -->
+  </div>
+  <ng-template #redirectToLogin></ng-template>

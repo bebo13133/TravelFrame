@@ -1,18 +1,38 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { Injectable, OnDestroy } from '@angular/core';
+import { BehaviorSubject, Observable, Subscription, tap } from 'rxjs';
 import { environment } from '../../environments/environment.development';
 import { User } from '../types/user';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class UserService implements OnDestroy {
   private user$$ = new BehaviorSubject<User | undefined>(undefined);
   public user$ = this.user$$.asObservable();
+  user:User | undefined
+  get isLoggedIn(): boolean {
+    return !!this.user$$.getValue();
+  }
+// subscription: Subscription;
+  constructor(private http: HttpClient) {
+    this.loadUserFromLocalStorage();
+    // this.subscription = this.user$.subscribe(user => {
+    //   this.user = user;
+    // })
+   }
+   private loadUserFromLocalStorage(): void {
+    const accessToken = localStorage.getItem('accessToken');
+    const email = localStorage.getItem('email');
+    const username = localStorage.getItem('username');
+    const _id = localStorage.getItem('userId');
 
-  constructor(private http: HttpClient) { }
-
+    if (accessToken && email && username && _id) {
+  
+      this.user$$.next({ email, name:username, _id, accessToken });
+    }
+  }
+  
   login(email: string, password: string) {
     return this.http.post<{ email: string, username: string, _id: string, accessToken: string }>(`${environment.apiUrl}/users/login`, { email, password })
       .pipe(
@@ -67,5 +87,7 @@ export class UserService {
         })
       );
   }
-
+ngOnDestroy(): void {
+  // this.subscription.unsubscribe();
+}
 }
