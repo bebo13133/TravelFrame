@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { ImagesHeroRowsComponent } from './images-hero-rows/images-hero-rows.component';
-import { RouterLink } from '@angular/router';
+import { Route, Router, RouterLink } from '@angular/router';
+import { UserService } from '../../User/user.service';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +14,7 @@ import { RouterLink } from '@angular/router';
 export class HeaderComponent implements OnInit {
   scrolledDown = false;
 
-  constructor() { }
+  constructor(private userService:UserService, private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -21,5 +22,18 @@ export class HeaderComponent implements OnInit {
   @HostListener('window:scroll', ['$event'])
   onScroll() {
     this.scrolledDown = window.scrollY > 250; // Проверява дали потребителят е скролнал страницата надолу повече от 50px
+  }
+  logout(){
+    this.userService.logout().subscribe({
+      next: () => {
+        this.router.navigate(['/auth']);
+
+      },
+      error: () => {
+        this.router.navigate(['/auth']);
+
+      },
+    });
+    
   }
 }
