@@ -6,7 +6,7 @@ export interface Destination {
     paragraph: string;
     "title-desc": string;
     "info-desc": string;
-    images: File[] | null;
+    images: string | null;
     dateRange: {
       start: string;
       end: string;

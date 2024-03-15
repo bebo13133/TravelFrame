@@ -1,14 +1,15 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, SlicePipe } from '@angular/common';
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Pipe } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ApiService } from '../../services/api.service';
 import { Destination } from '../../types/destination';
+import { pipe } from 'rxjs';
 
 @Component({
   selector: 'app-destination-catalog',
   standalone: true,
-  imports: [CommonModule,RouterLink],
+  imports: [CommonModule,RouterLink,SlicePipe ],
   templateUrl: './destination-catalog.component.html',
   styleUrl: './destination-catalog.component.css'
 })
@@ -18,23 +19,6 @@ export class DestinationCatalogComponent implements OnInit {
 
   constructor(private apiService: ApiService) {}
 
-  slides = [
-    {
-      title: "London",
-      content: "London is the capital of the United Kingdom, with a population of just under 9 million. It is among the oldest of the world’s great cities and one of the most cosmopolitan. London is also great for travelers because there is no language barrier so it’s a nice way to ease into visiting a foreign country.",
-      imageUrl: "/assets/media/london.jpg" // Replace with your local path or URL
-    },
-    {
-      title: "London",
-      content: "London is the capital of the United Kingdom, with a population of just under 9 million. It is among the oldest of the world’s great cities and one of the most cosmopolitan. London is also great for travelers because there is no language barrier so it’s a nice way to ease into visiting a foreign country.",
-      imageUrl:  "/assets/media/london.jpg"  
-    },
-    {
-      title: "London",
-      content: "London is the capital...",
-      imageUrl: "/assets/media/beach2.webp"  
-    },
-  ];
 destinations: Destination[] = []
 
   ngOnInit(): void {
@@ -48,7 +32,7 @@ destinations: Destination[] = []
   moveSlide(direction: 'up' | 'down'): void {
     if (direction === 'up' && this.currentSlide > 0) {
       this.currentSlide--;
-    } else if (direction === 'down' && this.currentSlide < this.slides.length - 1) {
+    } else if (direction === 'down' && this.currentSlide < this.destinations.length - 1) {
       this.currentSlide++;
     }
   }

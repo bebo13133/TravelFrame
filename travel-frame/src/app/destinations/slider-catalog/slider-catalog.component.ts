@@ -2,6 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit, CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 import Swiper from 'swiper';
 import { register } from 'swiper/element/bundle';
+import { ApiService } from '../../services/api.service';
+import { Destination } from '../../types/destination';
 
 register();
 
@@ -15,13 +17,26 @@ register();
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class SliderCatalogComponent implements OnInit {
- 
-  constructor() { }
+  destinations: Destination[] = []
 
+  constructor(private apiService:ApiService) { }
+  getBackgroundStyle(image: File | string | null): string {
+    let imageUrl = '';
+    if (image instanceof File) {
+   
+      imageUrl = URL.createObjectURL(image);
+    } else if (typeof image === 'string') {
+ 
+      imageUrl = image;
+    }
+  
+  
+    const backgroundStyle = `linear-gradient(to top, #0f2027, #203a4300, #2c536400), url(${imageUrl}) no-repeat 50% 50% / cover`;
+    return backgroundStyle;
+  }
   ngOnInit(): void {
     new Swiper('.swiper', {
-      // direction: 'horizontal', // Добавете тази линия
-
+    
       effect: 'coverflow',
       grabCursor: true,
       centeredSlides: true,
@@ -46,5 +61,17 @@ export class SliderCatalogComponent implements OnInit {
         clickable: true,
       },
     });
+  
+
+
+      this.apiService.getDestinations().subscribe(destinations => {
+        console.log(destinations)
+        this.destinations = destinations;
+      })
+
+  
+
+
   }
+
 }

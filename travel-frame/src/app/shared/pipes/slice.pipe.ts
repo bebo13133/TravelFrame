@@ -7,8 +7,10 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class SlicePipe implements PipeTransform {
 
   transform(value: string, maxCount = 65): unknown {
-    return `${value.substring(0, maxCount)}
-    ${value.length > maxCount ? '...' : ''}`;
+    console.log(`Value length: ${value.length}, MaxCount: ${maxCount}`);
+  const result = `${value.slice(0, maxCount)}${value.length > maxCount ? '...' : ''}`;
+  console.log(`Transformed value: ${result}`);
+  return result;
   }
 
 }
