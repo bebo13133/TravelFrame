@@ -24,7 +24,7 @@ export class SliderCatalogComponent implements OnInit {
     let imageUrl = '';
     if (image instanceof File) {
    
-      imageUrl = URL.createObjectURL(image);
+      imageUrl = URL.createObjectURL(image); //ako от тип file -  преобразувам я в низ , за да мога да я задам като background
     } else if (typeof image === 'string') {
  
       imageUrl = image;
@@ -65,7 +65,7 @@ export class SliderCatalogComponent implements OnInit {
 
 
       this.apiService.getDestinations().subscribe(destinations => {
-        console.log(destinations)
+        // console.log(destinations)  
         this.destinations = destinations;
       })
 
