@@ -19,7 +19,7 @@ export class DetailsPageComponent implements OnInit {
   destination: Destination | null = null;
   currentImageIndex: number = 0;
   intervalId: any;
-
+  isOwner: boolean = false;
   
 constructor(private apiService:ApiService,  private route: ActivatedRoute){}
 
@@ -42,7 +42,10 @@ constructor(private apiService:ApiService,  private route: ActivatedRoute){}
         next: (destination: Destination) => {
           this.destination = destination;
           console.log(this.destination)
-      
+          const userId = localStorage.getItem('userId');
+
+       
+          this.isOwner = destination._ownerId === userId;
           if (destination.image instanceof File) {
             this.backgroundImageUrl = URL.createObjectURL(destination.image);
           } else {

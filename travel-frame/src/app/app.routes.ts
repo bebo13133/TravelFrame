@@ -7,6 +7,7 @@ import { DetailsPageComponent } from './details-page/details-page.component';
 import { AuthComponentComponent } from './User/auth-component/auth-component.component';
 import { ErrorComponent } from './core/error/error.component';
 import { AuthGuardService } from './auth.guard';
+import { EditDestinationComponent } from './edit-destination/edit-destination.component';
 
 
 export const routes: Routes = [
@@ -35,6 +36,10 @@ export const routes: Routes = [
     },
     {
         path: 'destination/details/:destinationId', component: DetailsPageComponent,
+        canActivate: [AuthGuardService]
+    },
+    {
+        path: 'destination/edit/:destinationId', component: EditDestinationComponent,
         canActivate: [AuthGuardService]
     },
     { path: 'error', component: ErrorComponent },

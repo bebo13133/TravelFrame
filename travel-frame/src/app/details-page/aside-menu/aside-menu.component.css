@@ -102,3 +102,8 @@ body {
     color: #fff; */
     font-family: "Raleway", sans-serif;
 }
+.disabled {
+    pointer-events: none;
+    color: #ccc;
+    cursor: not-allowed;
+  }

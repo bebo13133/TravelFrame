@@ -1,5 +1,8 @@
 <!-- <app-authenticated> -->
-<app-aside-menu/>
+<app-aside-menu 
+[isOwner]="isOwner" 
+[destinationId]="destination?._id ?? null" 
+/>
 <section>
 <section class="full-width-background" [style.background-image]="'url(' + backgroundImageUrl + ')'">
    <div class="details-hero">

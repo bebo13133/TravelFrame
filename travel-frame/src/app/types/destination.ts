@@ -2,7 +2,7 @@ export interface Destination {
     image: File | null;
     title: string;
     _id: string;
-    
+    _ownerId:string;
     paragraph: string;
     "title-desc": string;
     "info-desc": string;
