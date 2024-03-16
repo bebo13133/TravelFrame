@@ -41,7 +41,7 @@ constructor(private apiService:ApiService,  private route: ActivatedRoute){}
       this.apiService.getDestinationById(id).subscribe({
         next: (destination: Destination) => {
           this.destination = destination;
-          console.log(this.destination)
+          // console.log(this.destination)
           const userId = localStorage.getItem('userId');
 
        

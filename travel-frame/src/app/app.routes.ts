@@ -20,7 +20,8 @@ export const routes: Routes = [
         path: 'home',
         // pathMatch:"full",
         component: HomeComponent,
-    }, {
+    },
+    {
         path: 'auth',
         component: AuthComponentComponent,
 

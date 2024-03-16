@@ -70,50 +70,6 @@ export class CreatePageComponent implements OnInit {
   }
 
 
-//   addDay() {
-//     const days = this.createForm.get('days') as FormArray;
-//     const newDayFormGroup = this.initDayForm();
-//     days.push(newDayFormGroup);
-  
-//     // Добавяне на нов обект в dayImages масива за новия ден
-//     this.dayImages.push({ previews: [] });
-  
-//     this.currentDayIndex = days.length - 1;
-//   }
-// // доплънителна проверк за темплейта
-// hasPreviewsForCurrentDay(): boolean {
-//   return this.dayImages[this.currentDayIndex]?.previews?.length > 0 ?? false;
-// }
-
-//   removeDay(index: number) {
-//     const days = this.createForm.get('days') as FormArray;
-//     if (days.length > 1) {
-//       days.removeAt(index);
-//       this.dayImages.splice(index, 1);
-//     }
-//   };
-  // onDayImageChange(event: Event, dayIndex: number) {
-  //   const files = (event.target as HTMLInputElement).files;
-  //   if (files) {
-  //     // Проверка дали съществува обект за текущия индекс и инициализация, ако не
-  //     if (!this.dayImages[dayIndex]) {
-  //       this.dayImages[dayIndex] = { previews: [] };
-  //     }
-      
-  //     // Изчистваме текущите превюта за деня
-  //     this.dayImages[dayIndex].previews = [];
-      
-  //     // Обработка на всеки файл и добавяне към превюта
-  //     Array.from(files).forEach(file => {
-  //       const reader = new FileReader();
-  //       reader.onload = () => {
-  //         this.dayImages[dayIndex].previews.push(reader.result as string);
-  //       };
-  //       reader.readAsDataURL(file);
-  //     });
-  //   }
-  // }
-
   nextDay() {
     if (this.currentDayIndex < this.days.length - 1) {
       this.currentDayIndex++;

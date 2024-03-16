@@ -10,7 +10,7 @@ export class AppInterceptor implements HttpInterceptor {
     constructor(private router: Router, private errorService: ErrorService) { }
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         const accessToken = localStorage.getItem('accessToken');
-        console.log(accessToken);
+ 
         if (req.url.startsWith('http://localhost:3030') && accessToken) {
             req = req.clone({
               setHeaders: {

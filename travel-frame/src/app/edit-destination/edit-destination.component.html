@@ -1,1 +1,129 @@
-<p>edit-destination works!</p>
+
+<!-- <app-authenticated> -->
+    <section class="create-page">
+        <video [autoplay]="true" [loop]="true" [muted]="true" [playsInline]="true" class="background-video">
+          <source src="/assets/media/create.mp4" type="video/mp4" />
+        </video>
+        <div class="create-form">
+      
+          <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
+      
+            <div class="create-hero" *ngIf="currentFormSection === 1">
+              <h2>Създай своето приключение </h2>
+      
+              <!-- Label за качване на снимка -->
+              <label for="imageFile" class="upload-label">Качи снимка</label>
+              <input type="file" title=" " id="imageFile" class="imageFile" (change)="onImageChange($event)">
+              <img *ngIf="imagePreview" [src]="imagePreview">
+      
+              <!-- Label за заглавие -->
+              <label for="heroTitle" class="title-label">Дестинация</label>
+              <input type="text" title=" " id="heroTitle" class="hero-title" formControlName="title"
+                placeholder="добави своята дестинация">
+      
+              <!-- Label за параграф -->
+              <label for="heroParagraph" class="paragraph-label">Описание</label>
+              <textarea id="heroParagraph" formControlName="paragraph" class="hero-paragraph"
+                placeholder="Параграф"></textarea>
+            </div>
+            <div class="create-hero" *ngIf="currentFormSection === 2">
+              <h2>Опиши своята екскурзия</h2>
+      
+      
+              <label for="imageFiles" class="upload-label">Качи снимка</label>
+              <input type="file" id="imageFiles" class="imageFiles" (change)="onImagesChange($event)" multiple>
+              <div class="images-preview" *ngIf="imagesPreview.length > 0">
+                <img *ngFor="let img of imagesPreview" [src]="img" class="image-preview">
+              </div>
+      
+      
+              <label for="heroTitle" class="title-label">За града</label>
+              <input type="text" id="heroTitle" class="hero-title" formControlName="title-desc"
+                placeholder="добави своята дестинация">
+      
+              <label for="heroParagraph" class="paragraph-label">Опиши го</label>
+              <textarea id="heroParagraph" formControlName="info-desc" class="hero-paragraph"
+                placeholder="Параграф"></textarea>
+            </div>
+      
+      
+            <div formArrayName="days" class="create-hero" *ngIf="currentFormSection === 3">
+              <div class="day-btn">
+                <button type="button" (click)="previousDay()" *ngIf="currentDayIndex > 0">Предишен Ден</button>
+                <button type="button" (click)="nextDay()" *ngIf="currentDayIndex < days.controls.length - 1">Следващ Ден</button>
+              </div>
+            
+              <ng-container *ngFor="let dayFormGroup of days.controls; let i = index">
+                <div [formGroupName]="i" *ngIf="i === currentDayIndex" class="day-info">
+                  <h2>Програма</h2>
+                  <h2>Ден {{i + 1}}</h2>
+                  <input type="file" (change)="onDayImageChange($event, i)" class="imageFiles" multiple>
+                  <div *ngIf="getDayImagesPreviews(i).length > 0">
+                    <img *ngFor="let img of dayImages[i].previews" [src]="img" class="day-image-preview">
+                  </div>
+                  <input type="text" formControlName="dayTitle" class="hero-title" placeholder="Заглавие за деня">
+                  <textarea formControlName="dayInfo" class="hero-paragraph" placeholder="Информация за деня"></textarea>
+                  <button class="remove-day" type="button" (click)="removeDay(i)">Изтрий Ден {{i + 1}}</button>
+                </div>
+              </ng-container>
+            
+              <button class="add-day" type="button" (click)="addDay()">Добави Ден</button>
+            </div>
+            
+            
+            <div class="create-hero" *ngIf="currentFormSection === 4">
+              <h2>Допълнителни Услуги и Условия</h2>
+      
+              <div formGroupName="dateRange">
+                <label for="start">Дата От:</label>
+                <input type="date" id="start" formControlName="start">
+      
+                <label for="end">Дата До:</label>
+                <input type="date" id="end" formControlName="end">
+              </div>
+      
+              <label for="price">Цена:</label>
+              <input type="text" id="price" formControlName="price">
+      
+              <div formGroupName="conditions">
+                <div><label><input type="checkbox" formControlName="ticketsIncluded"> Самолетни билети</label></div>
+                <div><label><input type="checkbox" formControlName="allTransportCosts"> Всички транспортни разходи</label>
+                </div>
+                <div><label><input type="checkbox" formControlName="accommodations"> нощувки</label> </div>
+                <div><label><input type="checkbox" formControlName="allMeals"> Всички закуски и вечери</label> </div>
+                <div><label><input type="checkbox" formControlName="practices"> Практики</label> </div>
+                <div><label><input type="checkbox" formControlName="atvTour"> Наем и тур с ATV </label> </div>
+                <div><label><input type="checkbox" formControlName="spaAccess"> Спа център</label> </div>
+                <div><label><input type="checkbox" formControlName="guidesIncluded"> 2-ма водачи по време на
+                    пътуването</label> </div>
+                <div><label><input type="checkbox" formControlName="medicalInsurance"> Медицинска застраховка с покритие 10000
+                    евро</label> </div>
+                <div><label><input type="checkbox" formControlName="personalExpenses"> Разходи от личен характер</label>
+                </div>
+                <div><label><input type="checkbox" formControlName="alcoholicBeverages"> Алкохолни напитки</label></div>
+                <div><label><input type="checkbox" formControlName="unspecifiedServices"> Услуги неупоменати в
+                    програмата</label></div>
+                <div><label><input type="checkbox" formControlName="additionalActivitiesFee"> Такси за допълнителните
+                    активности</label> </div>
+                <div><label><input type="checkbox" formControlName="cancellationInsurance"> Допълнителна медицинска
+                    застраховка "Отмяна на пътуване"</label> </div>
+              </div>
+            </div>
+      
+      
+      
+            <div class="create-btn">
+              <a routerLink="#" class="btn lights-back" *ngIf="currentFormSection !== 1" (click)="goToPreviousSection()"></a>
+              <a routerLink="#" class="btn lights" (click)="goToNextSection()"
+                *ngIf="createForm.valid && currentFormSection < totalFormSections"></a>
+            </div>
+            <div class="submit-btn">
+              <button type="submit" class="btn lights-submit" *ngIf="currentFormSection === totalFormSections">Save</button>
+              <!-- //createForm.valid &&  изтрито  -->
+            </div>
+          </form>
+      
+        </div>
+      
+      </section>
+      <!-- </app-authenticated> -->
