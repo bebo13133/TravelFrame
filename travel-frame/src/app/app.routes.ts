@@ -34,7 +34,7 @@ export const routes: Routes = [
         canActivate: [AuthGuardService]
     },
     {
-        path: 'destination/destination:ID/details', component: DetailsPageComponent,
+        path: 'destination/details/:destinationId', component: DetailsPageComponent,
         canActivate: [AuthGuardService]
     },
     { path: 'error', component: ErrorComponent },
