@@ -1,5 +1,5 @@
 .last-three-imgs {
-    max-width: 1540px;
+    max-width: 1500px;
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
@@ -25,7 +25,7 @@
     
     }
 .img-wrapper h2{
-font-size: 3.2em;
+font-size: 2.5em;
 
 }
 .img-wrapper p{

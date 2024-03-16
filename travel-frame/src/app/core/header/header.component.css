@@ -22,7 +22,7 @@ header {
     position: relative;;
   } */
   .logo {
-    width: 9em;
+    width: 7em;
   }
 
   .nav-item {
@@ -57,7 +57,7 @@ header {
     width: 100%;
   }
   .navbar a{
-    font-size: 1.5em;
+    font-size: 1.2em;
   }
   .icons {
     position: absolute;
@@ -295,7 +295,7 @@ header {
   .dropdown {
   position: relative;
   position: absolute;
-  top: 25px;
+  top: 35px;
   right: 25px;
   display: inline-block;
   margin-left: auto; 
@@ -305,8 +305,8 @@ header {
   border: none;
   cursor: pointer;
   border-radius: 50%; 
-  width: 60px; 
-  height: 60px; 
+  width: 40px; 
+  height: 40px; 
 }
 
 .dropdown-menu {
