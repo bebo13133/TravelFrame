@@ -23,7 +23,7 @@
 
 .details-hero h2{
     text-transform: uppercase ;
-    font-size: 15em;
+    font-size: 12em;
     font-family: "Muller Black", "Muller Black Placeholder", sans-serif;
     font-weight: 900;
     letter-spacing: 0;
@@ -46,18 +46,21 @@ font-size: 2em;
 }
 
 .details-info{
+    max-width: 1640px;
     display: flex;
     flex-wrap: nowrap;
     /* justify-content: center; */
-    gap: 5em;
-
-    padding: 2em;
+    gap: 6em;
+    margin: 0 auto;
+    justify-content: center;
+    padding: 5em;
     padding-bottom: 14em;
 
 }
 .details-info img{
-    flex: 0 0 30%;
-    height: 650px;
+    /* flex: 0 0 30%; */
+    width: 27%;
+    height: 450px;
     object-fit: cover;
 }
 .desc-info{

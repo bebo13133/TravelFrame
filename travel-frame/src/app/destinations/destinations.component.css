@@ -22,8 +22,9 @@ background-size: cover;
 height: 900px;
 
 }
-.destination-hero h1 {
-font-size: 5em;
+.destination-hero h2 {
+font-size: 4em;
+
 }
 .destination-hero p {
     font-size: 1.5em;

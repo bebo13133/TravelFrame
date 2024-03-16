@@ -3,8 +3,8 @@
     display: flex;
     /* justify-content: space-around; */
     justify-content: center;
-    gap: 5em;
-    flex-wrap: wrap;
+    gap: 2em;
+    flex-wrap: nowrap;
     position: absolute;
     bottom: -15%;
     flex-wrap: wrap;
@@ -14,14 +14,14 @@
   
   .image-container-hero {
     position: relative; 
-    width: 420px;
+    width: 320px;
     margin-bottom: 20px;
 
   }
   
   .image-container-hero img {
     width: 100%; 
-    height: 450px; 
+    height: 350px; 
     border-radius: 15px;
     object-fit: cover; 
   }
