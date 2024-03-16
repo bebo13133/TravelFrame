@@ -2,12 +2,7 @@
 
 
   <header [class.scrolled]="scrolledDown">
-    <a routerLink="/home"
-      ><img
-        src="assets/media/logo-light.png"
-        alt="logo"
-        class="logo"
-    /></a>
+    <a routerLink="/home"><img src="assets/media/logo-light.png" alt="logo" class="logo" /></a>
 
     <input type="checkbox" id="check" />
     <label for="check" class="icons">
@@ -18,13 +13,14 @@
     <nav class="navbar">
       <a routerLink="/home" class="nav-item" style="--i: 0">Начало</a>
       <a *ngIf="isLoggedIn" routerLink="/create" class="nav-item" style="--i: 1">Твоето приключение</a>
-      <a routerLink="destination" class="nav-item" style="--i: 2">Дестинации</a>
+      <a routerLink="destinations" class="nav-item" style="--i: 2">Дестинации</a>
       <a *ngIf="isLoggedIn" routerLink="#" class="nav-item" style="--i: 2">Истории/Блог</a>
       <a routerLink="/" class="nav-item" style="--i: 3">Контакти</a>
       <a *ngIf="!isLoggedIn" routerLink="/auth" class="nav-item">Sign Up</a>
       <!-- <a *ngIf="isLoggedIn" (click)="logout()" class="nav-item">Logout</a> -->
       <div *ngIf="isLoggedIn" class="dropdown">
-        <img src="assets/media/desert.webp" class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <img src="assets/media/desert.webp" class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <a class="dropdown-item" routerLink="/profile">Профил</a>
           <a class="dropdown-item" (click)="logout()">Изход</a>
@@ -34,6 +30,6 @@
   </header>
 
 
-<!-- images row -->
+  <!-- images row -->
 
 </section>

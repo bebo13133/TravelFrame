@@ -25,7 +25,7 @@ export const routes: Routes = [
 
     },
     {
-        path: 'destination',
+        path: 'destinations',
         component: DestinationsComponent,
     },
     {
@@ -33,12 +33,13 @@ export const routes: Routes = [
         component: CreatePageComponent,
         canActivate: [AuthGuardService]
     },
-    { path: 'error', component: ErrorComponent },
     {
-        path: 'details', component: DetailsPageComponent,
+        path: 'destination/destination:ID/details', component: DetailsPageComponent,
         canActivate: [AuthGuardService]
     },
-    { path: '', redirectTo: '/login', pathMatch: 'full' },
+    { path: 'error', component: ErrorComponent },
+
+    // { path: '', redirectTo: '/auth', pathMatch: 'full' },
 
 
 ];
