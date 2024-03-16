@@ -15,17 +15,20 @@
             <div *ngFor="let destination of destinations; let i = index" [style.transform]="getSlideStyle(i)">
               <h2>{{destination.title}}</h2>
               <p>{{destination.paragraph | slice:0:125}}</p>
-            <a class="read-more" routerLink="#">Read more</a>
+            <a class="read-more" routerLink="destinations/{{destination._id}}/details">Read more</a>
 
             </div>
           </div>
           <div class="right">
+
             <div class= "image-container" *ngFor="let destination of destinations; let i = index" [style.transform]="getSlideStyle(destinations.length - 1 - i)">
             
               <img [src]="destination.image" [alt]="destination.title" />
               <i [ngClass]="isFavorite ? 'fas fa-heart' : 'far fa-heart'" class="favorite-icon" (click)="toggleFavorite()"></i>
+              
             </div>
           </div>
         </div>
       </div>
+
 </div>
