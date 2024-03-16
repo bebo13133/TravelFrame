@@ -9,7 +9,8 @@
   </section>
   <section class="details-page">
     <div class="details-info">
-        <img src="{{destination?.images?.[0] || '/assets/media/desert.webp'}}" alt="desert">
+        <img *ngIf="destination?.images?.[currentImageIndex]" [src]="destination?.images?.[currentImageIndex] ?? '/assets/media/default.jpg'" alt="Destination image">
+
         <div class="desc-info">
             
             <h3>{{destination?.['title-desc']}}</h3>

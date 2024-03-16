@@ -16,7 +16,10 @@ import { Destination } from '../types/destination';
 })
 export class DetailsPageComponent implements OnInit {
   backgroundImageUrl: string = '';
-  destination: Destination| null = null;
+  destination: Destination | null = null;
+  currentImageIndex: number = 0;
+  intervalId: any;
+
   
 constructor(private apiService:ApiService,  private route: ActivatedRoute){}
 
@@ -24,27 +27,30 @@ constructor(private apiService:ApiService,  private route: ActivatedRoute){}
     // this.loadBackgroundImage();
     this.loadDestinationDetails();
   }
+  ngOnDestroy(): void {
+        if (this.intervalId) {
+          clearInterval(this.intervalId);
+        }
+      }
 
-  // loadBackgroundImage() {
-  //   // Предполагаме, че получавате URL-а на изображението от някаква заявка
-  //   this.backgroundImageUrl = '/assets/media/desert.webp'; // като почна със заявките пътя ще го заместя динамично да я получава
-  // }
 
   loadDestinationDetails() {
-    // Вземете ID от URL
+ 
     const id = this.route.snapshot.paramMap.get('destinationId');
     if (id) {
       this.apiService.getDestinationById(id).subscribe({
         next: (destination: Destination) => {
           this.destination = destination;
           console.log(this.destination)
-          // Предполагаме, че имате свойство 'backgroundImageUrl' във вашия модел
+      
           if (destination.image instanceof File) {
             this.backgroundImageUrl = URL.createObjectURL(destination.image);
           } else {
-            // Ако не е File, използвайте стойността директно или fallback
+       
             this.backgroundImageUrl = destination.image || '/assets/media/default.jpg';
           }
+        this.startSlideshow();
+
         },
         error: (error) => {
           console.error('Error fetching destination details:', error);
@@ -54,5 +60,17 @@ constructor(private apiService:ApiService,  private route: ActivatedRoute){}
     }
   };
 
+  startSlideshow(): void {
+
+    const images = this.destination?.images ?? [];
+    if (images.length > 1) {
+      this.intervalId = setInterval(() => {
+
+        this.currentImageIndex = (this.currentImageIndex + 1) % images.length;
+      }, 3000);
+    }
 
 }
+
+}
+
