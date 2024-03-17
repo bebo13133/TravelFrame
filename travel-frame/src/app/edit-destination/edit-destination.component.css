@@ -19,8 +19,20 @@
 input[type='file'] {
     color: transparent;
   }
-.create-form{
-    margin-top: 12em;
+  .create-form input{
+    font-size: 1em;
+  }
+  .title-label{
+    text-transform: uppercase;
+  }
+.create-form {
+    /* margin-top: 12em; */
+    /* position: absolute;
+    top: 20%;
+    left: 25%;
+    right: 25%;
+    bottom: 25%; */
+    margin-top:4em ;
   max-width: 920px;
     display: flex;
     flex-direction: column;
@@ -37,14 +49,14 @@ input[type='file'] {
 
 }
 .create-hero{
-    font-size: 1.5em;
+    font-size: 1.2em;
     max-width: 100%;
-    gap: 1em;
+    gap: 0.5em;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
     /* align-items: center; */
-    padding: 1.5em;
+    padding: 1em;
 
 }
 .submit-btn {
@@ -54,17 +66,22 @@ input[type='file'] {
 .day-info{
     display: flex;
     flex-direction: column;
-    gap: 1em;
+    gap: 0.5em;
+    max-width: 920px;
+    font-size: 1.2em;
+    max-width: 100%;
+    flex-wrap: nowrap;
+    padding: 1em;
 }
 .create-hero textarea{
     height: 90px;
-    font-size: 1.1em;
+    font-size: 1em;
     border-radius: 5px;
 }
 .create-hero input{
     border-radius: 5px;
     padding: 0.5em;
-    font-size: 1.1em;
+    font-size: 1em;
 }
 .create-btn{
     display: flex;
@@ -232,7 +249,7 @@ input[type='file'] {
 
 
 .create-hero img{
-    width: 200px;
+    width: 140px;
     height: auto;
     aspect-ratio: 1/1;
 }
@@ -243,7 +260,7 @@ input[type='file'] {
 }
 .create-form h2{
     text-align: center;
-    font-size: 2.5em;
+    font-size: 2em;
     font-weight: 600;
     -webkit-text-stroke: 0.8px rgb(168, 239, 255, 1);
     /* color: white; */
