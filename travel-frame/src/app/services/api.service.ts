@@ -24,4 +24,10 @@ export class ApiService {
     const { apiUrl } = environment;
     return this.http.get<Destination>(`${apiUrl}/data/destinations/${id}`);
   }
+  editDestination(destinationData: Destination[],id: string){
+    const {apiUrl} = environment
+    return this.http.put<Destination>(`${apiUrl}/data/destinations/${id}`, destinationData);
+
+  }
+
 }

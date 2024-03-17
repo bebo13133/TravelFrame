@@ -88,7 +88,7 @@ input[type='file'] {
     justify-content: space-between;
     cursor: pointer;
     padding: 0 2em;
-    padding-bottom: 2em;
+    /* padding-bottom: 2em; */
 
 }
 .add-day{

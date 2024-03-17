@@ -73,6 +73,7 @@ loadDestinationDetails(destinationId: string): void {
       this.createForm.patchValue({
         title: destinationData.title,
         paragraph: destinationData.paragraph,
+ 
         "title-desc": destinationData["title-desc"],
         'info-desc': destinationData['info-desc'],
         // Прескачаме полето за изображения, тъй като то може да изисква специално обработване
@@ -100,29 +101,29 @@ loadDestinationDetails(destinationId: string): void {
       
       });
   
-      // Попълване на динамичната част от формата за дните
-      const daysArray = this.createForm.get('days') as FormArray;
-      daysArray.clear(); // Премахване на всички текущи елементи в масива
-
+      const daysFormArray = this.createForm.get('days') as FormArray;
+      daysFormArray.clear(); // Премахнете всички текущи FormGroup елементи
       destinationData.days.forEach(day => {
-        daysArray.push(this.fb.group({
+        const dayFormGroup = this.fb.group({
           dayImage: [day.dayImage],
           dayTitle: [day.dayTitle, Validators.required],
           dayInfo: [day.dayInfo, Validators.required]
-        }));
+        });
+        daysFormArray.push(dayFormGroup);
       });
 
-      // Ако има изображения, обработете ги по подходящ начин
       if (destinationData.images && destinationData.images.length) {
-        // Пример за обработка: запазване на първото изображение за предварителен преглед
-        // Забележка: тази логика трябва да се адаптира според вашите изисквания и структура на данните
-        this.imagePreview = destinationData.images[0];
-        // Актуализирайте останалите изображения за предварителен преглед, ако са необходими
+
+this.imagePreview = Array.isArray(destinationData.image) ? destinationData.image[0] : destinationData.image;
+
+
+this.imagesPreview = Array.isArray(destinationData.images) ? destinationData.images : [destinationData.images];
+
       }
     },
     error: (error) => {
       console.error('Error loading destination details:', error);
-      // Можете да добавите логика за обработка на грешки, например показване на съобщение до потребителя
+
     }
   });
 }
@@ -294,7 +295,7 @@ loadDestinationDetails(destinationId: string): void {
 
 
 
-    if (this.createForm.valid) {
+    if (this.createForm.valid && this.destinationId != null) {
       const formData = {
         ...this.createForm.value,
         image: this.imagePreview,
@@ -309,8 +310,8 @@ loadDestinationDetails(destinationId: string): void {
         })
       };
 
-
-      this.apiService.createDestination(formData).subscribe({
+ 
+      this.apiService.editDestination(formData, this.destinationId).subscribe({
         next: (response) => {
           console.log('Destination created successfully', response);
 

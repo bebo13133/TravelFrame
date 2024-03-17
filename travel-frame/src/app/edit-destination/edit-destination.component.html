@@ -14,7 +14,7 @@
               <!-- Label за качване на снимка -->
               <label for="imageFile" class="upload-label">Качи снимка</label>
               <input type="file" title=" " id="imageFile" class="imageFile" (change)="onImageChange($event)">
-              <img *ngIf="imagePreview" [src]="imagePreview">
+              <img *ngIf="imagePreview" [src]="imagePreview" alt="Main image">
       
               <!-- Label за заглавие -->
               <label for="heroTitle" class="title-label">Дестинация</label>
