@@ -16,3 +16,6 @@ body {
    background: linear-gradient(rgb(255 255 255 / 30%), rgb(255 255 255 / 30%));
   min-height: 100vh;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

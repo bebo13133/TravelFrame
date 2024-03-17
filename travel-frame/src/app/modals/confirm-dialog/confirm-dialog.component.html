@@ -1,0 +1,8 @@
+<h2 mat-dialog-title>Потвърди изтриването</h2>
+    <mat-dialog-content class="mat-typography">
+      <p>Сигурни ли сте, че искате да изтриете тази дестинация?</p>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+      <button mat-button (click)="onDismiss()">Откажи</button>
+      <button mat-button color="warn" (click)="onConfirm()">Изтрий</button>
+    </mat-dialog-actions>

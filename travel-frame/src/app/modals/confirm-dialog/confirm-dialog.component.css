@@ -1,0 +1,48 @@
+/* Във файла със стилове на диалоговия компонент (confirm-dialog.component.css) */
+.confirm-dialog-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .confirm-dialog-title {
+    margin: 20px 0;
+    font-size: 24px;
+    text-align: center;
+  }
+  
+  .confirm-dialog-content {
+    margin: 20px 0;
+    font-size: 18px;
+    text-align: center;
+  }
+  
+  .confirm-dialog-actions {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    width: 100%;
+  }
+  
+  .confirm-dialog-button {
+    min-width: 90px;
+  }
+  
+  /* Ако желаете да промените стиловете глобално, може да добавите следния CSS във global styles.css */
+  .mat-dialog-container {
+    border-radius: 8px;
+  }
+  
+  .mat-dialog-title {
+    color: #333;
+  }
+  
+  .mat-dialog-content {
+    color: #666;
+  }
+  
+  .mat-dialog-actions {
+    border-top: 1px solid #ddd;
+    padding-top: 15px;
+  }
+  

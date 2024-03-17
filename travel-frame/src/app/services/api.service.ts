@@ -29,5 +29,9 @@ export class ApiService {
     return this.http.put<Destination>(`${apiUrl}/data/destinations/${id}`, destinationData);
 
   }
+  deleteDestination(id: string) {
+    const {apiUrl} = environment
+    return this.http.delete<Destination>(`${apiUrl}/data/destinations/${id}`);
+  }
 
 }

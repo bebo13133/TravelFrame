@@ -6,11 +6,13 @@ import { AsideMenuComponent } from './aside-menu/aside-menu.component';
 import { ApiService } from '../services/api.service';
 import { ActivatedRoute } from '@angular/router';
 import { Destination } from '../types/destination';
+import { ConfirmDialogComponent } from '../modals/confirm-dialog/confirm-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-details-page',
   standalone: true,
-  imports: [CommonModule,PriceSideComponent,AuthenticatedComponent,AsideMenuComponent],
+  imports: [CommonModule, PriceSideComponent, AuthenticatedComponent, AsideMenuComponent, ConfirmDialogComponent],
   templateUrl: './details-page.component.html',
   styleUrl: './details-page.component.css'
 })
@@ -20,23 +22,25 @@ export class DetailsPageComponent implements OnInit {
   currentImageIndex: number = 0;
   intervalId: any;
   isOwner: boolean = false;
-  
-constructor(private apiService:ApiService,  private route: ActivatedRoute){}
+
+  constructor(private apiService: ApiService, private route: ActivatedRoute, private dialog: MatDialog) { }
+
 
   ngOnInit() {
     // this.loadBackgroundImage();
     this.loadDestinationDetails();
   }
   ngOnDestroy(): void {
-        if (this.intervalId) {
-          clearInterval(this.intervalId);
-        }
-      }
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+    }
+  }
 
 
   loadDestinationDetails() {
- 
+
     const id = this.route.snapshot.paramMap.get('destinationId');
+    
     if (id) {
       this.apiService.getDestinationById(id).subscribe({
         next: (destination: Destination) => {
@@ -44,15 +48,15 @@ constructor(private apiService:ApiService,  private route: ActivatedRoute){}
           // console.log(this.destination)
           const userId = localStorage.getItem('userId');
 
-       
+
           this.isOwner = destination._ownerId === userId;
           if (destination.image instanceof File) {
             this.backgroundImageUrl = URL.createObjectURL(destination.image);
           } else {
-       
+
             this.backgroundImageUrl = destination.image || '/assets/media/default.jpg';
           }
-        this.startSlideshow();
+          this.startSlideshow();
 
         },
         error: (error) => {
@@ -73,7 +77,7 @@ constructor(private apiService:ApiService,  private route: ActivatedRoute){}
       }, 3000);
     }
 
-}
+  }
 
 }
 

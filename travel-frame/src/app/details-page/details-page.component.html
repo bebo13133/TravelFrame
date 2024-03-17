@@ -1,8 +1,10 @@
 <!-- <app-authenticated> -->
+    <ng-container *ngIf="destination?._id">
 <app-aside-menu 
 [isOwner]="isOwner" 
 [destinationId]="destination?._id ?? null" 
 />
+</ng-container>
 <section>
 <section class="full-width-background" [style.background-image]="'url(' + backgroundImageUrl + ')'">
    <div class="details-hero">
