@@ -5,4 +5,5 @@ export interface Comment {
   commentText: string;
   name?: string;
   username?: string;
+  destinationId: string | undefined;
 }

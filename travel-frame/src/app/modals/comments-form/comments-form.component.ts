@@ -44,7 +44,7 @@ export class CommentsFormComponent implements OnInit{
     
     const newComment: Comment = {
       commentText: this.commentText,
-     
+      destinationId:this.destinationId ?? undefined,
       // name: "Име", // опционално
       // username: "Потребителско име", // опционално
     };
