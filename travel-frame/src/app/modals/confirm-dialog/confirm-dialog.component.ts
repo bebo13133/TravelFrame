@@ -1,27 +1,27 @@
 
 // confirm-dialog.component.ts
 import { CommonModule } from '@angular/common';
-import { Component, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { ChangeDetectorRef, Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-confirm-dialog',
-  templateUrl:'./confirm-dialog.component.html',
   standalone: true,
-  styleUrl: './confirm-dialog.component.css',
-  imports: [CommonModule,MatDialogModule,],
+  selector: 'app-confirm-modal',
+  templateUrl: './confirm-dialog.component.html',
+  styleUrls: ['./confirm-dialog.component.css'],
+  imports: [CommonModule]
 })
 export class ConfirmDialogComponent {
-  constructor(
-    public dialogRef: MatDialogRef<ConfirmDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
-  ) {}
+  @Input() isVisible: boolean = false;
+  @Output() confirmed: EventEmitter<void> = new EventEmitter();
+  @Output() canceled: EventEmitter<void> = new EventEmitter();
 
-  onConfirm(): void {
-    this.dialogRef.close(true);
+  onConfirm() {
+    this.confirmed.emit();
+    this.isVisible = false;
   }
 
-  onDismiss(): void {
-    this.dialogRef.close(false);
+  onCancel() {
+    this.canceled.emit();
+    this.isVisible = false;
   }
 }

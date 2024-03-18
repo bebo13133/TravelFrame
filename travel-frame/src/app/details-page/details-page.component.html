@@ -1,41 +1,39 @@
 <!-- <app-authenticated> -->
-    <ng-container *ngIf="destination?._id">
-<app-aside-menu 
-[isOwner]="isOwner" 
-[destinationId]="destination?._id ?? null" 
-/>
+<ng-container *ngIf="destination?._id">
+    <app-aside-menu [isOwner]="isOwner" [destinationId]="destination?._id ?? null" />
 </ng-container>
-<section>
-<section class="full-width-background" [style.background-image]="'url(' + backgroundImageUrl + ')'">
-   <div class="details-hero">
-    <h2>{{destination?.title}}</h2>
-    <p>{{destination?.paragraph}}</p>
-   </div>
-  </section>
-  <section class="details-page">
-    <div class="details-info">
-        <img *ngIf="destination?.images?.[currentImageIndex]" [src]="destination?.images?.[currentImageIndex] ?? '/assets/media/default.jpg'" alt="Destination image">
-
-        <div class="desc-info">
-            
-            <h3>{{destination?.['title-desc']}}</h3>
-            <p>{{destination?.['info-desc']}}</p>
+<section >
+    <section class="full-width-background" [style.background-image]="'url(' + backgroundImageUrl + ')'">
+        <div class="details-hero">
+            <h2>{{destination?.title}}</h2>
+            <p>{{destination?.paragraph}}</p>
         </div>
-    </div>
-    <div class="desc-prog">
-        <h2>Програма</h2>
-        <div *ngFor="let programDay of destination?.days;let i = index" class="single-day">
-            <img src="{{programDay.dayImage}}" alt="">
-            <div class="single-desc">
-                <p>Ден {{i + 1}}</p>
-                <h3>{{programDay.dayTitle}}</h3>
-                <p>{{programDay.dayInfo}}</p>
+    </section>
+    <section class="details-page">
+        <div class="details-info">
+            <img *ngIf="destination?.images?.[currentImageIndex]"
+                [src]="destination?.images?.[currentImageIndex] ?? '/assets/media/default.jpg'" alt="Destination image">
+
+            <div class="desc-info">
+
+                <h3>{{destination?.['title-desc']}}</h3>
+                <p>{{destination?.['info-desc']}}</p>
             </div>
         </div>
-    
-    </div>
-    
-  </section>
-  <app-price-side [destination]="destination"/>
+        <div class="desc-prog">
+            <h2>Програма</h2>
+            <div *ngFor="let programDay of destination?.days;let i = index" class="single-day">
+                <img src="{{programDay.dayImage}}" alt="">
+                <div class="single-desc">
+                    <p>Ден {{i + 1}}</p>
+                    <h3>{{programDay.dayTitle}}</h3>
+                    <p>{{programDay.dayInfo}}</p>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+    <app-price-side [destination]="destination" />
 </section>
 <!-- </app-authenticated> -->

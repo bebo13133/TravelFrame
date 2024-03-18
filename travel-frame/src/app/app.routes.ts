@@ -46,6 +46,12 @@ export const routes: Routes = [
     { path: 'error', component: ErrorComponent },
 
     // { path: '', redirectTo: '/auth', pathMatch: 'full' },
-
+    // {
+    //     path: '**',
+    //     loadComponent: () =>
+    //       import('./shared/not-found/not-found.component').then(
+    //         (m) => m.NotFoundComponent
+    //       ),
+    //   },
 
 ];

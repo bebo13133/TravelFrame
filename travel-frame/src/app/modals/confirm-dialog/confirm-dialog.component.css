@@ -1,48 +1,160 @@
-/* Във файла със стилове на диалоговия компонент (confirm-dialog.component.css) */
-.confirm-dialog-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+.confirm-dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0; 
+width: 500px;
+  height: 100%;
+  /* background: transparent; */
+
+  /* background-color: rgba(0, 0, 0, 0.5); */
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 1.25em;
+  z-index: 11111;
+}
+
+.confirm-dialog {
+  width: 500px;
+  /* background: transparent; */
+  background-color: rgb(230, 230, 230);
+  padding: 2em;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+ 
+  transform: translateX(100%);
+  z-index: 11111;
+
+  animation: slideIn 1s ease-out forwards;
+}
+.btn-confirm{
+  display: flex;
+  gap:2em;
+  margin-top:2em;
+}
+.confirm-dialog p{
+  font-size: 1.1em;
+  padding: 0.6em;
+}
+/* .confirm-dialog button {
+  font-size: 1.25em;
+  padding: 0.3em 0.7em;
+  border-radius: 15px;
+  cursor: pointer;
+  border: 1px solid black;
+
+}
+.confirm-dialog button:first-child {
+ background-color: brown;
+
+
+}
+.confirm-dialog button:first-child:hover {
+  box-shadow: 0 4px 6px rgba(238, 29, 2, 0.7);
+  background-color: rgb(233, 9, 9);
+ 
+ 
+ }
+.confirm-dialog button:nth-child(2) {
+  background-color: rgb(2, 170, 10);
+ 
+ 
+ }
+ .confirm-dialog button:nth-child(2):hover {
+  box-shadow: 0 4px 6px rgba(103, 255, 2, 0.7);
+  background-color: rgb(118, 240, 4);
+ 
+ 
+ } */
+
+ .confirm-dialogn button{
+  width: 100px;
+  height: 20px;
+  border-radius: 5px;
+  background: white;
   
-  .confirm-dialog-title {
-    margin: 20px 0;
-    font-size: 24px;
-    text-align: center;
+  position: relative;
+  /* display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center; */
+  overflow: hidden;
+  transition: all 0.3s ease-in;
+}
+
+.btn{
+  cursor: pointer;
+  border: none;
+}
+ .btn:hover {
+  transform: translateY(-5px);
+}
+ .lights::before {
+  content: "";
+  position: absolute;
+  background-image: conic-gradient(
+    rgb(10, 138, 31) 20deg,
+    transparent 150deg
+  );
+  width: 400%;
+  height: 400%;
+  border-radius: 5px;
+  animation: rotate 3s linear infinite;
+}
+.lights::after {
+  content: "Не";
+  position: absolute;
+  width: 170px;
+  height: 40px;
+  background: rgba(117, 117, 117, 0.2);
+  backdrop-filter: blur(35px);
+  -webkit-backdrop-filter: blur(35px);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  border-radius: 5px;
+}
+
+.lights-confirm::before {
+  content: "";
+  position: absolute;
+  background-image: conic-gradient(
+    rgb(219, 49, 26) 20deg,
+    transparent 150deg
+  );
+  width: 400%;
+  height: 400%;
+  border-radius: 5px;
+  animation: rotate 3s linear infinite;
+}
+.lights-confirm::after {
+  content: "ДА";
+  position: absolute;
+  width: 170px;
+  height: 40px;
+  background:  rgba(117, 117, 117, 0.2);
+  backdrop-filter: blur(35px);
+  -webkit-backdrop-filter: blur(35px);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  border-radius: 5px;
+}
+
+
+
+
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
   }
-  
-  .confirm-dialog-content {
-    margin: 20px 0;
-    font-size: 18px;
-    text-align: center;
+  to {
+    transform: translateX(200%);
   }
-  
-  .confirm-dialog-actions {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
-    width: 100%;
-  }
-  
-  .confirm-dialog-button {
-    min-width: 90px;
-  }
-  
-  /* Ако желаете да промените стиловете глобално, може да добавите следния CSS във global styles.css */
-  .mat-dialog-container {
-    border-radius: 8px;
-  }
-  
-  .mat-dialog-title {
-    color: #333;
-  }
-  
-  .mat-dialog-content {
-    color: #666;
-  }
-  
-  .mat-dialog-actions {
-    border-top: 1px solid #ddd;
-    padding-top: 15px;
-  }
-  
+}

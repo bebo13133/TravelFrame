@@ -1,0 +1,7 @@
+<div class="comment-modal-overlay" *ngIf="isVisible">
+    <div class="comment-modal">
+      <h2>Leave a Comment</h2>
+      <textarea [(ngModel)]="commentText" placeholder="Your comment..."></textarea>
+      <button (click)="sendComment()">Send</button>
+    </div>
+  </div>
