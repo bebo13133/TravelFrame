@@ -55,7 +55,7 @@ export class CommentsFormComponent implements OnInit{
 
       this.apiService.postComment( newComment).subscribe({
         next: (response) => {
-          // Тук response може да съдържа върнатия от сървъра коментар, който може да добавите директно към списъка на коментарите, показани на страницата с детайли
+          
           this.commentText = ''; 
           this.isVisible = false; 
           this.isVisibleChange.emit(this.isVisible); 

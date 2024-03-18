@@ -79,5 +79,9 @@ export class DetailsPageComponent implements OnInit {
 
   }
 
+  // за коментарите после
+  // this.commentsService.comments$.subscribe(comments => {
+  //   this.commentsList = comments;
+  // });
 }
 
