@@ -16,13 +16,13 @@
   }
   
   .comment-modal {
-    background: rgba(230, 229, 229, 0.851); /* Бял фон с лека прозрачност */
+    background: rgba(196, 196, 196, 0.751); 
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
     width: 90%;
     max-width: 500px;
-    backdrop-filter: blur(52px); /* Замъгляване на съдържанието зад модала */
+    backdrop-filter: blur(5px);
   }
   
   .comment-modal h2 {
