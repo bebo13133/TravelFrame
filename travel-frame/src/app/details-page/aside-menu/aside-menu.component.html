@@ -8,7 +8,7 @@
     </ng-container>
     <app-confirm-modal [isVisible]="confirmDialogVisible" (confirmed)="onDialogConfirm()" (canceled)="onDialogCancel()"></app-confirm-modal>
         <li><a href="javascript:void(0);"(click)="toggleCommentModal()" >Comment <i class="fa-regular fa-comment"></i></a></li>
-        <app-comments-form  [isVisible]="commentModalVisible" [key]="reloadKey"></app-comments-form>
+        <app-comments-form  [isVisible]="commentModalVisible" (isVisibleChange)="commentModalVisible = $event" [key]="reloadKey"></app-comments-form>
     </ul>
 </nav>
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">

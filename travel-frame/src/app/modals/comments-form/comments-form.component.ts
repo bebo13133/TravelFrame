@@ -2,6 +2,9 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ApiService } from '../../services/api.service';
+import { CommentsService } from '../../services/comments.service';
+import { Comment } from '../../types/comments';
 
 @Component({
   selector: 'app-comments-form',
@@ -13,35 +16,62 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class CommentsFormComponent implements OnInit{
   @Input() isVisible: boolean = false;
-
+  @Output() isVisibleChange: EventEmitter<boolean> = new EventEmitter<boolean>();
+  
   @Input() key: any;
-  @Output() closeModal: EventEmitter<void> = new EventEmitter();
+ 
   destinationId: string | null = null;
   commentText: string = '';
 
-  constructor(private route: ActivatedRoute,private router:Router,private cdr: ChangeDetectorRef) { }
+  constructor(private route: ActivatedRoute,private router:Router,private cdr: ChangeDetectorRef, private apiService:ApiService, private commentsService:CommentsService) { }
 
 
   ngOnInit(): void {
 
     this.route.paramMap.subscribe(params => {
       this.destinationId = params.get('destinationId');
-     
+
       this.cdr.detectChanges();
 
     })
   }
-
+ 
   sendComment() {
-    console.log('Comment sent');
+    if (!this.commentText.trim()) {
+      alert('The Comment not be empty');
+      return;
+    }
+    
+    const newComment: Comment = {
+      commentText: this.commentText,
+     
+      // name: "Име", // опционално
+      // username: "Потребителско име", // опционално
+    };
     this.isVisible = false;
-    // this.cdr.detectChanges();
-    this.commentText = '';// изчиствам полето 
-    // if (this.destinationId) {
-    //   // console.log(this.destinationId)
-    //   this.router.navigate(['destination/details', this.destinationId]);
-    // }
-    // console.log(this.isVisible)
+    this.cdr.detectChanges();
+ 
+    if (this.destinationId) {
+
+      this.apiService.postComment( newComment).subscribe({
+        next: (response) => {
+          // Тук response може да съдържа върнатия от сървъра коментар, който може да добавите директно към списъка на коментарите, показани на страницата с детайли
+          this.commentText = ''; 
+          this.isVisible = false; 
+          this.isVisibleChange.emit(this.isVisible); 
+     
+          this.commentsService.addComment(response);
+          this.router.navigate(['destination/details', this.destinationId]);
+        },
+        error: (error) => {
+          // Обработка на грешка при изпращане на коментар
+          console.error('Error posting comment:', error);
+          alert('An error occurred while posting the comment.');
+        }
+      })
+ 
+    }
+  
 
 
   }

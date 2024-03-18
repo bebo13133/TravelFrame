@@ -20,14 +20,14 @@ export class AsideMenuComponent implements OnInit {
   @Input() destinationId: string | null = null;
   confirmDialogVisible: boolean = false; // Добавена променлива
   commentModalVisible: boolean = false;
-
+  @ViewChild(CommentsFormComponent) commentsForm!: CommentsFormComponent;
   reloadKey = 0;
   constructor(private apiService: ApiService,private cdr: ChangeDetectorRef, private router:Router,) { 
-
+    this.commentModalVisible = false;
   }
   ngOnInit(): void {
-    console.log("dsadsa",this.commentModalVisible)
-    this.commentModalVisible = false; // Ресетирайте видимостта на модала при инициализация на компонента
+
+    // this.commentModalVisible = false; // Ресетирайте видимостта на модала при инициализация на компонента
   }
 
 
@@ -64,7 +64,9 @@ export class AsideMenuComponent implements OnInit {
   }
 
   toggleCommentModal() {
+
     this.commentModalVisible = !this.commentModalVisible;
+    this.cdr.detectChanges();
   }
 
 }
