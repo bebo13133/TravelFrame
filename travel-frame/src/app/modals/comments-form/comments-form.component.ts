@@ -35,7 +35,10 @@ export class CommentsFormComponent implements OnInit{
 
     })
   }
- 
+  closeModal() {
+    this.isVisible = false;
+    this.isVisibleChange.emit(this.isVisible); 
+  }
   sendComment() {
     if (!this.commentText.trim()) {
       alert('The Comment not be empty');
