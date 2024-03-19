@@ -13,19 +13,19 @@ export class CommentSlideComponent implements OnInit {
   @Input() destinationId: string | null = null;
   commentsList: Comment[] = [];
 
-constructor(private commentsService:CommentsService){}
+  constructor(private commentsService: CommentsService) { }
 
 
-ngOnInit(): void {
-  this.commentsService.comments$.subscribe(comments => {
- 
-    if (this.destinationId) {
-      this.commentsList = comments.filter(comment => comment.destinationId === this.destinationId);
-    } else {
-  
-      this.commentsList = []; 
-    }
-  });
-}
+  ngOnInit(): void {
+    this.commentsService.loadComments();
+    this.commentsService.comments$.subscribe(comments => {
+      if (this.destinationId) {
+        this.commentsList = comments.filter(comment => comment.destinationId === this.destinationId);
+        // console.log("List", this.commentsList)
+      } else {
+        this.commentsList = [];
+      }
+    });
+  }
 
 }

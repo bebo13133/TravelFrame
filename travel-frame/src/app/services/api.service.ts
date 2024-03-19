@@ -38,8 +38,5 @@ export class ApiService {
     const { apiUrl } = environment
     return this.http.post<Comment>(`${apiUrl}/data/posts`, newComment);
   }
-  getPosts(): Observable<Comment> {
-    const { apiUrl } = environment
-    return this.http.get<Comment>(`${apiUrl}/data/posts`);
-  }
+
 }
