@@ -1,14 +1,20 @@
 .background{
     /* background-image: url('https://media.istockphoto.com/id/938335974/photo/aerial-view-of-kualoa-area-of-oahu-hawaii.webp?b=1&s=612x612&w=0&k=20&c=FyNaMqXpdmhxCbG9lUq1gO-VV1t6IlYXCQ5fvIgpXyo=');
     background-size: cover;
-    background-position: center;
+    background-position:jpg center;
     filter: blur(2px); 
     z-index: -1111;
    */
-   min-height: 100vh;  
-   width: 100%;
+   /* min-height: 100vh;  
+   width: 100%; */
+   position: relative;
+   min-height: 100vh;
 }
-/* .comment-main::before {
+body::before {
+  /* Стиловете от .comment-main::before */
+  position: fixed; /* Или `absolute`, ако body е с `position: relative;` */
+}
+.comment-main::before {
     content: "";
     position: absolute;
     
@@ -16,13 +22,14 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url('https://c.regencyholidays.com/blog/blog/content/images/2022/05/Places-To-Visit-In-Lebanon-1.webp');
+    background-image: url('https://www.jonesaroundtheworld.com/wp-content/uploads/2021/07/Rome-Italy.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    filter: blur(5px);
+    /* filter: blur(5px); */
+    filter: brightness(65%) blur(5px);
     z-index: -1;
-  } */
+  }
 
 .comment-main{
     width: 1040px;
@@ -32,10 +39,12 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+
     /* align-items: center; */
 }
 .comment-main h2{
     font-size: 4em;
+    text-align: center;
 }
 .comment-info{
     padding: 3em 0;
@@ -67,11 +76,25 @@
 .comment h4{
     overflow-wrap: break-word;
     font-weight: 500;
+    line-height: 2.8em;
+    color: #d4d4d4;
+}
+.comment p{
+  overflow-wrap: break-word;
+  font-weight: 500;
+  line-height: 2.3em;
+  color: #afaeae;
 }
 .author{
     display: flex;
     gap: 1em;
     align-items: center;
+    justify-content: space-between;
+}
+.person-info{
+  display: flex;
+  gap: 1em;
+  align-items: center;
 }
 .comment img{
     width: 40px;
@@ -79,6 +102,7 @@
     border-radius: 50%;
 }
 .pagination {
+  margin-top: 2em;
     list-style: none;
     display: flex;
     justify-content: center;
@@ -100,7 +124,10 @@
     text-decoration: none;
     transition: background-color 0.3s, color 0.3s;
   }
-  
+  .pagination button.active {
+    background-color: #007bff; /* Примерен цвят за активния бутон */
+    color: #fff; /* Цвят на текста за активния бутон */
+  }
   .pagination button:hover {
     background-color: #e9e9e9;
   }

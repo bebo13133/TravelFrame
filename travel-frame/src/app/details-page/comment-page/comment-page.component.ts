@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CommentsService } from '../../services/comments.service';
 import { Comment } from '../../types/comments';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-comment-page',
   templateUrl: './comment-page.component.html',
   styleUrls: ['./comment-page.component.css'],
   standalone: true,
-  imports: [CommonModule]
+  imports: [CommonModule,DatePipe]
 })
 export class CommentPageComponent implements OnInit {
   hasComments: boolean = false;
@@ -79,7 +79,7 @@ export class CommentPageComponent implements OnInit {
         this.totalPages = Math.ceil(filteredComments.length / this.commentsPerPage);
         this.hasComments = filteredComments.length > 0;
 
-        // Calculate the comments to be displayed on the current page
+       
         this.commentsList = filteredComments.slice(
           (this.currentPage - 1) * this.commentsPerPage,
           this.currentPage * this.commentsPerPage
@@ -97,7 +97,7 @@ export class CommentPageComponent implements OnInit {
     this.router.navigate([], {
       relativeTo: this.route,
       queryParams: { page },
-      queryParamsHandling: 'merge', // Merge with existing query params
+      queryParamsHandling: 'merge', 
     });
   }
 }

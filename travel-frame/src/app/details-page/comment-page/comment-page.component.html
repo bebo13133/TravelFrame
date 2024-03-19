@@ -7,8 +7,13 @@
           <section class="comment">
               <h4>{{ comment.commentText }}</h4>
               <div class="author">
+                <div class="person-info">
                   <img src="https://user-images.githubusercontent.com/13468728/234031693-6bbaba7d-632c-4d7d-965f-75a76a549ce2.jpg" alt="author-img">
+                  
                   <p>{{ comment.name ? comment.name : comment.username }}</p>
+                </div>
+                  <p>{{ comment._createdOn | date:'medium'}}</p>
+
               </div>
           </section>
       </section>
