@@ -9,21 +9,21 @@ import { Comment } from '../../types/comments';
 @Component({
   selector: 'app-comments-form',
   standalone: true,
-  imports: [FormsModule,CommonModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './comments-form.component.html',
   styleUrl: './comments-form.component.css'
 
 })
-export class CommentsFormComponent implements OnInit{
+export class CommentsFormComponent implements OnInit {
   @Input() isVisible: boolean = false;
   @Output() isVisibleChange: EventEmitter<boolean> = new EventEmitter<boolean>();
-  
+
   @Input() key: any;
- 
+
   destinationId: string | null = null;
   commentText: string = '';
 
-  constructor(private route: ActivatedRoute,private router:Router,private cdr: ChangeDetectorRef, private apiService:ApiService, private commentsService:CommentsService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private cdr: ChangeDetectorRef, private apiService: ApiService, private commentsService: CommentsService) { }
 
 
   ngOnInit(): void {
@@ -37,32 +37,32 @@ export class CommentsFormComponent implements OnInit{
   }
   closeModal() {
     this.isVisible = false;
-    this.isVisibleChange.emit(this.isVisible); 
+    this.isVisibleChange.emit(this.isVisible);
   }
   sendComment() {
     if (!this.commentText.trim()) {
       alert('The Comment not be empty');
       return;
     }
-    
+
     const newComment: Comment = {
       commentText: this.commentText,
-      destinationId:this.destinationId ?? undefined,
+      destinationId: this.destinationId ?? undefined,
       // name: "Име", // опционално
       // username: "Потребителско име", // опционално
     };
     this.isVisible = false;
     this.cdr.detectChanges();
- 
+
     if (this.destinationId) {
 
-      this.apiService.postComment( newComment).subscribe({
+      this.apiService.postComment(newComment).subscribe({
         next: (response) => {
-          
-          this.commentText = ''; 
-          this.isVisible = false; 
-          this.isVisibleChange.emit(this.isVisible); 
-     
+
+          this.commentText = '';
+          this.isVisible = false;
+          this.isVisibleChange.emit(this.isVisible);
+
           this.commentsService.addComment(response);
           this.router.navigate(['destination/details', this.destinationId]);
         },
@@ -72,9 +72,9 @@ export class CommentsFormComponent implements OnInit{
           alert('An error occurred while posting the comment.');
         }
       })
- 
+
     }
-  
+
 
 
   }
