@@ -30,7 +30,7 @@ html {
     radial-gradient(at 0% 100%, rgb(238, 127, 63) 0px, transparent 50%),
     radial-gradient(at 80% 100%, rgb(107, 102, 255) 0px, transparent 50%),
     radial-gradient(at 0% 0%, rgb(255, 133, 167) 0px, transparent 50%); */
-    background-image: url('/assets/media/beach.avif');
+  background-image: url('/assets/media/beach.avif');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;

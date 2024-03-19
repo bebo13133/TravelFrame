@@ -1,1 +1,28 @@
-<p>comment-slide works!</p>
+<div class="home-carousel">
+    <main #mainElement> 
+        <h2>Stories</h2>
+
+        <div class="slider">
+            <div class="slide-row" #slideRow>
+              <div class="slide-col">
+                    <div class="content-home">
+                        <p>Zen Doan is a business analyst, entrepreneur and media proprietor, and investor. She also known as the best selling book author.</p>
+                        <h2>Zen</h2>
+                        <p>Author</p>
+                    </div>
+                    <div class="hero">
+                        <img src="https://user-images.githubusercontent.com/13468728/234031693-6bbaba7d-632c-4d7d-965f-75a76a549ce2.jpg" alt="avatar">
+                    </div>
+                </div>
+    
+          
+
+            </div>
+        </div>
+        
+        <div class="indicator">
+            <span class="btn" *ngFor="let btn of btns; let i = index" [class.active]="i === currentIndex" (click)="setActiveBtn(i)"></span>
+        </div>
+    </main>
+</div>
+

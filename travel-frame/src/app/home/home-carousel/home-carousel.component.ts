@@ -12,7 +12,7 @@ export class HomeCarouselComponent implements AfterViewInit {
   @ViewChild('slideRow') slideRow!: ElementRef<HTMLDivElement>;
   @ViewChild('mainElement') mainElement!: ElementRef<HTMLElement>;
   currentIndex: number = 0;
-  btns = [0, 1, 2, 3]; // Пример за 4 слайда, адаптирайте според вашия брой слайдове
+  btns = [0, 1, 2, 3]; 
 
   constructor() {}
 
