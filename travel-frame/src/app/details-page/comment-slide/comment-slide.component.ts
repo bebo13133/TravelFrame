@@ -28,4 +28,18 @@ export class CommentSlideComponent implements OnInit {
     });
   }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
 }
