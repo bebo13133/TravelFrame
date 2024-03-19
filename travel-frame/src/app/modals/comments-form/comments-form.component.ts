@@ -67,7 +67,7 @@ export class CommentsFormComponent implements OnInit {
           this.router.navigate(['destination/details', this.destinationId]);
         },
         error: (error) => {
-          // Обработка на грешка при изпращане на коментар
+         
           console.error('Error posting comment:', error);
           alert('An error occurred while posting the comment.');
         }

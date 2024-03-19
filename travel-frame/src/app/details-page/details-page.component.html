@@ -2,7 +2,7 @@
 <ng-container *ngIf="destination?._id">
     <app-aside-menu [isOwner]="isOwner" [destinationId]="destination?._id ?? null" />
 </ng-container>
-<section >
+<section>
     <section class="full-width-background" [style.background-image]="'url(' + backgroundImageUrl + ')'">
         <div class="details-hero">
             <h2>{{destination?.title}}</h2>
@@ -35,5 +35,8 @@
 
     </section>
     <app-price-side [destination]="destination" />
+    <ng-container *ngIf="destination?._id">
+        <app-comment-slide [destinationId]="destination?._id ?? null" />
+    </ng-container>
 </section>
 <!-- </app-authenticated> -->

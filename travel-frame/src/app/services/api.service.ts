@@ -25,17 +25,17 @@ export class ApiService {
     const { apiUrl } = environment;
     return this.http.get<Destination>(`${apiUrl}/data/destinations/${id}`);
   }
-  editDestination(destinationData: Destination[],id: string){
-    const {apiUrl} = environment
+  editDestination(destinationData: Destination[], id: string) {
+    const { apiUrl } = environment
     return this.http.put<Destination>(`${apiUrl}/data/destinations/${id}`, destinationData);
 
   }
   deleteDestination(id: string) {
-    const {apiUrl} = environment
+    const { apiUrl } = environment
     return this.http.delete<Destination>(`${apiUrl}/data/destinations/${id}`);
   }
-postComment(newComment: Comment): Observable<Comment>{
-  const {apiUrl} = environment
-  return this.http.post<Comment>(`${apiUrl}/data/posts`, newComment);
-}
+  postComment(newComment: Comment): Observable<Comment> {
+    const { apiUrl } = environment
+    return this.http.post<Comment>(`${apiUrl}/data/posts`, newComment);
+  }
 }

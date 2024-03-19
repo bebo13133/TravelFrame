@@ -8,11 +8,12 @@ import { ActivatedRoute } from '@angular/router';
 import { Destination } from '../types/destination';
 import { ConfirmDialogComponent } from '../modals/confirm-dialog/confirm-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { CommentSlideComponent } from './comment-slide/comment-slide.component';
 
 @Component({
   selector: 'app-details-page',
   standalone: true,
-  imports: [CommonModule, PriceSideComponent, AuthenticatedComponent, AsideMenuComponent, ConfirmDialogComponent],
+  imports: [CommonModule, PriceSideComponent, AuthenticatedComponent, AsideMenuComponent, ConfirmDialogComponent,CommentSlideComponent],
   templateUrl: './details-page.component.html',
   styleUrl: './details-page.component.css'
 })
