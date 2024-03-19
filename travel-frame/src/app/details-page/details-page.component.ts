@@ -4,16 +4,22 @@ import { PriceSideComponent } from './price-side/price-side.component';
 import { AuthenticatedComponent } from '../authenticated/authenticated.component';
 import { AsideMenuComponent } from './aside-menu/aside-menu.component';
 import { ApiService } from '../services/api.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { Destination } from '../types/destination';
 import { ConfirmDialogComponent } from '../modals/confirm-dialog/confirm-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { CommentSlideComponent } from './comment-slide/comment-slide.component';
+import { VerticalMenuComponent } from './vertical-menu/vertical-menu.component';
 
 @Component({
   selector: 'app-details-page',
   standalone: true,
-  imports: [CommonModule, PriceSideComponent, AuthenticatedComponent, AsideMenuComponent, ConfirmDialogComponent,CommentSlideComponent],
+  imports: [CommonModule, PriceSideComponent, AuthenticatedComponent, AsideMenuComponent, 
+    ConfirmDialogComponent,
+    CommentSlideComponent,
+    VerticalMenuComponent,
+    RouterModule
+  ],
   templateUrl: './details-page.component.html',
   styleUrl: './details-page.component.css'
 })
@@ -29,6 +35,14 @@ export class DetailsPageComponent implements OnInit {
 
   ngOnInit() {
     // this.loadBackgroundImage();
+    this.route.fragment.subscribe(frag => {
+      if (frag) { // Проверяваме дали frag не е null
+        const element = document.getElementById(frag);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    });
     this.loadDestinationDetails();
   }
   ngOnDestroy(): void {

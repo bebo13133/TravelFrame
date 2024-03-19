@@ -1,0 +1,48 @@
+.vertical-menu{
+    max-width: 800px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 3em;
+    background-color: black;
+    margin: 0 auto;
+    padding: 1em 1em;
+    z-index: 1111;
+    border-radius: 15px;
+    animation: fadeIn 2s ease-out;
+}
+.list-menu{
+    display: flex;
+    align-items: center;
+    justify-content:space-around;
+    gap: 1em;
+    list-style: none;
+
+}
+.list-menu li{
+
+}
+.list-menu li a{
+  
+    color: white;
+    text-decoration: none;
+}
+.list-menu li:nth-child(6) > a{
+  padding: 0.7em;
+    background-color: rgb(241, 106, 8);
+    border-radius: 20px;
+margin: 0.2em;
+}
+.list-menu li:nth-child(6) > a:hover{
+    background-color: rgb(235, 12, 12);
+}
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(100px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }

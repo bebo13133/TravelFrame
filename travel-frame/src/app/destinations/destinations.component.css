@@ -1,10 +1,28 @@
 
 .destination{
-    max-width: 100%;
+max-width: 100%;
 display: flex;
 flex-direction: column;
-background-color: #f0fff0;
+/* background-color: #f0fff0; */
+position: relative;
+min-height: 100vh;
 }
+.destination::before {
+    content: "";
+    position: absolute;
+    
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('/assets/media/catalog2.webp');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    /* filter: blur(5px); */
+    filter: brightness(65%) blur(2px) contrast(100%);
+    z-index: -1;
+  }
 
 
 .destination-hero{
@@ -15,13 +33,17 @@ align-items: center;
 justify-content:center ;
 flex-direction: column;
 color: white;
-    background-image: url("https://github.com/ecemgo/frontend-mentor-all-in-one/assets/13468728/c6cee1ff-5c41-447e-be06-06388b87b538");
+/* background-image: url("https://github.com/ecemgo/frontend-mentor-all-in-one/assets/13468728/c6cee1ff-5c41-447e-be06-06388b87b538");
 background-position: center;
 background-repeat: no-repeat;
-background-size: cover;
-height: 900px;
+background-size: cover; */
+height: 50vh;
 
 }
+.destination-hero h1 {
+    font-size: 4em;
+    
+    }
 .destination-hero h2 {
 font-size: 4em;
 

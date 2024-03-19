@@ -2,8 +2,13 @@
 <ng-container *ngIf="destination?._id">
     <app-aside-menu [isOwner]="isOwner" [destinationId]="destination?._id ?? null" />
 </ng-container>
+
+<ng-container *ngIf="destination?._id ">
+<app-vertical-menu [destinationId]="destination?._id ?? null" [title]="destination?.title ?? null"/>
+
+</ng-container>
 <section>
-    <section class="full-width-background" [style.background-image]="'url(' + backgroundImageUrl + ')'">
+    <section id="overview" class="full-width-background" [style.background-image]="'url(' + backgroundImageUrl + ')' " >
         <div class="details-hero">
             <h2>{{destination?.title}}</h2>
             <p>{{destination?.paragraph}}</p>
@@ -14,14 +19,14 @@
             <img *ngIf="destination?.images?.[currentImageIndex]"
                 [src]="destination?.images?.[currentImageIndex] ?? '/assets/media/default.jpg'" alt="Destination image">
 
-            <div class="desc-info">
+            <div class="desc-info" >
 
-                <h3>{{destination?.['title-desc']}}</h3>
+                <h3 id="retreat">{{destination?.['title-desc']}}</h3>
                 <p>{{destination?.['info-desc']}}</p>
             </div>
         </div>
-        <div class="desc-prog">
-            <h2>Програма</h2>
+        <div class="desc-prog" id="program">
+            <h2  >Програма</h2>
             <div *ngFor="let programDay of destination?.days;let i = index" class="single-day">
                 <img src="{{programDay.dayImage}}" alt="">
                 <div class="single-desc">
@@ -35,9 +40,9 @@
 
     </section>
     <ng-container *ngIf="destination?._id ">
-        <app-comment-slide  [destinationId]="destination?._id ?? null" />
+        <app-comment-slide id="comment" [destinationId]="destination?._id ?? null" />
     </ng-container>
-    <app-price-side [destination]="destination" />
+    <app-price-side id="prices" [destination]="destination" />
 
 
 </section>
