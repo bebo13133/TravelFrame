@@ -1,10 +1,13 @@
 <section>
     <div class="swiper">
+     
       <div class="swiper-wrapper">
+       
         <div class="swiper-slide swiper-slide--one" *ngFor="let destination of destinations;"
       
         [style.background]="getBackgroundStyle(destination.image)">
           <!-- <span>{{destinations.category}}</span> -->
+          <a [routerLink]="['/destination/details', destination._id]">
           <div>
             <h2>{{destination.paragraph| slice:0:40}}</h2>
             <p>
@@ -15,10 +18,11 @@
               {{destination.title}}
             </p>
           </div>
+          </a>
         </div>
 
   
- 
+      
       </div>
       <!-- Add Pagination -->
       <div class="swiper-pagination"></div>

@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
+import { Component, OnInit, CUSTOM_ELEMENTS_SCHEMA, Input  } from '@angular/core';
 import Swiper from 'swiper';
 import { register } from 'swiper/element/bundle';
 import { ApiService } from '../../services/api.service';
 import { Destination } from '../../types/destination';
+import { RouterLink, RouterModule } from '@angular/router';
 
 register();
 
@@ -11,13 +12,13 @@ register();
 @Component({
   selector: 'app-slider-catalog',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,RouterModule,RouterLink],
   templateUrl: './slider-catalog.component.html',
   styleUrls: ['./slider-catalog.component.css'],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class SliderCatalogComponent implements OnInit {
-  destinations: Destination[] = []
+  @Input() destinations: Destination[] = [];
 
   constructor(private apiService:ApiService) { }
   getBackgroundStyle(image: File | string | null): string {
@@ -64,10 +65,10 @@ export class SliderCatalogComponent implements OnInit {
   
 
 
-      this.apiService.getDestinations().subscribe(destinations => {
-        // console.log(destinations)  
-        this.destinations = destinations;
-      })
+      // this.apiService.getDestinations().subscribe(destinations => {
+      //   // console.log(destinations)  
+      //   this.destinations = destinations;
+      // })
 
   
 
