@@ -21,7 +21,7 @@ export class DestinationsComponent {
 
   ngOnInit(): void {
     this.apiService.getDestinations().subscribe(destinations => {
-      console.log(destinations)
+  
       this.destinations = destinations;
     })
   }

@@ -63,16 +63,6 @@ export class SliderCatalogComponent implements OnInit {
       },
     });
   
-
-
-      // this.apiService.getDestinations().subscribe(destinations => {
-      //   // console.log(destinations)  
-      //   this.destinations = destinations;
-      // })
-
-  
-
-
-  }
+     }
 
 }
