@@ -1,11 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CommentsService } from '../../services/comments.service';
 import { Comment } from '../../types/comments';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-comment-slide',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './comment-slide.component.html',
   styleUrl: './comment-slide.component.css'
 })
@@ -41,5 +42,5 @@ export class CommentSlideComponent implements OnInit {
 
 
 
-  
+
 }
