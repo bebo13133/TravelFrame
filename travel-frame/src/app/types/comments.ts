@@ -6,4 +6,5 @@ export interface Comment {
   name?: string;
   username?: string;
   destinationId: string | undefined;
+
 }

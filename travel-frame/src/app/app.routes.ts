@@ -8,6 +8,7 @@ import { AuthComponentComponent } from './User/auth-component/auth-component.com
 import { ErrorComponent } from './core/error/error.component';
 import { AuthGuardService } from './auth.guard';
 import { EditDestinationComponent } from './edit-destination/edit-destination.component';
+import { CommentPageComponent } from './details-page/comment-page/comment-page.component';
 
 
 export const routes: Routes = [
@@ -41,6 +42,10 @@ export const routes: Routes = [
     },
     {
         path: 'destination/edit/:destinationId', component: EditDestinationComponent,
+        canActivate: [AuthGuardService]
+    },
+    {
+        path: 'destination/details/comments/:destinationId', component: CommentPageComponent,
         canActivate: [AuthGuardService]
     },
     { path: 'error', component: ErrorComponent },

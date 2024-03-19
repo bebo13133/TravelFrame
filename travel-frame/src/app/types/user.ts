@@ -7,5 +7,5 @@ export interface User {
     phoneNumber?: string; 
     gender?: 'male' | 'female' | 'other'; 
     accessToken?: string; 
-    // username?: string;
+  
   }

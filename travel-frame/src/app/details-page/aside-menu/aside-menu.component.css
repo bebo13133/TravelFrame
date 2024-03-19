@@ -28,6 +28,7 @@ a {
 .social {
     position: fixed;
     top: 300px;
+    z-index: 11;
 }
 .social ul {
     padding: 0px;

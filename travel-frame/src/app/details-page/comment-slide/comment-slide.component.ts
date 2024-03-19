@@ -2,16 +2,19 @@ import { Component, ElementRef, HostListener, Input, OnInit, ViewChild, AfterVie
 import { CommentsService } from '../../services/comments.service';
 import { Comment } from '../../types/comments';
 import { CommonModule } from '@angular/common';
+import { SlicePipe } from '../../shared/pipes/slice.pipe';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-comment-slide',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,SlicePipe, RouterLink],
   templateUrl: './comment-slide.component.html',
   styleUrl: './comment-slide.component.css'
 })
 export class CommentSlideComponent implements OnInit, AfterViewInit {
   @Input() destinationId: string | null = null;
+  hasComments: boolean = false;
   commentsList: Comment[] = [];
   @ViewChild('slideRow') slideRow!: ElementRef<HTMLDivElement>;
   @ViewChild('mainElement') mainElement!: ElementRef<HTMLElement>;
@@ -24,10 +27,20 @@ export class CommentSlideComponent implements OnInit, AfterViewInit {
     this.commentsService.loadComments();
     this.commentsService.comments$.subscribe(comments => {
       if (this.destinationId) {
-        this.commentsList = comments.filter(comment => comment.destinationId === this.destinationId);
-        // console.log("List", this.commentsList)
+        // this.commentsList = comments.filter(comment => comment.destinationId === this.destinationId);
+        let filteredComments = comments.filter(comment => comment.destinationId === this.destinationId);
+        this.hasComments = comments && comments.length > 0;
+     
+        filteredComments.sort((a, b) => (b._createdOn || 0) - (a._createdOn || 0));
+  
+
+        this.commentsList = filteredComments.slice(0, 4);
+        console.log("List", this.commentsList)
+        this.btns = Array(Math.min(this.commentsList.length, 4)).fill(0).map((x, i) => i); // динамично определям броя на бутоните ,
+        // this.btns = Array.from({length: Math.min(this.commentsList.length, 4)}, (_, i) => i);
       } else {
         this.commentsList = [];
+        this.btns = [];
       }
     });
   }

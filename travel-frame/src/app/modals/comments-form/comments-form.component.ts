@@ -44,12 +44,15 @@ export class CommentsFormComponent implements OnInit {
       alert('The Comment not be empty');
       return;
     }
-
+    const name = localStorage.getItem('name');
+    const username = localStorage.getItem('username');
+    const userImg = localStorage.getItem('userImg');
     const newComment: Comment = {
       commentText: this.commentText,
       destinationId: this.destinationId ?? undefined,
-      // name: "Име", // опционално
-      // username: "Потребителско име", // опционално
+      name: name ? name : undefined,
+      username: username ? username : undefined,
+     
     };
     this.isVisible = false;
     this.cdr.detectChanges();

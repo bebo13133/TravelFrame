@@ -1,15 +1,18 @@
+<ng-container *ngIf="hasComments">
 <div class="home-carousel">
     <main #mainElement> 
-        <h2>Stories</h2>
+        <h2>Последни коментари </h2>
 
         <div class="slider">
             <div class="slide-row" #slideRow>
-              <div class="slide-col">
+              <div class="slide-col" *ngFor="let comment of commentsList">
+                <a [routerLink]="['/destination/details/comments', comment.destinationId]" class="content-home-link">
                     <div class="content-home">
-                        <p>Zen Doan is a business analyst, entrepreneur and media proprietor, and investor. She also known as the best selling book author.</p>
-                        <h2>Zen</h2>
-                        <p>Author</p>
+                        <p>{{ comment.commentText | slice:120}}</p>
+                        <h2>{{ comment.name ? comment.name : comment.username }}</h2>
+                        <!-- <p>Author</p> -->
                     </div>
+                </a>
                     <div class="hero">
                         <img src="https://user-images.githubusercontent.com/13468728/234031693-6bbaba7d-632c-4d7d-965f-75a76a549ce2.jpg" alt="avatar">
                     </div>
@@ -26,3 +29,4 @@
     </main>
 </div>
 
+</ng-container>

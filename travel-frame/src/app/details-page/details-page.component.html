@@ -34,9 +34,11 @@
         </div>
 
     </section>
-    <app-price-side [destination]="destination" />
-    <ng-container *ngIf="destination?._id">
-        <app-comment-slide [destinationId]="destination?._id ?? null" />
+    <ng-container *ngIf="destination?._id ">
+        <app-comment-slide  [destinationId]="destination?._id ?? null" />
     </ng-container>
+    <app-price-side [destination]="destination" />
+
+
 </section>
 <!-- </app-authenticated> -->
