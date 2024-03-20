@@ -6,9 +6,10 @@ import { CreatePageComponent } from './create-page/create-page.component';
 import { DetailsPageComponent } from './details-page/details-page.component';
 import { AuthComponentComponent } from './User/auth-component/auth-component.component';
 import { ErrorComponent } from './core/error/error.component';
-import { AuthGuardService } from './auth.guard';
+import { AuthGuard } from './auth.guard';
 import { EditDestinationComponent } from './edit-destination/edit-destination.component';
 import { CommentPageComponent } from './details-page/comment-page/comment-page.component';
+import { AlreadyLoggedInngGuard } from './already-logged-inng.guard';
 
 
 export const routes: Routes = [
@@ -25,7 +26,7 @@ export const routes: Routes = [
     {
         path: 'auth',
         component: AuthComponentComponent,
-
+        canActivate: [AlreadyLoggedInngGuard],
     },
     {
         path: 'destinations',
@@ -34,19 +35,19 @@ export const routes: Routes = [
     {
         path: 'create',
         component: CreatePageComponent,
-        canActivate: [AuthGuardService]
+        canActivate: [AuthGuard]
     },
     {
         path: 'destination/details/:destinationId', component: DetailsPageComponent,
-        canActivate: [AuthGuardService]
+        canActivate: [AuthGuard]
     },
     {
         path: 'destination/edit/:destinationId', component: EditDestinationComponent,
-        canActivate: [AuthGuardService]
+        canActivate: [AuthGuard]
     },
     {
         path: 'destination/details/comments/:destinationId', component: CommentPageComponent,
-        canActivate: [AuthGuardService]
+        canActivate: [AuthGuard]
     },
     { path: 'error', component: ErrorComponent },
 

@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, OnDestroy } from '@angular/core';
+import { Injectable, OnDestroy, OnInit } from '@angular/core';
 import { BehaviorSubject, Observable, Subscription, tap } from 'rxjs';
 import { environment } from '../../environments/environment.development';
 import { User } from '../types/user';
@@ -7,20 +7,36 @@ import { User } from '../types/user';
 @Injectable({
   providedIn: 'root'
 })
-export class UserService implements OnDestroy {
+export class UserService implements OnDestroy , OnInit {
+  // isLoggedIn: boolean = false;
   private user$$ = new BehaviorSubject<User | undefined>(undefined);
+
   public user$ = this.user$$.asObservable();
-  user:User | undefined
+  
+  user: User | undefined
+  private subscription: Subscription = new Subscription();
   get isLoggedIn(): boolean {
     return !!this.user$$.getValue();
   }
 // subscription: Subscription;
   constructor(private http: HttpClient) {
     this.loadUserFromLocalStorage();
+    this.subscription = this.user$.subscribe(user => {
+      this.user = user;
+    })
     // this.subscription = this.user$.subscribe(user => {
-    //   this.user = user;
-    // })
+    //   this.isLoggedIn = !!user;
+    //   console.log(this.isLoggedIn)
+    // });
    }
+
+   ngOnInit() {
+    // this.subscription = this.user$.subscribe(user => {
+    //   this.isLoggedIn = !!user;
+    // });
+  }
+
+
    private loadUserFromLocalStorage(): void {
     const accessToken = localStorage.getItem('accessToken');
     const email = localStorage.getItem('email');
@@ -31,6 +47,8 @@ export class UserService implements OnDestroy {
   
       this.user$$.next({ email, name:username, _id, accessToken });
     
+    }else{
+      this.user$$.next(undefined);
     }
   }
   
@@ -49,7 +67,7 @@ export class UserService implements OnDestroy {
             _id: res._id,
             accessToken: res.accessToken
           });
-        
+     
 
         })
       );
@@ -89,6 +107,6 @@ export class UserService implements OnDestroy {
       );
   }
 ngOnDestroy(): void {
-  // this.subscription.unsubscribe();
+  this.subscription.unsubscribe();
 }
 }
