@@ -1,43 +1,51 @@
-<section class="last-three-imgs">
+<section class="last-three-imgs" >
     <div class="img-wrapper">
         <!-- <a href="#"> -->
-            <img src="/assets/media/nk.webp" alt="Image 1">
+            <a [routerLink]="['/destination/details', destinations[0]._id]">
+            <img src="{{destinations[0].image || '/assets/media/nk.webp'}}" alt="Image 1">
             <div class="image-overlay">
-                <h2>Singles only</h2>
-                <p>Нашият първи по рода си ритрийт за необвързани - една седмица приключения, медитация, игри, спа и партита.</p>
+                <h2>{{destinations[0].title}}</h2>
+                <p>{{destinations[0]?.['title-desc'] }}</p>
                 <div class="info">
-                    <span><i class="icon">📍</i>МАРОКО</span>
-                    <span><i class="icon">📅</i>1-9 МАЙ</span>
+                    <span><i class="icon">📍</i>{{destinations[0].title}}</span>
+                    <span><i class="icon">📅</i>{{destinations[0].dateRange | dataRange }}</span>
                 </div>
             </div>
-        <!-- </a> -->
+        </a>
     </div>
     <div class="img-wrapper">
         <!-- <a href="#"> -->
-            <img src="/assets/media/yaht.webp" alt="Image 2">
+            <a [routerLink]="['/destination/details', destinations[1]._id]">
+            <img src="{{destinations[1].image || '/assets/media/nk.webp'}}" alt="Image 2">
             <div class="image-overlay">
-                <h2>NO LIMIT FESTIVAL</h2>
-                <p>Откриѝ тайните заливи на Йонийско море с цяла парти флотилия от катамарани.</p>
+                <h2>{{destinations[1].title}}</h2>
+                <p>{{destinations[1]?.['title-desc'] }}</p>
                 <div class="info">
-                    <span><i class="icon">📍</i>ГЪРЦИЯ</span>
-                    <span><i class="icon">📅</i>15-22 ЮНИ</span>
+                    <span><i class="icon">📍</i>{{destinations[1].title}}</span>
+                    <span><i class="icon">📅</i>{{destinations[1].dateRange | dataRange }}</span>
                 </div>
             </div>
-        <!-- </a> -->
+        </a>
     </div>
-    <div class="img-wrapper full-width">
 
-            <img src="/assets/media/mountain.webp" alt="Image 3">
+    <div class="img-wrapper full-width">
+            <img src="{{destinations[2].image || '/assets/media/nk.webp'}}" alt="Image 3">
+    <a [routerLink]="['/destination/details', destinations[2]._id]">
         
             <div class="image-overlay">
-                <h2>Над 200 човека вече бяха с нас в Исландия</h2>
+
+                <h2>{{destinations[2].title}}</h2>
                 <p>
-                    Тази година може би е твой ред. Ела с нас в страната на огън и лед, където ще се събуждаш на ново място всеки ден, с нова гледка. 
+                    {{destinations[2]?.['title-desc'] }}
                 </p>
+
                 <div class="info">
-                    <span><i class="icon">📍</i>Исландия</span>
-                    <span><i class="icon">📅</i>30.04-8.05  </span>
+                    <span><i class="icon">📍</i>{{destinations[2].title}}</span>
+                    <span><i class="icon">📅</i>{{destinations[2].dateRange | dataRange }}</span>
                 </div>
             </div>
+    </a>
+            
         </div>
+
 </section>

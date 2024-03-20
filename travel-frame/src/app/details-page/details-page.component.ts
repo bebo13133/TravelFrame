@@ -69,7 +69,7 @@ export class DetailsPageComponent implements OnInit {
             this.backgroundImageUrl = URL.createObjectURL(destination.image);
           } else {
 
-            this.backgroundImageUrl = destination.image || '/assets/media/default.jpg';
+            this.backgroundImageUrl = destination.image || '/assets/media/desert.webp';
           }
           this.startSlideshow();
 

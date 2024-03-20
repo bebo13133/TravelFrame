@@ -10,6 +10,8 @@ import { AuthGuard } from './auth.guard';
 import { EditDestinationComponent } from './edit-destination/edit-destination.component';
 import { CommentPageComponent } from './details-page/comment-page/comment-page.component';
 import { AlreadyLoggedInngGuard } from './already-logged-inng.guard';
+import {  StoriesComponent } from './Blog/stories/stories.component';
+import { CreateStoriesComponent } from './Blog/create-stories/create-stories.component';
 
 
 export const routes: Routes = [
@@ -47,6 +49,15 @@ export const routes: Routes = [
     },
     {
         path: 'destination/details/comments/:destinationId', component: CommentPageComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'blog', component: StoriesComponent,
+        canActivate: [AuthGuard]
+        
+    },
+    {
+        path: 'blog/create', component: CreateStoriesComponent,
         canActivate: [AuthGuard]
     },
     { path: 'error', component: ErrorComponent },

@@ -5,6 +5,7 @@ import { DestinationCatalogComponent } from './destination-catalog/destination-c
 import { SliderCatalogComponent } from './slider-catalog/slider-catalog.component';
 import { Destination } from '../types/destination';
 import { ApiService } from '../services/api.service';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -16,13 +17,27 @@ import { ApiService } from '../services/api.service';
 })
 export class DestinationsComponent {
   destinations: Destination[] = []
+  isLoading = false; 
   @Input() destinationId: string | null = null;
+  private subscription: Subscription = new Subscription();
   constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
-    this.apiService.getDestinations().subscribe(destinations => {
-  
-      this.destinations = destinations;
-    })
-  }
+    this.isLoading = true; 
+    this.subscription.add(
+      this.apiService.getDestinations().subscribe({
+        next: (destinations) => {
+          this.destinations = destinations;
+          this.isLoading = false; 
+        },
+        error: (error) => {
+          console.error('Error fetching destinations:', error);
+          this.isLoading = false;
+        }
+      })
+    );
+}
+ngOnDestroy(): void {
+  this.subscription.unsubscribe(); // Правилно анулиране на абонамента
+}
 }
