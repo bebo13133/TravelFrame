@@ -54,10 +54,13 @@ export const routes: Routes = [
     {
         path: 'blog', component: StoriesComponent,
         canActivate: [AuthGuard]
-        
+    },
+ {
+        path: 'blog', component: StoriesComponent,
+        canActivate: [AuthGuard]
     },
     {
-        path: 'blog/create', component: CreateStoriesComponent,
+        path: 'create-stories', component: CreateStoriesComponent,
         canActivate: [AuthGuard]
     },
     { path: 'error', component: ErrorComponent },
