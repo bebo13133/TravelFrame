@@ -15,7 +15,7 @@ import { Story } from '../../types/story.models';
 })
 export class StoriesComponent implements OnInit {
   currentPage: number = 1;
-  commentsPerPage: number = 3;
+  commentsPerPage: number = 2;
   totalPages: number = 0;
 storiesList: Story[] = [];
 hasStories: boolean = false;

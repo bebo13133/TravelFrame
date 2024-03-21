@@ -22,12 +22,12 @@ body::before {
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url('/assets/media/comment.jpg');
+    background-image: url('/assets/media/stories.webp');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     /* filter: blur(5px); */
-    filter: brightness(65%) blur(5px);
+    filter: brightness(95%) blur(0px);
     z-index: -1;
   }
 
