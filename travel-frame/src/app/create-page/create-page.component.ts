@@ -168,9 +168,9 @@ export class CreatePageComponent implements OnInit {
 
     // prowerki
 
-        // console.log('status',this.createForm.status); // Покажете общия статус на формата
-    // console.log('formValue',this.createForm.value); // Покажете стойностите на формата
-    // console.log('errors',this.createForm.errors); // Покажете грешките на формата, ако има такива
+        // console.log('status',this.createForm.status); 
+    // console.log('formValue',this.createForm.value); // Покажи стойностите на формата
+    // console.log('errors',this.createForm.errors); // Покажи грешките на формата, ако има такива
   
     // if (this.createForm.invalid) {
     //   console.log('controles',this.createForm.controls); // Ще покаже статуса на всички контроли

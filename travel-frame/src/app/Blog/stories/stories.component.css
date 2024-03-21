@@ -27,12 +27,12 @@ body::before {
     background-position: center;
     background-size: cover;
     /* filter: blur(5px); */
-    filter: brightness(85%) blur(3px);
+    filter: brightness(85%) blur(0px);
     z-index: -1;
   }
 
 .comment-main{
-    width: 1440px;
+    width: 1320px;
     padding: 10em 4em;
     margin: 0 auto ; 
     min-height: 100vh; 
@@ -69,7 +69,8 @@ body::before {
     /* align-items: center; */
 }
 .comment-info img{
-/* flex: 0 0 30%; */
+    flex: 1 1 45%;
+
    width: 420px;
    height: 340px;
    /* object-fit:cover; */
@@ -79,7 +80,7 @@ body::before {
 
 }
 .comment{
-    flex: 0 0 60%;
+    flex: 0 0 50%;
     display: flex;
     flex-direction: column;
     gap: 0.5em;
