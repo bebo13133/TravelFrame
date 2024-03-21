@@ -20,6 +20,8 @@
     "@angular/platform-browser": "^17.1.0",
     "@angular/platform-browser-dynamic": "^17.1.0",
     "@angular/router": "^17.1.0",
+    "@ngrx/effects": "^17.1.1",
+    "@ngrx/store": "^17.1.1",
     "rxjs": "~7.8.0",
     "swiper": "^11.0.7",
     "tslib": "^2.3.0",

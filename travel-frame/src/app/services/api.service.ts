@@ -4,6 +4,7 @@ import { environment } from '../../environments/environment.development';
 import { Destination } from '../types/destination';
 import { Observable } from 'rxjs';
 import { Comment } from '../types/comments';
+import { Story } from '../types/story.models';
 
 @Injectable({
   providedIn: 'root'
@@ -37,6 +38,14 @@ export class ApiService {
   postComment(newComment: Comment): Observable<Comment> {
     const { apiUrl } = environment
     return this.http.post<Comment>(`${apiUrl}/data/posts`, newComment);
+  }
+  submitStory(formData: FormData): Observable<Story> {
+    const { apiUrl } = environment
+    return this.http.post<Story>(`${apiUrl}/data/stories`, formData);
+  }
+  getStories(): Observable<Story[]> {
+    const { apiUrl } = environment
+    return this.http.get<Story[]>(`${apiUrl}/data/stories`);
   }
 
 }

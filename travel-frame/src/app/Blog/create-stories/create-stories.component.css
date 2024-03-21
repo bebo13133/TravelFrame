@@ -1,5 +1,122 @@
-/* .stories-create{
-    width: 1440px;
+.create-stories {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* height: 100vh; */
+    flex-direction: column;
+    position: relative;
     min-height: 100vh;
-    background-color: red;
-} */
+  }
+  .create-stories::before {
+    content: "";
+    position: absolute;
+    
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('/assets/media/story.webp');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    /* filter: blur(5px); */
+    filter: brightness(65%) blur(1px) contrast(120%);
+    z-index: -1;
+  }
+  .create-stories h2{
+    padding-bottom: 2em;
+    font-weight: 600;
+    -webkit-text-stroke: 0.8px rgb(168, 239, 255, 0.4);
+    font-size: 3em;
+    color: white;
+    transition: all 0.5s ease;
+  }
+  .stories-create {
+    background-color: rgba(247, 247, 247, 0.2); /* Прозрачен фон */
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 1.4em;
+    justify-content: center;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5); /* Сянка */
+    max-width: 700px;
+    width: 100%;
+    min-height: 30vh;
+    align-items: center;
+  }
+
+
+  .stories-create form {
+    display: flex;
+    /* flex-direction: column; */
+    gap: 2em;
+    justify-content: center;
+  }
+  
+  .stories-create form > div {
+    margin-bottom: 15px;
+  }
+  .first{
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.7em;
+   }
+   .second{
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.7em;
+   }
+  .stories-create label {
+    font-weight: 500;
+    -webkit-text-stroke: 0.8px rgb(168, 239, 255, 0.4);
+    /* font-size: 3em; */
+    color: white;
+    transition: all 0.5s ease;
+  }
+  
+  .stories-create input[type="text"],
+  .stories-create textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1.2em;
+  }
+  .stories-create textarea{
+    min-height: 10vh;
+  }
+  .stories-create input[type="file"] {
+    width: 100%;
+  }
+  
+  .stories-create button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f78c00;
+    color: white;
+    cursor: pointer;
+  }
+  .stories-create button:hover{
+    background-color: #ca7302;
+
+  }
+  
+  .stories-create button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .stories-create img {
+    max-width: 60%;
+    aspect-ratio: 1/1;
+    margin-top: 10px;
+    border-radius: 5px;
+  }
+  input[type='file'] {
+    color: transparent;
+  }

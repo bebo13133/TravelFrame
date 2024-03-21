@@ -1,31 +1,37 @@
+<app-error-form [storyForm] = "storyForm"/>
 
 <section class="create-stories">
-    <div class="background-stories"></div>
+  <h2>Разкажи своята история</h2>
 
-    <section class="stories-create">
-        <form [formGroup]="storyForm" (ngSubmit)="onSubmit()">
-            <div>
-              <label for="destination">Дестинация:</label>
-              <input id="destination" formControlName="destination">
-            </div>
-            <div>
-              <label for="title">Заглавие:</label>
-              <input id="title" formControlName="title">
-            </div>
-            <div>
-              <label for="author">Автор:</label>
-              <input id="author" formControlName="author">
-            </div>
-            <div>
-              <label for="image">Снимка URL:</label>
-              <input id="image" formControlName="image" type="url">
-            </div>
-            <div>
-              <label for="description">Описание:</label>
-              <textarea id="description" formControlName="description"></textarea>
-            </div>
-            <button type="submit" [disabled]="!storyForm.valid">Изпрати</button>
-          </form>
-          
-    </section>
+  <div class="background-stories"></div>
+  <section class="stories-create">
+    <form [formGroup]="storyForm" (ngSubmit)="onSubmit()">
+      <section class="first">
+        <div>
+          <label for="destination">Дестинация:</label>
+          <input id="destination" type="text" formControlName="destination">
+        </div>
+        <div>
+          <label for="title">Заглавие на историята:</label>
+          <input id="title" type="text" formControlName="title">
+        </div>
+        <div>
+          <label for="author">Автор:</label>
+          <input id="author" type="text" formControlName="author">
+        </div>
+      </section>
+      <section class="second">
+        <div>
+          <label for="image">Снимка:</label>
+          <input id="image" type="file" (change)="onFileSelected($event)">
+          <img *ngIf="storyForm.value.image" [src]="storyForm.value.image" alt="Selected Image">
+        </div>
+        <div>
+          <label for="description">История:</label>
+          <textarea id="description" formControlName="description"></textarea>
+        </div>
+        <button type="submit" [disabled]="!storyForm.valid">Submit Story</button>
+      </section>
+    </form>
+  </section>
 </section>
