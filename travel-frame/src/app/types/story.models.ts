@@ -5,5 +5,8 @@ export interface Story {
     image: string; // Base64 стринг или път до изображението
     description: string;
     _createdOn:string; 
+    _id:string;
+    _ownerId: string;
+  
   }
   

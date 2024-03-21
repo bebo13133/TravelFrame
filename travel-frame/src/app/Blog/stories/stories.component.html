@@ -17,7 +17,12 @@
                   <p>{{ story._createdOn | date:'medium'}}</p>
 
               </div>
+              
           </section>
+          <button class="like-button" (click)="toggleLike(story._id)" [ngClass]="{'liked': isLiked[story._id]?.liked, 'unliked': !isLiked[story._id]?.liked}">
+            <i class="fa fa-thumbs-up"></i>
+        </button>
+        
       </section>
       <!-- Пагинация -->
       <nav *ngIf="hasStories && totalPages > 1">
@@ -31,6 +36,7 @@
           </li>
         </ul>
       </nav>
+     
     </section>
   </section>
 <a [routerLink]="['/create-stories']">Link</a>

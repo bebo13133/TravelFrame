@@ -57,6 +57,7 @@ body::before {
     flex-wrap: nowrap;
     gap: 6em;
     border-bottom: 2px solid #ccc;
+    position: relative;
     /* align-items: center; */
 }
 .author-img{
@@ -145,4 +146,29 @@ body::before {
     color: white;
     border-color: #007bff;
   }
+  .like-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    bottom: 0 ;
+    right: 0;
+    padding: 5px;
+    font-size: 2em;
+    color:  white;
+    margin-top: 10px;
+    margin-right: 10px;
+    align-self: flex-end; /* За да се позиционира в долната дясна част */
+}
+
+.like-button:hover {
+    color: #007bff; /* Оранжев цвят при ховър */
+}
+
+button.liked {
+    color: blue; /* Цвят за харесан бутон */
+  }
   
+  button.unliked {
+    color: white; /* Цвят за нехаресан бутон */
+  }

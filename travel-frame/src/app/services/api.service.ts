@@ -5,6 +5,7 @@ import { Destination } from '../types/destination';
 import { Observable } from 'rxjs';
 import { Comment } from '../types/comments';
 import { Story } from '../types/story.models';
+import { Like } from '../types/likes';
 
 @Injectable({
   providedIn: 'root'
@@ -46,6 +47,23 @@ export class ApiService {
   getStories(): Observable<Story[]> {
     const { apiUrl } = environment
     return this.http.get<Story[]>(`${apiUrl}/data/stories`);
+  }
+  addLike( storyId: string,userId: string,): Observable<Like> {
+    const like: Like = { userId, storyId };
+    const { apiUrl } = environment
+    return this.http.post<Like>(`${apiUrl}/data/likes`, like);
+  }
+
+  deleteLike(likeId: string): Observable<any> {
+    const { apiUrl } = environment
+
+    const url = `${apiUrl}/data/likes/${likeId}`;
+    return this.http.delete(url);
+  }
+
+  getAllLikes(): Observable<Like[]> {
+    const { apiUrl } = environment
+    return this.http.get<Like[]>(`${apiUrl}/data/likes`);
   }
 
 }
