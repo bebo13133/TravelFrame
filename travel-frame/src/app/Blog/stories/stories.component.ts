@@ -5,11 +5,12 @@ import { CommentsService } from '../../services/comments.service';
 import { ApiService } from '../../services/api.service';
 import { CommonModule, DatePipe } from '@angular/common';
 import { Story } from '../../types/story.models';
+import { SlicePipe } from '../../shared/pipes/slice.pipe';
 
 @Component({
   selector: 'app-create-stories',
   standalone: true,
-  imports: [RouterLink, RouterModule,CreateStoriesComponent,CommonModule,DatePipe],
+  imports: [RouterLink, RouterModule,CreateStoriesComponent,CommonModule,DatePipe,SlicePipe],
   templateUrl: './stories.component.html',
   styleUrl: './stories.component.css'
 })
