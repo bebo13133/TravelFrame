@@ -1,3 +1,37 @@
 <!-- <p>create-stories works!</p> -->
 <a [routerLink]="['/create-stories']">Link</a>
-<!-- <app-create-stories/> -->
+<section class="background">
+    <section class="comment-main">
+      <h2>Истории, които се разказват и споделят</h2>
+      <!-- Списък с коментари -->
+      <section class="comment-info" *ngFor="let story of storiesList">
+          <img class="author-img" src="{{story.image}}" alt="img">
+          <section class="comment">
+                <h3>{{story.title}}</h3>
+              <h4>{{ story.description }}</h4>
+              <div class="author">
+                <div class="person-info">
+                  <img src="{{story.image}}" alt="author-img">
+                  
+                  <p>{{ story.author}}</p>
+                </div>
+                  <p>{{ story._createdOn | date:'medium'}}</p>
+
+              </div>
+          </section>
+      </section>
+      <!-- Пагинация -->
+      <nav *ngIf="hasStories && totalPages > 1">
+        <ul class="pagination">
+          <li *ngFor="let page of pagesArray">
+            <ng-container *ngIf="isNumber(page); else ellipsis">
+              <!-- Проверяваме дали page е число преди да извикаме navigateToPage -->
+              <button (click)="navigateToPage(page)" [class.active]="page === currentPage">{{ page }}</button>
+            </ng-container>
+            <ng-template #ellipsis><span>...</span></ng-template>
+          </li>
+        </ul>
+      </nav>
+    </section>
+  </section>
+  

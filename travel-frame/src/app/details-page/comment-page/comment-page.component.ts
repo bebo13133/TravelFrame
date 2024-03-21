@@ -24,30 +24,33 @@ export class CommentPageComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router
   ) { }
+
+
+
   get pagesArray() {
     let pages: Array<number | string> = [];
   
-    // Винаги включваме първата страница
+
     pages.push(1);
   
-    // Дефинираме кога да показваме "..."
+
     let showEllipsis = false;
   
     for (let i = 2; i < this.totalPages; i++) {
-      // Ако i е в близост до началото, края или текущата страница, показваме номера на страницата
+
       if (i === 2 || i === this.totalPages - 1 || Math.abs(this.currentPage - i) <= 1) {
         pages.push(i);
         showEllipsis = true;
       } else {
-        // Ако преди това сме решили да показваме "..." и текущата итерация не е близо до текущата страница
+     
         if (showEllipsis) {
           pages.push('...');
-          showEllipsis = false; // След "..." отново започваме да показваме номера на страниците
+          showEllipsis = false; 
         }
       }
     }
   
-    // Винаги включваме последната страница, ако има повече от една страница
+  
     if (this.totalPages > 1) {
       pages.push(this.totalPages);
     }

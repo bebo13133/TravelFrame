@@ -12,17 +12,17 @@ import { map, tap } from 'rxjs';
 @Component({
   selector: 'app-create-stories',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule,StoreModule,EffectsModule,ErrorFormComponent],
+  imports: [ReactiveFormsModule, CommonModule, StoreModule, EffectsModule, ErrorFormComponent],
   templateUrl: './create-stories.component.html',
   styleUrl: './create-stories.component.css',
   providers: [
-  
+
   ],
 })
-export class CreateStoriesComponent  {
+export class CreateStoriesComponent {
   storyForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private apiService: ApiService, private router:Router) {
+  constructor(private fb: FormBuilder, private apiService: ApiService, private router: Router) {
     this.storyForm = this.fb.group({
       destination: ['', [Validators.required, Validators.minLength(5)]],
       title: ['', [Validators.required, Validators.minLength(4)]],
@@ -46,9 +46,9 @@ export class CreateStoriesComponent  {
 
   onSubmit() {
     if (this.storyForm.valid) {
-      // Използваме pipe оператора, за да извършим операции върху потока на стойностите на формата
+
       this.apiService.submitStory(this.storyForm.value).pipe(
-        // Използваме map оператора, за да върнем нов обект, който съдържа тримнатите стойности на формата
+
         map(formValue => ({
           destination: formValue.destination.trim(),
           title: formValue.title.trim(),
@@ -56,7 +56,7 @@ export class CreateStoriesComponent  {
           image: formValue.image,
           description: formValue.description.trim()
         })),
-        // Използваме tap оператора, за да отпечатаме тримнатите стойности преди да ги изпратим към API
+
         tap(trimmedFormValue => console.log('Trimmed form values:', trimmedFormValue))
       ).subscribe({
         next: (response) => {
@@ -66,6 +66,6 @@ export class CreateStoriesComponent  {
         error: (error) => console.error('Error submitting story', error)
       });
     }
-  
-}
+
+  }
 }

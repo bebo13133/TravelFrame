@@ -22,7 +22,7 @@ body::before {
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url('https://www.jonesaroundtheworld.com/wp-content/uploads/2021/07/Rome-Italy.jpg');
+    background-image: url('/assets/media/comment.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -45,6 +45,10 @@ body::before {
 .comment-main h2{
     font-size: 4em;
     text-align: center;
+    font-weight: 600;
+    -webkit-text-stroke: 0.8px rgb(168, 239, 255, 0.4);
+ 
+    color: white;
 }
 .comment-info{
     padding: 3em 0;
