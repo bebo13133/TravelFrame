@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ApiService } from '../services/api.service';
 import { AuthenticatedComponent } from '../authenticated/authenticated.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-page',
@@ -21,7 +22,7 @@ export class CreatePageComponent implements OnInit {
   currentDayIndex: number = 0;
 
 
-  constructor(private fb: FormBuilder, private apiService: ApiService) { }
+  constructor(private fb: FormBuilder, private apiService: ApiService, private router:Router) { }
 
   ngOnInit() {
     this.createForm = this.fb.group({
@@ -214,7 +215,7 @@ export class CreatePageComponent implements OnInit {
       this.apiService.createDestination(formData).subscribe({
         next: (response) => {
           console.log('Destination created successfully', response);
-
+          this.router.navigate(['destinations'])
         },
         error: (error) => {
           console.error('Error creating destination', error);

@@ -12,6 +12,7 @@ import { CommentPageComponent } from './details-page/comment-page/comment-page.c
 import { AlreadyLoggedInngGuard } from './already-logged-inng.guard';
 import {  StoriesComponent } from './Blog/stories/stories.component';
 import { CreateStoriesComponent } from './Blog/create-stories/create-stories.component';
+import { StoryDetailsComponent } from './Blog/story-details/story-details.component';
 
 
 export const routes: Routes = [
@@ -55,8 +56,8 @@ export const routes: Routes = [
         path: 'blog', component: StoriesComponent,
         canActivate: [AuthGuard]
     },
- {
-        path: 'blog', component: StoriesComponent,
+    {
+        path: 'blog/details/:storyId', component: StoryDetailsComponent,
         canActivate: [AuthGuard]
     },
     {
