@@ -1,0 +1,43 @@
+.details-side-story{
+
+
+}
+.main-story{
+    width: 1440px;
+    margin: 0 auto;
+    padding: 8em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3em;
+}
+.story-info{
+    width: 1000px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.story-img{
+    width: 100%;
+    aspect-ratio: 2/1;
+    object-fit: cover;
+    border-radius: 25px;
+}
+
+.author-story{
+    padding-top: 2em;
+    display: flex;
+    gap: 1em;
+    align-items: center;
+}
+.author-story img{
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.desc-story{
+    width: 1000px;
+    line-height: 2em;
+
+}
