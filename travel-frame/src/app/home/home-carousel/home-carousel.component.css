@@ -83,14 +83,14 @@ main h2 {
   top: 50%;
   transform: translateY(-50%);
   width: 520px;
-  height: 270px;
+  height: 340px;
   color: #4d4352;
   background: rgba(255, 255, 255, 0.7);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(4.5px);
   -webkit-backdrop-filter: blur(4.5px);
   border-radius: 10px;
-  padding: 45px;
+  padding: 22px;
   z-index: 2;
   user-select: none;
 }

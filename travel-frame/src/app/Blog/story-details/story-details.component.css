@@ -1,7 +1,25 @@
 .details-side-story{
-
-
+    color: white;
+    position: relative;
+    min-height: 100vh;
+    font-size: 1.2em;
 }
+.details-side-story::before {
+    content: "";
+    position: absolute;
+    
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('/assets/media/stories.webp');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    /* filter: blur(5px); */
+    filter: brightness(65%) blur(1px);
+    z-index: -1;
+  }
 .main-story{
     width: 1440px;
     margin: 0 auto;
@@ -16,6 +34,16 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+} 
+.story-info h4{
+    font-size: 1.25em;
+
+    color: #d4d4d4;
+}
+.story-info h2{
+    font-size: 2.5em;
+    -webkit-text-stroke: 0.8px rgb(168, 239, 255, 0.4);
+    padding-top: 1em;
 }
 .story-img{
     width: 100%;
@@ -41,3 +69,41 @@
     line-height: 2em;
 
 }
+.back-btn{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+.btn:hover {
+    transform: translateY(-5px);
+  }
+  
+  .light::before {
+    content: "";
+    position: absolute;
+    background-image: conic-gradient(
+      rgb(168, 239, 255, 1) 20deg,
+      transparent 150deg
+    );
+    width: 400%;
+    height: 400%;
+    border-radius: 5px;
+    animation: rotate 3s linear infinite;
+  }
+  
+  .light::after {
+    content: "към Блога";
+    position: absolute;
+    width: 170px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(35px);
+    -webkit-backdrop-filter: blur(35px);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    border-radius: 5px;
+  }
+  

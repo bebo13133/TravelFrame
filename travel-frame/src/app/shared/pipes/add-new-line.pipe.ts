@@ -16,7 +16,7 @@ export class AddNewLinePipe implements PipeTransform {
     const result = sentences.map((sentence, index) => {
       // Добавяме точка обратно към всяко изречение
       const sentenceWithEndChar = sentence + (index < sentences.length - 1 ? '.' : '');
-      return ((index + 1) % 4 === 0) ? `${sentenceWithEndChar}\n` : sentenceWithEndChar;
+      return ((index + 1) % 4 === 0) ? `${sentenceWithEndChar}\n\n` : sentenceWithEndChar;
     }).join(' ');
 
     return result;

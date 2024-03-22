@@ -113,6 +113,7 @@
     justify-content: space-between;
 }
 .person-info{
+  flex: 0 0 50%;
   display: flex;
   gap: 1em;
   align-items: center;
@@ -120,6 +121,7 @@
 .comment img{
     width: 40px;
     height: 40px;
+    flex: 0 0 15%;
     border-radius: 50%;
 }
 .pagination {

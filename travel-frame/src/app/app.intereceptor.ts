@@ -29,21 +29,30 @@ export class AppInterceptor implements HttpInterceptor {
 
 
         return next.handle(req)
-        // .pipe(
-        //     catchError((error) => {
-        //         if (error.status === 401 || error.status ===404) {
-        //             this.router.navigate(['/home']);
+        .pipe(
+            // catchError((error) => {
+            //     if (error.status === 401 || error.status ===404) {
+            //         this.router.navigate(['/home']);
 
-        //         } else {
-        //             this.errorService.setError(error)
+            //     } else {
+            //         this.errorService.setError(error)
 
-        //             this.router.navigate(['/error']);
+            //         this.router.navigate(['/error']);
 
-        //         }
-        //         return [error]
+            //     }
+            //     if (error.status === 403 ) {
+            //       // this.router.navigate(['/auth']);
+            //       this.router.navigate(['/error']);
+            //   } else {
+            //       this.errorService.setError(error)
 
-        //     })
-        // )
+            //       this.router.navigate(['/error']);
+
+            //   }
+            //     return [error]
+
+            // })
+        )
     }
 
 }

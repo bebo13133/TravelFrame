@@ -1,58 +1,31 @@
 <div class="home-carousel">
-    <main #mainElement> 
-        <h2>Stories</h2>
+  <main #mainElement> 
+      <h2>Stories</h2>
 
-        <div class="slider">
-            <div class="slide-row" #slideRow>
-              <div class="slide-col">
-                    <div class="content-home">
-                        <p>Zen Doan is a business analyst, entrepreneur and media proprietor, and investor. She also known as the best selling book author.</p>
-                        <h2>Zen</h2>
-                        <p>Author</p>
-                    </div>
-                    <div class="hero">
-                        <img src="https://user-images.githubusercontent.com/13468728/234031693-6bbaba7d-632c-4d7d-965f-75a76a549ce2.jpg" alt="avatar">
-                    </div>
-                </div>
-    
-                <div class="slide-col">
-                    <div class="content-home">
-                        <p>Jonathan Koletic is an American internet entrepreneur and media proprietor, and investor. He is the founder of the multi-national technology company Treymont.</p>
-                        <h2>Jonathan</h2>
-                        <p>Treymont Inc.</p>
-                    </div>
-                    <div class="hero">
-                        <img src="https://user-images.githubusercontent.com/13468728/234031617-2dfb19ea-01d0-4370-b63b-bb6bdfb4f78e.jpg" alt="avatar">
-                    </div>
-                </div>
-    
-                <div class="slide-col">
-                    <div class="content-home">
-                        <p>Charlie Green is an European entrepreneur and media consultant, and investor. He is the founder of the Hallmark Inc.</p>
-                        <h2>Charlie</h2>
-                        <p>Hallmark Inc.</p>
-                    </div>
-                    <div class="hero">
-                        <img src="https://user-images.githubusercontent.com/13468728/234031646-10533999-39e5-4c7b-ab54-d0299b13ce74.jpg" alt="avatar">
-                    </div>
-                </div>
-              
-               <div class="slide-col">
-                    <div class="content-home">
-                        <p>Sarah Dam is an American internet entrepreneur and media proprietor, and investor. She is the founder of the multi-national technology company Zara.</p>
-                        <h2>Sarah</h2>
-                        <p>Zara Inc.</p>
-                    </div>
-                    <div class="hero">
-                        <img src="https://github.com/ecemgo/ecemgo/assets/13468728/55116c98-5f9a-4b0a-9fdb-4911b52d5ef3" alt="avatar">
-                    </div>
-                </div>
+      <div class="slider">
+          <div class="slide-row" #slideRow >
+            <div class="slide-col"*ngFor="let story of stories" >
+                  <div class="content-home">
+                      <h2>{{story.title}}</h2>
+                      <p>{{story.description | slice:0:90}}</p>
 
-            </div>
-        </div>
+                      <!-- <p>Author</p> -->
+                  </div>
+                  <div class="hero">
+                      <img src="{{story.image}}" alt="avatar">
+                  </div>
+              </div>
+  
+           
+  
         
-        <div class="indicator">
-            <span class="btn" *ngFor="let btn of btns; let i = index" [class.active]="i === currentIndex" (click)="setActiveBtn(i)"></span>
-        </div>
-    </main>
+        
+
+          </div>
+      </div>
+      
+      <div class="indicator">
+          <span class="btn" *ngFor="let btn of btns; let i = index" [class.active]="i === currentIndex" (click)="setActiveBtn(i)"></span>
+      </div>
+  </main>
 </div>

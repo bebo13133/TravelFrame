@@ -2,13 +2,13 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { AddNewLinePipe } from '../../shared/pipes/add-new-line.pipe';
 import { ApiService } from '../../services/api.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Story } from '../../types/story.models';
 
 @Component({
   selector: 'app-story-details',
   standalone: true,
-  imports: [CommonModule,AddNewLinePipe],
+  imports: [CommonModule,AddNewLinePipe,RouterLink],
   templateUrl: './story-details.component.html',
   styleUrl: './story-details.component.css'
 })
