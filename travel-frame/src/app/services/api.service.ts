@@ -48,6 +48,12 @@ export class ApiService {
     const { apiUrl } = environment
     return this.http.get<Story[]>(`${apiUrl}/data/stories`);
   }
+
+  getStoryById(id: string) {
+    const { apiUrl } = environment;
+    return this.http.get<Story>(`${apiUrl}/data/stories/${id}`);
+  }
+
   addLike( storyId: string,userId: string,): Observable<Like> {
     const like: Like = { userId, storyId };
     const { apiUrl } = environment

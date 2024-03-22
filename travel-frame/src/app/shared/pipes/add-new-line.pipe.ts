@@ -7,17 +7,17 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class AddNewLinePipe implements PipeTransform {
 
   transform(value: string): string {
-    if (!value) return value;
+    if (!value) return '';
 
-
+    // Разделяне на текста на изречения, използвайки точка като разделител
     const sentences = value.split('. ');
 
-
+    // Вмъкване на нов ред след всяко четвърто изречение
     const result = sentences.map((sentence, index) => {
-     
-      const endChar = (index < sentences.length - 1) ? '. ' : '';
-      return ((index + 1) % 4 === 0) ? `${sentence}${endChar}\n` : `${sentence}${endChar}`;
-    }).join('');
+      // Добавяме точка обратно към всяко изречение
+      const sentenceWithEndChar = sentence + (index < sentences.length - 1 ? '.' : '');
+      return ((index + 1) % 4 === 0) ? `${sentenceWithEndChar}\n` : sentenceWithEndChar;
+    }).join(' ');
 
     return result;
   }

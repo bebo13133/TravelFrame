@@ -5,7 +5,8 @@
       <h2>Истории, които се разказват и споделят</h2>
       <!-- Списък с коментари -->
       <section class="comment-info" *ngFor="let story of storiesList">
-          <img class="author-img" src="{{story.image}}" alt="img">
+        
+          <img [routerLink]="['/blog/details', story._id]" class="author-img" src="{{story.image}}" alt="img">
           <section class="comment">
                 <h3>{{story.title}}</h3>
               <h4>{{ story.description | slice:300}}</h4>
