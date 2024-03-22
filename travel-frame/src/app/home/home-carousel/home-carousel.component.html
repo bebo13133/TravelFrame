@@ -3,20 +3,22 @@
       <h2>Stories</h2>
 
       <div class="slider">
-          <div class="slide-row" #slideRow >
+          <div class="slide-row" #slideRow  >
             <div class="slide-col"*ngFor="let story of stories" >
-                  <div class="content-home">
+                <a [routerLink]="['/blog/details', story._id]">
+                  <div class="content-home"  >
                       <h2>{{story.title}}</h2>
                       <p>{{story.description | slice:0:90}}</p>
 
                       <!-- <p>Author</p> -->
                   </div>
                   <div class="hero">
-                      <img src="{{story.image}}" alt="avatar">
+                      <img [routerLink]="['/blog/details', story._id]" src="{{story.image}}" alt="avatar">
                   </div>
-              </div>
+                </a>
+        </div>
   
-           
+              
   
         
         

@@ -3,13 +3,14 @@ import { Component, ElementRef, ViewChild, AfterViewInit, HostListener, OnInit }
 import { Swiper, SwiperOptions } from 'swiper/types';
 import { ApiService } from '../../services/api.service';
 import { Story } from '../../types/story.models';
+import { RouterLink, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-home-carousel',
   templateUrl: './home-carousel.component.html',
   styleUrls: ['./home-carousel.component.css'],
   standalone: true,
-  imports:[CommonModule,SlicePipe]
+  imports:[CommonModule,SlicePipe,RouterModule, RouterLink]
 })
 export class HomeCarouselComponent implements AfterViewInit, OnInit {
   stories: Story[] = [];

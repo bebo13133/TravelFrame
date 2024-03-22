@@ -1,0 +1,104 @@
+.body {
+    background-color: #94d6e3;
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    min-height: 100vh;
+  }
+  
+  h1 {
+    font-size: 3em;
+    color: #fff;
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 0.5em;
+  }
+  
+  p {
+    font-size: 1.5em;
+    text-align: center;
+    margin-bottom: 1em;
+  }
+  
+  a {
+    color: #29596f;
+    text-decoration: none;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  svg {
+    max-width: 1000px;
+    display: block;
+    /* margin: 2em auto; */
+  }
+  
+  .waves {
+    transform: translate(0%, 0%);
+    animation: water 3s linear infinite;
+  }
+  
+  .ark {
+    transform: rotate(0deg);
+    animation: boat 4s linear infinite;
+  }
+  
+  .cloud {
+    transform: translateX(0%);
+    animation: sky 60s linear infinite;
+  }
+  
+  @keyframes water {
+    0% {
+      transform: translate(0%, 0%);
+    }
+    25% {
+      transform: translate(-25px, 5px);
+    }
+    50% {
+      transform: translate(-60px, 3px);
+    }
+    70% {
+      transform: translate(-85px, 1px);
+    }
+    100% {
+      transform: translate(-135px, 0%);
+    }
+  }
+  @keyframes boat {
+    0% {
+      transform: rotate(0deg);
+    }
+    25% {
+      transform: rotate(-0.5deg);
+    }
+    50% {
+      transform: rotate(-1deg);
+    }
+    75% {
+      transform: rotate(-0.5deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+  @keyframes sky {
+    0% {
+      transform: translateX(60%);
+      opacity: 0;
+    }
+    20%,
+    95% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(0%);
+      opacity: 0;
+    }
+  }
+  

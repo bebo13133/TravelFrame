@@ -13,6 +13,7 @@ import { AlreadyLoggedInngGuard } from './already-logged-inng.guard';
 import {  StoriesComponent } from './Blog/stories/stories.component';
 import { CreateStoriesComponent } from './Blog/create-stories/create-stories.component';
 import { StoryDetailsComponent } from './Blog/story-details/story-details.component';
+import { PageNotFoundComponent } from './core/404/page-not-found/page-not-found.component';
 
 
 export const routes: Routes = [
@@ -74,5 +75,16 @@ export const routes: Routes = [
     //         (m) => m.NotFoundComponent
     //       ),
     //   },
+
+    { 
+        path: '404', 
+        component: PageNotFoundComponent, // Използвайте ErrorComponent или друг компонент, който сте създали за 404 грешка
+    },
+    // Wildcard маршрут за 404 страница. Трябва да е последният в списъка с маршрути.
+    { 
+        path: '**', 
+        redirectTo: '/404'
+    },
+
 
 ];
