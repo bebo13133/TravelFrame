@@ -6,11 +6,13 @@ import { ApiService } from '../../services/api.service';
 import { CommonModule, DatePipe } from '@angular/common';
 import { Story } from '../../types/story.models';
 import { SlicePipe } from '../../shared/pipes/slice.pipe';
+import { AsiseMenuStoriesComponent } from './asise-menu-stories/asise-menu-stories.component';
+import { Like } from '../../types/likes';
 
 @Component({
   selector: 'app-create-stories',
   standalone: true,
-  imports: [RouterLink, RouterModule,CreateStoriesComponent,CommonModule,DatePipe,SlicePipe],
+  imports: [RouterLink, RouterModule,CreateStoriesComponent,CommonModule,DatePipe,SlicePipe,AsiseMenuStoriesComponent],
   templateUrl: './stories.component.html',
   styleUrl: './stories.component.css'
 })
@@ -21,7 +23,8 @@ export class StoriesComponent implements OnInit {
 storiesList: Story[] = [];
 hasStories: boolean = false;
 isLiked: { [storyId: string]: { liked: boolean, likeId?: string } } = {};
-
+likesForCurrentStory: Like[] = []; // Използвайте дефинирания интерфейс тук
+likesCountForCurrentStory: number = 0;
 
   constructor(
     private apiService: ApiService,
@@ -30,9 +33,7 @@ isLiked: { [storyId: string]: { liked: boolean, likeId?: string } } = {};
   ) { }
 
   ngOnInit(): void {
-    // this.route.paramMap.subscribe(params => {
-    //   this.destinationId = params.get('destinationId');
-    // });
+    this.loadStoriesWithLikes()
     this.loadInitialData();
     this.route.queryParamMap.subscribe(params => {
       const page = params.get('page');
@@ -48,8 +49,7 @@ isLiked: { [storyId: string]: { liked: boolean, likeId?: string } } = {};
     const userId = localStorage.getItem('userId');
     if (userId) {
       this.loadLikes(userId);
-      // Тук можете да добавите и други заявки за начално зареждане на данни
-    }
+     }
   }
 
   loadLikes(userId: string): void {
@@ -61,17 +61,9 @@ isLiked: { [storyId: string]: { liked: boolean, likeId?: string } } = {};
         this.isLiked[like.storyId || ''] = { liked: true, likeId: like._id };
         console.log('isliked',this.isLiked)
       });
-      // Тук може да се наложи да актуализирате view-то, ако Angular не го прави автоматично
+
     });
   }
-
-
-
-
-
-
-
-
 
   loadStories(): void {
     this.apiService.getStories().subscribe(comments => {
@@ -139,31 +131,46 @@ isLiked: { [storyId: string]: { liked: boolean, likeId?: string } } = {};
 
 
   toggleLike(storyId: string): void {
-    console.log(storyId);
+ 
     const userId = localStorage.getItem('userId');
     if (userId) {
       const currentLike = this.isLiked[storyId];
       if (currentLike && currentLike.liked) {
-        // Проверка дали имаме валидно likeId преди да извикаме deleteLike
         if (typeof currentLike.likeId === 'string') {
           this.apiService.deleteLike(currentLike.likeId).subscribe(() => {
             this.isLiked[storyId] = { liked: false };
+            this.loadStoriesWithLikes();
           });
         } else {
           console.error('likeId is undefined, cannot delete like');
         }
       } else {
         this.apiService.addLike(storyId, userId).subscribe((response: any) => {
-          const likeId = response._id; // Заменете със съответния път, ако е необходимо
+          const likeId = response._id; 
           this.isLiked[storyId] = { liked: true, likeId: likeId };
+          this.loadStoriesWithLikes();
         });
       }
+
     } else {
       console.error('User ID not found in localStorage');
     }
+
+
   }
   
-  
 
+loadStoriesWithLikes(): void {
+  this.apiService.getStories().subscribe(stories => {
+    this.storiesList = stories;
+    this.storiesList.forEach((story, index) => {
+      this.apiService.getAllLikes().subscribe(allLikes => {
+        const likesForStory = allLikes.filter(like => like.storyId === story._id);
+    
+        this.storiesList[index] = {...story, likesCount: likesForStory.length};
+      });
+    });
+  });
+}
 
 }

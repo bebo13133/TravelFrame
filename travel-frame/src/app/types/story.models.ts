@@ -7,6 +7,6 @@ export interface Story {
     _createdOn:string; 
     _id:string;
     _ownerId: string;
-  
+    likesCount: number;
   }
   

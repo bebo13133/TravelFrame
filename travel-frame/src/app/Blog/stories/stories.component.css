@@ -10,10 +10,7 @@
    position: relative;
    min-height: 100vh;
 }
-body::before {
-  /* Стиловете от .comment-main::before */
-  position: fixed; /* Или `absolute`, ако body е с `position: relative;` */
-}
+
 .comment-main::before {
     content: "";
     position: absolute;
@@ -59,21 +56,30 @@ body::before {
     color: white;
 }
 .comment-info{
-    padding: 3em 0;
+    padding: 3em 2em;
     margin-top: 6em;
+    border-radius: 25px;
     display: flex;
     /* flex-wrap: nowrap; */
     gap: 6em;
     border-bottom: 2px solid #ccc;
     position: relative;
-    /* align-items: center; */
+  /* cursor: pointer; */
+    transition: transform 1.7s ease, box-shadow 0.3s ease;
+  /* box-shadow: 0 0px 30px rgba(0,0,0,2.6);  */
+
+}
+
+.comment-info:hover {
+  transform: scale(1.05); /* Увеличаване на елемента за "изпъкващ" ефект */
+  box-shadow: 0 10px 30px rgba(0,0,0,2.6); /* Добавяне на сянка за 3D ефект */
 }
 .comment-info img{
     flex: 1 1 45%;
 
    width: 420px;
    height: 340px;
-   /* object-fit:cover; */
+   object-fit:cover;
    border-radius: 25px;
    box-shadow:0 4px 8px rgba(0, 0, 0, 0.8);
    
@@ -169,16 +175,27 @@ body::before {
     margin-top: 10px;
     margin-right: 10px;
     align-self: flex-end; /* За да се позиционира в долната дясна част */
+    /* position: relative; */
 }
 
-.like-button:hover {
-    color: #007bff; /* Оранжев цвят при ховър */
+/* .like-button:hover {
+    color: #007bff; 
+    
+} */
+.likes-count{
+  position: absolute;
+  right: 55px;
+  bottom: 8px;
+  color: #afaeae;
+  font-size: 1.2em;
 }
-
 button.liked {
-    color: blue; /* Цвят за харесан бутон */
+    color: rgb(76, 76, 250); /* Цвят за харесан бутон */
+    filter: drop-shadow(1px 1px 1px rgba(255, 160, 51, 0.65));
   }
   
   button.unliked {
     color: white; /* Цвят за нехаресан бутон */
+    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.65));
+
   }

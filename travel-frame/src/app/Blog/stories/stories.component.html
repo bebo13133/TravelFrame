@@ -1,5 +1,6 @@
 <!-- <p>create-stories works!</p> -->
 <section class="background">
+  <app-asise-menu-stories/>
     <section class="comment-main">
       <h2>Истории, които се разказват и споделят</h2>
       <!-- Списък с коментари -->
@@ -22,6 +23,7 @@
           <button class="like-button" (click)="toggleLike(story._id)" [ngClass]="{'liked': isLiked[story._id]?.liked, 'unliked': !isLiked[story._id]?.liked}">
             <i class="fa fa-thumbs-up"></i>
         </button>
+        <p class="likes-count">{{ story.likesCount }}</p>
         
       </section>
       <!-- Пагинация -->

@@ -1,0 +1,110 @@
+
+
+@import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css';
+
+
+a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2em;
+}
+.me {
+    width: 400px;
+    margin: 90px auto;
+}
+.me p,
+.me h1 {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-align: center;
+}
+.me p {
+    font-weight: 200;
+    font-size: 1em;
+}
+.me span {
+    font-weight: bold;
+}
+.social {
+    position: fixed;
+    top: 300px;
+    z-index: 11;
+}
+.social ul {
+    padding: 0px;
+    -webkit-transform: translate(-270px, 0);
+    -moz-transform: translate(-270px, 0);
+    -ms-transform: translate(-270px, 0);
+    -o-transform: translate(-270px, 0);
+    transform: translate(-270px, 0);
+}
+.social ul li {
+    display: block;
+    margin: 15px;
+    background: rgba(0, 0, 0, 0.36);
+    width: 330px;
+    text-align: right;
+    padding: 10px;
+    -webkit-border-radius: 0 30px 30px 0;
+    -moz-border-radius: 0 30px 30px 0;
+    border-radius: 0 30px 30px 0;
+    -webkit-transition: all0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+}
+.social ul li:hover {
+    -webkit-transform: translate(110px, 0);
+    -moz-transform: translate(110px, 0);
+    -ms-transform: translate(110px, 0);
+    -o-transform: translate(110px, 0);
+    transform: translate(110px, 0);
+    background: rgba(255, 255, 255, 0.5);
+}
+.social ul li:hover a {
+    color: #000;
+}
+.social ul li:hover i {
+    color: #fff;
+    background: rgb(158, 156, 156);
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+}
+.social ul li i {
+    margin-left: 10px;
+    color: #000;
+    background: #fff;
+    padding: 10px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+    background: #ffffff;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+}
+
+body {
+    /* background: #25343f;
+    color: #fff; */
+    font-family: "Raleway", sans-serif;
+}
+.disabled {
+    pointer-events: none;
+    color: #ccc;
+    cursor: not-allowed;
+  }

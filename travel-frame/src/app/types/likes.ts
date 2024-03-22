@@ -4,4 +4,5 @@ export interface Like{
     userId: string;
     _createdOn?: string;
     _ownerId?: string;
+    likesCount?: number;
 }
