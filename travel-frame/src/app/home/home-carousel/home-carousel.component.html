@@ -1,6 +1,6 @@
 <div class="home-carousel">
   <main #mainElement> 
-      <h2>Stories</h2>
+      <h2>Част от нашите Истории</h2>
 
       <div class="slider">
           <div class="slide-row" #slideRow  >
@@ -10,7 +10,7 @@
                       <h2>{{story.title}}</h2>
                       <p>{{story.description | slice:0:90}}</p>
 
-                      <!-- <p>Author</p> -->
+                      <p class="author">{{story.author}}</p>
                   </div>
                   <div class="hero">
                       <img [routerLink]="['/blog/details', story._id]" src="{{story.image}}" alt="avatar">
@@ -18,7 +18,7 @@
                 </a>
         </div>
   
-              
+
   
         
         

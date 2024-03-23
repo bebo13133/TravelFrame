@@ -133,7 +133,10 @@ main h2 {
   width: 100%;
   overflow: hidden;
 }
-
+.author{
+  padding-top: 1em;
+  color: black;
+}
 @media (max-width: 850px) {
   main {
     width: 500px;
