@@ -66,6 +66,7 @@ likesCountForCurrentStory: number = 0;
   }
 
   loadStories(): void {
+    this.apiService.getStories()
     this.apiService.getStories().subscribe(comments => {
    
         // let filteredComments = comments.filter(comment => comment.destinationId === this.destinationId);

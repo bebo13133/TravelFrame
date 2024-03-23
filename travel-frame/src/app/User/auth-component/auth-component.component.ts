@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LoginComponent } from '../login/login.component';
 import { RegisterComponent } from '../register/register.component';
 import { CommonModule } from '@angular/common';
@@ -16,16 +16,16 @@ import { NoAuthenticatedComponent } from '../../authenticated/no-authenticated/n
   templateUrl: './auth-component.component.html',
   styleUrls: ['./auth-component.component.css','../login/login.component.css', '../register/register.component.css']
 })
-export class AuthComponentComponent {
+export class AuthComponentComponent implements OnInit {
   isRightPanelActive: boolean = false;
   loginForm!: FormGroup;
   registerForm!: FormGroup;
   constructor(private fb: FormBuilder, private userService:UserService,private router:Router) {}
   ngOnInit() {
-    this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email, Validators.minLength(8)]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-    });
+      this.loginForm = this.fb.group({
+        email: ['', [Validators.required, Validators.email, Validators.minLength(8)]],
+        password: ['', [Validators.required, Validators.minLength(6)]],
+      });
 
     this.registerForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(4)]],

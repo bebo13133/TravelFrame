@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment.development';
 import { Destination } from '../types/destination';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Comment } from '../types/comments';
 import { Story } from '../types/story.models';
 import { Like } from '../types/likes';
@@ -11,7 +11,8 @@ import { Like } from '../types/likes';
   providedIn: 'root'
 })
 export class ApiService {
-
+  private storiesSource = new BehaviorSubject<Comment[]>([]);
+  stories$ = this.storiesSource.asObservable();
   constructor(private http: HttpClient) { }
 
 

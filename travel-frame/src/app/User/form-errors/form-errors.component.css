@@ -37,7 +37,7 @@
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     animation: fadeInRight 0.5s ease-out forwards;
-    opacity: 0; /* Начална прозрачност, която ще бъде променена от анимацията */
+    opacity: 0; 
   }
   @keyframes fadeInRight {
     from {
