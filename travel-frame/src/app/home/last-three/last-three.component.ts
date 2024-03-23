@@ -15,6 +15,6 @@ export class LastThreeComponent implements OnInit{
   @Input() destinations: Destination[] = [];
 
   ngOnInit(): void {
-    console.log(this.destinations); // Примерно логване на дестинациите
+    // console.log(this.destinations); // Примерно логване на дестинациите
   }
 }

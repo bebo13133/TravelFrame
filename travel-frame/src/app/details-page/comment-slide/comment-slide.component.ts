@@ -24,7 +24,7 @@ export class CommentSlideComponent implements OnInit, AfterViewInit {
 
 
   ngOnInit(): void {
-    this.commentsService.loadComments();
+    // this.commentsService.loadComments();  тестово е махант да го върно ако продължава грешката 
     this.commentsService.comments$.subscribe(comments => {
       if (this.destinationId) {
         // this.commentsList = comments.filter(comment => comment.destinationId === this.destinationId);
@@ -35,7 +35,7 @@ export class CommentSlideComponent implements OnInit, AfterViewInit {
   
 
         this.commentsList = filteredComments.slice(0, 4);
-        console.log("List", this.commentsList)
+      
         this.btns = Array(Math.min(this.commentsList.length, 4)).fill(0).map((x, i) => i); // динамично определям броя на бутоните ,
         // this.btns = Array.from({length: Math.min(this.commentsList.length, 4)}, (_, i) => i);
       } else {
@@ -47,6 +47,7 @@ export class CommentSlideComponent implements OnInit, AfterViewInit {
 
 
   ngAfterViewInit(): void {
+
     this.updateSlide();
   }
 
@@ -56,6 +57,9 @@ export class CommentSlideComponent implements OnInit, AfterViewInit {
   }
 
   updateSlide(): void {
+    if (!this.mainElement?.nativeElement || !this.slideRow?.nativeElement) {
+      return;
+    }
     const mainWidth = this.mainElement.nativeElement.offsetWidth;
     const translateValue = this.currentIndex * -mainWidth;
     this.slideRow.nativeElement.style.transform = `translateX(${translateValue}px)`;
