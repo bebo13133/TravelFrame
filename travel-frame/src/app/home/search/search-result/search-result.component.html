@@ -1,0 +1,42 @@
+<!-- <app-search-home/> -->
+<app-hero />
+<!-- <app-description/> -->
+<section class="search-bar">
+
+  <form>
+    <input class="searc-inpt" type="text" placeholder="Filter by city" #filter>
+    <button class="primary" type="button" (click)="filterResults(filter.value)">Search</button>
+  </form>
+</section>
+<section class="results">
+  <h2>Резултат от търсенето</h2>
+
+  <section class="last-three-imgs">
+
+    <div class="img-wrapper" *ngFor="let destinations of paginatedList">
+
+      <a [routerLink]="['/destination/details', destinations._id]">
+      <img src="{{destinations?.image || '/assets/media/nk.webp'}}" alt="Image 1">
+      <div class="image-overlay">
+        <h2>{{destinations?.title}}</h2>
+        <p>{{destinations?.['title-desc'] }}</p>
+        <div class="info">
+          <span><i class="icon">📍</i>{{destinations?.title}}</span>
+          <span><i class="icon">📅</i>{{destinations?.dateRange | dataRange }}</span>
+        </div>
+      </div>
+      </a>
+    </div>
+
+
+  </section>
+
+</section>
+<nav aria-label="Page navigation">
+  <ul class="pagination">
+    <li class="page-item" *ngFor="let page of totalPages | numberArray" [class.active]="page === currentPage">
+      <a class="page-link" href="javascript:void(0)" (click)="navigateToPage(page)"
+        [class.active]="page === currentPage">{{ page }}</a>
+    </li>
+  </ul>
+</nav>

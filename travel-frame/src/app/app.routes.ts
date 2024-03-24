@@ -14,6 +14,7 @@ import {  StoriesComponent } from './Blog/stories/stories.component';
 import { CreateStoriesComponent } from './Blog/create-stories/create-stories.component';
 import { StoryDetailsComponent } from './Blog/story-details/story-details.component';
 import { PageNotFoundComponent } from './core/404/page-not-found/page-not-found.component';
+import { SearchResultComponent } from './home/search/search-result/search-result.component';
 
 
 export const routes: Routes = [
@@ -65,6 +66,7 @@ export const routes: Routes = [
         path: 'create-stories', component: CreateStoriesComponent,
         canActivate: [AuthGuard]
     },
+    { path: 'search-page', component: SearchResultComponent },
     { path: 'error', component: ErrorComponent },
 
     // { path: '', redirectTo: '/auth', pathMatch: 'full' },

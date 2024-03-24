@@ -55,6 +55,7 @@
   
   .btn:hover {
     transform: translateY(-5px);
+    cursor: pointer;
   }
   
   .light::before {
@@ -71,7 +72,7 @@
   }
   
   .light::after {
-    content: "Explore";
+    content: "Разгледай";
     position: absolute;
     width: 170px;
     height: 40px;
