@@ -25,7 +25,7 @@ export class SearchResultComponent {
     private router:Router,
        
     ) {
-    this.LoadData();
+    // this.LoadData();
 
   }
   destinations: Destination[] = []
@@ -44,17 +44,23 @@ export class SearchResultComponent {
       this.searchDataService.searchResults$.subscribe(results => {
     
         this.filteredLocationList = results;
+        this.updatePagination()
       });
       this.isDataLoaded = true;
       
     }
+    if (this.isDataLoaded) {
+     this.LoadData();
+
+    }
     console.log("this",this.filteredLocationList)
+    console.log("this2",this.paginatedList)
     // this.LoadData();
     this.route.queryParamMap.subscribe(params => {
       const page = params.get('page');
       this.currentPage = page ? parseInt(page, 10) : 1;
-      this.LoadData();
     });
+
   }
 
 
@@ -81,6 +87,8 @@ export class SearchResultComponent {
     for (let i = startIndex; i < endIndex; i++) {
         this.paginatedList.push(this.filteredLocationList[i]);
     }
+    // this.LoadData();
+
 }
 navigateToPage(page: number) {
   this.router.navigate([], { 
@@ -94,12 +102,15 @@ navigateToPage(page: number) {
 
 
   filterResults(text: string) {
+    
+const trimmedText = text.trim();
+this.filteredLocationList = [...this.destinations]; 
 
-    if (!text) {
+    if (!trimmedText) {
       this.filteredLocationList = this.destinations;
     } else {
       this.filteredLocationList = this.destinations.filter(
-        location => location.title.toLowerCase().includes(text.toLowerCase())
+        location => location.title.toLowerCase().includes(trimmedText.toLowerCase())
         
       );
 

@@ -10,7 +10,7 @@ import { AsiseMenuStoriesComponent } from './asise-menu-stories/asise-menu-stori
 import { Like } from '../../types/likes';
 
 @Component({
-  selector: 'app-create-stories',
+  selector: 'app-stories',
   standalone: true,
   imports: [RouterLink, RouterModule,CreateStoriesComponent,CommonModule,DatePipe,SlicePipe,AsiseMenuStoriesComponent],
   templateUrl: './stories.component.html',

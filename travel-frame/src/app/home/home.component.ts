@@ -9,11 +9,15 @@ import { ApiService } from '../services/api.service';
 import { Subscription } from 'rxjs';
 import { SearchHomeComponent } from './search/search-home/search-home.component';
 import { CommonModule } from '@angular/common';
+import { HomeAsideComponent } from './home-aside/home-aside.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [DescriptionComponent,LastThreeComponent,HeroComponent,InfoHomeComponent,HomeCarouselComponent,SearchHomeComponent,CommonModule],
+  imports: [DescriptionComponent,LastThreeComponent,
+    HeroComponent,InfoHomeComponent,
+    HomeCarouselComponent,SearchHomeComponent,
+    CommonModule,HomeAsideComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

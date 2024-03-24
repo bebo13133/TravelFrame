@@ -15,6 +15,8 @@ import { CreateStoriesComponent } from './Blog/create-stories/create-stories.com
 import { StoryDetailsComponent } from './Blog/story-details/story-details.component';
 import { PageNotFoundComponent } from './core/404/page-not-found/page-not-found.component';
 import { SearchResultComponent } from './home/search/search-result/search-result.component';
+import { SearchBlogComponent } from './Blog/searchStory/search-blog/search-blog.component';
+
 
 
 export const routes: Routes = [
@@ -56,6 +58,10 @@ export const routes: Routes = [
     },
     {
         path: 'blog', component: StoriesComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'search-blog', component: SearchBlogComponent,
         canActivate: [AuthGuard]
     },
     {

@@ -6,13 +6,13 @@ import { Store, StoreModule, provideStore } from '@ngrx/store';
 import { EffectsModule, provideEffects } from '@ngrx/effects';
 
 import { ApiService } from '../../services/api.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ErrorFormComponent } from '../error-form/error-form.component';
 import { map, tap } from 'rxjs';
 @Component({
   selector: 'app-create-stories',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, StoreModule, EffectsModule, ErrorFormComponent],
+  imports: [ReactiveFormsModule, CommonModule, StoreModule, EffectsModule, ErrorFormComponent, RouterLink],
   templateUrl: './create-stories.component.html',
   styleUrl: './create-stories.component.css',
   providers: [

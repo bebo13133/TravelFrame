@@ -43,6 +43,7 @@
     width: 100%;
     min-height: 30vh;
     align-items: center;
+    margin-bottom: 2em;
   }
 
 
@@ -119,4 +120,34 @@
   }
   input[type='file'] {
     color: transparent;
+  }
+  .btn:hover {
+    transform: translateY(-5px);
+  }
+  
+  .lights-back::before {
+    content: "";
+    position: absolute;
+    background-image: conic-gradient(rgb(219, 49, 26) 20deg,
+        transparent 150deg);
+    width: 400%;
+    height: 400%;
+    border-radius: 5px;
+    animation: rotate 3s linear infinite;
+  }
+  
+  .lights-back::after {
+    content: "BACK";
+    position: absolute;
+    width: 170px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(35px);
+    -webkit-backdrop-filter: blur(35px);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    border-radius: 5px;
   }

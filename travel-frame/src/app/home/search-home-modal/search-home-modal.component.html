@@ -1,0 +1,12 @@
+<div class="modal" *ngIf="isVisible">
+    <div class="modal-content">
+      <span class="close" (click)="closeModal()">&times;</span>
+      <!-- Тук добавяме формата за търсене вътре в модала -->
+      <section class="search-bar">
+        <form>
+          <input type="text" placeholder="Filter by city" #filter>
+          <button class="primary" type="button" (click)="filterResults(filter.value)">Search</button>
+        </form>
+      </section>
+    </div>
+  </div>

@@ -45,15 +45,18 @@ constructor(private apiService:ApiService, private router:Router, private search
 }
 
 filterResults(text: string) {
-  if (!text) {
+  const trimmedText = text.trim();
+// this.filteredLocationList = [...this.destinations]; 
+
+  if (!trimmedText) {
     this.filteredLocationList = this.destinations;
   } else {
     this.filteredLocationList = this.destinations.filter(
-      location => location?.title.toLowerCase().includes(text.toLowerCase())
+      location => location?.title.toLowerCase().includes(trimmedText.toLowerCase())
     );
   }
   
-  // Споделяне на резултатите от търсенето чрез сервиса
+
   this.searchDataService.setSearchResults(this.filteredLocationList);
   this.router.navigate(['/search-page'])
 

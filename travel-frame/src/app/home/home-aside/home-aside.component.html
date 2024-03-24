@@ -4,12 +4,13 @@
             <a routerLink="/create-stories" routerLinkActive="router-link-active" >Създай<i class="fa-solid fa-user-pen" [ngStyle]="{'color':'#ed0c0c'}"></i></a>
           </li>
           <ng-container >
-        <li><a  href="javascript:void(0);" (click)="searchModal.showModal()">Search <i class="fa-solid fa-magnifying-glass" [ngStyle]="{'color': '#edce02'}"></i></a></li>
+        <li><a  href="javascript:void(0);" (click)="searchHomeModal.showModal()">Search <i class="fa-solid fa-magnifying-glass" [ngStyle]="{'color': '#edce02'}"></i></a></li>
         <li><a routerLink="/home" >Back home <i class="fa-solid fa-house"></i></a></li>
     </ng-container>
 
     </ul>
 </nav>
-<app-search-modal #searchModal/>
+<app-search-home-modal #searchHomeModal/>
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
 
