@@ -1,0 +1,38 @@
+<section class="profile-page">
+    <div class="profile-info">
+        <div class="hero-profile">
+            <h2>Hello, Peter</h2>
+        </div>
+
+        <div class="profile-img">
+      
+            <img [src]="imageSrc || '/assets/media/person.png'" alt="person-img">
+           
+                <input type="file" #fileInput style="display: none" (change)="onFileSelected($event)">
+            
+                <button type="button" (click)="fileInput.click()">Добави снимка</button>
+                <button (click) ="submitForm()" type="submit">Изпрати</button>
+        
+        </div>
+
+       
+        
+    </div>
+    <div class="destinations-info">
+        <h2>Любими пътешествия </h2>
+        <div class="dest-info">
+            <div class="one-card">
+                <img src="/assets/media/desert.webp" alt="dest-img">
+                <p>Мароко</p>
+            </div>
+            <div class="one-card">
+                <img src="/assets/media/desert.webp" alt="dest-img">
+                <p>Мароко</p>
+            </div>
+            <div class="one-card">
+                <img src="/assets/media/desert.webp" alt="dest-img">
+                <p>Мароко</p>
+            </div>
+        </div>
+    </div>
+</section>

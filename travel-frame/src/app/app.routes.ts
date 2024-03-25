@@ -16,6 +16,7 @@ import { StoryDetailsComponent } from './Blog/story-details/story-details.compon
 import { PageNotFoundComponent } from './core/404/page-not-found/page-not-found.component';
 import { SearchResultComponent } from './home/search/search-result/search-result.component';
 import { SearchBlogComponent } from './Blog/searchStory/search-blog/search-blog.component';
+import { ProfileComponent } from './User/profile/profile.component';
 
 
 
@@ -70,6 +71,10 @@ export const routes: Routes = [
     },
     {
         path: 'create-stories', component: CreateStoriesComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'profile', component: ProfileComponent,
         canActivate: [AuthGuard]
     },
     { path: 'search-page', component: SearchResultComponent },

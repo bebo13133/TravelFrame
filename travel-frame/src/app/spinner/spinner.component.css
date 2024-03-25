@@ -1,37 +1,47 @@
-.loader{
-    width: 100%;
-    min-height: 100vh;
-}
+/* .custom-loader-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.1); 
 
+  z-index: 999; 
+} */
 .custom-loader {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    border: 8px solid #0000;
-    border-right-color: #F4694297;
-    position: fixed;
-    animation: s4 1s infinite linear;
-    left: 50%;
-    right: 50%;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 8px solid #0000;
+  border-right-color: #F4694297;
+  position: fixed;
+  animation: s4 1s infinite linear;
+  left: 50%;
+  right: 50%;
   bottom: 50%;
   top: 50%;
-    /* transform: translate(-50%, -50%); */
+  /* transform: translate(-50%, -50%); */
+  /* z-index: 1000; */
+}
+
+.custom-loader:before,
+.custom-loader:after {
+  content: "";
+  position: absolute;
+
+  inset: -8px;
+  border-radius: 50%;
+  border: inherit;
+  animation: inherit;
+  animation-duration: 2s;
+}
+
+.custom-loader:after {
+  animation-duration: 4s;
+}
+
+@keyframes s4 {
+  100% {
+    transform: rotate(1turn)
   }
-  .custom-loader:before,
-  .custom-loader:after {
-    content: "";
-    position: absolute;
-   
-    inset:-8px;
-    border-radius: 50%;
-    border:inherit;
-    animation:inherit;
-    animation-duration: 2s;
-  }
-  .custom-loader:after {
-    animation-duration: 4s;
-  }
-  
-  @keyframes s4 {
-    100% {transform: rotate(1turn)}
-  }
+}
