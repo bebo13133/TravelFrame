@@ -6,12 +6,13 @@ import { SliderCatalogComponent } from './slider-catalog/slider-catalog.componen
 import { Destination } from '../types/destination';
 import { ApiService } from '../services/api.service';
 import { Subscription } from 'rxjs';
+import { SpinnerComponent } from '../spinner/spinner.component';
 
 
 @Component({
   selector: 'app-destinations',
   standalone: true,
-  imports: [CommonModule,DestinationCatalogComponent,SliderCatalogComponent],
+  imports: [CommonModule,DestinationCatalogComponent,SliderCatalogComponent,SpinnerComponent],
   templateUrl: './destinations.component.html',
   styleUrl: './destinations.component.css'
 })

@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Destination } from '../../types/destination';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { ApiService } from '../../services/api.service';
+import { SearchDataService } from '../../services/search-data.service';
 
 @Component({
   selector: 'app-search-home-modal',
@@ -10,11 +12,43 @@ import { RouterLink } from '@angular/router';
   templateUrl: './search-home-modal.component.html',
   styleUrl: './search-home-modal.component.css'
 })
-export class SearchHomeModalComponent {
+export class SearchHomeModalComponent implements OnInit {
 
   isVisible: boolean = false;
   filteredLocationList: Destination[] = [];
-  stories: Destination[] = []
+  destinations: Destination[] = []
+
+constructor(private apiService:ApiService, private router:Router,private searchDataService: SearchDataService){
+  this.loadData()
+  
+}
+
+ngOnInit(): void {
+  
+}
+
+loadData() {
+  this.apiService.getDestinations().subscribe({
+    next: (destinations) => {
+      this.destinations = destinations
+
+      this.filteredLocationList = this.destinations
+
+      console.log('Error fetching destinations:', this.filteredLocationList);
+
+    },
+    error: (error) => {
+
+      console.error('Error fetching destinations:', error);
+
+
+    }
+  })
+}
+
+
+
+
 
   showModal(): void {
     this.isVisible = true;
@@ -28,23 +62,23 @@ export class SearchHomeModalComponent {
   }
 
   filterResults(text: string): void {
-//     const trimmedText = text.trim();
-//   this.filteredLocationList = [...this.stories]; 
+    const trimmedText = text.trim();
+  this.filteredLocationList = [...this.destinations]; 
 
-//     if (!trimmedText) {
-//       this.filteredLocationList = this.stories;
-//     } else {
-//       this.filteredLocationList = this.stories.filter(
-//         story => story?.title.toLowerCase().includes(trimmedText.toLowerCase())
-//       );
-//       //  console.log('destinations:',  this.filteredLocationList);
+    if (!trimmedText) {
+      this.filteredLocationList = this.destinations;
+    } else {
+      this.filteredLocationList = this.destinations.filter(
+        destination => destination?.title.toLowerCase().includes(trimmedText.toLowerCase())
+      );
+      //  console.log('destinations:',  this.filteredLocationList);
 
-//     }
+    }
 
-//     this.searchStoryService.setSearchResults(this.filteredLocationList);
+    this.searchDataService.setSearchResults(this.filteredLocationList);
 
-// this.closeModal()
-//     this.router.navigate(['/search-blog'])
+this.closeModal()
+    this.router.navigate(['/search-page'])
 
   }
 

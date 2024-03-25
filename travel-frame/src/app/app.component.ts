@@ -7,11 +7,12 @@ import { LoginComponent } from './User/login/login.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ApiService } from './services/api.service';
 import { UserService } from './User/user.service';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,HeaderComponent,HomeComponent,FooterComponent,LoginComponent,HttpClientModule],
+  imports: [RouterOutlet,HeaderComponent,HomeComponent,FooterComponent,LoginComponent,HttpClientModule,SpinnerComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
   providers: [HttpClientModule, ApiService, UserService],

@@ -1,0 +1,37 @@
+.loader{
+    width: 100%;
+    min-height: 100vh;
+}
+
+.custom-loader {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 8px solid #0000;
+    border-right-color: #F4694297;
+    position: fixed;
+    animation: s4 1s infinite linear;
+    left: 50%;
+    right: 50%;
+  bottom: 50%;
+  top: 50%;
+    /* transform: translate(-50%, -50%); */
+  }
+  .custom-loader:before,
+  .custom-loader:after {
+    content: "";
+    position: absolute;
+   
+    inset:-8px;
+    border-radius: 50%;
+    border:inherit;
+    animation:inherit;
+    animation-duration: 2s;
+  }
+  .custom-loader:after {
+    animation-duration: 4s;
+  }
+  
+  @keyframes s4 {
+    100% {transform: rotate(1turn)}
+  }

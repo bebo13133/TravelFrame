@@ -197,6 +197,14 @@ export class CreatePageComponent implements OnInit {
 
 
     if (this.createForm.valid) {
+     
+        // Тримване на всички текстови полета в формата
+        Object.keys(this.createForm.controls).forEach(key => {
+          const control = this.createForm.get(key);
+          if (typeof control!.value === 'string') {
+            control!.setValue(control!.value.trim());
+          }
+        });
       const formData = {
         ...this.createForm.value,
         image: this.imagePreview,

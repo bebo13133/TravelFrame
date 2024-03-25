@@ -1,13 +1,16 @@
 import { HTTP_INTERCEPTORS, HttpClient, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
 import { Injectable, Provider } from "@angular/core";
-import { Observable, catchError, tap } from "rxjs";
+import { Observable, catchError, finalize, tap } from "rxjs";
 import { environment } from "../environments/environment.development";
 import { Router } from "@angular/router";
 import { ErrorService } from "./core/error/error.service";
+import { SpinnerService } from "./spinner/spinner.service";
 
 @Injectable()
 export class AppInterceptor implements HttpInterceptor {
-  constructor(private router: Router, private errorService: ErrorService) { }
+  constructor(private router: Router, private errorService: ErrorService, private spinnerService:SpinnerService) { }
+
+
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const accessToken = localStorage.getItem('accessToken');
 
@@ -27,7 +30,7 @@ export class AppInterceptor implements HttpInterceptor {
       });
     }
 
-
+    this.spinnerService.requestStarted();
     return next.handle(req)
       .pipe(
         catchError((error) => {
@@ -47,7 +50,12 @@ export class AppInterceptor implements HttpInterceptor {
             this.router.navigate(['/error']);
           }
           // Връщане на грешката като Observable, за да може потокът да продължи
+
           return [error];
+        }),
+        finalize(() => {
+          // Скриване на спинъра след завършване на заявката или при грешка
+          this.spinnerService.requestEnded();
         })
       )
   }

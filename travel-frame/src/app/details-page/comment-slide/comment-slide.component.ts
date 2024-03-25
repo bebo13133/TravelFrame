@@ -24,6 +24,7 @@ export class CommentSlideComponent implements OnInit, AfterViewInit {
 
 
   ngOnInit(): void {
+    this.commentsService.loadComments()
     // this.commentsService.loadComments();  тестово е махант да го върно ако продължава грешката 
     this.commentsService.comments$.subscribe(comments => {
       if (this.destinationId) {
