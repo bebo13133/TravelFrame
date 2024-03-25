@@ -20,6 +20,7 @@ export class UserService implements OnDestroy , OnInit {
   }
 // subscription: Subscription;
   constructor(private http: HttpClient) {
+    
     this.loadUserFromLocalStorage();
     this.subscription = this.user$.subscribe(user => {
       this.user = user;
