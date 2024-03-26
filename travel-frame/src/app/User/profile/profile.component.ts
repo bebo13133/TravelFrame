@@ -40,10 +40,10 @@ export class ProfileComponent {
       const reader = new FileReader();
 
       reader.onload = (e: any) => {
-        this.imageSrc = e.target.result; // Прочита и задава избраната снимка за показване
+        this.imageSrc = e.target.result; 
       };
 
-      reader.readAsDataURL(this.file); // Превръща избрания файл в Data URL
+      reader.readAsDataURL(this.file); 
     }
     // this.form = new FormGroup({
     //   image: new FormControl(null)
@@ -63,7 +63,7 @@ export class ProfileComponent {
         const progress = (snapshot.bytesTransferred / snapshot.totalBytes)
         console.log('Uplaod Is' + progress + '% done')
       }, (error) => {
-        // Обработка на грешки...
+     
         console.error('Upload error:', error);
       },
       () => {
