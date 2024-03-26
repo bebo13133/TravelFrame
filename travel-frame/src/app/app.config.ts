@@ -28,11 +28,11 @@ const firebaseConfig = {
 export const appConfig: ApplicationConfig = {
   providers: [
  
-
+    
     provideRouter(routes), importProvidersFrom([HttpClientModule,
     provideFirebaseApp(()=>initializeApp(firebaseConfig)),
     provideStorage(()=>getStorage()),
-  provideFirestore(()=> getFirestore())
+     provideFirestore(()=> getFirestore())
   ]),
     
     { provide: HTTP_INTERCEPTORS,

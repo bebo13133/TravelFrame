@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 import { PasswordValidator } from '../../validators/password-validator';
 import { FormErrorsComponent } from '../form-errors/form-errors.component';
 import { NoAuthenticatedComponent } from '../../authenticated/no-authenticated/no-authenticated.component';
+import { ProfilePhotoService } from '../../services/profile-photo.service';
+import { getDownloadURL, getStorage, ref } from '@angular/fire/storage';
 
 @Component({
   selector: 'app-auth-component',
@@ -20,7 +22,17 @@ export class AuthComponentComponent implements OnInit {
   isRightPanelActive: boolean = false;
   loginForm!: FormGroup;
   registerForm!: FormGroup;
-  constructor(private fb: FormBuilder, private userService:UserService,private router:Router) {}
+  // private userId: string | undefined;
+
+  constructor(private fb: FormBuilder, private userService:UserService,private router:Router, private photoService:ProfilePhotoService) {
+    // this.userService.user$.subscribe(user => {
+    //   this.userId = user?._id;
+    //   if (this.userId) {
+    //     // Зареждане на съхраненото URL при стартиране
+    //     this.photoService.loadPhotoUrlFromStorage(this.userId);
+    //   }
+    // });
+  }
   ngOnInit() {
       this.loginForm = this.fb.group({
         email: ['', [Validators.required, Validators.email, Validators.minLength(8)]],
@@ -46,7 +58,12 @@ export class AuthComponentComponent implements OnInit {
     if (this.loginForm.valid) {
       this.userService.login(this.loginForm.value.email.trim(), this.loginForm.value.password.trim()).subscribe({
         next: (response)=>{
+          const userId = response._id;
           console.log('Login successful', response);
+      
+          if (userId) {
+            this.photoService.fetchProfilePhoto(userId);
+          }
           this.router.navigate(['/home']);
         },
         error: (error) => {
@@ -58,6 +75,11 @@ export class AuthComponentComponent implements OnInit {
       console.log('Form is not valid');
     }
   }
+
+
+
+
+
 
   register() {
  

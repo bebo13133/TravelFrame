@@ -19,7 +19,7 @@
       <a *ngIf="!isLoggedIn" routerLink="/auth" class="nav-item">Sign Up</a>
       <!-- <a *ngIf="isLoggedIn" (click)="logout()" class="nav-item">Logout</a> -->
       <div *ngIf="isLoggedIn" class="dropdown">
-        <img src="assets/media/desert.webp" class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown"
+        <img src="{{photoUrl}}" class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <a class="dropdown-item" routerLink="/profile">Профил</a>

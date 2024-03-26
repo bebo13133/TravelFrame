@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component, HostListener, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, HostListener, OnInit } from '@angular/core';
 import { ImagesHeroRowsComponent } from './images-hero-rows/images-hero-rows.component';
 import { Route, Router, RouterLink } from '@angular/router';
 import { UserService } from '../../User/user.service';
+import { ProfilePhotoService } from '../../services/profile-photo.service';
 
 @Component({
   selector: 'app-header',
@@ -13,14 +14,32 @@ import { UserService } from '../../User/user.service';
 })
 export class HeaderComponent implements OnInit {
   scrolledDown = false;
+  photoUrl: string | null = null;
+  private userId: string | undefined;
+
   get isLoggedIn(): boolean {
     return this.userService.isLoggedIn
   }
-  constructor(private userService:UserService, private router:Router) { 
-
+  constructor(private userService:UserService, private router:Router, private photoService:ProfilePhotoService,private cdr: ChangeDetectorRef) { 
+    this.userService.user$.subscribe(user => {
+      this.userId = user?._id;
+    });
+  
+    this.userService.user$.subscribe(user => {
+      this.userId = user?._id;
+      if (this.userId) {
+        // Зареждане на съхраненото URL при стартиране
+        this.photoService.loadPhotoUrlFromStorage(this.userId);
+      }
+    });
   }
 
   ngOnInit(): void {
+    this.photoService.getPhotoUrl().subscribe(url => {
+      this.photoUrl = url;
+      console.log('Photo',this.photoUrl)
+      this.cdr.detectChanges();
+    });
   }
 
   @HostListener('window:scroll', ['$event'])

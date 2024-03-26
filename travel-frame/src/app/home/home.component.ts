@@ -12,6 +12,8 @@ import { CommonModule } from '@angular/common';
 import { HomeAsideComponent } from './home-aside/home-aside.component';
 import { SpinnerComponent } from '../spinner/spinner.component';
 import { SpinnerService } from '../spinner/spinner.service';
+import { ProfilePhotoService } from '../services/profile-photo.service';
+import { UserService } from '../User/user.service';
 
 @Component({
   selector: 'app-home',
@@ -26,10 +28,24 @@ import { SpinnerService } from '../spinner/spinner.service';
 export class HomeComponent implements OnInit {
   destinations: Destination []=[]
   isLoading = false
+  private userId: string | undefined;
 // private subscription: Subscription = new Subscription();
 // filteredLocationList: Destination[] = [];
 
-constructor(private apiService:ApiService, private spinnerService:SpinnerService){
+constructor(private apiService:ApiService, private spinnerService:SpinnerService, private photoService:ProfilePhotoService, private userService:UserService){
+  this.userService.user$.subscribe(user => {
+    this.userId = user?._id;
+  });
+
+  this.userService.user$.subscribe(user => {
+    this.userId = user?._id;
+    if (this.userId) {
+      // Зареждане на съхраненото URL при стартиране
+      this.photoService.loadPhotoUrlFromStorage(this.userId);
+    }
+  });
+
+
   this.spinnerService.requestStarted()
   // this.subscription.add(
     this.apiService.getDestinations().subscribe({

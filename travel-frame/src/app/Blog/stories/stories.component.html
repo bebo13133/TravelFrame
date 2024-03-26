@@ -12,7 +12,7 @@
               <h4>{{ story.description | slice:300}}</h4>
               <div class="author">
                 <div class="person-info">
-                  <img src="{{story.image}}" alt="author-img">
+                  <img src="{{story.authorImage || 'assets/media/desert.webp'}}" alt="author-img">
                   
                   <p>{{ story.author}}</p>
                 </div>

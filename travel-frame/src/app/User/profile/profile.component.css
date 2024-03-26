@@ -49,7 +49,7 @@ form{
     margin-bottom: 1em;
     
 }
-form button{
+.profile-img button{
     border-radius: 25px;
     padding: 1em 2em;
 }

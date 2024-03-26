@@ -8,6 +8,7 @@ import { Story } from '../../types/story.models';
 import { SlicePipe } from '../../shared/pipes/slice.pipe';
 import { AsiseMenuStoriesComponent } from './asise-menu-stories/asise-menu-stories.component';
 import { Like } from '../../types/likes';
+import { ProfilePhotoService } from '../../services/profile-photo.service';
 
 @Component({
   selector: 'app-stories',
@@ -25,12 +26,16 @@ hasStories: boolean = false;
 isLiked: { [storyId: string]: { liked: boolean, likeId?: string } } = {};
 likesForCurrentStory: Like[] = []; // Използвайте дефинирания интерфейс тук
 likesCountForCurrentStory: number = 0;
-
+images$ = this.photoService.images$;
   constructor(
     private apiService: ApiService,
     private route: ActivatedRoute,
-    private router: Router
-  ) { }
+    private router: Router,
+    private photoService: ProfilePhotoService
+  ) { 
+    this.photoService.fetchImages();
+
+  }
 
   ngOnInit(): void {
     this.loadStoriesWithLikes()
@@ -55,7 +60,7 @@ likesCountForCurrentStory: number = 0;
   loadLikes(userId: string): void {
     this.apiService.getAllLikes().subscribe(allLikes => {
       const userLikes = allLikes.filter(like => like._ownerId === userId);
-      console.log('адсадсадса',userLikes);
+ 
 
       userLikes.forEach(like => {
         this.isLiked[like.storyId || ''] = { liked: true, likeId: like._id };
@@ -65,24 +70,59 @@ likesCountForCurrentStory: number = 0;
     });
   }
 
-  loadStories(): void {
-    this.apiService.getStories()
-    this.apiService.getStories().subscribe(comments => {
+  // loadStories(): void {
+  //   this.apiService.getStories()
+  //   this.apiService.getStories().subscribe(comments => {
    
-        // let filteredComments = comments.filter(comment => comment.destinationId === this.destinationId);
-        this.totalPages = Math.ceil(comments.length / this.commentsPerPage);
-        this.hasStories = comments.length > 0;
+  //       // let filteredComments = comments.filter(comment => comment.destinationId === this.destinationId);
+  //       this.totalPages = Math.ceil(comments.length / this.commentsPerPage);
+  //       this.hasStories = comments.length > 0;
 
        
-        this.storiesList = comments.slice(
+  //       this.storiesList = comments.slice(
+  //         (this.currentPage - 1) * this.commentsPerPage,
+  //         this.currentPage * this.commentsPerPage
+  //       );
+    
+      
+  //   });
+  // }
+
+  loadStories(): void {
+    this.photoService.fetchImagesMap().then(imagesMap => {
+      this.apiService.getStories().subscribe(stories => {
+        // Прилагане на изображенията към авторите на историите
+        const storiesWithImages = stories.map(story => {
+          const authorImage = imagesMap[story._ownerId] || 'път_към_стандартно_изображение';
+      
+          return {...story, authorImage: authorImage};
+        
+        });
+  
+        // Прилагане на пагинация и обновяване на състоянието
+        this.totalPages = Math.ceil(storiesWithImages.length / this.commentsPerPage);
+        this.hasStories = storiesWithImages.length > 0;
+  
+        this.storiesList = storiesWithImages.slice(
           (this.currentPage - 1) * this.commentsPerPage,
           this.currentPage * this.commentsPerPage
         );
-    
-      
+      });
     });
   }
 
+
+
+
+
+
+
+
+
+
+
+
+  
   get pagesArray() {
     let pages: Array<number | string> = [];
   
