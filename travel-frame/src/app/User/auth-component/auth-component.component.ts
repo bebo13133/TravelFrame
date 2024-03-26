@@ -54,8 +54,6 @@ export class AuthComponentComponent implements OnInit {
   }
 
 
-  // Вашият логин компонент
-
   login() {
     if (this.loginForm.valid) {
       const email = this.loginForm.value.email.trim();

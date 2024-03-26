@@ -39,6 +39,6 @@ export class DestinationsComponent {
     );
 }
 ngOnDestroy(): void {
-  this.subscription.unsubscribe(); // Правилно анулиране на абонамента
+  this.subscription.unsubscribe(); 
 }
 }

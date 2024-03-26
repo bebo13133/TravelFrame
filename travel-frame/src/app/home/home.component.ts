@@ -40,7 +40,7 @@ constructor(private apiService:ApiService, private spinnerService:SpinnerService
   this.userService.user$.subscribe(user => {
     this.userId = user?._id;
     if (this.userId) {
-      // Зареждане на съхраненото URL при стартиране
+ 
       this.photoService.loadPhotoUrlFromStorage(this.userId);
     }
   });

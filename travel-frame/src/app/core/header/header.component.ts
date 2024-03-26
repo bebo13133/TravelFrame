@@ -30,7 +30,7 @@ export class HeaderComponent implements OnInit {
     this.userService.user$.subscribe(user => {
       this.userId = user?._id;
       if (this.userId) {
-        // Зареждане на съхраненото URL при стартиране
+
         // this.photoService.loadPhotoUrlFromStorage(this.userId);
       }
     });
@@ -72,7 +72,7 @@ export class HeaderComponent implements OnInit {
 
   @HostListener('window:scroll', ['$event'])
   onScroll() {
-    this.scrolledDown = window.scrollY > 250; // Проверява дали потребителят е скролнал страницата надолу повече от 50px
+    this.scrolledDown = window.scrollY > 250; 
   }
   logout(){
     this.userService.logout().subscribe({
