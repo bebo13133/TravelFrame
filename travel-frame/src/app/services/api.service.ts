@@ -74,12 +74,12 @@ export class ApiService {
   }
   updateLikesCount(storyId: string, userId: string): Observable<any> {
     const { apiUrl } = environment
-    const url = `${apiUrl}/data/stories/${storyId}/likesCount`; // URL за вашата ендпойнт логика
+    const url = `${apiUrl}/data/stories/${storyId}/likesCount`; 
     return this.http.put(url, { userId });
   }
   removeLikesCount(storyId: string, userId:string): Observable<any> {
     const { apiUrl } = environment
-    const url = `${apiUrl}/data/stories/${storyId}/likesCount/${userId}`; // URL за вашата ендпойнт логика
+    const url = `${apiUrl}/data/stories/${storyId}/likesCount/${userId}`; 
     return this.http.delete(url);
   }
 }
