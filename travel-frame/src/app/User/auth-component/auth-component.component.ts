@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { LoginComponent } from '../login/login.component';
 import { RegisterComponent } from '../register/register.component';
 import { CommonModule } from '@angular/common';
@@ -23,8 +23,8 @@ export class AuthComponentComponent implements OnInit {
   loginForm!: FormGroup;
   registerForm!: FormGroup;
   // private userId: string | undefined;
-
-  constructor(private fb: FormBuilder, private userService:UserService,private router:Router, private photoService:ProfilePhotoService) {
+  photoUrl: string | null = null;
+  constructor(private fb: FormBuilder, private userService:UserService,private router:Router, private photoService:ProfilePhotoService,private cdr: ChangeDetectorRef) {
     // this.userService.user$.subscribe(user => {
     //   this.userId = user?._id;
     //   if (this.userId) {
@@ -32,6 +32,7 @@ export class AuthComponentComponent implements OnInit {
     //     this.photoService.loadPhotoUrlFromStorage(this.userId);
     //   }
     // });
+
   }
   ngOnInit() {
       this.loginForm = this.fb.group({
@@ -53,28 +54,50 @@ export class AuthComponentComponent implements OnInit {
   }
 
 
+  // Вашият логин компонент
+
   login() {
- 
     if (this.loginForm.valid) {
-      this.userService.login(this.loginForm.value.email.trim(), this.loginForm.value.password.trim()).subscribe({
-        next: (response)=>{
-          const userId = response._id;
-          console.log('Login successful', response);
+      const email = this.loginForm.value.email.trim();
+      const password = this.loginForm.value.password.trim();
       
+      this.userService.login(email, password).subscribe({
+        next: async (response) => {
+          console.log('Login successful', response);
+          
+          const userId = response._id;
           if (userId) {
-            this.photoService.fetchProfilePhoto(userId);
+            const savedPhotoUrl = localStorage.getItem(`profilePhoto_${userId}`);
+            if (savedPhotoUrl) {
+              this.photoUrl = savedPhotoUrl;
+              this.cdr.detectChanges();
+            } else {
+              try {
+                const imagesMap = await this.photoService.fetchImagesMap();
+                const profilePhotoUrl = imagesMap[userId];
+                if (profilePhotoUrl) {
+                  this.photoUrl = profilePhotoUrl;
+                  localStorage.setItem(`profilePhoto_${userId}`, profilePhotoUrl);
+                  this.cdr.detectChanges();
+                }
+              } catch (error) {
+                console.error("Error fetching images map:", error);
+              }
+            }
           }
+          
           this.router.navigate(['/home']);
         },
         error: (error) => {
           console.error('Login failed', error);
-       
         }
       });
-    }else{
+    } else {
       console.log('Form is not valid');
     }
   }
+  
+  
 
 
 

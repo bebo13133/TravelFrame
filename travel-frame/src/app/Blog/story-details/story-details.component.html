@@ -5,7 +5,7 @@
             <h4>{{(story?.destination || '')  }}</h4>
             <h2>{{story?.title}}</h2>
             <div class="author-story">
-                <img src="{{story?.image}}" alt="">
+                <img src="{{story?.authorImage || '/assets/media/desert.webp'}}" alt="">
                 <p>{{story?.author}}</p>
             </div>
         </div>
@@ -13,7 +13,7 @@
         <p style="white-space: pre-wrap;" class="desc-story">{{(story?.description || '') | addNewLine}}</p>
 
         <div class="author-story">
-            <img src="{{story?.image}}" alt="">
+            <img src="{{story?.authorImage || '/assets/media/desert.webp'}}" alt="">
             <p>{{story?.author}}</p>
         </div>
         <div class="back-btn">

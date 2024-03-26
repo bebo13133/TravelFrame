@@ -10,6 +10,7 @@ export class ProfilePhotoService {
   private photoUrl = new BehaviorSubject<string | null>(null)
   private imagesSubject = new BehaviorSubject<string[]>([]);
   public images$ = this.imagesSubject.asObservable();
+  
   // private folderPath: string = 'Images';
   setPhotoUrl(url: string) {
     this.photoUrl.next(url);
@@ -30,32 +31,39 @@ export class ProfilePhotoService {
       this.photoUrl.next(url);
     }
   }
-  fetchProfilePhoto(userId: string) {
-    const storage = getStorage();
-    const photoPath = `images/${userId}_profile_photo`;
-    const photoRef = ref(storage, photoPath);
-
-    getDownloadURL(photoRef)
-      .then((url) => {
+  fetchProfilePhoto(userId: string): Promise<string> {
+    return new Promise((resolve, reject) => {
+      const storage = getStorage();
+      const photoPath = `images/${userId}_profile_photo`;
+      const photoRef = ref(storage, photoPath);
   
-        console.log('Profile photo URL:', url);
-        this.setPhotoUrl(url); 
-        localStorage.setItem('userProfilePhoto', url); 
-      })
-      .catch((error) => {
-        console.error('Error fetching profile photo:', error);
-  
-      });
+      getDownloadURL(photoRef)
+        .then((url) => {
+          console.log('Profile photo URL:', url);
+          this.setPhotoUrl(url); 
+          localStorage.setItem('userProfilePhoto', url);
+          resolve(url); // Резолвиране на Promise с URL
+        })
+        .catch((error) => {
+          console.error('Error fetching profile photo:', error);
+          reject(error); // Реджектване на Promise при грешка
+        });
+    });
   }
+  
+  
 
   constructor(private storage: Storage) {
     const savedPhotoUrl = localStorage.getItem('userProfilePhoto');
     if (savedPhotoUrl) {
       this.photoUrl.next(savedPhotoUrl);
     }
+    console.log("Received image URLs: ", this.images$);
   }
+
+
   fetchImages(): void {
-    // Директно задайте път към папката 'images'
+  
     const storageRef = ref(this.storage, 'images');
     listAll(storageRef)
       .then(res => {
@@ -64,16 +72,19 @@ export class ProfilePhotoService {
           .then(urls => {
      
             this.imagesSubject.next(urls); 
+          
           });
       })
       .catch(error => console.log(error));
   }
+  
  extractUserIdFromPath(filePath:any) {
  
     const regex = /images\/(.+?)_/; 
     const match = filePath.match(regex);
     return match ? match[1] : null; 
   }
+
   async fetchImagesMap(): Promise<{[userId: string]: string}> {
     const imagesMap: {[userId: string]: string} = {};
     const storageRef = ref(this.storage, 'images');
@@ -88,5 +99,16 @@ export class ProfilePhotoService {
     return imagesMap;
   }
 
+  async fetchSingleImage(userId: string): Promise<string> {
+    try {
+      const photoPath = `images/${userId}_profile_photo`;
+      const photoRef = ref(this.storage, photoPath);
+      const url = await getDownloadURL(photoRef);
+      return url;
+    } catch (error) {
+      console.error('Error fetching single image:', error);
+      throw error; // Или може да върнете стандартен URL към изображение, ако предпочитате
+    }
+  }
 }
 

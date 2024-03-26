@@ -21,6 +21,8 @@ export class HeaderComponent implements OnInit {
     return this.userService.isLoggedIn
   }
   constructor(private userService:UserService, private router:Router, private photoService:ProfilePhotoService,private cdr: ChangeDetectorRef) { 
+ 
+    
     this.userService.user$.subscribe(user => {
       this.userId = user?._id;
     });
@@ -29,17 +31,43 @@ export class HeaderComponent implements OnInit {
       this.userId = user?._id;
       if (this.userId) {
         // Зареждане на съхраненото URL при стартиране
-        this.photoService.loadPhotoUrlFromStorage(this.userId);
+        // this.photoService.loadPhotoUrlFromStorage(this.userId);
       }
     });
+    
   }
 
   ngOnInit(): void {
+
+    this.cdr.detectChanges();
     this.photoService.getPhotoUrl().subscribe(url => {
       this.photoUrl = url;
       console.log('Photo',this.photoUrl)
       this.cdr.detectChanges();
     });
+ const userId = localStorage.getItem('userId');
+  if (userId) {
+    // Проверка дали URL на профилната снимка вече е запазен в localStorage
+    const savedPhotoUrl = localStorage.getItem(`profilePhoto_${userId}`);
+    if (savedPhotoUrl) {
+      this.photoUrl = savedPhotoUrl;
+      this.cdr.detectChanges();
+    } else {
+      // Извличане на мапинга на всички снимки и обновяване на профилната снимка
+      this.photoService.fetchImagesMap().then(imagesMap => {
+        const profilePhotoUrl = imagesMap[userId];
+        if (profilePhotoUrl) {
+          this.photoUrl = profilePhotoUrl;
+          localStorage.setItem(`profilePhoto_${userId}`, profilePhotoUrl); // Опционално: запазване в localStorage
+          this.cdr.detectChanges();
+        }
+      }).catch(error => {
+        console.error("Error fetching images map:", error);
+      });
+    }
+  }
+
+
   }
 
   @HostListener('window:scroll', ['$event'])
