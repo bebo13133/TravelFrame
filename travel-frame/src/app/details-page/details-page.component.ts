@@ -36,7 +36,7 @@ export class DetailsPageComponent implements OnInit {
   ngOnInit() {
     // this.loadBackgroundImage();
     this.route.fragment.subscribe(frag => {
-      if (frag) { // Проверяваме дали frag не е null
+      if (frag) { 
         const element = document.getElementById(frag);
         if (element) {
           element.scrollIntoView({ behavior: 'smooth', block: 'start' });

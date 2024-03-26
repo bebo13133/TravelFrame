@@ -95,7 +95,7 @@ export class CommentPageComponent implements OnInit {
 
   navigateToPage(page: number | string): void {
     if (typeof page !== 'number') {
-      return; // Прекратяваме изпълнението, ако параметърът не е число
+      return; 
     }
     this.router.navigate([], {
       relativeTo: this.route,
