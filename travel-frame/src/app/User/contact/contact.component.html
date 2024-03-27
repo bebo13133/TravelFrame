@@ -1,1 +1,22 @@
-<p>contact works!</p>
+
+<section class="contact">
+<form [formGroup]="contactForm" class="contact-form">
+    <mat-form-field class="form-group">
+      <input matInput formControlName="name" placeholder="Your Name">
+    </mat-form-field>
+  
+    <mat-form-field class="form-group">
+      <input matInput formControlName="email" placeholder="Your Email">
+    </mat-form-field>
+  
+    <mat-form-field class="form-group">
+      <textarea matInput formControlName="subject" placeholder="Subject"></textarea>
+    </mat-form-field>
+  
+    <mat-form-field class="form-group">
+      <textarea matInput formControlName="message" placeholder="Type Message"></textarea>
+    </mat-form-field>
+  
+    <button type="submit" mat-raised-button color="primary" class="btn">Send</button>
+  </form>
+</section>

@@ -62,7 +62,7 @@ export class AuthComponentComponent implements OnInit {
       this.userService.login(email, password).subscribe({
         next: async (response) => {
           console.log('Login successful', response);
-          
+          //асинк е нарочно , имах проблем със асихроността при двете зявки 
           const userId = response._id;
           if (userId) {
             const savedPhotoUrl = localStorage.getItem(`profilePhoto_${userId}`);

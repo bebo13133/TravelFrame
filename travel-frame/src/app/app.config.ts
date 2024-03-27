@@ -40,7 +40,7 @@ export const appConfig: ApplicationConfig = {
         useClass: AppInterceptor }, 
         provideAnimationsAsync(), 
         { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false } },
-         provideStore(reducers, { metaReducers }),
+         provideStore(reducers, { metaReducers }), provideAnimationsAsync(),
          
   
         

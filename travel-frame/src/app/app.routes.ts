@@ -17,6 +17,7 @@ import { PageNotFoundComponent } from './core/404/page-not-found/page-not-found.
 import { SearchResultComponent } from './home/search/search-result/search-result.component';
 import { SearchBlogComponent } from './Blog/searchStory/search-blog/search-blog.component';
 import { ProfileComponent } from './User/profile/profile.component';
+import { ContactComponent } from './User/contact/contact.component';
 
 
 
@@ -75,6 +76,10 @@ export const routes: Routes = [
     },
     {
         path: 'profile', component: ProfileComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'contact', component: ContactComponent,
         canActivate: [AuthGuard]
     },
     { path: 'search-page', component: SearchResultComponent },
