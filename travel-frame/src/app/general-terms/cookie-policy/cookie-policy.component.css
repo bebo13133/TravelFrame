@@ -1,0 +1,31 @@
+.cookie-policy .container {
+    max-width: 1200px;
+    margin: 0 auto;
+padding: 7em 0;
+  }
+  
+  .cookie-policy h2 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .cookie-policy .content {
+    line-height: 1.6;
+  }
+  
+  .cookie-policy .content-police h3 {
+    margin-top: 20px;
+  }
+  
+  .cookie-policy .content-police ul {
+    margin-top: 10px;
+  }
+  
+  .cookie-policy .content-police ul li {
+    margin-bottom: 10px;
+  }
+  
+  .cookie-policy .content-police p:last-child {
+    margin-bottom: 0;
+  }

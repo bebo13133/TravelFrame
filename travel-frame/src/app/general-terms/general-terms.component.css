@@ -1,0 +1,25 @@
+
+
+.general-terms {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 7em 0;
+  }
+  
+  .general-terms h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .general-terms h3 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .general-terms p {
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+  

@@ -14,6 +14,7 @@ import { SpinnerComponent } from '../spinner/spinner.component';
 import { SpinnerService } from '../spinner/spinner.service';
 import { ProfilePhotoService } from '../services/profile-photo.service';
 import { UserService } from '../User/user.service';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -21,7 +22,7 @@ import { UserService } from '../User/user.service';
   imports: [DescriptionComponent,LastThreeComponent,
     HeroComponent,InfoHomeComponent,
     HomeCarouselComponent,
-    CommonModule,HomeAsideComponent,SpinnerComponent],
+    CommonModule,HomeAsideComponent,SpinnerComponent,RouterModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -32,7 +33,7 @@ export class HomeComponent implements OnInit {
 // private subscription: Subscription = new Subscription();
 // filteredLocationList: Destination[] = [];
 
-constructor(private apiService:ApiService, private spinnerService:SpinnerService, private photoService:ProfilePhotoService, private userService:UserService){
+constructor(private apiService:ApiService,private route: ActivatedRoute, private spinnerService:SpinnerService, private photoService:ProfilePhotoService, private userService:UserService){
   this.userService.user$.subscribe(user => {
     this.userId = user?._id;
   });
@@ -68,8 +69,19 @@ constructor(private apiService:ApiService, private spinnerService:SpinnerService
 
 }
   ngOnInit(): void {
-
+    this.route.fragment.subscribe(frag => {
+      if (frag) { 
+        const element = document.getElementById(frag);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    });
   // )   
   }
+
+
+
+  
 
 }

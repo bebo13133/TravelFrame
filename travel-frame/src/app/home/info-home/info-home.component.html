@@ -1,10 +1,10 @@
 <div class="home-info">
     <section class="home-contact">
         <h3>Научавай първи за следващите дестинации, отстъпки и събития.</h3>
-        <form>
+        <form (submit)="sendEmailNews($event)">
             <label for="newsField"></label>
-            <input type="email" id="newsField" name="newsField" placeholder="Email*  ">
-            <button type="submit">Абонирай се</button>
+            <input type="email" id="newsField" name="user_email" placeholder="Email* ">
+            <button type="submit" >Абонирай се</button>
           </form>
           <p>С натискането на бутона "<strong>Абонирай се</strong>" се съгласяваш с 
         <a href="">Общите Условия</a>  и 
@@ -14,7 +14,7 @@
     <section class="home-more">
         <h3>Търсиш други дестинации?</h3>
         <p>Организираме приключения и в Коста Рика, Мадагаскар, Филипини, Киргизстан и други.</p>
-        <a href="#">Виж всички дестинации</a>
+        <a routerLink="/destinations">Виж всички дестинации</a>
     </section>
 
 </div>

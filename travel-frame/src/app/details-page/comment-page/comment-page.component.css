@@ -145,4 +145,38 @@ body::before {
     color: white;
     border-color: #007bff;
   }
+  .btn-cover{
+    display: flex;
+    margin-top: 2em;
+    justify-content: right;
+  }
+  .btn:hover {
+    transform: translateY(-5px);
+  }
+  .btn{text-decoration: none;}
+  .lights::before {
+    content: "";
+    position: absolute;
+    background-image: conic-gradient(rgb(10, 138, 31) 20deg,
+        transparent 150deg);
+    width: 400%;
+    height: 400%;
+    border-radius: 5px;
+    animation: rotate 3s linear infinite;
+  }
   
+  .lights::after {
+    content: "Обратно";
+    position: absolute;
+    width: 170px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(35px);
+    -webkit-backdrop-filter: blur(35px);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    border-radius: 5px;
+  }

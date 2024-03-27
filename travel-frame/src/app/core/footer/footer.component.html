@@ -2,8 +2,8 @@
   <section class="footer-up">
     <section class="home-contact">
       <h3>Научавай първи за следващите дестинации, отстъпки и събития.</h3>
-      <form>
-        <label for="newsField"></label>
+      <form (submit)="sendEmailNews($event)">
+        <label for="newsField" ></label>
         <input type="email" id="newsField" name="newsField" placeholder="Email*  ">
         <button type="submit">ЗАПИШИ се</button>
       </form>
@@ -30,10 +30,10 @@
       <h4 routerLink="/contact">Контакти </h4>
 <div class="partners">
   <h3>НАШИ ПАРТНЬОРИ</h3>
-  <h4>SoftUni</h4>
-  <h4>Dabags</h4>
-  <h4>Turkishsweets</h4>
-  <h4>BeboDesigns</h4>
+  <a  href="https://softuni.bg/" target="_blank">SoftUni</a>
+  <a href="https://dabags.eu/" target="_blank">Dabags</a>
+  <a href="https://ambitioned.com/" target="_blank">Ambitioned</a>
+  <a href="https://bebodesigns.com/" target="_blank">BeboDesigns</a>
 </div>
     </section>
   </section>
@@ -50,8 +50,8 @@
   </div>
   </section>
   <div class="police">
-    <h3>Oбщи условия</h3>
-    <h3>Политика за бисквитки</h3>
+    <h3 routerLink="general-terms">Oбщи условия</h3>
+    <h3 routerLink="cookies-police">Политика за бисквитки</h3>
   </div>
 </section>
 </section>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink, RouterModule } from '@angular/router';
 import { CommentsService } from '../../services/comments.service';
 import { Comment } from '../../types/comments';
 import { CommonModule, DatePipe } from '@angular/common';
@@ -9,7 +9,7 @@ import { CommonModule, DatePipe } from '@angular/common';
   templateUrl: './comment-page.component.html',
   styleUrls: ['./comment-page.component.css'],
   standalone: true,
-  imports: [CommonModule,DatePipe]
+  imports: [CommonModule,DatePipe, RouterLink, RouterModule]
 })
 export class CommentPageComponent implements OnInit {
   hasComments: boolean = false;

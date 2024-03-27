@@ -8,6 +8,7 @@ import { PageNotFoundComponent } from './core/404/page-not-found/page-not-found.
 
 
 
+
 export const routes: Routes = [
     {
         path: '',
@@ -17,14 +18,14 @@ export const routes: Routes = [
     {
         path: 'home',
         loadComponent: () => import('./home/home.component').then(m => m.HomeComponent),
-      
+
 
     },
     {
         path: 'auth',
         loadComponent: () => import('./User/auth-component/auth-component.component').then(m => m.AuthComponentComponent),
         canActivate: [AlreadyLoggedInngGuard]
-   
+
     },
     {
         path: 'destinations',
@@ -36,56 +37,56 @@ export const routes: Routes = [
         path: 'create',
         loadComponent: () => import('./create-page/create-page.component').then(m => m.CreatePageComponent),
         canActivate: [AuthGuard]
-    
-    
+
+
     },
     {
-        path: 'destination/details/:destinationId', 
+        path: 'destination/details/:destinationId',
         loadComponent: () => import('./details-page/details-page.component').then(m => m.DetailsPageComponent),
         canActivate: [AuthGuard]
-      
+
     },
     {
         path: 'destination/edit/:destinationId',
         loadComponent: () => import('./edit-destination/edit-destination.component').then(m => m.EditDestinationComponent),
         canActivate: [AuthGuard]
-   
+
     },
     {
         path: 'destination/details/comments/:destinationId',
         loadComponent: () => import('./details-page/comment-page/comment-page.component').then(m => m.CommentPageComponent),
         canActivate: [AuthGuard]
-  
+
     },
     {
-        path: 'blog', 
-         loadComponent: () => import('./Blog/stories/stories.component').then(m => m.StoriesComponent),
+        path: 'blog',
+        loadComponent: () => import('./Blog/stories/stories.component').then(m => m.StoriesComponent),
         canActivate: [AuthGuard]
-        
+
     },
     {
         path: 'search-blog',
         loadComponent: () => import('./Blog/searchStory/search-blog/search-blog.component').then(m => m.SearchBlogComponent),
         canActivate: [AuthGuard]
-    
+
     },
     {
-        path: 'blog/details/:storyId', 
+        path: 'blog/details/:storyId',
         loadComponent: () => import('./Blog/story-details/story-details.component').then(m => m.StoryDetailsComponent),
         canActivate: [AuthGuard]
-    
+
     },
     {
-        path: 'create-stories', 
+        path: 'create-stories',
         loadComponent: () => import('./Blog/create-stories/create-stories.component').then(m => m.CreateStoriesComponent),
         canActivate: [AuthGuard]
-      
+
     },
     {
-        path: 'profile', 
+        path: 'profile',
         loadComponent: () => import('./User/profile/profile.component').then(m => m.ProfileComponent),
         canActivate: [AuthGuard]
-     
+
     },
     {
         path: 'contact',
@@ -93,11 +94,21 @@ export const routes: Routes = [
 
         // canActivate: [AuthGuard]
     },
-    { path: 'search-page',
-    loadComponent: () => import('./home/search/search-result/search-result.component').then(m => m.SearchResultComponent),
+    {
+        path: 'search-page',
+        loadComponent: () => import('./home/search/search-result/search-result.component').then(m => m.SearchResultComponent),
 
-},
-    
+    },
+    {
+        path: 'general-terms',
+        loadComponent: () => import('./general-terms/general-terms.component').then(m => m.GeneralTermsComponent),
+
+    },
+    {
+        path: 'cookies-police', 
+        loadComponent: () => import('./general-terms/cookie-policy/cookie-policy.component').then(m => m.CookiePolicyComponent),
+
+    },
     { path: 'error', component: ErrorComponent },
 
     // { path: '', redirectTo: '/auth', pathMatch: 'full' },
@@ -109,13 +120,13 @@ export const routes: Routes = [
     //       ),
     //   },
 
-    { 
-        path: '404', 
+    {
+        path: '404',
         component: PageNotFoundComponent, // Използвайте ErrorComponent или друг компонент, който сте създали за 404 грешка
     },
     // Wildcard маршрут за 404 страница. Трябва да е последният в списъка с маршрути.
-    { 
-        path: '**', 
+    {
+        path: '**',
         redirectTo: '/404'
     },
 

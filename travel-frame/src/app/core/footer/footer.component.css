@@ -183,6 +183,9 @@ ul {
   }
   .partners {
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
   }
   .partners h3{
     color:  #a09e9e;
@@ -195,6 +198,15 @@ ul {
     font-size: 1.2em;
     font-weight: normal;
     padding-bottom: 0.2em;
+    text-transform:capitalize;
+  }
+  .partners a{
+    text-decoration: none;
+    font-size: 1.2em;
+    color: white;
+    /* padding-bottom: 0.2em; */
+    font-weight: normal;
+
     text-transform:capitalize;
   }
 
@@ -228,4 +240,9 @@ ul {
     text-align: right;
     font-weight: normal;
     padding-right: 10em;
+
+    cursor: pointer;
+  }
+  .police h3{
+    padding-bottom: 1em;
   }
