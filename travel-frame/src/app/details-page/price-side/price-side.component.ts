@@ -2,6 +2,8 @@ import { Component, Input } from '@angular/core';
 import { Destination } from '../../types/destination';
 import { CommonModule } from '@angular/common';
 import { DataRangePipe } from '../../shared/pipes/data-range.pipe';
+import emailjs from 'emailjs-com';
+import { UserService } from '../../User/user.service';
 
 
 @Component({
@@ -13,6 +15,7 @@ import { DataRangePipe } from '../../shared/pipes/data-range.pipe';
 })
 export class PriceSideComponent {
   @Input() destination: Destination | null = null;
+  private   user: any;
   conditionLabels: Record<string, string>= {
     ticketsIncluded: 'Самолетни билети София – Маракеш - София с включен стандартен ръчен багаж и чекиран куфар до 23 кг.',
     allTransportCosts: 'Всички транспортни разходи',
@@ -30,6 +33,11 @@ export class PriceSideComponent {
     cancellationInsurance:'Допълнителна медицинска застраховка',
 
   };
+  constructor(private userService: UserService){
+    this.userService.user$.subscribe(user => {
+      this.user = user;
+    });
+  }
   getConditionsArray(): Array<{key: string, value: boolean}> { // ще го ползвам вместо да го пиша в html-a
     const conditions = this.destination?.conditions;
     if (!conditions) {
@@ -37,5 +45,31 @@ export class PriceSideComponent {
     }
     return Object.entries(conditions).map(([key, value]) => ({key, value}));
   }
+   sendEmail = () => {
 
+    const templateParams = {
+        to_email: this.user.email,
+        message: `Welcome  ${this.user.email}`,
+        to_name: `${this.user.email}`,
+       to_destination: `${this.destination?.title}`,
+        
+    }
+     emailjs
+        .send(
+            "service_zxhuqbx",
+            "template_ym4dhid",
+            templateParams,   
+            "iRYFR4BuAXZEBF1ld",
+        )
+        .then(result => {
+        console.log("Email sent successfully:", result);
+        },
+
+            (err) => {
+                throw new Error(err)
+            }
+        )
+    console.log(templateParams)
+
+}
 }

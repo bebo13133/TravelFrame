@@ -94,6 +94,7 @@ font-size: 2em;
 
 /* programa */
 .desc-prog{
+    width: 1640px;
     display: flex;
     flex-direction: column;
     gap: 3em;
