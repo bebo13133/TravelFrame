@@ -178,6 +178,7 @@ ul {
     font-weight: normal;
     padding-bottom: 0.2em;
     font-size: 1.2em;
+    cursor: pointer;
 
   }
   .partners {

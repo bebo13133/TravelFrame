@@ -1,19 +1,19 @@
 <section class="email">
-    <form [formGroup]="contactForm" class="contact-form">
+    <form class="contact-form" (submit)="sendEmail($event)">
         <mat-form-field class="form-group">
-          <input matInput formControlName="name" placeholder="Your Name">
+          <input matInput  placeholder="Your Name" name="user_name">
         </mat-form-field>
       
         <mat-form-field class="form-group">
-          <input matInput formControlName="email" placeholder="Your Email">
+          <input matInput  placeholder="Your Email" name="user_email" >
         </mat-form-field>
       
         <mat-form-field class="form-group">
-          <textarea matInput formControlName="subject" placeholder="Subject"></textarea>
+          <textarea matInput  placeholder="Subject" name="subject"></textarea>
         </mat-form-field>
       
         <mat-form-field class="form-group">
-          <textarea matInput formControlName="message" placeholder="Type Message"></textarea>
+          <textarea matInput placeholder="Type Message" name="message"></textarea>
         </mat-form-field>
       
         <button type="submit" mat-raised-button color="primary" class="btn">Send</button>
