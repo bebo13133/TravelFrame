@@ -1,0 +1,111 @@
+.how-are{
+    width: 1240px;
+    margin: 0 auto;
+    min-height: 50vh;
+    padding: 5em 0 9em 0;
+    position: relative;
+}
+.info-are{
+    width: 1000px;
+    margin: 0 auto;
+    background-color: rgb(209, 209, 209,0.9);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 25px;
+    padding: 2em;
+    justify-self: center;
+
+}
+.we-are{
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 25px;
+    padding: 2em;
+    justify-self: center;
+}
+.we-are h3{
+    text-align: center;
+    font-weight: 500;
+    font-size: 2em;
+    padding-bottom: 1em;
+}
+.we-are p{
+    text-align: center;
+    font-weight: 500;
+    font-size: 1.2em;
+    color: rgb(63, 62, 62);
+    /* padding-bottom: 3em; */
+}
+.we-are a{
+    text-align: center;
+    margin-top: 3em;
+padding: 1em 2em;
+background-color: rgb(235, 89, 5);
+font-size: 1em;
+color: white;
+text-decoration: none;
+border-radius: 25px;
+}
+/* .how-are img{
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: fill;
+} */
+#\31 {
+    width: 140px;
+    height: 130px;
+    border-radius: 50%;
+    object-fit: fill;
+    position: absolute;
+    top: 40px;
+    left: 60px;
+}
+#\32 {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: fill;
+    position: absolute;
+    top: 190px;
+    left: 160px;
+}
+#\33 {
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    object-fit: fill;
+    position: absolute;
+    top: 290px;
+    left: 20px;
+}
+#\34 {
+    width: 140px;
+    height: 130px;
+    border-radius: 50%;
+    object-fit: fill;
+    position: absolute;
+    top: 40px;
+    right: 60px;
+}
+#\35 {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: fill;
+    position: absolute;
+    top: 190px;
+    right: 160px;
+}
+#\36 {
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    object-fit: fill;
+    position: absolute;
+    top: 290px;
+    right: 20px;
+}

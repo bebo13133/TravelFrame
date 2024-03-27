@@ -7,10 +7,13 @@ import { EmailFormComponent } from './email-form/email-form.component';
 import { ContactMapComponent } from './contact-map/contact-map.component';
 import { RouterLink } from '@angular/router';
 import { QuestionsComponent } from './questions/questions.component';
+import { HowAreComponent } from './how-are/how-are.component';
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [EmailFormComponent,CommonModule,ContactMapComponent,RouterLink,QuestionsComponent],
+  imports: [EmailFormComponent,CommonModule,ContactMapComponent,
+    RouterLink,QuestionsComponent,HowAreComponent
+  ],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.css'
 })
