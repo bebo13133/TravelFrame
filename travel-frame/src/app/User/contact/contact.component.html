@@ -1,22 +1,22 @@
 
 <section class="contact">
-<form [formGroup]="contactForm" class="contact-form">
-    <mat-form-field class="form-group">
-      <input matInput formControlName="name" placeholder="Your Name">
-    </mat-form-field>
-  
-    <mat-form-field class="form-group">
-      <input matInput formControlName="email" placeholder="Your Email">
-    </mat-form-field>
-  
-    <mat-form-field class="form-group">
-      <textarea matInput formControlName="subject" placeholder="Subject"></textarea>
-    </mat-form-field>
-  
-    <mat-form-field class="form-group">
-      <textarea matInput formControlName="message" placeholder="Type Message"></textarea>
-    </mat-form-field>
-  
-    <button type="submit" mat-raised-button color="primary" class="btn">Send</button>
-  </form>
+    <section class="hero">
+    <video [autoplay]="true" [loop]="true" [muted]="true" [playsInline]="true" class="background-video">
+        <source src="/assets/media/catamaran.mp4" type="video/mp4" />
+      </video>
+      <section class="content-contact">
+        <h2>Питай смело!</h2>
+        <p>На разположение за всякакви въпроси.</p>
+        <section class="info-btn-contact">
+            <a ><i class="fa-solid fa-phone-volume"> + 894 371 779</i></a>
+            <a ><i class="fa-regular fa-envelope-open"> borislaviliev47&#64;gmail.com</i></a>
+        </section>
+      </section>
+    </section>
+
+</section>
+<app-questions/>
+<section class="mail-contact">
+<app-email-form/>
+<app-contact-map/>
 </section>

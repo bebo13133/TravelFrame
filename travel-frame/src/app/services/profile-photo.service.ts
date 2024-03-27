@@ -107,7 +107,7 @@ export class ProfilePhotoService {
       return url;
     } catch (error) {
       console.error('Error fetching single image:', error);
-      throw error; // Или може да върнете стандартен URL към изображение, ако предпочитате
+      throw error; 
     }
   }
 }

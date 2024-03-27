@@ -2,7 +2,7 @@ export interface Story {
     destination: string;
     title: string;
     author: string;
-    image: string; // Base64 стринг или път до изображението
+    image: string; 
     authorImage:string; 
     description: string;
     _createdOn:string; 

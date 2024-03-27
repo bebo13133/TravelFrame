@@ -1,0 +1,35 @@
+
+.btns-qa{
+    width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 5em;
+}
+.question h3{
+    padding-top: 2em;
+    text-align: center;
+font-size: 3em;
+}
+.mat-accordion {
+    padding: 3em 0 0.1em 0;
+    /* margin: 0 auto;  */
+    /* max-width: 700px;  */
+text-align: center;  
+border-bottom: 1px solid #ccc;
+}
+.mat-expansion-panel-header{
+    width: 575px;
+}
+.mat-expansion-panel-header-title{
+    font-size: 1.5em;
+    text-align: center;
+    align-items: center;
+    justify-content: flex-start ;
+}
+p{
+    max-width: 66ch;
+    font-size: 1em;
+}
