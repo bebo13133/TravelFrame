@@ -1,23 +1,10 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from './User/login/login.component';
-// import { HomeComponent } from './home/home.component';
-import { DestinationsComponent } from './destinations/destinations.component';
-import { CreatePageComponent } from './create-page/create-page.component';
-import { DetailsPageComponent } from './details-page/details-page.component';
-import { AuthComponentComponent } from './User/auth-component/auth-component.component';
 import { ErrorComponent } from './core/error/error.component';
 import { AuthGuard } from './auth.guard';
-import { EditDestinationComponent } from './edit-destination/edit-destination.component';
-import { CommentPageComponent } from './details-page/comment-page/comment-page.component';
 import { AlreadyLoggedInngGuard } from './already-logged-inng.guard';
 // import {  StoriesComponent } from './Blog/stories/stories.component';
-import { CreateStoriesComponent } from './Blog/create-stories/create-stories.component';
-import { StoryDetailsComponent } from './Blog/story-details/story-details.component';
 import { PageNotFoundComponent } from './core/404/page-not-found/page-not-found.component';
-import { SearchResultComponent } from './home/search/search-result/search-result.component';
-import { SearchBlogComponent } from './Blog/searchStory/search-blog/search-blog.component';
-import { ProfileComponent } from './User/profile/profile.component';
-import { ContactComponent } from './User/contact/contact.component';
+
 
 
 
