@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './User/login/login.component';
-import { HomeComponent } from './home/home.component';
+// import { HomeComponent } from './home/home.component';
 import { DestinationsComponent } from './destinations/destinations.component';
 import { CreatePageComponent } from './create-page/create-page.component';
 import { DetailsPageComponent } from './details-page/details-page.component';
@@ -10,7 +10,7 @@ import { AuthGuard } from './auth.guard';
 import { EditDestinationComponent } from './edit-destination/edit-destination.component';
 import { CommentPageComponent } from './details-page/comment-page/comment-page.component';
 import { AlreadyLoggedInngGuard } from './already-logged-inng.guard';
-import {  StoriesComponent } from './Blog/stories/stories.component';
+// import {  StoriesComponent } from './Blog/stories/stories.component';
 import { CreateStoriesComponent } from './Blog/create-stories/create-stories.component';
 import { StoryDetailsComponent } from './Blog/story-details/story-details.component';
 import { PageNotFoundComponent } from './core/404/page-not-found/page-not-found.component';
@@ -29,60 +29,88 @@ export const routes: Routes = [
     },
     {
         path: 'home',
-        // pathMatch:"full",
-        component: HomeComponent,
+        loadComponent: () => import('./home/home.component').then(m => m.HomeComponent),
+      
+
     },
     {
         path: 'auth',
-        component: AuthComponentComponent,
-        canActivate: [AlreadyLoggedInngGuard],
+        loadComponent: () => import('./User/auth-component/auth-component.component').then(m => m.AuthComponentComponent),
+        canActivate: [AlreadyLoggedInngGuard]
+   
     },
     {
         path: 'destinations',
-        component: DestinationsComponent,
+        loadComponent: () => import('./destinations/destinations.component').then(m => m.DestinationsComponent),
+
+
     },
     {
         path: 'create',
-        component: CreatePageComponent,
+        loadComponent: () => import('./create-page/create-page.component').then(m => m.CreatePageComponent),
         canActivate: [AuthGuard]
+    
+    
     },
     {
-        path: 'destination/details/:destinationId', component: DetailsPageComponent,
+        path: 'destination/details/:destinationId', 
+        loadComponent: () => import('./details-page/details-page.component').then(m => m.DetailsPageComponent),
         canActivate: [AuthGuard]
+      
     },
     {
-        path: 'destination/edit/:destinationId', component: EditDestinationComponent,
+        path: 'destination/edit/:destinationId',
+        loadComponent: () => import('./edit-destination/edit-destination.component').then(m => m.EditDestinationComponent),
         canActivate: [AuthGuard]
+   
     },
     {
-        path: 'destination/details/comments/:destinationId', component: CommentPageComponent,
+        path: 'destination/details/comments/:destinationId',
+        loadComponent: () => import('./details-page/comment-page/comment-page.component').then(m => m.CommentPageComponent),
         canActivate: [AuthGuard]
+  
     },
     {
-        path: 'blog', component: StoriesComponent,
+        path: 'blog', 
+         loadComponent: () => import('./Blog/stories/stories.component').then(m => m.StoriesComponent),
         canActivate: [AuthGuard]
+        
     },
     {
-        path: 'search-blog', component: SearchBlogComponent,
+        path: 'search-blog',
+        loadComponent: () => import('./Blog/searchStory/search-blog/search-blog.component').then(m => m.SearchBlogComponent),
         canActivate: [AuthGuard]
+    
     },
     {
-        path: 'blog/details/:storyId', component: StoryDetailsComponent,
+        path: 'blog/details/:storyId', 
+        loadComponent: () => import('./Blog/story-details/story-details.component').then(m => m.StoryDetailsComponent),
         canActivate: [AuthGuard]
+    
     },
     {
-        path: 'create-stories', component: CreateStoriesComponent,
+        path: 'create-stories', 
+        loadComponent: () => import('./Blog/create-stories/create-stories.component').then(m => m.CreateStoriesComponent),
         canActivate: [AuthGuard]
+      
     },
     {
-        path: 'profile', component: ProfileComponent,
+        path: 'profile', 
+        loadComponent: () => import('./User/profile/profile.component').then(m => m.ProfileComponent),
         canActivate: [AuthGuard]
+     
     },
     {
-        path: 'contact', component: ContactComponent,
-        canActivate: [AuthGuard]
+        path: 'contact',
+        loadComponent: () => import('./User/contact/contact.component').then(m => m.ContactComponent),
+
+        // canActivate: [AuthGuard]
     },
-    { path: 'search-page', component: SearchResultComponent },
+    { path: 'search-page',
+    loadComponent: () => import('./home/search/search-result/search-result.component').then(m => m.SearchResultComponent),
+
+},
+    
     { path: 'error', component: ErrorComponent },
 
     // { path: '', redirectTo: '/auth', pathMatch: 'full' },
