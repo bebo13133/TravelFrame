@@ -34,27 +34,26 @@ export class AppInterceptor implements HttpInterceptor {
     return next.handle(req)
       .pipe(
         catchError((error) => {
-          // Задаване на грешка винаги, когато има такава
+        
           this.errorService.setError(error);
 
-          // Пренасочване в зависимост от статуса на грешката
+     
           if (error.status === 401 || error.status === 404) {
-            // За грешки 401 и 404 пренасочване към началната страница
+       
             this.router.navigate(['/home']);
           } else if (error.status === 403) {
-            // За грешка 403 пренасочване към страницата за грешка, която може да бъде специфична за тази грешка
-            // Ако имате специална страница за 403, променете маршрута по-долу
+           
             this.router.navigate(['/error']);
           } else {
-            // За всички останали грешки също пренасочване към страницата за грешка
+        
             this.router.navigate(['/error']);
           }
-          // Връщане на грешката като Observable, за да може потокът да продължи
+       
 
           return [error];
         }),
         finalize(() => {
-          // Скриване на спинъра след завършване на заявката или при грешка
+      
           this.spinnerService.requestEnded();
         })
       )
