@@ -31,3 +31,192 @@
     font-size: 1.5em;
     font-weight: 500;
 }
+
+.info-us {
+    background-image: url('/assets/media/back-us.webp');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    /* width: 1040px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8em 0;
+    /* justify-content: center; */
+    color: black;
+
+}
+
+.header-info-us {
+    width: 1040px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 7em;
+}
+
+.header-info-us h3 {
+    font-size: 3em;
+    text-align: center;
+}
+
+.header-info-us h5 {
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: 500;
+    padding: 0.2em;
+}
+
+.desc-us {
+    width: 940px;
+    position: relative;
+    padding-left: 2em;
+}
+.desc-us h5{
+    font-size: 1.5em;
+    padding-bottom: 1em;
+}
+.desc-us p{
+    font-size: 1.25em;
+    padding-bottom: 1em;
+}
+.desc-us::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    /* Ширина на линията */
+    height: 100%;
+    background-color: red;
+    /* Цвят на линията */
+}
+.who-travel{
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+padding: 6em 0;
+}
+.who-travel a{
+    text-decoration: none;
+    color: white;
+    padding-top: 0.5em;
+}
+.title{
+    margin: 0 auto;
+    text-align: center;
+}
+.title h2{
+    font-size: 3.5em;
+    padding-bottom: 0.5em;
+}
+.title p{
+    width: 1040px;
+    font-size: 1.25em;
+}
+.friends-1,.friends-2{
+    margin: 0 auto;
+    width: 1540px;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 5em;
+    padding: 5em 0.5em;
+}
+.friends-1{
+    justify-content: flex-start;
+
+}
+.friend-1-1{
+    display: flex;
+    gap: 0.5em;
+    flex-direction: column;
+}
+
+.friend-1-1 img{
+    width: 500px;
+    height: 600px;
+    object-fit: cover;
+    border-radius: 25px;
+    
+}
+.friend-1-1 h3{
+    padding-top:1em ;
+}
+.friend-1-1 p{
+    width: 450px;
+}
+.friend-1-2 img{
+    width: 500px;
+    height: 600px;
+    object-fit: cover;
+    border-radius: 25px;
+    
+}
+.friend-1-2 p{
+    width: 450px;
+}
+.friend-1-1 a{
+    text-decoration: none;
+    color: white;
+    padding-top: 0.5em;
+}
+.friend-1-2 p{
+    text-decoration: none;
+    color: white;
+    padding-top: 0.5em;
+}
+
+.friend-1-2 h3{
+    padding-top:1em ;
+}
+.friends-2{
+  
+    justify-content: flex-end;
+
+
+}
+.friend-2-1{
+    display: flex;
+    gap: 0.5em;
+    flex-direction: column;
+}
+.friend-2-1 img{
+    width: 500px;
+    height: 600px;
+    object-fit: cover;
+    border-radius: 25px;
+    
+}
+.friend-2-1 p{
+    width: 450px;
+}
+.friend-2-1 h3{
+    padding-top:1em ;
+}
+.friend-2-1 a{
+    text-decoration: none;
+    color: white;
+    padding-top: 0.5em;
+}
+.friend-2-2 p{
+    width: 450px;
+}
+.friend-2-2 p{
+    text-decoration: none;
+    color: white;
+    padding-top: 2em;
+}
+.friend-2-2 img{
+    width: 500px;
+    height: 600px;
+    object-fit: cover;
+    border-radius: 25px;
+    
+}
+.friend-2-2 h3{
+    padding-top:1em ;
+}
