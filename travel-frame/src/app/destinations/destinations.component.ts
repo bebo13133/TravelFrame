@@ -7,6 +7,8 @@ import { Destination } from '../types/destination';
 import { ApiService } from '../services/api.service';
 import { Subscription } from 'rxjs';
 import { SpinnerComponent } from '../spinner/spinner.component';
+import { UserService } from '../User/user.service';
+import { FavoritesService } from '../services/favorites.service';
 
 
 @Component({
@@ -19,9 +21,13 @@ import { SpinnerComponent } from '../spinner/spinner.component';
 export class DestinationsComponent {
   destinations: Destination[] = []
   isLoading = false; 
+  isFavorite:boolean= false
+
   @Input() destinationId: string | null = null;
   private subscription: Subscription = new Subscription();
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService, ) {
+  
+  }
 
   ngOnInit(): void {
     this.isLoading = true; 

@@ -24,7 +24,7 @@ export class StoriesComponent implements OnInit {
   storiesList: Story[] = [];
   hasStories: boolean = false;
   isLiked: { [storyId: string]: { liked: boolean, likeId?: string } } = {};
-  likesForCurrentStory: Like[] = []; // Използвайте дефинирания интерфейс тук
+  likesForCurrentStory: Like[] = []; 
   likesCountForCurrentStory: number = 0;
   images$ = this.photoService.images$;
   constructor(
