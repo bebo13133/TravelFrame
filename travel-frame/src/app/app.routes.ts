@@ -4,6 +4,7 @@ import { AuthGuard } from './auth.guard';
 import { AlreadyLoggedInngGuard } from './already-logged-inng.guard';
 // import {  StoriesComponent } from './Blog/stories/stories.component';
 import { PageNotFoundComponent } from './core/404/page-not-found/page-not-found.component';
+;
 
 
 
@@ -107,6 +108,12 @@ export const routes: Routes = [
     {
         path: 'cookies-police', 
         loadComponent: () => import('./general-terms/cookie-policy/cookie-policy.component').then(m => m.CookiePolicyComponent),
+
+    },
+    {
+        path: 'for-us',
+        loadComponent: () => import('./core/for-us/for-us.component').then(m => m.ForUsComponent),
+
 
     },
     { path: 'error', component: ErrorComponent },

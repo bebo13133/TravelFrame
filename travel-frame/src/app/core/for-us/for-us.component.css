@@ -1,0 +1,33 @@
+.background-us {
+    width: 100%;
+    min-height: 100vh;
+    background-image: url('/assets/media/us2.webp');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: brightness(100%);
+    display: flex;
+    align-items: flex-start;
+}
+
+.hero-side-us {
+    width: 1040px;
+    margin: 10em auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    gap: 1em;
+}
+
+.hero-side-us h2 {
+    font-size: 4.5em;
+
+}
+
+.hero-side-us p {
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: 500;
+}

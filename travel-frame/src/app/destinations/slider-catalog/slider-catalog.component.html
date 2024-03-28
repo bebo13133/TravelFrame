@@ -6,7 +6,7 @@
         <div class="swiper-slide swiper-slide--one" *ngFor="let destination of destinations;"
       
         [style.background]="getBackgroundStyle(destination.image)">
-          <!-- <span>{{destinations.category}}</span> -->
+          <span>{{destination.title}}</span>
           <a [routerLink]="['/destination/details', destination._id]">
           <div>
             <h2>{{destination.paragraph| slice:0:40}}</h2>
