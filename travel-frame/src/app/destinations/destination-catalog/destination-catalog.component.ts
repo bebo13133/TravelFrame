@@ -28,7 +28,7 @@ export class DestinationCatalogComponent implements OnInit {
     });
   }
 ngOnInit(): void {
-  const userId = localStorage.getItem('userId'); // или друг метод за получаване на userId
+  const userId = localStorage.getItem('userId'); // друг вариант е да го вземa от subject
   if (userId) {
     this.loadFavorites(userId);
   }
@@ -51,13 +51,13 @@ ngOnInit(): void {
 
   loadFavorites(userId: string): void {
     this.favoritesService.getAllFavorites().subscribe(allFavorites => {
-      // Инициализиране или изчистване на състоянието на isFavorite преди зареждане
-      this.isFavorite = {}; // Може да пропуснете това, ако не искате да изчиствате предишни стойности
+     
+      this.isFavorite = {}; // Може да пропуснете това, ако не искам да изчистват предишни стойности
   
-      // Филтриране на фаворитите по _ownerId, за да получите само тези, които са създадени от текущия потребител
+    // филтрирам favorites по ownerId за да получа само тези които аз съм харесал
       const userFavorites = allFavorites.filter(favorite => favorite._ownerId === userId);
   
-      // Обхождане на филтрираните фаворити и маркиране на съответните дестинации като favorited
+    // обхождам favorites и ги разпределям по съответните дестинаци
       userFavorites.forEach(favorite => {
         this.isFavorite[favorite.destinationId] = { favorited: true, favoriteId: favorite._id };
       });
