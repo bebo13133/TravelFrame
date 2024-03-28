@@ -1,0 +1,5 @@
+<div *ngIf="errors && errors.length > 0" class="form-errors">
+    <div *ngFor="let error of errors" class="error-message-animation">
+      {{ error }}
+    </div>
+  </div>

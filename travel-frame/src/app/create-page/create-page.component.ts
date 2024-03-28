@@ -4,15 +4,17 @@ import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } fr
 import { ApiService } from '../services/api.service';
 import { AuthenticatedComponent } from '../authenticated/authenticated.component';
 import { Router } from '@angular/router';
+import { CreateErrorComponent } from './create-error/create-error.component';
 
 @Component({
   selector: 'app-create-page',
   templateUrl: './create-page.component.html',
   styleUrls: ['./create-page.component.css'],
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule,AuthenticatedComponent]
+  imports: [ReactiveFormsModule, CommonModule,AuthenticatedComponent,CreateErrorComponent]
 })
 export class CreatePageComponent implements OnInit {
+  
   createForm!: FormGroup;
   imagePreview: string | ArrayBuffer = '';
   currentFormSection = 1;
@@ -27,16 +29,16 @@ export class CreatePageComponent implements OnInit {
   ngOnInit() {
     this.createForm = this.fb.group({
       image: [null],
-      title: ['', Validators.required],
-      paragraph: ['', Validators.required],
-      "title-desc": ['', Validators.required],
-      'info-desc': ['', Validators.required],
+      title: ['', [Validators.required, Validators.maxLength(20),Validators.minLength(2)]],
+      paragraph: ['', [Validators.required,Validators.maxLength(300),Validators.minLength(10)]],
+      "title-desc": ['', [Validators.required,Validators.maxLength(20),Validators.minLength(2)]],
+      'info-desc': ['', [Validators.required,Validators.maxLength(50),Validators.minLength(2)]],
       'images': [null],
       dateRange: this.fb.group({
         start: ['', Validators.required],
         end: ['', Validators.required]
       }),
-      price: ['', [Validators.required, Validators.pattern(/^\d+$/)]],
+      price: ['', [Validators.required, Validators.pattern(/^\d+$/),Validators.minLength(2)]],
       conditions: this.fb.group({
         ticketsIncluded: [false],
         allTransportCosts: [false],
@@ -62,8 +64,8 @@ export class CreatePageComponent implements OnInit {
   initDayForm(): FormGroup {
     return this.fb.group({
       dayImage: [null],
-      dayTitle: ['', Validators.required],
-      dayInfo: ['', Validators.required]
+      dayTitle: ['', [Validators.required,Validators.maxLength(20),Validators.minLength(2)]],
+      dayInfo: ['', [Validators.required,Validators.maxLength(800),Validators.minLength(20)]]
     });
   };
   goToDay(index: number) {
