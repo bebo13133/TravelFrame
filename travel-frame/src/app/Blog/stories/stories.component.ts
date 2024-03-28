@@ -13,7 +13,7 @@ import { ProfilePhotoService } from '../../services/profile-photo.service';
 @Component({
   selector: 'app-stories',
   standalone: true,
-  imports: [RouterLink, RouterModule,CreateStoriesComponent,CommonModule,DatePipe,SlicePipe,AsiseMenuStoriesComponent],
+  imports: [RouterLink, RouterModule, CreateStoriesComponent, CommonModule, DatePipe, SlicePipe, AsiseMenuStoriesComponent],
   templateUrl: './stories.component.html',
   styleUrl: './stories.component.css'
 })
@@ -21,32 +21,33 @@ export class StoriesComponent implements OnInit {
   currentPage: number = 1;
   commentsPerPage: number = 2;
   totalPages: number = 0;
-storiesList: Story[] = [];
-hasStories: boolean = false;
-isLiked: { [storyId: string]: { liked: boolean, likeId?: string } } = {};
-likesForCurrentStory: Like[] = []; // Използвайте дефинирания интерфейс тук
-likesCountForCurrentStory: number = 0;
-images$ = this.photoService.images$;
+  storiesList: Story[] = [];
+  hasStories: boolean = false;
+  isLiked: { [storyId: string]: { liked: boolean, likeId?: string } } = {};
+  likesForCurrentStory: Like[] = []; // Използвайте дефинирания интерфейс тук
+  likesCountForCurrentStory: number = 0;
+  images$ = this.photoService.images$;
   constructor(
     private apiService: ApiService,
     private route: ActivatedRoute,
     private router: Router,
     private photoService: ProfilePhotoService
-  ) { 
+  ) {
     this.photoService.fetchImages();
 
   }
 
   ngOnInit(): void {
-    this.loadStoriesWithLikes()
-    this.loadInitialData();
     this.route.queryParamMap.subscribe(params => {
       const page = params.get('page');
       this.currentPage = page ? parseInt(page, 10) : 1;
 
       this.loadStories();
     });
-  
+    this.loadInitialData();
+
+    this.loadStoriesWithLikes()
+
   }
 
 
@@ -54,17 +55,17 @@ images$ = this.photoService.images$;
     const userId = localStorage.getItem('userId');
     if (userId) {
       this.loadLikes(userId);
-     }
+    }
   }
 
   loadLikes(userId: string): void {
     this.apiService.getAllLikes().subscribe(allLikes => {
       const userLikes = allLikes.filter(like => like._ownerId === userId);
- 
+
 
       userLikes.forEach(like => {
         this.isLiked[like.storyId || ''] = { liked: true, likeId: like._id };
-        console.log('isliked',this.isLiked)
+        console.log('isliked', this.isLiked)
       });
 
     });
@@ -73,18 +74,18 @@ images$ = this.photoService.images$;
   // loadStories(): void {
   //   this.apiService.getStories()
   //   this.apiService.getStories().subscribe(comments => {
-   
+
   //       // let filteredComments = comments.filter(comment => comment.destinationId === this.destinationId);
   //       this.totalPages = Math.ceil(comments.length / this.commentsPerPage);
   //       this.hasStories = comments.length > 0;
 
-       
+
   //       this.storiesList = comments.slice(
   //         (this.currentPage - 1) * this.commentsPerPage,
   //         this.currentPage * this.commentsPerPage
   //       );
-    
-      
+
+
   //   });
   // }
 
@@ -94,20 +95,33 @@ images$ = this.photoService.images$;
         // Прилагане на изображенията към авторите на историите
         const storiesWithImages = stories.map(story => {
           const authorImage = imagesMap[story._ownerId] || 'път_към_стандартно_изображение';
-      
-          return {...story, authorImage: authorImage};
-        
+
+          return { ...story, authorImage: authorImage };
+
         });
-  
+
         // Прилагане на пагинация и обновяване на състоянието
         this.totalPages = Math.ceil(storiesWithImages.length / this.commentsPerPage);
         this.hasStories = storiesWithImages.length > 0;
-  
+
         this.storiesList = storiesWithImages.slice(
           (this.currentPage - 1) * this.commentsPerPage,
           this.currentPage * this.commentsPerPage
         );
       });
+    });
+  }
+
+  loadStoriesWithLikes(): void {
+    // this.apiService.getStories().subscribe(stories => {
+      // this.storiesList = stories;
+      this.storiesList.forEach((story, index) => {
+        this.apiService.getAllLikes().subscribe(allLikes => {
+          const likesForStory = allLikes.filter(like => like.storyId === story._id);
+
+          this.storiesList[index] = { ...story, likesCount: likesForStory.length };
+        });
+      // });
     });
   }
 
@@ -121,39 +135,37 @@ images$ = this.photoService.images$;
 
 
 
-
-  
   get pagesArray() {
     let pages: Array<number | string> = [];
-  
+
 
     pages.push(1);
-  
+
 
     let showEllipsis = false;
-  
+
     for (let i = 2; i < this.totalPages; i++) {
 
       if (i === 2 || i === this.totalPages - 1 || Math.abs(this.currentPage - i) <= 1) {
         pages.push(i);
         showEllipsis = true;
       } else {
-     
+
         if (showEllipsis) {
           pages.push('...');
-          showEllipsis = false; 
+          showEllipsis = false;
         }
       }
     }
-  
-  
+
+
     if (this.totalPages > 1) {
       pages.push(this.totalPages);
     }
-  
+
     return pages;
   }
-  
+
   isNumber(value: any): boolean {
     return typeof value === 'number';
   }
@@ -166,13 +178,13 @@ images$ = this.photoService.images$;
     this.router.navigate([], {
       relativeTo: this.route,
       queryParams: { page },
-      queryParamsHandling: 'merge', 
+      queryParamsHandling: 'merge',
     });
   }
 
 
   toggleLike(storyId: string): void {
- 
+
     const userId = localStorage.getItem('userId');
     if (userId) {
       const currentLike = this.isLiked[storyId];
@@ -187,7 +199,7 @@ images$ = this.photoService.images$;
         }
       } else {
         this.apiService.addLike(storyId, userId).subscribe((response: any) => {
-          const likeId = response._id; 
+          const likeId = response._id;
           this.isLiked[storyId] = { liked: true, likeId: likeId };
           this.loadStoriesWithLikes();
         });
@@ -199,19 +211,8 @@ images$ = this.photoService.images$;
 
 
   }
-  
 
-loadStoriesWithLikes(): void {
-  this.apiService.getStories().subscribe(stories => {
-    this.storiesList = stories;
-    this.storiesList.forEach((story, index) => {
-      this.apiService.getAllLikes().subscribe(allLikes => {
-        const likesForStory = allLikes.filter(like => like.storyId === story._id);
-    
-        this.storiesList[index] = {...story, likesCount: likesForStory.length};
-      });
-    });
-  });
-}
+
+
 
 }

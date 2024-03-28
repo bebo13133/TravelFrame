@@ -3,12 +3,13 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ApiService } from '../services/api.service';
 import { AuthenticatedComponent } from '../authenticated/authenticated.component';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { EditErrorComponent } from './edit-error/edit-error.component';
 
 @Component({
   selector: 'app-edit-destination',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule,AuthenticatedComponent],
+  imports: [ReactiveFormsModule, CommonModule,AuthenticatedComponent,EditErrorComponent],
   templateUrl: './edit-destination.component.html',
   styleUrl: './edit-destination.component.css'
 })
@@ -22,13 +23,13 @@ export class EditDestinationComponent implements OnInit {
   currentDayIndex: number = 0;
   destinationId: string | null = null;
 
-  constructor(private fb: FormBuilder, private apiService: ApiService, private route: ActivatedRoute) { 
+  constructor(private fb: FormBuilder, private apiService: ApiService, private route: ActivatedRoute, private router: Router) { 
     this.createForm = this.fb.group({
       image: [null],
-      title: ['', Validators.required],
-      paragraph: ['', Validators.required],
-      "title-desc": ['', Validators.required],
-      'info-desc': ['', Validators.required],
+      title: ['', [Validators.required, Validators.maxLength(20),Validators.minLength(2)]],
+      paragraph: ['', [Validators.required,Validators.maxLength(300),Validators.minLength(10)]],
+      "title-desc": ['', [Validators.required,Validators.maxLength(20),Validators.minLength(2)]],
+      'info-desc': ['', [Validators.required,Validators.maxLength(50),Validators.minLength(2)]],
       'images': [null],
       dateRange: this.fb.group({
         start: ['', Validators.required],
@@ -69,14 +70,14 @@ ngOnInit(): void {
 loadDestinationDetails(destinationId: string): void {
   this.apiService.getDestinationById(destinationId).subscribe({
     next: (destinationData) => {
-      // Попълване на основните полета на формата
+    
       this.createForm.patchValue({
         title: destinationData.title,
         paragraph: destinationData.paragraph,
  
         "title-desc": destinationData["title-desc"],
         'info-desc': destinationData['info-desc'],
-        // Прескачаме полето за изображения, тъй като то може да изисква специално обработване
+    
         dateRange: {
           start: destinationData.dateRange.start,
           end: destinationData.dateRange.end,
@@ -106,8 +107,8 @@ loadDestinationDetails(destinationId: string): void {
       destinationData.days.forEach(day => {
         const dayFormGroup = this.fb.group({
           dayImage: [day.dayImage],
-          dayTitle: [day.dayTitle, Validators.required],
-          dayInfo: [day.dayInfo, Validators.required]
+          dayTitle: [day.dayTitle,  [Validators.required,Validators.maxLength(20),Validators.minLength(2)]],
+          dayInfo: [day.dayInfo, [Validators.required,Validators.maxLength(800),Validators.minLength(20)]]
         });
         daysFormArray.push(dayFormGroup);
       });
@@ -314,7 +315,7 @@ this.imagesPreview = Array.isArray(destinationData.images) ? destinationData.ima
       this.apiService.editDestination(formData, this.destinationId).subscribe({
         next: (response) => {
           console.log('Destination created successfully', response);
-
+          this.router.navigate([`destination/details/${this.destinationId}`])
         },
         error: (error) => {
           console.error('Error creating destination', error);

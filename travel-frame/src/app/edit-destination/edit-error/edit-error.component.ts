@@ -4,13 +4,13 @@ import { FormArray, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-create-error',
+  selector: 'app-edit-error',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './create-error.component.html',
-  styleUrl: './create-error.component.css'
+  templateUrl: './edit-error.component.html',
+  styleUrl: './edit-error.component.css'
 })
-export class CreateErrorComponent {
+export class EditErrorComponent {
   @Input() createForm!: FormGroup;
   // @Input() initDayForm!: FormGroup;
 
@@ -81,9 +81,9 @@ export class CreateErrorComponent {
 
 
   ngOnInit(): void {
-  
+
     this.formChangesSubscription = this.createForm.valueChanges.subscribe(() => {
- 
+
     });
   }
 
@@ -92,4 +92,3 @@ export class CreateErrorComponent {
     this.formChangesSubscription.unsubscribe();
   }
 }
-

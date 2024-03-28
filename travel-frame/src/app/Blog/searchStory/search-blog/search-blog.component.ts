@@ -6,6 +6,7 @@ import { ActivatedRoute, Router, RouterLink, RouterModule } from '@angular/route
 import { CommonModule, SlicePipe } from '@angular/common';
 import { NumberToArrayPipe } from '../../../shared/pipes/number-array.pipe';
 import { AsiseMenuStoriesComponent } from '../../stories/asise-menu-stories/asise-menu-stories.component';
+import { ProfilePhotoService } from '../../../services/profile-photo.service';
 
 @Component({
   selector: 'app-search-blog',
@@ -23,9 +24,12 @@ export class SearchBlogComponent implements OnInit {
   currentPage: number = 1;
   pageSize: number = 2;
   totalPages: number = 0;
+  images$ = this.photoService.images$;
+
   constructor(private apiService: ApiService, private searchStoryService: SearchStoryService,
     private route: ActivatedRoute, 
     private router:Router,
+    private photoService: ProfilePhotoService
     ) { }
 
 
@@ -54,22 +58,48 @@ export class SearchBlogComponent implements OnInit {
  
 
   }
-  LoadData() {
-    this.apiService.getStories().subscribe({
-      next: (stories) => {
-        this.stories = stories
+  // LoadData() {
+  //   this.apiService.getStories().subscribe({
+  //     next: (stories) => {
+  //       this.stories = stories
 
-        this.filteredLocationList = this.stories
+  //       this.filteredLocationList = this.stories
         
-    // this.updatePagination()
+  //   // this.updatePagination()
 
-      },
-      error: (error) => {
-        console.error('Error fetching destinations:', error);
-      }
-    })
+  //     },
+  //     error: (error) => {
+  //       console.error('Error fetching destinations:', error);
+  //     }
+  //   })
 
+  // }
+
+  LoadData() {
+    // Първо, извличате картата на изображенията
+    this.photoService.fetchImagesMap().then(imagesMap => {
+      // След това извличате историите
+      this.apiService.getStories().subscribe({
+        next: (stories) => {
+          // Прилагате изображенията към авторите на историите
+          this.stories = stories.map(story => {
+            const authorImage = imagesMap[story._ownerId] || 'път_към_стандартно_изображение';
+            return { ...story, authorImage: authorImage };
+          });
+  
+          this.filteredLocationList = this.stories;
+          console.log("имг",this.filteredLocationList)
+          // this.updatePagination()
+        },
+        error: (error) => {
+          console.error('Error fetching stories:', error);
+        }
+      });
+    });
   }
+  
+
+
   updatePagination() {
     this.totalPages = Math.ceil(this.filteredLocationList.length / this.pageSize);
     const startIndex = (this.currentPage - 1) * this.pageSize;
