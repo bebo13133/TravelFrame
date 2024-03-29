@@ -78,6 +78,7 @@ ngOnInit(): void {
         this.favoritesService.removeFromFavorites(currentFavorite.favoriteId).subscribe(() => {
           this.isFavorite[destinationId] = { favorited: false };
           console.log('Removed from favorites!', this.isFavorite);
+          this.favoritesService.notifyFavoritesUpdated()
         });
       } else {
         console.error('Favorite ID is undefined, cannot delete favorite');
@@ -86,6 +87,7 @@ ngOnInit(): void {
       this.favoritesService.addToFavorites(destinationId).subscribe((response: any) => {
         const favoriteId = response._id;
         this.isFavorite[destinationId] = { favorited: true, favoriteId: favoriteId };
+        this.favoritesService.notifyFavoritesUpdated()
         console.log('Added to favorites!', this.isFavorite);
       });
     }

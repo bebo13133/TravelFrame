@@ -1,16 +1,23 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment.development';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Favorite } from '../types/favorite';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FavoritesService {
+  private favoritesUpdated = new BehaviorSubject<void>(undefined);
+
+  // Observable, който други компоненти могат да наблюдават
+  public favoritesUpdated$ = this.favoritesUpdated.asObservable();
+
 
   constructor(private http: HttpClient) { }
-
+  notifyFavoritesUpdated(): void {
+    this.favoritesUpdated.next();
+  }
   addToFavorites(destinationId: string) {
     return this.http.post(`${environment.apiUrl}/data/favorites`, { destinationId });
   }

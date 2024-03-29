@@ -1,6 +1,6 @@
-import { HTTP_INTERCEPTORS, HttpClient, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
+import { HTTP_INTERCEPTORS, HttpClient, HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
 import { Injectable, Provider } from "@angular/core";
-import { Observable, catchError, finalize, tap } from "rxjs";
+import { Observable, catchError, finalize, tap, throwError } from "rxjs";
 import { environment } from "../environments/environment.development";
 import { Router } from "@angular/router";
 import { ErrorService } from "./core/error/error.service";
@@ -32,31 +32,22 @@ export class AppInterceptor implements HttpInterceptor {
 
     this.spinnerService.requestStarted();
     return next.handle(req)
-      .pipe(
-        catchError((error) => {
+    .pipe(
+      catchError((error: HttpErrorResponse) => {
+        this.errorService.setError(error);
+        if (error.status === 401 || error.status === 404) {
+          this.router.navigate(['/home']);
+        } else {
+          this.router.navigate(['/error']);
+        }
         
-          this.errorService.setError(error);
-
-     
-          if (error.status === 401 || error.status === 404) {
-       
-            this.router.navigate(['/home']);
-          } else if (error.status === 403) {
-           
-            this.router.navigate(['/error']);
-          } else {
-        
-            this.router.navigate(['/error']);
-          }
-       
-
-          return [error];
-        }),
-        finalize(() => {
-      
-          this.spinnerService.requestEnded();
-        })
-      )
+        return throwError(error);
+      }),
+      finalize(() => {
+        this.spinnerService.requestEnded();
+        this.errorService.clearError(); // Изчистване на грешката след завършване на заявката
+      })
+    );
   }
 
 }

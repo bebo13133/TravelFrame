@@ -1,11 +1,24 @@
 /* row image  */
+.row-side{
+  display: flex;
+  /* justify-content: space-around; */
+  justify-content: center;
+  gap: 2em;
+  flex-wrap: nowrap;
+  position: absolute;
+  bottom: -15%;
+  flex-wrap: wrap;
+  left: 0;
+  right: 0;
+}
+
 .image-row-header {
     display: flex;
     /* justify-content: space-around; */
     justify-content: center;
     gap: 2em;
     flex-wrap: nowrap;
-    position: absolute;
+    /* position: absolute; */
     bottom: -15%;
     flex-wrap: wrap;
     left: 0;
