@@ -30,7 +30,7 @@ export class InfoHomeComponent {
         to_email:  this.user.email,
         message: `Welcome to Frame Travel . You have successfully signed up to receive news.`,
         to_name: `${this.user.username || this.user.name}`,
-        reply_to: "borislab@gmail.com",
+        reply_to: "borislaviliev47@gmail.com",
         promo: this.promoCodes,
         
     }

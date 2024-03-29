@@ -7,7 +7,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class ProfilePhotoService {
 
-  private photoUrl = new BehaviorSubject<string | null>(null)
+  public photoUrl = new BehaviorSubject<string | null>(null)
   private imagesSubject = new BehaviorSubject<string[]>([]);
   public images$ = this.imagesSubject.asObservable();
   

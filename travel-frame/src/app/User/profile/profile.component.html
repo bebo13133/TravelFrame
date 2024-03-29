@@ -6,7 +6,7 @@
 
         <div class="profile-img">
       
-            <img [src]="imageSrc || '/assets/media/person.png'" alt="person-img">
+            <img [src]="imageSrc || photoUrl ||'/assets/media/person.png'" alt="person-img">
            
                 <input type="file" #fileInput style="display: none" (change)="onFileSelected($event)">
             

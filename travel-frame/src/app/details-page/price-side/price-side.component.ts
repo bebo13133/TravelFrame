@@ -49,9 +49,11 @@ export class PriceSideComponent {
 
     const templateParams = {
         to_email: this.user.email,
-        message: `Welcome  ${this.user.email}`,
+        message: `You Welcome  ${this.user.email}`,
         to_name: `${this.user.email}`,
+        reply_to: "borislaviliev47@gmail.com",
        to_destination: `${this.destination?.title}`,
+      
         
     }
      emailjs

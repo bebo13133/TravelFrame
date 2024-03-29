@@ -21,6 +21,8 @@ export class ProfileComponent {
   private userId: string | undefined;
   // form: FormGroup;
   public file: any = {}
+  public photoUrl!: string; 
+
   myFavoriteDestinations: any[] = [];
   constructor(private storage: Storage, private userService: UserService, private photoService: ProfilePhotoService,
     private apiService: ApiService, private favoritesService: FavoritesService
@@ -31,6 +33,11 @@ export class ProfileComponent {
       if (this.userId) {
         // Зареждане на съхраненото URL при стартиране
         this.photoService.loadPhotoUrlFromStorage(this.userId);
+        this.photoService.photoUrl.subscribe(url => {
+          if (url) {
+            this.photoUrl = url; // Запазвате URL в променлива на компонента
+          }
+        });
       }
     });
     this.userService.user$.subscribe(user => {
@@ -41,7 +48,7 @@ export class ProfileComponent {
 
   ngOnInit() {
     this.loadMyFavorites();
-    console.log('Das', this.myFavoriteDestinations)
+  
   }
 
   loadMyFavorites() {
