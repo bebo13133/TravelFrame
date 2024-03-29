@@ -67,7 +67,10 @@ form{
     padding-bottom: 1em;
 }
 .dest-info{
+    margin: 0 auto;
+    width: 1300px;
     display: flex;
+    flex-wrap: wrap;
     gap:1em;
     padding: 2em;
     justify-content: center;

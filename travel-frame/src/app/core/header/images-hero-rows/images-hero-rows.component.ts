@@ -4,11 +4,12 @@ import { TiltDirective } from '../../../shared/directives/tilt.directive';
 import { ApiService } from '../../../services/api.service';
 import { Destination } from '../../../types/destination';
 import { FavoritesService } from '../../../services/favorites.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-images-hero-rows',
   standalone: true,
-  imports: [CommonModule, TiltDirective],
+  imports: [CommonModule, TiltDirective, RouterLink],
   templateUrl: './images-hero-rows.component.html',
   styleUrl: './images-hero-rows.component.css',
 })

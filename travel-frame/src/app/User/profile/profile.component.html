@@ -18,21 +18,16 @@
        
         
     </div>
-    <div class="destinations-info">
+    <div class="destinations-info" >
         <h2>Любими пътешествия </h2>
-        <div class="dest-info">
-            <div class="one-card">
-                <img src="/assets/media/desert.webp" alt="dest-img">
-                <p>Мароко</p>
+        <div class="dest-info" >
+            <div class="one-card" *ngFor="let destination of myFavoriteDestinations">
+                <a routerLink="/destination/details/{{destination._id}}">
+                <img src="{{destination.image}}" alt="dest-img">
+            </a>
+                <p>{{destination.title}}</p>
             </div>
-            <div class="one-card">
-                <img src="/assets/media/desert.webp" alt="dest-img">
-                <p>Мароко</p>
-            </div>
-            <div class="one-card">
-                <img src="/assets/media/desert.webp" alt="dest-img">
-                <p>Мароко</p>
-            </div>
+           
         </div>
     </div>
 </section>

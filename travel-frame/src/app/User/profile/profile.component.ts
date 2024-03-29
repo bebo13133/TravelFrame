@@ -1,14 +1,18 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { AngularFireStorage, AngularFireStorageModule } from '@angular/fire/compat/storage';
-import { finalize } from 'rxjs';
+import { finalize, forkJoin, map } from 'rxjs';
 import { Storage, getDownloadURL, getStorage, ref, uploadBytes, uploadBytesResumable } from '@angular/fire/storage';
 import { UserService } from '../user.service';
 import { ProfilePhotoService } from '../../services/profile-photo.service';
+import { FavoritesService } from '../../services/favorites.service';
+import { ApiService } from '../../services/api.service';
+import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [AngularFireStorageModule],
+  imports: [AngularFireStorageModule,CommonModule,RouterLink],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })
@@ -17,8 +21,10 @@ export class ProfileComponent {
   private userId: string | undefined;
   // form: FormGroup;
   public file: any = {}
-
-  constructor(private storage: Storage, private userService: UserService, private photoService: ProfilePhotoService) {
+  myFavoriteDestinations: any[] = [];
+  constructor(private storage: Storage, private userService: UserService, private photoService: ProfilePhotoService,
+    private apiService: ApiService, private favoritesService: FavoritesService
+    ) {
 
     this.userService.user$.subscribe(user => {
       this.userId = user?._id;
@@ -33,7 +39,32 @@ export class ProfileComponent {
 
   }
 
+  ngOnInit() {
+    this.loadMyFavorites();
+    console.log('Das', this.myFavoriteDestinations)
+  }
 
+  loadMyFavorites() {
+    forkJoin({
+      destinations: this.apiService.getDestinations(),
+      favorites: this.favoritesService.getAllFavorites()
+    }).pipe(
+      map(({destinations, favorites}) => {
+ 
+        const userId = this.userId; 
+      
+        return favorites
+          .filter(favorite => favorite._ownerId === userId)
+          .map(favorite => 
+            destinations.find(destination => destination._id === favorite.destinationId)
+          );
+      })
+    ).subscribe(filteredDestinations => {
+    
+      
+      this.myFavoriteDestinations = filteredDestinations;
+    });
+  }
   onFileSelected(event: any) {
     this.file = event.target.files[0];
     if (this.file) {
