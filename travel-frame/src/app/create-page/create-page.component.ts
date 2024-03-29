@@ -29,10 +29,10 @@ export class CreatePageComponent implements OnInit {
   ngOnInit() {
     this.createForm = this.fb.group({
       image: [null],
-      title: ['', [Validators.required, Validators.maxLength(20),Validators.minLength(2)]],
-      paragraph: ['', [Validators.required,Validators.maxLength(300),Validators.minLength(10)]],
-      "title-desc": ['', [Validators.required,Validators.maxLength(20),Validators.minLength(2)]],
-      'info-desc': ['', [Validators.required,Validators.maxLength(50),Validators.minLength(2)]],
+      title: ['', [Validators.required,Validators.minLength(2)]],
+      paragraph: ['', [Validators.required,Validators.minLength(10)]],
+      "title-desc": ['', [Validators.required,Validators.minLength(2)]],
+      'info-desc': ['', [Validators.required,Validators.minLength(2)]],
       'images': [null],
       dateRange: this.fb.group({
         start: ['', Validators.required],
@@ -64,8 +64,8 @@ export class CreatePageComponent implements OnInit {
   initDayForm(): FormGroup {
     return this.fb.group({
       dayImage: [null],
-      dayTitle: ['', [Validators.required,Validators.maxLength(20),Validators.minLength(2)]],
-      dayInfo: ['', [Validators.required,Validators.maxLength(800),Validators.minLength(20)]]
+      dayTitle: ['', [Validators.required,Validators.minLength(2)]],
+      dayInfo: ['', [Validators.required,Validators.minLength(20)]]
     });
   };
   goToDay(index: number) {

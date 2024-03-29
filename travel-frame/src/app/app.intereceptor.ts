@@ -33,26 +33,25 @@ export class AppInterceptor implements HttpInterceptor {
     this.spinnerService.requestStarted();
     return next.handle(req)
     .pipe(
-      catchError((error: HttpErrorResponse) => {
-        this.errorService.setError(error);
-        switch (error.status) {
-          case 401:
-          case 404:
-            // Пренасочване към home за 401 и 404 грешки
-            this.router.navigate(['/home']);
-            break;
-          case 403:
-            // Специфична логика за обработка на 403 Forbidden грешка
-            // Например, покажете съобщение или пренасочете към страница за достъп
-            this.router.navigate(['/home']);
-            break;
-          default:
-            // За всички останали грешки, пренасочване към обща страница за грешка
-            this.router.navigate(['/error']);
-            break;
-        }
-        return throwError(() => error);
-      }),
+      // catchError((error: HttpErrorResponse) => {
+      //   this.errorService.setError(error);
+      //   switch (error.status) {
+      //     case 401:
+      //     case 404:
+     
+      //       this.router.navigate(['/home']);
+      //       break;
+      //     case 403:
+       
+      //       this.router.navigate(['/home']);
+      //       break;
+      //     default:
+      //       // За всички останали грешки, пренасочване към обща страница за грешка
+      //       this.router.navigate(['/error']);
+      //       break;
+      //   }
+      //   return throwError(() => error);
+      // }),
       finalize(() => {
         this.spinnerService.requestEnded();
         this.errorService.clearError(); // Изчистване на грешката след завършване на заявката
