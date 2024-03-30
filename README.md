@@ -112,7 +112,7 @@ Follow these steps to get the Travel Frame application up and running on your lo
 
    git clone https://github.com/bebo13133/TravelFrame.git
 
-#### Navigate to the Project Directory:
+1. Navigate to the Project Directory:
 
 Use the terminal to navigate to the project directory.
 
@@ -134,3 +134,31 @@ ng s
 4. Open the Project:
 Access the application by opening the following URL in a web browser:
 http://localhost:4200/
+
+
+### Server part Setup
+1. Navigate to the Server Directory:
+
+```bash
+cd server
+```
+2. Install Server Dependencies and Start the Server
+Execute the following commands in order to start the server.
+```bash
+npm install
+```
+```bash
+npm run client
+```
+```bash
+npm run build
+```
+```bash
+npm start
+```
+#### Running the Server:
+
+Once the server is started, it will listen for requests on:
+
+```plaintext
+http://localhost:3030/
