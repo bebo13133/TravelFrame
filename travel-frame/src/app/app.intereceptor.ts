@@ -33,25 +33,25 @@ export class AppInterceptor implements HttpInterceptor {
     this.spinnerService.requestStarted();
     return next.handle(req)
     .pipe(
-      // catchError((error: HttpErrorResponse) => {
-      //   this.errorService.setError(error);
-      //   switch (error.status) {
-      //     case 401:
-      //     case 404:
+      catchError((error: HttpErrorResponse) => {
+        this.errorService.setError(error);
+        switch (error.status) {
+          case 401:
+          case 404:
      
-      //       this.router.navigate(['/home']);
-      //       break;
-      //     case 403:
+            this.router.navigate(['/home']);
+            break;
+          case 403:
        
-      //       this.router.navigate(['/home']);
-      //       break;
-      //     default:
-      //       // За всички останали грешки, пренасочване към обща страница за грешка
-      //       this.router.navigate(['/error']);
-      //       break;
-      //   }
-      //   return throwError(() => error);
-      // }),
+            this.router.navigate(['/home']);
+            break;
+          default:
+            // За всички останали грешки, пренасочване към обща страница за грешка
+            this.router.navigate(['/error']);
+            break;
+        }
+        return throwError(() => error);
+      }),
       finalize(() => {
         this.spinnerService.requestEnded();
         this.errorService.clearError(); // Изчистване на грешката след завършване на заявката
