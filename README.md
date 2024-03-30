@@ -2,7 +2,7 @@
 
 Travel Frame is a web-based application designed to inspire and facilitate travel enthusiasts in planning their next adventure. This platform offers a comprehensive suite of tools and resources, including destination guides, travel itineraries, user reviews, and a vibrant community of fellow travelers. Whether you're looking for the next hidden gem or planning a trip to a well-trodden locale, Travel Frame aims to provide you with the insights and tools you need to make your journey memorable.
 ## Visit the live site: [Travel Frame]()
-## Admin - email: peter@abv.bg password:123456
+## Test User - email: peter@abv.bg password:123456
 ## Technologies Used
 
 This project is built using a variety of technologies and frameworks to provide the best user experience and developer productivity:
@@ -100,3 +100,28 @@ Access to Travel Frame's comprehensive features is tailored to enhance user enga
   - **Access to Photo Galleries:** Enjoy access to beautiful galleries featuring photos from various destinations and adventures.
 
 Travel Frame is committed to providing a platform that is both informative and interactive. By registering, users can fully immerse themselves in the world of travel planning and storytelling, contributing to a community that values exploration and shared experiences.
+
+## Installation and Running the Application
+
+Follow these steps to get the Travel Frame application up and running on your local machine for development and testing purposes.
+
+### Client Application Setup
+
+ **Clone the Repository:** 
+   You can clone the repository using the following command or download it as a ZIP file and extract it on your computer.
+   ```bash
+   git clone https://github.com/bebo13133/TravelFrame.git
+
+## Navigate to the Project Directory:
+
+Use the terminal to navigate to the project directory.
+
+```bash
+cd travel-frame
+
+## Install Dependencies:
+
+Install all the necessary dependencies by running the following command in your terminal:
+
+```bash
+npm install
