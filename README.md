@@ -14,4 +14,5 @@ This project is built using a variety of technologies and frameworks to provide 
 - **Swiper:** A powerful and modern mobile touch slider with hardware accelerated transitions. This library is used in Travel Frame to create responsive and interactive slideshows and presentations.
 
 Each of these technologies contributes to the robust functionality and sleek user interface of Travel Frame, making travel planning and sharing an enjoyable and efficient experience for users.
+
 [![Angular](https://img.shields.io/badge/Angular-✓-blue)]() [![Angular-Material](https://img.shields.io/badge/Angular--Material-✓-important)]() [![Firebase](https://img.shields.io/badge/Firebase-✓-yellowgreen)]() [![SoftUni Practice Server](https://img.shields.io/badge/SoftUni_Practice_Server-✓-orange)]() [![Swiper](https://img.shields.io/badge/Swiper-✓-brightgreen)]() [![Emailjs browser](https://img.shields.io/badge/Еmailjs--Browser-✓-ff69b4)]() [![Bootstrap](https://img.shields.io/badge/Bootstrap-✓-red)]() [![heruko](https://img.shields.io/badge/Heruko-✓-9cf)]()
