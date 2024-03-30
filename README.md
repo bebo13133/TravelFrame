@@ -112,25 +112,25 @@ Follow these steps to get the Travel Frame application up and running on your lo
 
    git clone https://github.com/bebo13133/TravelFrame.git
 
-## Navigate to the Project Directory:
+1. Navigate to the Project Directory:
 
 Use the terminal to navigate to the project directory.
 
 ```bash
 cd travel-frame
    ```
-## Install Dependencies:
+2. Install Dependencies:
 
 Install all the necessary dependencies by running the following command in your terminal:
 
 ```bash
 npm install   
 ```
-## Run the Client Part:
+3. Run the Client Part:
 Start the Angular development server with this command:
 ```bash
 ng s 
 ```
-## Open the Project:
+4. Open the Project:
 Access the application by opening the following URL in a web browser:
 http://localhost:4200/
