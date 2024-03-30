@@ -126,3 +126,11 @@ Install all the necessary dependencies by running the following command in your 
 ```bash
 npm install   
 ```
+## Run the Client Part:
+Start the Angular development server with this command:
+```bash
+ng s 
+```
+## Open the Project:
+Access the application by opening the following URL in a web browser:
+http://localhost:4200/
