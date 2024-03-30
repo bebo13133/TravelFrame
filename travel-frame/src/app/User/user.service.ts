@@ -16,6 +16,7 @@ export class UserService implements OnDestroy , OnInit {
   user: User | undefined
   private subscription: Subscription = new Subscription();
   get isLoggedIn(): boolean {
+    // console.log ("тест тест")
     return !!this.user$$.getValue();
   }
 // subscription: Subscription;
