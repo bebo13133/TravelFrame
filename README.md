@@ -112,7 +112,7 @@ Follow these steps to get the Travel Frame application up and running on your lo
 
    git clone https://github.com/bebo13133/TravelFrame.git
 
-1. Navigate to the Project Directory:
+#### Navigate to the Project Directory:
 
 Use the terminal to navigate to the project directory.
 
