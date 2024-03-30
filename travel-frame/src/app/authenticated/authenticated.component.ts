@@ -20,5 +20,5 @@ isLoggedIn = false;
       this.router.navigate(['/auth'])
     }
   }
-  
+
 }
