@@ -33,3 +33,17 @@ Travel Frame offers a unique approach to exploring new destinations and embarkin
 - **Adventure Over Luxury:** Our focus is on the experience rather than the extravagance. Travel Frame is the go-to platform for those who seek adventure and want to explore the world in a more authentic and engaging way.
 
 Travel Frame is designed for the modern adventurer – someone who values experiences over luxury and is always in search of the next great journey. Join our community and start exploring the world in ways you never thought possible.
+
+### User Profile
+
+The Travel Frame platform offers a personalized user profile feature, enhancing the experience of each traveler. The user profile serves as a central hub for personalization and content management, making it easier for users to engage with the community and keep track of their favorite adventures. Key features of the user profile include:
+
+- **Favorite Destinations:** Users can bookmark their favorite destinations, creating a curated list of places they love or wish to visit. This list is easily accessible within the user profile, serving as a personalized travel wishlist or itinerary for future adventures.
+
+- **Profile Customization:** Personalization is at the heart of the user experience on Travel Frame. Users can upload their own profile picture, adding a personal touch to their profile. This feature helps in building a more connected and engaging community, as it allows users to recognize and interact with each other more personally.
+
+- **Adventure Planning:** Beyond just bookmarking destinations, the user profile also facilitates the planning of future trips. Users can organize their travel plans, save ideas for excursions, and even draft itineraries that can later be shared with the community or used for personal reference.
+
+- **Community Interaction:** The profile acts as a gateway for users to participate in the Travel Frame community. Through their profile, users can share their travel experiences, post comments, interact with other travelers’ content, and contribute to the travel blog.
+
+The user profile feature of Travel Frame is designed to make travel planning and community interaction seamless and enjoyable. By offering tools for customization, content management, and social engagement, we aim to provide a platform that caters to the needs and preferences of every adventurer.
