@@ -118,10 +118,11 @@ Use the terminal to navigate to the project directory.
 
 ```bash
 cd travel-frame
-
+   ```
 ## Install Dependencies:
 
 Install all the necessary dependencies by running the following command in your terminal:
 
 ```bash
-npm install
+npm install   
+```
