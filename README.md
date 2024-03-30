@@ -178,5 +178,46 @@ Once the server is started, it will listen for requests on:
 http://localhost:3030/
 ```
 
+## Site Structure
+
+The Travel Frame website is designed with a user-friendly and intuitive structure to ensure easy navigation and a pleasant user experience. Below is an overview of the key components of the site:
+
+### Homepage
+
+- **Navigation Bar:** Provides quick links to the main sections of the site including Destination Catalog, Travel Blog, User Profile, and Discussion Forum. Also includes login/sign-up options.
+- **Banner/Slideshow:** Features visually appealing images of popular destinations or current deals to inspire users.
+- **Featured Destinations:** Highlights selected destinations to prompt user exploration.
+- **Latest Blog Posts:** Displays recent entries from the Travel Blog to engage users with fresh content.
+- **Top Adventures:** Showcases user-created adventures that have received the most likes or comments.
+
+### Destination Catalog
+
+- **Search and Filters:** Allows users to search for destinations by name, category, or tags and use filters for more specific results.
+- **Destination Listings:** Each destination includes an image, brief description, and a link to a detailed guide.
+
+### Travel Blog
+
+- **Blog Posts:** Users can read stories, tips, and reviews from fellow travelers. Each post includes author information, publication date, and the ability to comment.
+- **Submit a Post:** Registered users can contribute their own travel stories to the blog.
+
+### User Profile
+
+- **Profile Information:** Users can view and edit their profile details, upload a profile picture, and manage account settings.
+- **My Adventures:** Users can create and share their own adventures, as well as keep track of their favorite destinations.
+- **My Favorites:** A section for users to save and organize destinations and blog posts they love.
+
+### Discussion Forum
+
+- **Forum Categories:** The forum is divided into categories for different topics of discussion related to travel.
+- **Threads and Posts:** Users can start new threads, post comments, and interact with other community members.
+- **Top Discussions:** Highlights the most active or recent discussions on the forum.
+
+### How to Access
+
+- **Access Restrictions:** Non-registered users have limited access to the site's features. Full access is granted upon registration.
+- **Registration Process:** Users can sign up with their email, username, and password to gain full access to all features.
+
+This structure aims to provide a comprehensive and engaging platform for travel enthusiasts to explore destinations, share experiences, and connect with a community of like-minded individuals.
+
 ## License:
 This project is licensed under the [MIT License](LICENSE).
