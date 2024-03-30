@@ -109,7 +109,7 @@ Follow these steps to get the Travel Frame application up and running on your lo
 
  **Clone the Repository:** 
    You can clone the repository using the following command or download it as a ZIP file and extract it on your computer.
-   ```bash
+
    git clone https://github.com/bebo13133/TravelFrame.git
 
 ## Navigate to the Project Directory:
