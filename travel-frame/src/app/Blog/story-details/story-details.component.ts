@@ -18,6 +18,7 @@ export class StoryDetailsComponent implements OnInit {
 constructor(private apiService: ApiService, private route: ActivatedRoute, private photoService:ProfilePhotoService){}
   story: Story | null = null;
   ngOnInit(): void {
+    window.scrollTo({top:0})
     this.loadStoryDetails()
   }
 

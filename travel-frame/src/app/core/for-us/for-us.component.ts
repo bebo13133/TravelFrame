@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-for-us',
@@ -7,6 +7,8 @@ import { Component } from '@angular/core';
   templateUrl: './for-us.component.html',
   styleUrl: './for-us.component.css'
 })
-export class ForUsComponent {
-
+export class ForUsComponent implements OnInit{
+ngOnInit(): void {
+  window.scrollTo({top:0})
+}
 }

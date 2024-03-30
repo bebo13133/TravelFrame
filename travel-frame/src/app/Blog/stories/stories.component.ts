@@ -38,6 +38,7 @@ export class StoriesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    window.scrollTo({top:0})
     this.route.queryParamMap.subscribe(params => {
       const page = params.get('page');
       this.currentPage = page ? parseInt(page, 10) : 1;

@@ -62,6 +62,7 @@ export class CommentPageComponent implements OnInit {
     return typeof value === 'number';
   }
   ngOnInit(): void {
+    window.scrollTo({top:0})
     this.route.paramMap.subscribe(params => {
       this.destinationId = params.get('destinationId');
     });

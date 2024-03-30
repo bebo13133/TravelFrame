@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, } from '@angular/core';
+import { Component, OnInit, } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators,  } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -17,6 +17,8 @@ import { HowAreComponent } from './how-are/how-are.component';
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.css'
 })
-export class ContactComponent {
-
+export class ContactComponent implements OnInit {
+ngOnInit(): void {
+  window.scrollTo({top:0})
+}
 }

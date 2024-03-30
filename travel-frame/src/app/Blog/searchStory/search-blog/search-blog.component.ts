@@ -34,7 +34,7 @@ export class SearchBlogComponent implements OnInit {
 
 
   ngOnInit(): void {
-
+    window.scrollTo({top:0})
     if (!this.isDataLoaded) {
       this.searchStoryService.searchStory$.subscribe(results => {
 

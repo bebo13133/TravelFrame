@@ -30,6 +30,7 @@ export class DestinationsComponent {
   }
 
   ngOnInit(): void {
+    window.scrollTo({top:0})
     this.isLoading = true; 
     this.subscription.add(
       this.apiService.getDestinations().subscribe({

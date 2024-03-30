@@ -27,6 +27,7 @@ export class CreatePageComponent implements OnInit {
   constructor(private fb: FormBuilder, private apiService: ApiService, private router:Router) { }
 
   ngOnInit() {
+    window.scrollTo({top:0})
     this.createForm = this.fb.group({
       image: [null],
       title: ['', [Validators.required,Validators.minLength(2)]],

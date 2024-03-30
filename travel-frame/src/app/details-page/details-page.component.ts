@@ -35,6 +35,7 @@ export class DetailsPageComponent implements OnInit {
 
   ngOnInit() {
     // this.loadBackgroundImage();
+    window.scrollTo({top:0})
     this.route.fragment.subscribe(frag => {
       if (frag) { 
         const element = document.getElementById(frag);
