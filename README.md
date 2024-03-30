@@ -12,6 +12,7 @@ This project is built using a variety of technologies and frameworks to provide 
 - **Firebase:** Provides a real-time database service, which allows the application to store and sync data between users in real-time, enhancing the collaborative experience.
 - **SoftUni Practice Server:** Utilized for backend services. This server is often used in educational contexts for practical exercises and provides a reliable back-end service for the application.
 - **Swiper:** A powerful and modern mobile touch slider with hardware accelerated transitions. This library is used in Travel Frame to create responsive and interactive slideshows and presentations.
+- **MailJS:** An email sending service that facilitates the integration of email functionality into web applications. In Travel Frame, MailJS is used to streamline communication with users, enabling features such as notifications, newsletters, and user verification processes.
 
 Each of these technologies contributes to the robust functionality and sleek user interface of Travel Frame, making travel planning and sharing an enjoyable and efficient experience for users.
 
