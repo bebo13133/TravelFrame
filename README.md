@@ -12,6 +12,7 @@ Travel Frame is a web-based application designed to inspire and facilitate trave
 - [Discussion Forum](#discussion-forum)
 - [How to Access](#how-to-access)
 - [Installation and Running the Application](#installation-and-running-the-application)
+- [Site Structure](#site-structure)
 - [License](#license)
 
 
