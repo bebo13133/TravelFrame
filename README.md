@@ -1,6 +1,20 @@
 # Travel Frame
 
 Travel Frame is a web-based application designed to inspire and facilitate travel enthusiasts in planning their next adventure. This platform offers a comprehensive suite of tools and resources, including destination guides, travel itineraries, user reviews, and a vibrant community of fellow travelers. Whether you're looking for the next hidden gem or planning a trip to a well-trodden locale, Travel Frame aims to provide you with the insights and tools you need to make your journey memorable.
+## Table of Contents
+
+- [Visit the Live Site](#visit-the-live-site)
+- [Test User Credentials](#test-user-credentials)
+- [Technologies Used](#technologies-used)
+- [Features](#features)
+- [User Profile](#user-profile)
+- [Modern Design](#modern-design)
+- [Discussion Forum](#discussion-forum)
+- [How to Access](#how-to-access)
+- [Installation and Running the Application](#installation-and-running-the-application)
+- [License](#license)
+
+
 ## Visit the live site: [Travel Frame]()
 ## Test User - email: peter@abv.bg password:123456
 ## Technologies Used
