@@ -129,9 +129,9 @@ export const routes: Routes = [
 
     {
         path: '404',
-        component: PageNotFoundComponent, // Използвайте ErrorComponent или друг компонент, който сте създали за 404 грешка
+        component: PageNotFoundComponent, 
     },
-    // Wildcard маршрут за 404 страница. Трябва да е последният в списъка с маршрути.
+
     {
         path: '**',
         redirectTo: '/404'
