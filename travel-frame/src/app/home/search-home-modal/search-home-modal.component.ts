@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { ApiService } from '../../services/api.service';
 import { SearchDataService } from '../../services/search-data.service';
+import { UserService } from '../../User/user.service';
 
 @Component({
   selector: 'app-search-home-modal',
@@ -18,12 +19,13 @@ export class SearchHomeModalComponent implements OnInit {
   filteredLocationList: Destination[] = [];
   destinations: Destination[] = []
 
-constructor(private apiService:ApiService, private router:Router,private searchDataService: SearchDataService){
+constructor(private apiService:ApiService, private router:Router,private searchDataService: SearchDataService, private userService:UserService){
   this.loadData()
   
 }
-
+isLoggedIn: boolean = false;
 ngOnInit(): void {
+  this.isLoggedIn = this.userService.isLoggedIn;
   
 }
 
@@ -51,7 +53,12 @@ loadData() {
 
 
   showModal(): void {
-    this.isVisible = true;
+    if(this.isLoggedIn){
+      this.isVisible = true;
+
+    }else{
+      this.router.navigate(['/destinations'])
+    }
 
   }
 

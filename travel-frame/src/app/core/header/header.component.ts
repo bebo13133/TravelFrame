@@ -23,9 +23,9 @@ export class HeaderComponent implements OnInit {
   constructor(private userService:UserService, private router:Router, private photoService:ProfilePhotoService,private cdr: ChangeDetectorRef) { 
  
     
-    this.userService.user$.subscribe(user => {
-      this.userId = user?._id;
-    });
+    // this.userService.user$.subscribe(user => {
+    //   this.userId = user?._id;
+    // });
   
     this.userService.user$.subscribe(user => {
       this.userId = user?._id;
