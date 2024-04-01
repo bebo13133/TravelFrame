@@ -47,7 +47,7 @@ export class HeaderComponent implements OnInit {
     });
  const userId = localStorage.getItem('userId');
   if (userId) {
-    // Проверка дали URL на профилната снимка вече е запазен в localStorage
+   
     const savedPhotoUrl = localStorage.getItem(`profilePhoto_${userId}`);
     if (savedPhotoUrl) {
       this.photoUrl = savedPhotoUrl;
