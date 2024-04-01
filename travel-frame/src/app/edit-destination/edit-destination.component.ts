@@ -134,42 +134,6 @@ this.imagesPreview = Array.isArray(destinationData.images) ? destinationData.ima
 }
 
 
-  // Submit logic
-  // ngOnInit() {
-  //   this.createForm = this.fb.group({
-  //     image: [null],
-  //     title: ['', Validators.required],
-  //     paragraph: ['', Validators.required],
-  //     "title-desc": ['', Validators.required],
-  //     'info-desc': ['', Validators.required],
-  //     'images': [null],
-  //     dateRange: this.fb.group({
-  //       start: ['', Validators.required],
-  //       end: ['', Validators.required]
-  //     }),
-  //     price: ['', [Validators.required, Validators.pattern(/^\d+$/)]],
-  //     conditions: this.fb.group({
-  //       ticketsIncluded: [false],
-  //       allTransportCosts: [false],
-  //       accommodations: [false],
-  //       allMeals: [false],
-  //       practices: [false],
-  //       atvTour: [false],
-  //       spaAccess: [false],
-  //       guidesIncluded: [false],
-  //       medicalInsurance: [false],
-  //       personalExpenses: [false],
-  //       alcoholicBeverages: [false],
-  //       unspecifiedServices: [false],
-  //       additionalActivitiesFee: [false],
-  //       cancellationInsurance: [false]
-  //     }),
-  //     days: this.fb.array([this.initDayForm()]),
-
-  //   });
-  //   // console.log('fs', this.createForm.value)
-  // }
-
   initDayForm(): FormGroup {
     return this.fb.group({
       dayImage: [null],
@@ -270,7 +234,10 @@ this.imagesPreview = Array.isArray(destinationData.images) ? destinationData.ima
 
   }
   onSubmit() {
-;
+    // const userId = localStorage.getItem('userId');
+
+
+    //       this.isOwner = destination._ownerId === userId;;
     // if (!this.isOwner) {
     //   console.error('Delete error: User is not the owner of this destination.');
     //   return;
