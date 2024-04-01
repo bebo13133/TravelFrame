@@ -22,6 +22,7 @@ export class AsideMenuComponent implements OnInit {
   commentModalVisible: boolean = false;
   @ViewChild(CommentsFormComponent) commentsForm!: CommentsFormComponent;
   reloadKey = 0;
+  
   constructor(private apiService: ApiService,private cdr: ChangeDetectorRef, private router:Router,) { 
     this.commentModalVisible = false;
   }
@@ -33,7 +34,10 @@ export class AsideMenuComponent implements OnInit {
 
 
   onDeleteConfirmed(destinationId: string, ) {
-   
+    if (!this.isOwner) {
+      console.error('Delete error: User is not the owner of this destination.');
+      return;
+    }
     this.apiService.deleteDestination(destinationId).subscribe({
       next: () => {
         console.log('Destination has been deleted');

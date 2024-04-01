@@ -54,6 +54,7 @@ export class AppInterceptor implements HttpInterceptor {
       }),
       finalize(() => {
         this.spinnerService.requestEnded();
+        this.spinnerService.resetSpinner();
         this.errorService.clearError(); // Изчистване на грешката след завършване на заявката
       })
   )}

@@ -22,14 +22,17 @@ export class EditDestinationComponent implements OnInit {
   dayImages: { previews: string[] }[] = [];
   currentDayIndex: number = 0;
   destinationId: string | null = null;
+  isOwner: boolean = false;
+
+
 
   constructor(private fb: FormBuilder, private apiService: ApiService, private route: ActivatedRoute, private router: Router) { 
     this.createForm = this.fb.group({
       image: [null],
-      title: ['', [Validators.required, Validators.maxLength(20),Validators.minLength(2)]],
-      paragraph: ['', [Validators.required,Validators.maxLength(300),Validators.minLength(10)]],
-      "title-desc": ['', [Validators.required,Validators.maxLength(20),Validators.minLength(2)]],
-      'info-desc': ['', [Validators.required,Validators.maxLength(50),Validators.minLength(2)]],
+      title: ['', [Validators.required,Validators.minLength(2)]],
+      paragraph: ['', [Validators.required,Validators.minLength(10)]],
+      "title-desc": ['', [Validators.required,Validators.minLength(2)]],
+      'info-desc': ['', [Validators.required,Validators.minLength(2)]],
       'images': [null],
       dateRange: this.fb.group({
         start: ['', Validators.required],
@@ -64,6 +67,7 @@ ngOnInit(): void {
   if (this.destinationId) {
     this.loadDestinationDetails(this.destinationId);
   }
+  
 }
 
 
@@ -107,8 +111,8 @@ loadDestinationDetails(destinationId: string): void {
       destinationData.days.forEach(day => {
         const dayFormGroup = this.fb.group({
           dayImage: [day.dayImage],
-          dayTitle: [day.dayTitle,  [Validators.required,Validators.maxLength(20),Validators.minLength(2)]],
-          dayInfo: [day.dayInfo, [Validators.required,Validators.maxLength(800),Validators.minLength(20)]]
+          dayTitle: [day.dayTitle,  [Validators.required,Validators.minLength(2)]],
+          dayInfo: [day.dayInfo, [Validators.required,Validators.minLength(20)]]
         });
         daysFormArray.push(dayFormGroup);
       });
@@ -266,32 +270,11 @@ this.imagesPreview = Array.isArray(destinationData.images) ? destinationData.ima
 
   }
   onSubmit() {
-
-    // prowerki
-
-        // console.log('status',this.createForm.status); // Покажете общия статус на формата
-    // console.log('formValue',this.createForm.value); // Покажете стойностите на формата
-    // console.log('errors',this.createForm.errors); // Покажете грешките на формата, ако има такива
-  
-    // if (this.createForm.invalid) {
-    //   console.log('controles',this.createForm.controls); // Ще покаже статуса на всички контроли
-    // }
-    // const days = this.createForm.get('days') as FormArray;
-    // let isValid = true;
-  
-    // days.controls.forEach((dayFormGroup, index) => {
-    //   if (!dayFormGroup.valid) {
-    //     console.log(`Day ${index + 1} is not valid.`);
-    //     isValid = false;
-    //   }
-    // });
-  
-    // if (!isValid) {
-    //   console.log('There are invalid days. Cannot submit.');
+;
+    // if (!this.isOwner) {
+    //   console.error('Delete error: User is not the owner of this destination.');
     //   return;
     // }
-
-
 
 
 

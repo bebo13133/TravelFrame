@@ -59,7 +59,7 @@ export class CreatePageComponent implements OnInit {
       days: this.fb.array([this.initDayForm()]),
 
     });
-     console.log('fs-цондитинал', this.createForm.value)
+  
   }
 
   initDayForm(): FormGroup {
