@@ -8,11 +8,15 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ApiService } from './services/api.service';
 import { UserService } from './User/user.service';
 import { SpinnerComponent } from './spinner/spinner.component';
+import { CookieConsentComponent } from './cookie-consent/cookie-consent.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,HeaderComponent,HomeComponent,FooterComponent,LoginComponent,HttpClientModule,SpinnerComponent],
+  imports: [RouterOutlet,HeaderComponent,HomeComponent,FooterComponent,LoginComponent,
+    HttpClientModule,SpinnerComponent,
+    CookieConsentComponent
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
   providers: [HttpClientModule, ApiService, UserService],
