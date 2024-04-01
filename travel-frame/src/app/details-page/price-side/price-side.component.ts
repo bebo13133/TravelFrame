@@ -38,13 +38,23 @@ export class PriceSideComponent {
       this.user = user;
     });
   }
-  getConditionsArray(): Array<{key: string, value: boolean}> { // ще го ползвам вместо да го пиша в html-a
+
+
+  
+  getConditionsArray(): Array<string> {
     const conditions = this.destination?.conditions;
     if (!conditions) {
       return [];
     }
-    return Object.entries(conditions).map(([key, value]) => ({key, value}));
+    return Object.entries(conditions)
+      .filter(([key, value]) => value === true)
+      .map(([key, _]) => this.conditionLabels[key] || key); // Използвайте етикетите от conditionLabels
   }
+  
+  
+
+
+
    sendEmail = () => {
 
     const templateParams = {

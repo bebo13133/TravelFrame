@@ -82,7 +82,13 @@ export class DetailsPageComponent implements OnInit {
       });
     }
   };
+  getTrueConditions(conditions: { [key: string]: boolean }): string[] {
+    return Object.entries(conditions)
+      .filter(([_, value]) => value === true)
+      .map(([key, _]) => key);
+  }
 
+  
   startSlideshow(): void {
 
     const images = this.destination?.images ?? [];
