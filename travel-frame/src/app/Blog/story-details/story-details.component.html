@@ -9,7 +9,7 @@
                 <p>{{story?.author}}</p>
             </div>
         </div>
-        <img src="{{story?.image}}" alt="" class="story-img">
+        <img src="{{story?.image|| '/assets/media/desert.webp'}}" alt="" class="story-img">
         <p style="white-space: pre-wrap;" class="desc-story">{{(story?.description || '') | addNewLine}}</p>
 
         <div class="author-story">

@@ -17,6 +17,7 @@ export class StoryDetailsComponent implements OnInit {
 
 constructor(private apiService: ApiService, private route: ActivatedRoute, private photoService:ProfilePhotoService){}
   story: Story | null = null;
+
   ngOnInit(): void {
     window.scrollTo({top:0})
     this.loadStoryDetails()
@@ -30,11 +31,13 @@ constructor(private apiService: ApiService, private route: ActivatedRoute, priva
           if (story._ownerId) {
             try {
               const imagesMap = await this.photoService.fetchImagesMap();
-              const authorImageUrl = imagesMap[story._ownerId] || 'път_към_стандартно_изображение';
+              const authorImageUrl = imagesMap[story._ownerId] ;
               this.story = {...story, authorImage: authorImageUrl};
             } catch (error) {
               console.error('Error fetching images map:', error);
-              this.story = {...story, authorImage: 'път_към_стандартно_изображение'};
+              this.story = {...story,
+                //  authorImage: 'път_към_стандартно_изображение'
+                };
             }
           } else {
             this.story = story;
