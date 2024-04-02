@@ -17,6 +17,10 @@ header {
     background-color: rgba(0, 0, 0, 0.8); 
   }
 
+
+  /* .site-header{
+    position: relative;;
+  } */
   .logo {
     width: 7em;
   }
@@ -68,6 +72,78 @@ header {
     display: none;
   }
   
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  
+  .content h1 {
+    font-size: 8rem;
+    font-weight: 600;
+    -webkit-text-stroke: 0.8px rgb(168, 239, 255, 1);
+    color: white;
+    transition: all 0.5s ease;
+  }
+  .content p{
+    font-size: 2em;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 2em;
+    -webkit-text-stroke: 0.2px rgb(168, 239, 255, 1);
+    transition: all 0.5s ease;
+
+  }
+  
+  .btn {
+    width: 180px;
+    height: 50px;
+    border-radius: 5px;
+    background: transparent;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: all 0.3s ease-in;
+  }
+  
+  .btn:hover {
+    transform: translateY(-5px);
+  }
+  
+  .light::before {
+    content: "";
+    position: absolute;
+    background-image: conic-gradient(
+      rgb(168, 239, 255, 1) 20deg,
+      transparent 150deg
+    );
+    width: 400%;
+    height: 400%;
+    border-radius: 5px;
+    animation: rotate 3s linear infinite;
+  }
+  
+  .light::after {
+    content: "Explore";
+    position: absolute;
+    width: 170px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(35px);
+    -webkit-backdrop-filter: blur(35px);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    border-radius: 5px;
+  }
+  
+
 
   @keyframes rotate {
     0% {

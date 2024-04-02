@@ -14,21 +14,21 @@ export class AppInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const accessToken = localStorage.getItem('accessToken');
 
-    // if (req.url.startsWith('http://localhost:3030') && accessToken) {
-    //   req = req.clone({
-    //     setHeaders: {
-    //       "X-Authorization": accessToken
-    //     }
-    //   });
-    // }
-//за firebase
-    if (accessToken) {
+    if (req.url.startsWith('http://localhost:3030') && accessToken) {
       req = req.clone({
         setHeaders: {
           "X-Authorization": accessToken
         }
       });
     }
+//за firebase
+    // if (accessToken) {
+    //   req = req.clone({
+    //     setHeaders: {
+    //       "X-Authorization": accessToken
+    //     }
+    //   });
+    // }
 
     if (!req.headers.has('Content-Type')) {
       req = req.clone({
