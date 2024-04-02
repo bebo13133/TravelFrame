@@ -33,7 +33,7 @@ export class StoriesComponent implements OnInit {
     private router: Router,
     private photoService: ProfilePhotoService
   ) {
-    this.photoService.fetchImages();
+    // this.photoService.fetchImages(); // пробно съм ги изключил
 
   }
 
@@ -66,34 +66,16 @@ export class StoriesComponent implements OnInit {
 
       userLikes.forEach(like => {
         this.isLiked[like.storyId || ''] = { liked: true, likeId: like._id };
-        console.log('isliked', this.isLiked)
+    
       });
 
     });
   }
 
-  // loadStories(): void {
-  //   this.apiService.getStories()
-  //   this.apiService.getStories().subscribe(comments => {
-
-  //       // let filteredComments = comments.filter(comment => comment.destinationId === this.destinationId);
-  //       this.totalPages = Math.ceil(comments.length / this.commentsPerPage);
-  //       this.hasStories = comments.length > 0;
-
-
-  //       this.storiesList = comments.slice(
-  //         (this.currentPage - 1) * this.commentsPerPage,
-  //         this.currentPage * this.commentsPerPage
-  //       );
-
-
-  //   });
-  // }
-
   loadStories(): void {
     this.photoService.fetchImagesMap().then(imagesMap => {
       this.apiService.getStories().subscribe(stories => {
-        // Прилагане на изображенията към авторите на историите
+    
         const storiesWithImages = stories.map(story => {
           const authorImage = imagesMap[story._ownerId] || 'път_към_стандартно_изображение';
 
@@ -101,7 +83,7 @@ export class StoriesComponent implements OnInit {
 
         });
 
-        // Прилагане на пагинация и обновяване на състоянието
+        
         this.totalPages = Math.ceil(storiesWithImages.length / this.commentsPerPage);
         this.hasStories = storiesWithImages.length > 0;
 
@@ -137,6 +119,7 @@ export class StoriesComponent implements OnInit {
 
 
   get pagesArray() {
+
     let pages: Array<number | string> = [];
 
 
@@ -173,6 +156,8 @@ export class StoriesComponent implements OnInit {
 
 
   navigateToPage(page: number | string): void {
+    window.scrollTo({top:0})
+
     if (typeof page !== 'number') {
       return; // Прекратяваме изпълнението, ако параметърът не е число
     }
