@@ -2,7 +2,7 @@
 
 Travel Frame is a web-based application designed to inspire and facilitate travel enthusiasts in planning their next adventure. This platform offers a comprehensive suite of tools and resources, including destination guides, travel itineraries, user reviews, and a vibrant community of fellow travelers. Whether you're looking for the next hidden gem or planning a trip to a well-trodden locale, Travel Frame aims to provide you with the insights and tools you need to make your journey memorable.
 ## Table of Contents
-
+- [Recommended Requirements](#recommended-requirements)
 - [Visit the Live Site](#visit-the-live-site)
 - [Test User Credentials](#test-user-credentials)
 - [Technologies Used](#technologies-used)
@@ -15,6 +15,17 @@ Travel Frame is a web-based application designed to inspire and facilitate trave
 - [Site Structure](#site-structure)
 - [License](#license)
 
+## Recommended Requirements
+
+For the best experience using our application, we recommend the following settings and hardware:
+
+- **Display Resolution:** Full HD (1920x1080 pixels) or higher. Our application's interface is designed to look best at a width of 1920 pixels, ensuring that all elements are displayed correctly and are easily navigable.
+
+- **Browser:** Latest version of Chrome, Firefox, Safari, or Edge. We strive to support the latest web standards and features, and using an up-to-date browser will ensure compatibility and security.
+
+- **Internet Connection:** Broadband with minimum speed of 10 Mbps for seamless interaction with our web-based features.
+
+Please note that while our application will work on devices and setups with lower specifications, you may experience reduced performance or differences in layout and functionality.
 
 ## Visit the live site: [Travel Frame](https://frame-travel.web.app/)
 ## Test User - email: peter@abv.bg password:123456

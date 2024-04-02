@@ -75,10 +75,10 @@ export class UserService implements OnDestroy , OnInit {
       );
 
   }
-  register(name: string, email: string, password: string) {
+  register(username: string, email: string, password: string) {
     const { apiUrl } = environment
 
-    return this.http.post<{ email: string, username: string, _id: string, accessToken: string }>(`${apiUrl}/users/register`, { name, email, password })
+    return this.http.post<{ email: string, username: string, _id: string, accessToken: string }>(`${apiUrl}/users/register`, { username, email, password })
       .pipe(
         tap(res => {
           localStorage.setItem('accessToken', res.accessToken);
@@ -89,6 +89,7 @@ export class UserService implements OnDestroy , OnInit {
           this.user$$.next({
             email: res.email,
             name: res.username,
+            username: res.username,
             _id: res._id,
             accessToken: res.accessToken
           });

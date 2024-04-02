@@ -19,6 +19,7 @@ import { RouterLink } from '@angular/router';
 export class ProfileComponent {
   imageSrc: string | ArrayBuffer | null = null;
   private userId: string | undefined;
+   username: string | undefined;
   // form: FormGroup;
   public file: any = {}
   public photoUrl!: string; 
@@ -30,6 +31,8 @@ export class ProfileComponent {
 
     this.userService.user$.subscribe(user => {
       this.userId = user?._id;
+      this.username = user?.name
+      console.log(this.username);
       if (this.userId) {
         // Зареждане на съхраненото URL при стартиране
         this.photoService.loadPhotoUrlFromStorage(this.userId);

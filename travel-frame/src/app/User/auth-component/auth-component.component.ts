@@ -42,7 +42,7 @@ export class AuthComponentComponent implements OnInit {
       });
 
     this.registerForm = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(4)]],
+      username: ['', [Validators.required, Validators.minLength(4)]],
       email: ['',[Validators.required, Validators.email, Validators.minLength(8)]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       repeatPassword: ['', Validators.required],
@@ -106,9 +106,9 @@ export class AuthComponentComponent implements OnInit {
   register() {
  
     if (this.registerForm.valid) {
-      const { name, email, password } = this.registerForm.value;
+      const { username, email, password } = this.registerForm.value;
 
-      this.userService.register( name.trim(), email.trim(), password.trim() ).subscribe({
+      this.userService.register( username.trim(), email.trim(), password.trim() ).subscribe({
         next: (response) =>{
        
           this.router.navigate(['/home']);

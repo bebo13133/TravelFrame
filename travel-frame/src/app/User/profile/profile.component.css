@@ -108,3 +108,6 @@ form{
     bottom: 5px;
     left: 15px;
 }
+.hero-profile h2{
+    text-transform: capitalize;
+}
