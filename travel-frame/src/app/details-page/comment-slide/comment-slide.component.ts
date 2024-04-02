@@ -24,6 +24,7 @@ export class CommentSlideComponent implements OnInit, AfterViewInit {
 
 
   ngOnInit(): void {
+   
     this.commentsService.loadComments()
  
     this.commentsService.comments$.subscribe(comments => {

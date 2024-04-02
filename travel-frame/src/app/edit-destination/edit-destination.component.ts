@@ -63,13 +63,26 @@ export class EditDestinationComponent implements OnInit {
 
 
 ngOnInit(): void {
+  window.scrollTo({top:0})
   this.destinationId = this.route.snapshot.paramMap.get('destinationId');
   if (this.destinationId) {
     this.loadDestinationDetails(this.destinationId);
+    this.apiService.getDestinationById(this.destinationId).subscribe(destination => {
+   
+      const userId = localStorage.getItem('userId');
+      // this.checkOwnership(destination._ownerId, userId);
+      this.isOwner = destination._ownerId === userId;;
+     
+    })
   }
   
 }
-
+// checkOwnership(ownerId: string, userId: string | null): void {
+//   if (ownerId !== userId) {
+//     console.error('Edit error: User is not the owner of this destination.');
+ 
+//   }
+// }
 
 loadDestinationDetails(destinationId: string): void {
   this.apiService.getDestinationById(destinationId).subscribe({
@@ -107,7 +120,7 @@ loadDestinationDetails(destinationId: string): void {
       });
   
       const daysFormArray = this.createForm.get('days') as FormArray;
-      daysFormArray.clear(); // Премахнете всички текущи FormGroup елементи
+      daysFormArray.clear(); 
       destinationData.days.forEach(day => {
         const dayFormGroup = this.fb.group({
           dayImage: [day.dayImage],
@@ -238,10 +251,10 @@ this.imagesPreview = Array.isArray(destinationData.images) ? destinationData.ima
 
 
     //       this.isOwner = destination._ownerId === userId;;
-    // if (!this.isOwner) {
-    //   console.error('Delete error: User is not the owner of this destination.');
-    //   return;
-    // }
+    if (!this.isOwner) {
+      console.error('Delete error: User is not the owner of this destination.', this.isOwner);
+      return;
+    }
 
 
 

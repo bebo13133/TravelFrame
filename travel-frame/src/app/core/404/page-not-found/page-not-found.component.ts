@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -8,6 +8,8 @@ import { RouterLink } from '@angular/router';
   templateUrl: './page-not-found.component.html',
   styleUrl: './page-not-found.component.css'
 })
-export class PageNotFoundComponent {
-
+export class PageNotFoundComponent implements OnInit {
+ngOnInit(): void {
+  window.scrollTo({top:0})
+}
 }

@@ -69,7 +69,7 @@ constructor(private apiService:ApiService,private route: ActivatedRoute, private
 
 }
   ngOnInit(): void {
-    window.scrollTo({top:0})
+  
     window.scrollTo({top:0})
     this.route.fragment.subscribe(frag => {
       if (frag) { 

@@ -170,35 +170,7 @@ export class CreatePageComponent implements OnInit {
   }
   onSubmit() {
 
-    // prowerki
-
-        // console.log('status',this.createForm.status); 
-    // console.log('formValue',this.createForm.value); // Покажи стойностите на формата
-    // console.log('errors',this.createForm.errors); // Покажи грешките на формата, ако има такива
   
-    // if (this.createForm.invalid) {
-    //   console.log('controles',this.createForm.controls); // Ще покаже статуса на всички контроли
-    // }
-    // const days = this.createForm.get('days') as FormArray;
-    // let isValid = true;
-  
-    // days.controls.forEach((dayFormGroup, index) => {
-    //   if (!dayFormGroup.valid) {
-    //     console.log(`Day ${index + 1} is not valid.`);
-    //     isValid = false;
-    //   }
-    // });
-  
-    // if (!isValid) {
-    //   console.log('There are invalid days. Cannot submit.');
-    //   return;
-    // }
-
-
-
-
-
-
     if (this.createForm.valid) {
      
         // Тримване на всички текстови полета в формата
