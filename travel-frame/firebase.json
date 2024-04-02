@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/travel-frame/browser",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
