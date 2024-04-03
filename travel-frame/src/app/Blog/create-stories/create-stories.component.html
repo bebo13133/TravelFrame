@@ -10,14 +10,23 @@
         <div>
           <label for="destination">Дестинация:</label>
           <input id="destination" type="text" formControlName="destination">
+          <div class="validator" *ngIf="storyForm.get('destination')?.touched && storyForm.get('destination')?.errors?.['whitespace']">
+            Това поле не може да съдържа само празни места.
+          </div>
         </div>
         <div>
           <label for="title">Заглавие на историята:</label>
           <input id="title" type="text" formControlName="title">
+          <div class="validator" *ngIf="storyForm.get('title')?.touched && storyForm.get('title')?.errors?.['whitespace']">
+            Това поле не може да съдържа само празни места.
+          </div>
         </div>
         <div>
           <label for="author">Автор:</label>
           <input id="author" type="text" formControlName="author">
+          <div class="validator" *ngIf="storyForm.get('author')?.touched && storyForm.get('author')?.errors?.['whitespace']">
+            Това поле не може да съдържа само празни места.
+          </div>
         </div>
       </section>
       <section class="second">
@@ -29,6 +38,9 @@
         <div>
           <label for="description">История:</label>
           <textarea id="description" formControlName="description"></textarea>
+          <div class="validator" *ngIf="storyForm.get('description')?.touched && storyForm.get('description')?.errors?.['whitespace']">
+            Това поле не може да съдържа само празни места.
+          </div>
         </div>
         <button type="submit" [disabled]="!storyForm.valid">Submit Story</button>
       </section>

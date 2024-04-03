@@ -5,6 +5,7 @@ import { ApiService } from '../services/api.service';
 import { AuthenticatedComponent } from '../authenticated/authenticated.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditErrorComponent } from './edit-error/edit-error.component';
+import { notOnlyWhitespaceValidator } from '../validators/password-validator';
 
 @Component({
   selector: 'app-edit-destination',
@@ -29,16 +30,16 @@ export class EditDestinationComponent implements OnInit {
   constructor(private fb: FormBuilder, private apiService: ApiService, private route: ActivatedRoute, private router: Router) { 
     this.createForm = this.fb.group({
       image: [null],
-      title: ['', [Validators.required,Validators.minLength(2)]],
-      paragraph: ['', [Validators.required,Validators.minLength(10)]],
-      "title-desc": ['', [Validators.required,Validators.minLength(2)]],
-      'info-desc': ['', [Validators.required,Validators.minLength(2)]],
+      title: ['', [Validators.required,Validators.minLength(2),notOnlyWhitespaceValidator()]],
+      paragraph: ['', [Validators.required,Validators.minLength(10),notOnlyWhitespaceValidator()]],
+      "title-desc": ['', [Validators.required,Validators.minLength(2),notOnlyWhitespaceValidator()]],
+      'info-desc': ['', [Validators.required,Validators.minLength(2),notOnlyWhitespaceValidator()]],
       'images': [null],
       dateRange: this.fb.group({
         start: ['', Validators.required],
         end: ['', Validators.required]
       }),
-      price: ['', [Validators.required, Validators.pattern(/^\d+$/)]],
+      price: ['', [Validators.required, Validators.pattern(/^\d+$/),notOnlyWhitespaceValidator()]],
       conditions: this.fb.group({
         ticketsIncluded: [false],
         allTransportCosts: [false],

@@ -9,6 +9,7 @@ import { ApiService } from '../../services/api.service';
 import { Router, RouterLink } from '@angular/router';
 import { ErrorFormComponent } from '../error-form/error-form.component';
 import { map, tap } from 'rxjs';
+import { notOnlyWhitespaceValidator } from '../../validators/password-validator';
 @Component({
   selector: 'app-create-stories',
   standalone: true,
@@ -24,11 +25,11 @@ export class CreateStoriesComponent {
 
   constructor(private fb: FormBuilder, private apiService: ApiService, private router: Router) {
     this.storyForm = this.fb.group({
-      destination: ['', [Validators.required, Validators.minLength(5)]],
-      title: ['', [Validators.required, Validators.minLength(4)]],
-      author: ['', [Validators.required, Validators.minLength(3)]],
+      destination: ['', [Validators.required, Validators.minLength(5),notOnlyWhitespaceValidator()]],
+      title: ['', [Validators.required, Validators.minLength(4),notOnlyWhitespaceValidator()]],
+      author: ['', [Validators.required, Validators.minLength(3),notOnlyWhitespaceValidator()]],
       image: [null],
-      description: ['', [Validators.required, Validators.minLength(50)]],
+      description: ['', [Validators.required, Validators.minLength(50),notOnlyWhitespaceValidator()]],
     });
   }
 
