@@ -17,17 +17,15 @@ export class FormErrorsComponent implements OnInit{
 
   get errors(): string[] {
     const formErrors: string[] = [];
-    if (this.form.invalid) {
-      formErrors.push(`Формата съдържа грешки. Моля, проверете внимателно въведените данни.`);
-    }
+ 
   
 
-    // Name errors
+    if (this.form.touched || this.form.dirty) {
     if (this.form.get('username')?.errors?.['minlength']) {
       formErrors.push(`Името трябва да е поне 4 символа.`);
     }
 
-    // Email errors
+ 
     if (this.form.get('email')?.errors?.['minlength']) {
       formErrors.push(`Имейлът трябва да е поне 8 символа.`);
     }
@@ -35,22 +33,25 @@ export class FormErrorsComponent implements OnInit{
       formErrors.push(`Моля, въведете валиден имейл адрес.`);
     }
 
-    // Password errors
+
     if (this.form.get('password')?.errors?.['minlength']) {
       formErrors.push(`Паролата трябва да е поне 6 символа.`);
     }
 
-    // RepeatPassword match error
+
     if (this.form.errors?.['notSame']) {
       formErrors.push(`Паролите не съвпадат.`);
     }
-
+    if (this.form.invalid) {
+      formErrors.push(`Формата съдържа грешки. Моля, проверете внимателно въведените данни.`);
+    }
+  }
     return formErrors;
   }
 
 
   ngOnInit(): void {
-    // Абониране за промени във формата
+
     this.formChangesSubscription = this.form.valueChanges.subscribe(() => {
 
     });
