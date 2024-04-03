@@ -17,6 +17,10 @@ export class FormErrorsComponent implements OnInit{
 
   get errors(): string[] {
     const formErrors: string[] = [];
+    if (this.form.invalid) {
+      formErrors.push(`Формата съдържа грешки. Моля, проверете внимателно въведените данни.`);
+    }
+  
 
     // Name errors
     if (this.form.get('username')?.errors?.['minlength']) {
@@ -48,13 +52,12 @@ export class FormErrorsComponent implements OnInit{
   ngOnInit(): void {
     // Абониране за промени във формата
     this.formChangesSubscription = this.form.valueChanges.subscribe(() => {
-      // Промените тук не са необходими, тъй като Angular автоматично ще
-      // преизчисли и рефлектира промените чрез getter-a за грешките.
+
     });
   }
 
   ngOnDestroy(): void {
-    // Отписване от абонамента, за да се предотврати изтичане на памет
+
     this.formChangesSubscription.unsubscribe();
   }
 }
