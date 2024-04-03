@@ -306,3 +306,6 @@ input[type='file'] {
     height: 100%;
   }
 }
+.validator{
+  color: red;
+}

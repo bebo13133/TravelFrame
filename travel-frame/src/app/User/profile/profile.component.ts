@@ -32,13 +32,13 @@ export class ProfileComponent {
     this.userService.user$.subscribe(user => {
       this.userId = user?._id;
       this.username = user?.name
-      console.log(this.username);
+
       if (this.userId) {
-        // Зареждане на съхраненото URL при стартиране
+      
         this.photoService.loadPhotoUrlFromStorage(this.userId);
         this.photoService.photoUrl.subscribe(url => {
           if (url) {
-            this.photoUrl = url; // Запазвате URL в променлива на компонента
+            this.photoUrl = url; 
           }
         });
       }

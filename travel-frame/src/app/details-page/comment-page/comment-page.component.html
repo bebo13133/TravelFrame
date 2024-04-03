@@ -8,7 +8,7 @@
               <h4>{{ comment.commentText }}</h4>
               <div class="author">
                 <div class="person-info">
-                  <img src="https://user-images.githubusercontent.com/13468728/234031693-6bbaba7d-632c-4d7d-965f-75a76a549ce2.jpg" alt="author-img">
+                  <img src="{{photoUrl}}" alt="author-img">
                   
                   <p>{{ comment.name ? comment.name : comment.username }}</p>
                 </div>
@@ -17,12 +17,12 @@
               </div>
           </section>
       </section>
-      <!-- Пагинация -->
+ 
       <nav *ngIf="hasComments && totalPages > 1">
         <ul class="pagination">
           <li *ngFor="let page of pagesArray">
             <ng-container *ngIf="isNumber(page); else ellipsis">
-              <!-- Проверяваме дали page е число преди да извикаме navigateToPage -->
+           
               <button (click)="navigateToPage(page)" [class.active]="page === currentPage">{{ page }}</button>
             </ng-container>
             <ng-template #ellipsis><span>...</span></ng-template>

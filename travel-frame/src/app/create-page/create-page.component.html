@@ -14,17 +14,27 @@
         <!-- Label за качване на снимка -->
         <label for="imageFile" class="upload-label">Качи снимка</label>
         <input type="file" title=" " id="imageFile" class="imageFile" (change)="onImageChange($event)">
+
         <img *ngIf="imagePreview" [src]="imagePreview">
 
         <!-- Label за заглавие -->
         <label for="heroTitle" class="title-label">Дестинация</label>
         <input type="text" title=" " id="heroTitle" class="hero-title" formControlName="title"
+        
           placeholder="добави своята дестинация">
-
+          <div  class="validator" *ngIf="createForm.get('title')?.touched && createForm.get('title')?.errors?.['whitespace']">
+            Това поле не може да съдържа само празни места.
+          </div>
+          
         <!-- Label за параграф -->
         <label for="heroParagraph" class="paragraph-label">Описание</label>
         <textarea id="heroParagraph" formControlName="paragraph" class="hero-paragraph"
           placeholder="Параграф"></textarea>
+          
+          <div class="validator" *ngIf="createForm.get('paragraph')?.touched && createForm.get('paragraph ')?.errors?.['whitespace']">
+            Това поле не може да съдържа само празни места.
+          </div>
+          
       </div>
       <div class="create-hero" *ngIf="currentFormSection === 2">
         <h2>Опиши своята екскурзия</h2>
@@ -32,6 +42,7 @@
 
         <label for="imageFiles" class="upload-label">Качи снимка</label>
         <input type="file" id="imageFiles" class="imageFiles" (change)="onImagesChange($event)" multiple>
+        
         <div class="images-preview" *ngIf="imagesPreview.length > 0">
           <img *ngFor="let img of imagesPreview" [src]="img" class="image-preview">
         </div>
@@ -40,10 +51,17 @@
         <label for="heroTitle" class="title-label">За града</label>
         <input type="text" id="heroTitle" class="hero-title" formControlName="title-desc"
           placeholder="добави своята дестинация">
-
+  
+          <div class="validator" *ngIf="createForm.get('title-desc')?.touched && createForm.get('title-desc')?.errors?.['whitespace']">
+            Това поле не може да съдържа само празни места.
+          </div>
         <label for="heroParagraph" class="paragraph-label">Опиши го</label>
         <textarea id="heroParagraph" formControlName="info-desc" class="hero-paragraph"
           placeholder="Параграф"></textarea>
+          
+          <div class="validator" *ngIf="createForm.get('info-desc')?.touched && createForm.get('info-desc')?.errors?.['whitespace']">
+            Това поле не може да съдържа само празни места.
+          </div>
       </div>
 
 
@@ -62,7 +80,17 @@
               <img *ngFor="let img of dayImages[i].previews" [src]="img" class="day-image-preview">
             </div>
             <input type="text" formControlName="dayTitle" class="hero-title" placeholder="Заглавие за деня">
+<!--                 
+          <div class="validator" *ngIf="createForm.get('dayTitle')?.touched && createForm.get('dayTitle')?.errors?.['whitespace']">
+            Това поле не може да съдържа само празни места.
+          </div> -->
+
             <textarea formControlName="dayInfo" class="hero-paragraph" placeholder="Информация за деня"></textarea>
+
+            <!-- <div class="validator" *ngIf="createForm.get('dayInfo')?.touched && createForm.get('dayInfo')?.errors?.['whitespace']">
+              Това поле не може да съдържа само празни места.
+            </div> -->
+
             <button class="remove-day" type="button" (click)="removeDay(i)">Изтрий Ден {{i + 1}}</button>
           </div>
         </ng-container>
@@ -84,7 +112,9 @@
 
         <label for="price">Цена:</label>
         <input type="text" id="price" formControlName="price">
-
+        <div class="validator" *ngIf="createForm.get('price')?.touched && createForm.get('price')?.errors?.['whitespace']">
+          Това поле не може да съдържа само празни места.
+        </div>
         <div formGroupName="conditions">
           <div><label><input type="checkbox" formControlName="ticketsIncluded"> Самолетни билети</label></div>
           <div><label><input type="checkbox" formControlName="allTransportCosts"> Всички транспортни разходи</label>

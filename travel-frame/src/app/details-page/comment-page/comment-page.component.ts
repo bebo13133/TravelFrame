@@ -3,6 +3,8 @@ import { ActivatedRoute, Router, RouterLink, RouterModule } from '@angular/route
 import { CommentsService } from '../../services/comments.service';
 import { Comment } from '../../types/comments';
 import { CommonModule, DatePipe } from '@angular/common';
+import { UserService } from '../../User/user.service';
+import { ProfilePhotoService } from '../../services/profile-photo.service';
 
 @Component({
   selector: 'app-comment-page',
@@ -18,12 +20,29 @@ export class CommentPageComponent implements OnInit {
   currentPage: number = 1;
   commentsPerPage: number = 3;
   totalPages: number = 0;
-
+  private userId: string | undefined;
+  username: string | undefined;
+   public photoUrl!: string; 
   constructor(
     private commentsService: CommentsService,
     private route: ActivatedRoute,
-    private router: Router
-  ) { }
+    private router: Router,
+    private userService: UserService,
+    private photoService: ProfilePhotoService
+  ) {   this.userService.user$.subscribe(user => {
+    this.userId = user?._id;
+    this.username = user?.name
+
+    if (this.userId) {
+    
+      this.photoService.loadPhotoUrlFromStorage(this.userId);
+      this.photoService.photoUrl.subscribe(url => {
+        if (url) {
+          this.photoUrl = url; 
+        }
+      });
+    }
+  }); }
 
 
 

@@ -5,7 +5,7 @@ import { ApiService } from '../services/api.service';
 import { AuthenticatedComponent } from '../authenticated/authenticated.component';
 import { Router } from '@angular/router';
 import { CreateErrorComponent } from './create-error/create-error.component';
-
+import { notOnlyWhitespaceValidator } from '../validators/password-validator';
 @Component({
   selector: 'app-create-page',
   templateUrl: './create-page.component.html',
@@ -30,16 +30,16 @@ export class CreatePageComponent implements OnInit {
     window.scrollTo({top:0})
     this.createForm = this.fb.group({
       image: [null],
-      title: ['', [Validators.required,Validators.minLength(2)]],
-      paragraph: ['', [Validators.required,Validators.minLength(10)]],
-      "title-desc": ['', [Validators.required,Validators.minLength(2)]],
-      'info-desc': ['', [Validators.required,Validators.minLength(2)]],
+      title: ['', [Validators.required,Validators.minLength(2),notOnlyWhitespaceValidator()]],
+      paragraph: ['', [Validators.required,Validators.minLength(10),notOnlyWhitespaceValidator()]],
+      "title-desc": ['', [Validators.required,Validators.minLength(2),notOnlyWhitespaceValidator()]],
+      'info-desc': ['', [Validators.required,Validators.minLength(2),notOnlyWhitespaceValidator()]],
       'images': [null],
       dateRange: this.fb.group({
         start: ['', Validators.required],
         end: ['', Validators.required]
       }),
-      price: ['', [Validators.required, Validators.pattern(/^\d+$/),Validators.minLength(2)]],
+      price: ['', [Validators.required, Validators.pattern(/^\d+$/),Validators.minLength(2),notOnlyWhitespaceValidator()]],
       conditions: this.fb.group({
         ticketsIncluded: [false],
         allTransportCosts: [false],

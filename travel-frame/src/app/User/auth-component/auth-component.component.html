@@ -17,9 +17,21 @@
           </div>
           <span>or use your email for registration</span>
           <input formControlName="username" type="text" placeholder="Name"  />
+          <div class="validator" *ngIf="registerForm.get('username')?.touched && registerForm.get('username')?.errors?.['whitespace']">
+            Това поле не може да съдържа само празни места.
+          </div>
           <input formControlName="email" type="email" placeholder="Email"  />
+          <div class="validator" *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.errors?.['whitespace']">
+            Това поле не може да съдържа само празни места.
+          </div>
           <input formControlName="password" type="password" placeholder="Password" />
+          <div class="validator" *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.errors?.['whitespace']">
+            Това поле не може да съдържа само празни места.
+          </div>
           <input formControlName="repeatPassword" type="password" placeholder="Repeat Password" />
+          <div class="validator" *ngIf="registerForm.get('repeatPassword')?.touched && registerForm.get('repeatPassword')?.errors?.['whitespace']">
+            Това поле не може да съдържа само празни места.
+          </div>
           <button type="submit">Sign Up</button>
         </form>
       </div>
@@ -33,7 +45,13 @@
           </div>
           <span>or use your account</span>
           <input formControlName="email" type="email" placeholder="Email"  />
+          <div class="validator" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.errors?.['whitespace']">
+            Това поле не може да съдържа само празни места.
+          </div>
           <input formControlName="password" type="password" placeholder="Password"  />
+          <div class="validator" *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.errors?.['whitespace']">
+            Това поле не може да съдържа само празни места.
+          </div>
           <a href="#">Forgot your password?</a>
           <button type="submit">Sign In</button>
         </form>

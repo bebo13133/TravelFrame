@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
-import { PasswordValidator } from '../../validators/password-validator';
+import { PasswordValidator, notOnlyWhitespaceValidator } from '../../validators/password-validator';
 import { FormErrorsComponent } from '../form-errors/form-errors.component';
 import { NoAuthenticatedComponent } from '../../authenticated/no-authenticated/no-authenticated.component';
 import { ProfilePhotoService } from '../../services/profile-photo.service';
@@ -37,14 +37,14 @@ export class AuthComponentComponent implements OnInit {
   ngOnInit() {
     window.scrollTo({top:0})
       this.loginForm = this.fb.group({
-        email: ['', [Validators.required, Validators.email, Validators.minLength(8)]],
-        password: ['', [Validators.required, Validators.minLength(6)]],
+        email: ['', [Validators.required, Validators.email, Validators.minLength(8),notOnlyWhitespaceValidator()]],
+        password: ['', [Validators.required, Validators.minLength(6),notOnlyWhitespaceValidator()]],
       });
 
     this.registerForm = this.fb.group({
-      username: ['', [Validators.required, Validators.minLength(4)]],
-      email: ['',[Validators.required, Validators.email, Validators.minLength(8)]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      username: ['', [Validators.required, Validators.minLength(4),notOnlyWhitespaceValidator()]],
+      email: ['',[Validators.required, Validators.email, Validators.minLength(8),notOnlyWhitespaceValidator()]],
+      password: ['', [Validators.required, Validators.minLength(6),notOnlyWhitespaceValidator()]],
       repeatPassword: ['', Validators.required],
     },{ validators: PasswordValidator.checkPasswords });
 

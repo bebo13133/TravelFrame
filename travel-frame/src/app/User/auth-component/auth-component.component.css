@@ -252,7 +252,9 @@ h1 {
     height: 60px;
     width: 60px;
   }
-  
+  .validator{
+    color: red;
+  }
   /* .error {
     color: #D8000C; 
     background-color: #FFD2D2; 
