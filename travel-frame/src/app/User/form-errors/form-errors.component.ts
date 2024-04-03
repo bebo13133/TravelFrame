@@ -21,9 +21,9 @@ export class FormErrorsComponent implements OnInit{
   
 
     if (this.form.touched || this.form.dirty) {
-      
+
       if (this.form.invalid) {
-        formErrors.push(`Формата съдържа грешки. Моля, проверете внимателно въведените данни.`);
+        formErrors.push(`Формата не е довършена.`);
       }
 
     if (this.form.get('username')?.errors?.['minlength']) {

@@ -18,7 +18,7 @@ export class CookieConsentComponent {
 
   giveConsent(): void {
     // Задайте бисквитка за съгласие
-    this.cookieService.set('consentGiven', 'true', { expires: 365 });
+    this.cookieService.set('consentGiven', 'true', { expires: 2 });
     this.consentGiven = true;
   }
 }
