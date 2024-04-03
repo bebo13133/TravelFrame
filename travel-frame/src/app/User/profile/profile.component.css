@@ -1,4 +1,8 @@
 .profile-page{
+    background-image: url('/assets/media/back-us.webp');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .profile-info{
@@ -78,7 +82,7 @@ form{
 }
 
 .one-card{
-    flex: 0 0 27%;
+    flex: 0 0 37%;
     display: flex;
     position: relative;
     border-radius: 25px;
@@ -103,7 +107,8 @@ form{
     background-color: transparent;
     backdrop-filter: blur(2px);
     position: absolute;
-    padding:0.2em 1em;
+    /* padding:0.2em 1em; */
+    margin-bottom: 1em;
     border-radius: 25px;
     bottom: 5px;
     left: 15px;
