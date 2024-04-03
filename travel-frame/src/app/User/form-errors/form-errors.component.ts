@@ -19,7 +19,7 @@ export class FormErrorsComponent implements OnInit{
     const formErrors: string[] = [];
 
     // Name errors
-    if (this.form.get('name')?.errors?.['minlength']) {
+    if (this.form.get('username')?.errors?.['minlength']) {
       formErrors.push(`Името трябва да е поне 4 символа.`);
     }
 
