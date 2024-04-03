@@ -23,7 +23,7 @@ export class ErrorFormComponent {
 
     // Name errors
     if (this.storyForm.get('destination')?.errors?.['minlength']) {
-      formErrors.push(`Дестинацията трябва да е поне 6 символа.`);
+      formErrors.push(`Дестинацията трябва да е поне 2 символа.`);
     }
 
     // Email errors
@@ -36,7 +36,7 @@ export class ErrorFormComponent {
 
     // Password errors
     if (this.storyForm.get('description')?.errors?.['minlength']) {
-      formErrors.push(`Описанието трябва да е поне 50 символа.`);
+      formErrors.push(`Описанието трябва да е поне 20 символа.`);
     }
 
     // RepeatPassword match error

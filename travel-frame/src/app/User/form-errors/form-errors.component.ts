@@ -21,6 +21,11 @@ export class FormErrorsComponent implements OnInit{
   
 
     if (this.form.touched || this.form.dirty) {
+      
+      if (this.form.invalid) {
+        formErrors.push(`Формата съдържа грешки. Моля, проверете внимателно въведените данни.`);
+      }
+
     if (this.form.get('username')?.errors?.['minlength']) {
       formErrors.push(`Името трябва да е поне 4 символа.`);
     }
@@ -42,9 +47,7 @@ export class FormErrorsComponent implements OnInit{
     if (this.form.errors?.['notSame']) {
       formErrors.push(`Паролите не съвпадат.`);
     }
-    if (this.form.invalid) {
-      formErrors.push(`Формата съдържа грешки. Моля, проверете внимателно въведените данни.`);
-    }
+
   }
     return formErrors;
   }

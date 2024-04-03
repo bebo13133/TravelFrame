@@ -25,11 +25,11 @@ export class CreateStoriesComponent {
 
   constructor(private fb: FormBuilder, private apiService: ApiService, private router: Router) {
     this.storyForm = this.fb.group({
-      destination: ['', [Validators.required, Validators.minLength(5),notOnlyWhitespaceValidator()]],
+      destination: ['', [Validators.required, Validators.minLength(2),notOnlyWhitespaceValidator()]],
       title: ['', [Validators.required, Validators.minLength(4),notOnlyWhitespaceValidator()]],
       author: ['', [Validators.required, Validators.minLength(3),notOnlyWhitespaceValidator()]],
       image: [null],
-      description: ['', [Validators.required, Validators.minLength(50),notOnlyWhitespaceValidator()]],
+      description: ['', [Validators.required, Validators.minLength(20),notOnlyWhitespaceValidator()]],
     });
   }
 

@@ -24,6 +24,11 @@ export class CreateErrorComponent {
 
   get errors(): string[] {
     const formErrors: string[] = [];
+    if (this.createForm.touched || this.createForm.dirty) {
+      
+      if (this.createForm.invalid) {
+        formErrors.push(`Формата не е довършена.`);
+      }
 
     if (this.createForm.get('title')?.errors?.['minlength']) {
       formErrors.push(`Дестинацията трябва да е поне 2 символа.`);
@@ -73,7 +78,7 @@ export class CreateErrorComponent {
         formErrors.push(`Ден ${index + 1}: Описанието трябва да е поне 20 символа.`);
       }
     });
-
+  }
     // RepeatPassword match error
 
     return formErrors;
