@@ -42,11 +42,11 @@ export class ProfilePhotoService {
           console.log('Profile photo URL:', url);
           this.setPhotoUrl(url); 
           localStorage.setItem('userProfilePhoto', url);
-          resolve(url); // Резолвиране на Promise с URL
+          resolve(url); 
         })
         .catch((error) => {
           console.error('Error fetching profile photo:', error);
-          reject(error); // Реджектване на Promise при грешка
+          reject(error); 
         });
     });
   }
