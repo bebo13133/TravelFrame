@@ -22,9 +22,9 @@ export class FormErrorsComponent implements OnInit{
 
     if (this.form.touched || this.form.dirty) {
 
-      if (this.form.invalid) {
-        formErrors.push(`Формата не е довършена.`);
-      }
+      // if (this.form.invalid) {
+      //   formErrors.push(`Формата не е довършена.`);
+      // }
 
     if (this.form.get('username')?.errors?.['minlength']) {
       formErrors.push(`Името трябва да е поне 4 символа.`);
