@@ -4,6 +4,7 @@ import { AuthGuard } from './auth.guard';
 import { AlreadyLoggedInngGuard } from './already-logged-inng.guard';
 // import {  StoriesComponent } from './Blog/stories/stories.component';
 import { PageNotFoundComponent } from './core/404/page-not-found/page-not-found.component';
+import { AdminGuard } from './adminGuard.component';
 ;
 
 
@@ -37,7 +38,7 @@ export const routes: Routes = [
     {
         path: 'create',
         loadComponent: () => import('./create-page/create-page.component').then(m => m.CreatePageComponent),
-        canActivate: [AuthGuard]
+        canActivate: [AdminGuard]
 
 
     },
@@ -50,7 +51,7 @@ export const routes: Routes = [
     {
         path: 'destination/edit/:destinationId',
         loadComponent: () => import('./edit-destination/edit-destination.component').then(m => m.EditDestinationComponent),
-        canActivate: [AuthGuard]
+        canActivate: [AdminGuard]
 
     },
     {

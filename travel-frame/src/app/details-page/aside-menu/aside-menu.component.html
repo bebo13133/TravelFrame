@@ -1,13 +1,13 @@
 <nav class="social">
     <ul>
         <li>
-            <a [routerLink]="['/destination/edit', destinationId]"  routerLinkActive="router-link-active"  [class.disabled]="!isOwner" [attr.aria-disabled]="!isOwner ? true : null">Edit <i class="fa-solid fa-user-pen" [ngStyle]="{'color':isOwner ? '#edce02' : '#ccc'}"></i></a>
+            <a [routerLink]="['/destination/edit', destinationId]"  routerLinkActive="router-link-active"  [class.disabled]="!isAdmin" [attr.aria-disabled]="!isAdmin ? true : null">Edit <i class="fa-solid fa-user-pen" [ngStyle]="{'color':isAdmin ? '#edce02' : '#ccc'}"></i></a>
           </li>
           <ng-container *ngIf="destinationId">
-        <li><a  href="javascript:void(0);" [class.disabled]="!isOwner" (click)="isOwner && showConfirmDialog()" [attr.aria-disabled]="!isOwner ? true : null">Delete <i class="fa-solid fa-trash" [ngStyle]="{'color':isOwner ? '#ed0c0c' : '#ccc'}"></i></a></li>
+        <li><a  href="javascript:void(0);" [class.disabled]="!isAdmin" (click)="isAdmin && showConfirmDialog()" [attr.aria-disabled]="!isAdmin ? true : null">Delete <i class="fa-solid fa-trash" [ngStyle]="{'color':isAdmin ? '#ed0c0c' : '#ccc'}"></i></a></li>
     </ng-container>
     <app-confirm-modal [isVisible]="confirmDialogVisible" (confirmed)="onDialogConfirm()" (canceled)="onDialogCancel()"></app-confirm-modal>
-        <li><a href="javascript:void(0);"(click)="toggleCommentModal()" >Comment <i class="fa-regular fa-comment"></i></a></li>
+        <li><a href="javascript:void(0);"(click)="toggleCommentModal()" >Comment <i class="fa-regular fa-comment"  [ngStyle]="{'color': 'blue'}"></i></a></li>
         <app-comments-form  [isVisible]="commentModalVisible" (isVisibleChange)="commentModalVisible = $event" [key]="reloadKey"></app-comments-form>
     </ul>
 </nav>

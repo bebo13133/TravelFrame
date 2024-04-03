@@ -17,8 +17,8 @@ export class NoAuthenticatedComponent {
   ngOnInit(): void {
     this.userService.user$.subscribe(user => {
       this.isLoggedIn = !!user;
-      console.log("dsadsasd",this.isLoggedIn);
-      // Допълнителна логика въз основа на статуса
+   
+    
     });
 
     this.isLoggedIn = this.userService.isLoggedIn;

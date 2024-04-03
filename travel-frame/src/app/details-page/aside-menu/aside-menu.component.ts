@@ -5,6 +5,9 @@ import { Router, RouterLink } from '@angular/router';
 import { ConfirmDialogComponent } from '../../modals/confirm-dialog/confirm-dialog.component';
 import { ApiService } from '../../services/api.service';
 import { CommentsFormComponent } from '../../modals/comments-form/comments-form.component';
+import { UserService } from '../../User/user.service';
+import { environment } from '../../../environments/access-key';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-aside-menu',
@@ -22,10 +25,17 @@ export class AsideMenuComponent implements OnInit {
   commentModalVisible: boolean = false;
   @ViewChild(CommentsFormComponent) commentsForm!: CommentsFormComponent;
   reloadKey = 0;
-  
-  constructor(private apiService: ApiService,private cdr: ChangeDetectorRef, private router:Router,) { 
+  isAdmin: boolean = false;
+  private subscription: Subscription;
+  constructor(private apiService: ApiService,private cdr: ChangeDetectorRef, private router:Router, private userService: UserService) { 
     this.commentModalVisible = false;
+
+    this.subscription = this.userService.user$.subscribe(user => {
+      this.isAdmin = user?._id === environment.KEY;
+    });
   }
+
+
   ngOnInit(): void {
 
     // this.commentModalVisible = false; // Ресетирайте видимостта на модала при инициализация на компонента
@@ -34,7 +44,7 @@ export class AsideMenuComponent implements OnInit {
 
 
   onDeleteConfirmed(destinationId: string, ) {
-    if (!this.isOwner) {
+    if (!this.isAdmin) {
       console.error('Delete error: User is not the owner of this destination.');
       return;
     }
@@ -72,5 +82,7 @@ export class AsideMenuComponent implements OnInit {
     this.commentModalVisible = !this.commentModalVisible;
     this.cdr.detectChanges();
   }
-
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe(); 
+  }
 }

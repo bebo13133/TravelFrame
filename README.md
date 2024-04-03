@@ -28,7 +28,7 @@ For the best experience using our application, we recommend the following settin
 Please note that while our application will work on devices and setups with lower specifications, you may experience reduced performance or differences in layout and functionality.
 
 ## Visit the live site: [Travel Frame](https://frame-travel.web.app/)
-## Test User - email: peter@abv.bg password:123456
+## Admin - email: peter@abv.bg password:123456
 ## Technologies Used
 
 This project is built using a variety of technologies and frameworks to provide the best user experience and developer productivity:

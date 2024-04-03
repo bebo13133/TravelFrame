@@ -4,6 +4,8 @@ import { ImagesHeroRowsComponent } from './images-hero-rows/images-hero-rows.com
 import { Route, Router, RouterLink } from '@angular/router';
 import { UserService } from '../../User/user.service';
 import { ProfilePhotoService } from '../../services/profile-photo.service';
+import { environment } from '../../../environments/access-key';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -16,7 +18,8 @@ export class HeaderComponent implements OnInit {
   scrolledDown = false;
   photoUrl: string | null = null;
   private userId: string | undefined;
-
+  isAdmin: boolean = false;
+  private subscription: Subscription;
   get isLoggedIn(): boolean {
     return this.userService.isLoggedIn
   }
@@ -26,7 +29,9 @@ export class HeaderComponent implements OnInit {
     // this.userService.user$.subscribe(user => {
     //   this.userId = user?._id;
     // });
-  
+    this.subscription = this.userService.user$.subscribe(user => {
+      this.isAdmin = user?._id === environment.KEY;
+    });
     this.userService.user$.subscribe(user => {
       this.userId = user?._id;
       if (this.userId) {
@@ -34,7 +39,9 @@ export class HeaderComponent implements OnInit {
         // this.photoService.loadPhotoUrlFromStorage(this.userId);
       }
     });
-    
+    this.subscription = this.userService.user$.subscribe(user => {
+      this.isAdmin = user?._id === environment.KEY;
+    });
   }
 
   ngOnInit(): void {
@@ -53,7 +60,7 @@ export class HeaderComponent implements OnInit {
       this.photoUrl = savedPhotoUrl;
       this.cdr.detectChanges();
     } else {
-      // Извличане на мапинга на всички снимки и обновяване на профилната снимка
+      
       this.photoService.fetchImagesMap().then(imagesMap => {
         const profilePhotoUrl = imagesMap[userId];
         if (profilePhotoUrl) {
@@ -86,5 +93,8 @@ export class HeaderComponent implements OnInit {
       },
     });
     
+  }
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe(); // Освобождава абонамента при унищожаване на компонента
   }
 }
