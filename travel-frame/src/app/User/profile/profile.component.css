@@ -54,6 +54,7 @@ form{
     
 }
 .profile-img button{
+    cursor: pointer;
     border-radius: 25px;
     padding: 1em 2em;
 }
