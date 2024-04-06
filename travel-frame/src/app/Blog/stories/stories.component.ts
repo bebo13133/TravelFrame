@@ -77,7 +77,7 @@ export class StoriesComponent implements OnInit {
       this.apiService.getStories().subscribe(stories => {
     
         const storiesWithImages = stories.map(story => {
-          const authorImage = imagesMap[story._ownerId] || 'път_към_стандартно_изображение';
+          const authorImage = imagesMap[story._ownerId] ;
 
           return { ...story, authorImage: authorImage };
 

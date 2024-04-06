@@ -31,6 +31,7 @@ export class ProfilePhotoService {
       this.photoUrl.next(url);
     }
   }
+  
   fetchProfilePhoto(userId: string): Promise<string> {
     return new Promise((resolve, reject) => {
       const storage = getStorage();

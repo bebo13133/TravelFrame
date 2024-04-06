@@ -23,7 +23,7 @@ export class DestinationsComponent {
   isLoading = false; 
   isFavorite:boolean= false
 
-  @Input() destinationId: string | null = null;
+  // @Input() destinationId: string | null = null;
   private subscription: Subscription = new Subscription();
   constructor(private apiService: ApiService, ) {
   

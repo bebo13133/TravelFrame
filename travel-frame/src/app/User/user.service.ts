@@ -9,7 +9,7 @@ import { User } from '../types/user';
 })
 export class UserService implements OnDestroy , OnInit {
   // isLoggedIn: boolean = false;
-  private user$$ = new BehaviorSubject<User | undefined>(undefined);
+  private user$$ = new BehaviorSubject<User | undefined>(undefined); // събджект с текуща стойност като началната е от тим USer с стойност undefined
 
   public user$ = this.user$$.asObservable();
   

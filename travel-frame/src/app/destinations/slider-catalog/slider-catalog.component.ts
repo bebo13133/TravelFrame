@@ -21,6 +21,7 @@ export class SliderCatalogComponent implements OnInit {
   @Input() destinations: Destination[] = [];
 
   constructor(private apiService:ApiService) { }
+
   getBackgroundStyle(image: File | string | null): string {
     let imageUrl = '';
     if (image instanceof File) {
@@ -35,6 +36,7 @@ export class SliderCatalogComponent implements OnInit {
     const backgroundStyle = `linear-gradient(to top, #0f2027, #203a4300, #2c536400), url(${imageUrl}) no-repeat 50% 50% / cover`;
     return backgroundStyle;
   }
+  
   ngOnInit(): void {
     new Swiper('.swiper', {
     

@@ -12,12 +12,12 @@ export class CookieConsentComponent {
   consentGiven: boolean;
 
   constructor(private cookieService: CookieService) {
-    // Проверете дали съгласието вече е дадено
+    // Проверявам дали съгласието вече е дадено
     this.consentGiven = this.cookieService.check('consentGiven');
   }
 
   giveConsent(): void {
-    // Задайте бисквитка за съгласие
+   
     this.cookieService.set('consentGiven', 'true', { expires: 2 });
     this.consentGiven = true;
   }

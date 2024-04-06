@@ -8,9 +8,10 @@ export class ErrorService {
   apiError$$ = new BehaviorSubject(null);
   constructor() { }
 
-  setError(error:any): void {
+  setError(error: any): void {
 
-this.apiError$$.next(error);
+    this.apiError$$.next(error);
+
   }
 
   clearError(): void {

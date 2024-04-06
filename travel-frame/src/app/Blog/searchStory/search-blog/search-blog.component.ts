@@ -76,12 +76,12 @@ export class SearchBlogComponent implements OnInit {
   // }
 
   LoadData() {
-    // Първо, извличате картата на изображенията
+  
     this.photoService.fetchImagesMap().then(imagesMap => {
-      // След това извличате историите
+    
       this.apiService.getStories().subscribe({
         next: (stories) => {
-          // Прилагате изображенията към авторите на историите
+        
           this.stories = stories.map(story => {
             const authorImage = imagesMap[story._ownerId] || 'път_към_стандартно_изображение';
             return { ...story, authorImage: authorImage };
@@ -126,7 +126,7 @@ navigateToPage(page: number) {
  filterResult(text: string) {
   const trimmedText = text.trim();
   this.filteredLocationList = [...this.stories]; 
-  console.error(`Trimmed text: '${trimmedText}'`);
+  // console.error(`Trimmed text: '${trimmedText}'`);
 
 
   if (!trimmedText) {

@@ -52,7 +52,7 @@ ngOnInit(): void {
   loadFavorites(userId: string): void {
     this.favoritesService.getAllFavorites().subscribe(allFavorites => {
      
-      this.isFavorite = {}; // Може да пропуснете това, ако не искам да изчистват предишни стойности
+      this.isFavorite = {}; // да изчистват предишни стойности
   
     // филтрирам favorites по ownerId за да получа само тези които аз съм харесал
       const userFavorites = allFavorites.filter(favorite => favorite._ownerId === userId);
