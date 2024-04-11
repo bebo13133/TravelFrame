@@ -1,16 +1,16 @@
 <nav class="social">
     <ul>
         <li>
-            <a routerLink="/destinations" routerLinkActive="router-link-active" >Дестинации<i class="fa-solid fa-map-location-dot" [ngStyle]="{'color':'#ed0c0c'}"></i></a>
-          </li>
-          <ng-container >                   
-        <li><a  href="javascript:void(0);" (click)="searchHomeModal.showModal()">Search <i class="fa-solid fa-magnifying-glass" [ngStyle]="{'color': '#edce02'}"></i></a></li>
-        <li><a  routerLink='/home' fragment="home12" >Начало <i class="fa-solid fa-house"></i></a></li>
-    </ng-container>
+            <a routerLink="/destinations" routerLinkActive="router-link-active">Дестинации<i
+                    class="fa-solid fa-map-location-dot" [ngStyle]="{'color':'#ed0c0c'}"></i></a>
+        </li>
+        <ng-container>
+            <li><a href="javascript:void(0);" (click)="searchHomeModal.showModal()">Search <i
+                        class="fa-solid fa-magnifying-glass" [ngStyle]="{'color': '#edce02'}"></i></a></li>
+            <li><a routerLink='/home' fragment="home12">Начало <i class="fa-solid fa-house"></i></a></li>
+        </ng-container>
 
     </ul>
 </nav>
-<app-search-home-modal #searchHomeModal/>
+<app-search-home-modal #searchHomeModal />
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-
-
